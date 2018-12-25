@@ -1,7 +1,8 @@
 import pekka from '../app/assets/pekka.jpg';
 import arvidsson from '../app/assets/arvidsson.jpg';
+import {ACTIONTYPES} from '../configurations/actiontypes';
 
-export const SET_CURRENT_PROFILE = 'auth/SET_CURRENT_PROFILE';
+//export const SET_CURRENT_PROFILE = 'auth/SET_CURRENT_PROFILE';
 
 const initialState = {
   currentProfile: {}
@@ -9,7 +10,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SET_CURRENT_PROFILE:
+    case ACTIONTYPES.PROFILE.SET_CURRENT_PROFILE:
       return {
         ...state,
         currentProfile: action.profile
@@ -40,7 +41,7 @@ export const getCurrentProfile = id => dispatch =>
       }
 
       dispatch({
-        type: SET_CURRENT_PROFILE,
+        type: ACTIONTYPES.PROFILE.SET_CURRENT_PROFILE,
         profile
       });
 
@@ -51,7 +52,7 @@ export const getCurrentProfile = id => dispatch =>
 export const removeCurrentProfile = () => dispatch =>
   new Promise(resolve => {
     dispatch({
-      type: SET_CURRENT_PROFILE,
+      type: ACTIONTYPES.PROFILE.SET_CURRENT_PROFILE,
       profile: {}
     });
 
