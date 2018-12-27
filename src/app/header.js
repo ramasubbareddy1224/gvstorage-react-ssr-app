@@ -9,15 +9,7 @@ const links = [
   {
     to: '/about',
     text: 'About'
-  },
-  {
-    to: '/profile/1',
-    text: 'Profile 1'
-  },
-  {
-    to: '/profile/2',
-    text: 'Profile 2'
-  },
+  },  
   {
     to: '/login',
     text: 'Login',
@@ -32,11 +24,8 @@ const links = [
     to: '/logout',
     text: 'Logout',
     auth: true
-  },
-  {
-    to: '/this-is-broken',
-    text: 'Broken Page'
   }
+  
 ];
 
 const isCurrent = (to, current) => {
@@ -57,7 +46,7 @@ const HeaderLink = ({ to, text, current }) => (
 
 export default ({ isAuthenticated, current }) => (
   <header id="header">
-    <h1 id="title">My awesome website</h1>
+    <h1 id="title">GVStorage Website</h1>
     <ul id="links">
       {links.map((link, index) => {
         const TheLink = <HeaderLink key={index} current={current} {...link} />;

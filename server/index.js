@@ -24,9 +24,7 @@ register(ignoreStyles.DEFAULT_EXTENSIONS, (mod, filename) => {
   }
 });
 
-// Set up babel to do its thing... env for the latest toys, react-app for CRA
-// Notice three plugins: the first two allow us to use import rather than require, the third is for code splitting
-// Polyfill is required for Babel 7, polyfill includes a custom regenerator runtime and core-js
+
 require('@babel/polyfill');
 require('@babel/register')({
   ignore: [/\/(build|node_modules)\//],
@@ -38,5 +36,5 @@ require('@babel/register')({
   ]
 });
 
-// Now that the nonsense is over... load up the server entry point
+//  server entry point
 require('./server');

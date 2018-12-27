@@ -15,16 +15,8 @@ import loader from './loader';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// NOTE: UNCOMMENT THIS IF YOU WANT THIS FUNCTIONALITY
-/*
-  Forcing www and https redirects in production, totally optional.
+// NOTE: forcedomain can be used in prod
 
-  http://mydomain.com
-  http://www.mydomain.com
-  https://mydomain.com
-
-  Resolve to: https://www.mydomain.com
-*/
 // if (process.env.NODE_ENV === 'production') {
 //   app.use(
 //     forceDomain({
@@ -46,7 +38,7 @@ app.use(express.Router().get('/', loader));
 app.use(express.static(path.resolve(__dirname, '../build')));
 app.use(loader);
 
-// We tell React Loadable to load all required assets and start listening - ROCK AND ROLL!
+// We tell React Loadable to load all required assets and start listening 
 Loadable.preloadAll().then(() => {
   app.listen(PORT, console.log(`App listening on port ${PORT}!`));
 });

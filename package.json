@@ -27,7 +27,8 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.2",
     "redux": "^4.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "wretch": "^1.4.2"
   },
   "scripts": {
     "start": "cross-env PORT=4200 react-scripts start",
