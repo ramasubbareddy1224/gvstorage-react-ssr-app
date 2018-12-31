@@ -20,15 +20,22 @@ import {
 };
 
 class HomeBanner extends Component{
-  state = {
-    selectedOption: null,
+  constructor(props)
+  {
+    super(props);
+    this.state={
+      selectedOption: null
+    }
+    //this.handleChange = this.handleChange.bind(this);
+    //this.redirectToTarget = this.redirectToTarget.bind(this);
   }
-  handleChange = (selectedOption) => {
+ 
+  handleChange=(selectedOption)=> {
     this.setState({ selectedOption });
     console.log(`Option selected:`, selectedOption);
   }
 
-  redirectToTarget = () => {
+  redirectToTarget=()=>{
 
     //var stateWithCityValue = !!this.state.selectedOption.state ? (','+ this.state.selectedOption.state) : '';
 
