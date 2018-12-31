@@ -12,6 +12,9 @@ import Header from './header';
 import Routes from './routes';
 
 import './app.css';
+import CommonTopBar from './components/common/common.topbar';
+import CommonMenu from './components/common/common.menu';
+import CommonFooter from './components/common/common.footer';
 
 class App extends Component {
   componentWillMount() {
@@ -23,13 +26,16 @@ class App extends Component {
   render() {
     return (
       <div id="app">
-        <Header
+        {/* <Header
           isAuthenticated={this.props.isAuthenticated}
           current={this.props.location.pathname}
-        />
+        /> */}
+        <CommonTopBar></CommonTopBar>
+        <CommonMenu></CommonMenu>
         <div id="content">
           <Routes />
         </div>
+        <CommonFooter></CommonFooter>
       </div>
     );
   }

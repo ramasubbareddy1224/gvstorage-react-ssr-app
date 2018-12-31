@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'NunitoRegular';
+    src: url('NunitoRegular.eot');
+    src: url('NunitoRegular.eot') format('embedded-opentype'),
+         url('NunitoRegular.woff2') format('woff2'),
+         url('NunitoRegular.woff') format('woff'),
+         url('NunitoRegular.ttf') format('truetype'),
+         url('NunitoRegular.svg#NunitoRegular') format('svg');
+}
+
+@font-face {
+    font-family: 'NunitoBold';
+    src: url('NunitoBold.eot');
+    src: url('NunitoBold.eot') format('embedded-opentype'),
+         url('NunitoBold.woff2') format('woff2'),
+         url('NunitoBold.woff') format('woff'),
+         url('NunitoBold.ttf') format('truetype'),
+         url('NunitoBold.svg#NunitoBold') format('svg');
+}
+

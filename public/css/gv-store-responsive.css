@@ -1,0 +1,203 @@
+
+
+
+@media ( max-width:1440px){
+.storage-room-content {
+    padding-top: 1rem;
+}
+.facility-page-banner-content {
+    left: 12% !important;
+}
+}
+
+@media ( max-width:1366px){
+.storage-room-content {
+    padding-top: 0rem;
+}
+.facility-page-banner-content {
+    left: 10% !important;
+}
+#inner-banner .storage-room-content .storage-timings {
+    padding-top: 2.5rem;
+}
+}
+
+
+@media ( max-width:1280px){
+.storage-room-content {
+    padding-top: 0rem;
+}
+.facility-page-banner-content {
+    left: 7% !important;
+}
+#inner-banner .storage-room-content .storage-timings {
+    padding-top: 2rem;
+}
+.about-room-facility {
+    padding-top: 0px;
+}
+}
+
+@media ( max-width:1200px){
+
+.facility-page-banner-content {
+    left: 3% !important;
+}
+
+}
+@media ( max-width:1160px){
+.storage-room-content { width:100%; float:none;}
+#inner-banner .facility-page-banner-content p{ color:#333;}
+.facility-space {
+    margin-top: 30rem;
+}
+#inner-banner .storage-room-content .storage-timings {
+    padding-top: 1rem;
+}
+}
+
+@media ( max-width:1140px){
+#inner-banner .inner-banner-content h2 { 
+	font-size:36px;
+}
+
+.facility-space {
+    margin-top: 32rem;
+}
+#inner-banner .storage-room-content .wether-block {
+    padding-top: 2rem;
+}
+
+.table-responsive { overflow:auto;}
+.table-responsive table { width:1160px; }
+} 
+
+
+@media ( max-width:960px){
+#inner-banner .inner-banner-content h2,  { 
+	font-size:28px;
+}
+#intro .intro-content p, #inner-banner .inner-banner-content p {
+    font-size: 18px;
+}
+.h2, h2 {
+    font-size: 1.6rem;
+}
+
+#call-to-action .cta-title {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+}
+#intro .find-storage {
+ width: 90%;
+}
+
+#inner-banner .find-storage{
+width: 90%;
+}
+
+.est-sizes { width:100%; float:none;}
+#inner-banner .storage-room-content .wether-block .wether-info-content {
+    font-size: 14px;
+}
+}
+
+@media ( max-width:850px){
+.facility-space {
+    margin-top: 38rem;
+}
+#inner-banner .storage-room-content .wether-block p{ margin-bottom:1rem !important;}
+#inner-banner .storage-room-content .wether-block .wether-info-content {
+   padding: 17px 40px;
+}
+}
+
+@media ( max-width:760px){
+.facility-page-banner-content {
+   left: 15% !important;
+}
+.facility-space {
+    margin-top: 42rem;
+}
+}
+
+
+@media ( max-width:720px){
+#inner-banner .inner-banner-content h2 { 
+	font-size:24px;
+}
+#intro .intro-content h2, .section-header h2 {
+    font-size: 24px;
+}
+#intro .intro-content p, #inner-banner .inner-banner-content p {
+    font-size: 20px;
+}
+#inner-banner {
+    height: 58vh;
+}
+.h2, h2 {
+    font-size: 1.5rem;
+}
+.inner-banner-cls { background:none !important;}
+.about-room-facility {
+    padding-top: 60px;
+}
+#inner-banner .about-room-facility h5 {
+    color: #333;
+    font-size: 21px;
+}
+.facility-space {
+    margin-top: 33rem;
+}
+}
+
+
+
+@media ( max-width:540px){
+#inner-banner .inner-banner-content h2 { 
+	font-size:20px;
+}
+#intro .intro-content h2, .section-header h2 {
+    font-size: 20px;
+}
+#intro .intro-content p, #inner-banner .inner-banner-content p {
+    font-size: 14px;
+}
+.facility-space {
+    margin-top: 35rem;
+}
+
+.h2, h2 {
+    font-size: 1.4rem;
+}
+#inner-banner .storage-room-content .wether-block .wether-info-content {
+   padding: 17px 20px;
+}
+.about-room-facility {
+    padding-top: 20px;
+}
+}
+
+
+
+@media ( max-width:400px){
+#inner-banner .storage-room-content .wether-block .wether-info-content {
+    padding: 20px 10px;
+    font-size: 12px;
+}
+.facility-space {
+    margin-top: 38rem;
+}
+.facility-page-banner-content {
+    left: 5% !important;
+}
+}
+
+.small, small {
+    font-size: 80%;
+    font-weight: 400;
+}
+
+
+

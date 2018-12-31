@@ -42,6 +42,18 @@ const Profile = Loadable({
   modules: ['profile']
 });
 
+const Search = Loadable({
+  loader: () => import(/* webpackChunkName: "search" */ './search'),
+  loading: () => null,
+  modules: ['search']
+});
+
+const SelfStorage = Loadable({
+  loader: () => import(/* webpackChunkName: "self-storage" */ './self-storage'),
+  loading: () => null,
+  modules: ['self-storage']
+});
+
 export default () => (
   <Switch>
     <Route exact path="/" component={Homepage} />
@@ -49,10 +61,14 @@ export default () => (
 
     <Route exact path="/profile/:id" component={Profile} />
 
+
     <AuthenticatedRoute exact path="/dashboard" component={Dashboard} />
 
     <UnauthenticatedRoute exact path="/login" component={Login} />
     <AuthenticatedRoute exact path="/logout" component={Logout} />
+
+    <Route exact path="/search" component={Search} />
+    <Route exact path="/self-storage" component={SelfStorage}/>
 
     <Route component={NotFound} />
   </Switch>
