@@ -39,6 +39,11 @@ class HomeBanner extends Component{
     this.setState({ selectedOption });
     console.log(`Option selected:`, selectedOption);
   }
+  handleLocationChange=(event)=> {
+    this.setState({ selectedOption: event.target.value });
+    console.log(`Option selected:`, event);
+  }
+
 
   redirectToTarget=()=>{
  
@@ -87,7 +92,12 @@ render(){
              <label htmlFor="label" className="small text-left float-left" style ={ {fontSize: "70%", paddingLeft: '15px'}}> Search Using</label>
              <div className="col-md-12 banner-search">
               {/* <input type="text" className="form-control " placeholder="Zip, Address of City "  /> */}
-              <Select
+              {/* <select value={selectedOption} onChange={this.handleLocationChange} >
+              {options.map((e, key) => {
+               return <option key={key} value={e.value}>{e.label}</option>;
+    })}
+              </select> */}
+              <Select 
         value={selectedOption}
         onChange={this.handleChange}
         options={options }
