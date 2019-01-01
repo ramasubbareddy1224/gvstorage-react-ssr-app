@@ -3,11 +3,16 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { frontloadConnect } from 'react-frontload';
 import Select from 'react-select';
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route } from 'react-router-dom';
+import {Environment} from '../../../configurations/environment';
 
 import {
   getPinCodes, getSites, getPinCodes_Sites
   } from '../../../modules/actioncreators/home.actioncreator';
+
+  import {Redirect} from 'react-router';
+
+
 
 
 
@@ -36,12 +41,13 @@ class HomeBanner extends Component{
   }
 
   redirectToTarget=()=>{
-
+ 
     //var stateWithCityValue = !!this.state.selectedOption.state ? (','+ this.state.selectedOption.state) : '';
 
     //window.location.href='/search?filterType='+this.state.selectedOption.type+'&value='+ this.state.selectedOption.value + stateWithCityValue +'';
 
-    window.location.href='/search?value='+this.state.selectedOption.value+'';
+    window.location.href='/search/'+this.state.selectedOption.value+'';
+
   }
 
 render(){
@@ -100,7 +106,7 @@ render(){
         </div>
 ) : (
   <div id="inner-banner-image">
-            <div className="item"> <img src="img/intro-carousel/innerpage-citylevel-page.jpg" className="img-fluid w-100" /> </div>
+            <div className="item"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/intro-carousel/innerpage-citylevel-page.jpg"} className="img-fluid w-100" /> </div>
         </div>
 )}
 

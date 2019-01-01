@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Environment} from '../../../configurations/environment';
 
 class HomeStorageTools extends Component{
 render(){
@@ -20,19 +21,19 @@ render(){
             
             <div className="row">
              <div className="col-md-6 wow fadeInUp pb-3"> 
-                 <img src="img/Size-Guide.png" alt=" " /> Size Guide
+                 <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Size-Guide.png"} alt=" " /> Size Guide
              </div>
              <div className="col-md-6 wow fadeInUp pb-2"> 
-                 <img src="img/Space-Calculator.png" alt=" " /> Space Calculator
+                 <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Space-Calculator.png"} alt=" " /> Space Calculator
               </div>
              </div>
              <div className="row"> </div>
              <div className="row">
              <div className="col-md-6 wow fadeInUp pb-3"> 
-                 <img src="img/Tips.png" alt=" " /> Tips
+                 <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Tips.png"} alt=" " /> Tips
               </div>
              <div className="col-md-6 wow fadeInUp pb-3"> .
-                 <img src="img/Packing-Supplies.png" alt=" " /> Packing Supplies
+                 <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Packing-Supplies.png"} alt=" " /> Packing Supplies
               </div>
              </div>
   

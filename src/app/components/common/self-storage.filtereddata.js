@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InputRange from 'react-input-range';
+import {Environment} from '../../../configurations/environment';
 
 class SelfStorageFilteredData extends Component{
   constructor(props) {
@@ -53,7 +54,7 @@ render(){
                         
                         <div className="space-tool">
                             <div className="view-space-tool">
-                            <img src="img/facility/direction-icon.png" /> View space estimator tool
+                            <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/direction-icon.png"} /> View space estimator tool
                             </div>
                         </div>
     

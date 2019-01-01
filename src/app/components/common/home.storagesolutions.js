@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Environment} from '../../../configurations/environment';
 
 class HomeStorageSolutions extends Component{
 render(){
@@ -16,7 +17,7 @@ render(){
             <div className="col-md-2">
               <div className="wow storage-solution zoomIn">
                 <div className="storage-img-block">
-                    <img src="img/house-storage.png" alt="home storage" />
+                    <img src={Environment.STATIC_FILES_END_POINT_URL + "img/house-storage.png"} alt="home storage" />
                 </div>
                 <p className="title"> Personal Storage </p>
               </div>
@@ -25,7 +26,7 @@ render(){
             <div className="col-md-2">
               <div className="wow storage-solution zoomIn">
                 <div className="storage-img-block">
-                    <img src="img/bussiness-storage.png" alt="home storage" />
+                    <img src={Environment.STATIC_FILES_END_POINT_URL + "img/bussiness-storage.png"} alt="home storage" />
                 </div>
                 <p className="title"> Business Storage </p>
               </div>
@@ -34,7 +35,7 @@ render(){
             <div className="col-md-2">
               <div className="wow storage-solution zoomIn">
                 <div className="storage-img-block">
-                    <img src="img/vechile-storage.png" alt="home storage" />
+                    <img src={Environment.STATIC_FILES_END_POINT_URL + "img/vechile-storage.png"} alt="home storage" />
                 </div>
                 <p className="title"> Vehicle Storage </p>
               </div>
@@ -43,7 +44,7 @@ render(){
             <div className="col-md-2">
               <div className="wow storage-solution zoomIn">
                 <div className="storage-img-block">
-                    <img src="img/gsv-storage.png" alt="home storage" />
+                    <img src={Environment.STATIC_FILES_END_POINT_URL + "img/gsv-storage.png"} alt="home storage" />
                 </div>
                 <p className="title"> GVS  Storage </p>
               </div>

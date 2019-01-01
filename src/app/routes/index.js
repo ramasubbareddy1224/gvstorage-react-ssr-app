@@ -67,7 +67,7 @@ export default () => (
     <UnauthenticatedRoute exact path="/login" component={Login} />
     <AuthenticatedRoute exact path="/logout" component={Logout} />
 
-    <Route exact path="/search" component={Search} />
+    <Route exact path="/search/:filter" component={Search} />
     <Route exact path="/self-storage" component={SelfStorage}/>
 
     <Route component={NotFound} />

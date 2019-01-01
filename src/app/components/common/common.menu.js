@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Environment} from '../../../configurations/environment';
 
 class CommonMenu extends Component{
 render(){
@@ -7,7 +8,7 @@ render(){
     <div className="container">
 
       <div id="logo" className="pull-left">
-        <h1><a className="navbar-brand text-brand" href=""> <img src="img/great-value-store-logo.png" alt="logo" /> </a></h1>
+        <h1><a className="navbar-brand text-brand" href=""> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/great-value-store-logo.png"} alt="logo" /> </a></h1>
       </div>
 
       <nav id="nav-menu-container">

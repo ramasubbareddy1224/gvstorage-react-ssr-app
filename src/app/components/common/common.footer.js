@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Environment} from '../../../configurations/environment';
 
 class CommonFooter extends Component{
 render(){
@@ -272,7 +273,7 @@ render(){
     
           <div className="col-sm-12 col-md-3">
           <div className="footer-img">
-          <img src="img/gv-store-block.png" alt="logo" />
+          <img src={Environment.STATIC_FILES_END_POINT_URL + "img/gv-store-block.png"} alt="logo" />
           </div>
           </div>
     

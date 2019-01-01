@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Environment} from '../../../configurations/environment';
 
 class SelfStorageBanner extends Component{
 render(){
@@ -6,7 +7,7 @@ render(){
         <div>
         <section id="inner-banner" className="inner-banner-cls">
   <div id="inner-banner-image">
-    <div className="item"> <img src="img/intro-carousel/innerpage-facility-page-banner.jpg" className="img-fluid w-100" /> </div>
+    <div className="item"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/intro-carousel/innerpage-facility-page-banner.jpg"} className="img-fluid w-100" /> </div>
   </div>
   <div className="inner-banner-content facility-page-banner-content wow zoomIn">
     <div className="breadcrumb-section">
@@ -24,7 +25,7 @@ render(){
     <div className="about-room-facility">
       <h5> Texas Storage Park Self Storage </h5>
       <div className="storage-room-block">
-        <div className="storage-room-image"> <img src="img/facility/facility-banner-img.png" alt="" /> </div>
+        <div className="storage-room-image"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/facility-banner-img.png"} alt="" /> </div>
         <div className="storage-room-content">
           <p className="small"> <i className="fa fa-fa-map-marker"> </i> 10013 RR FM 620 N, Austin, TX 78726. <br />
             <i className="fa fa-phone"> </i> (512) 649-0442 <br />
@@ -44,12 +45,12 @@ render(){
           <div className="clearfix"> </div>
           <div className="wether-block">
             <div className="d-inline-block small-text office-hours">
-              <p className="gv-bg wether-info d-inline-block"> <img src="img/facility/wether-icon1.png" alt="wether" /> </p>
+              <p className="gv-bg wether-info d-inline-block"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/wether-icon1.png"} alt="wether" /> </p>
               <p className="wether-info-content d-inline-block small"> It will be 35 in Texas Storage Park. <br/>
                 Consider a climate controlled unit!</p>
             </div>
             <div className="d-inline-block small-text access-hours">
-              <p className="gv-bg wether-info d-inline-block"> <img src="img/facility/wether-icon1.png" alt="wether" /> </p>
+              <p className="gv-bg wether-info d-inline-block"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/wether-icon1.png"} alt="wether" /> </p>
               <p className="wether-info-content d-inline-block small"> It will be 35 in Texas Storage Park. <br />
                 Consider a climate controlled unit!</p>
             </div>

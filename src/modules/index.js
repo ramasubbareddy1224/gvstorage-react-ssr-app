@@ -7,6 +7,7 @@ import pinCodeData from '../modules/reducers/home/pinCodeData';
 import siteData from '../modules/reducers/home/siteData';
 import homePageData from '../modules/reducers/home.reducer';
 import searchPageData from '../modules/reducers/search.reducer';
+import commonData from '../modules/reducers/common.reducer';
 
 export default combineReducers({
   auth,
@@ -15,5 +16,6 @@ export default combineReducers({
   pinCodeData,
  // siteData,
   homePageData,
-  searchPageData
+  searchPageData,
+  commonData
 });

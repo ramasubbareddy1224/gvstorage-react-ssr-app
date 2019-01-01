@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Environment} from '../../../configurations/environment';
 
 class HomeWhyUs extends Component{
 render(){
@@ -14,7 +15,7 @@ render(){
             <div className="col-md-3">
                 <div className="why-us-img wow fadeInLeft">
               <div className="storage-location-info-img">
-                  <img src="img/we-connect.png" alt="we connect" />
+                  <img src={Environment.STATIC_FILES_END_POINT_URL + "img/we-connect.png"} alt="we connect" />
               </div>
               </div>
               <h5> We Connect </h5>
@@ -24,7 +25,7 @@ render(){
             <div className=" col-md-3 coloum-space">
                 <div className="why-us-img wow fadeInUp">
               <div className="storage-location-info-img">
-                  <img src="img/we-customise.png" alt="we connect" />
+                  <img src={Environment.STATIC_FILES_END_POINT_URL + "img/we-customise.png"} alt="we connect" />
               </div>
               </div>
               <h5> We Connect </h5>
@@ -34,7 +35,7 @@ render(){
             <div className="col-md-3">
                 <div className="why-us-img wow fadeInRight">
               <div className="storage-location-info-img">
-                  <img src="img/we-create.png" alt="we connect" />
+                  <img src={Environment.STATIC_FILES_END_POINT_URL + "img/we-create.png"} alt="we connect" />
               </div>
               </div>
               <h5> We Connect </h5>

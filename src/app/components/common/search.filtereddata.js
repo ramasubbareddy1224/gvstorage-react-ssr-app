@@ -3,9 +3,8 @@ import queryString from 'query-string';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { frontloadConnect } from 'react-frontload';
-import { getAllSitesByFilters
-  } from '../../../modules/actioncreators/search.actioncreator';
-
+import { getAllSitesByFilters } from '../../../modules/actioncreators/search.actioncreator';
+import {Environment} from '../../../configurations/environment';
 
 const frontload = async props => {
  // await props.getAllSitesByFilters();
@@ -18,6 +17,7 @@ class SearchFilteredData extends Component{
 
     this.props.getAllSitesByFilters(values.value);
 
+   
     // if(values.filterType == 'postalCode'){
     //   Promise.all([this.props.getAllSitesByFilters(values.filterType, values.value)]).then(function(values) {
     //     });
@@ -32,7 +32,11 @@ class SearchFilteredData extends Component{
     // }
   }
 
+
+
 render(){
+  console.log(this.props.allFilters);
+
   const {allSites} = this.props;
   var items = [
     { name: 'Matthew', link: 'https://bible.com/1/mat.1' },
@@ -53,12 +57,18 @@ render(){
   var divSites = '';
   if(!!allSites.siteLocations){
 
+ 
+
+    //temp =  [];
+    //var a = this.props.allFilters;
+    //var temp = Object.assign({}, allSites.siteLocations);
+
   var divSites = allSites.siteLocations.map(function(item,index) {
     return (
       <div key={item.siteID}>
         <div className="row">
             <div className="col-5 col-sm-4 col-md-3">
-              <div className="fav-locations text-center city-level-img"> <img src="img/citylevel/dallas-2.png" className="img-fluid"  alt="..." />
+              <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-2.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                   <div className="location-info">
                     <h2 className="wow fadeInUp"> {index+1} </h2>
@@ -106,6 +116,7 @@ render(){
 const mapStateToProps = state => ({
   // allPinCodes: state.pinCodeData.data,
    allSites: state.searchPageData.sites,
+   allFilters: state.commonData.filterInfo
    //allSites: state.homePageData.sites,
  });
  

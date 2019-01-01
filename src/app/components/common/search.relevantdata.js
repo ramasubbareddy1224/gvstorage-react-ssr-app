@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Environment} from '../../../configurations/environment';
 
 class SearchRelevantData extends Component{
     
@@ -34,7 +35,7 @@ render(){
                       <div className="item col-md-4">
                           <div className="row pt-3">
                           <div className="col-5 col-sm-4 col-md-3">
-                            <div className="fav-locations text-center city-level-img"> <img src="img/citylevel/dallas-3.png" className="img-fluid"  alt="..." />
+                            <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-3.png"} className="img-fluid"  alt="..." />
                               <div className="location-overlay clearfix">
                                 <div className="location-info">
                                   <h2 className="wow fadeInUp"> 01 </h2>
@@ -53,7 +54,7 @@ render(){
                       <div className="item col-md-4 pt-3">
                           <div className="row">
                           <div className="col-5 col-sm-4 col-md-3">
-                            <div className="fav-locations text-center city-level-img"> <img src="img/citylevel/dallas-3.png" className="img-fluid"  alt="..." />
+                            <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-3.png"} className="img-fluid"  alt="..." />
                               <div className="location-overlay clearfix">
                                 <div className="location-info">
                                   <h2 className="wow fadeInUp"> 02 </h2>
@@ -72,7 +73,7 @@ render(){
                       <div className="item col-md-4 pt-3">
                           <div className="row">
                           <div className="col-5 col-sm-4 col-md-3">
-                            <div className="fav-locations text-center city-level-img"> <img src="img/citylevel/dallas-3.png" className="img-fluid"  alt="..." />
+                            <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-3.png"} className="img-fluid"  alt="..." />
                               <div className="location-overlay clearfix">
                                 <div className="location-info">
                                   <h2 className="wow fadeInUp"> 03 </h2>
@@ -91,7 +92,7 @@ render(){
                       <div className="item col-md-4 pt-3">
                           <div className="row">
                           <div className="col-5 col-sm-4 col-md-3">
-                            <div className="fav-locations text-center city-level-img"> <img src="img/citylevel/dallas-3.png" className="img-fluid"  alt="..." />
+                            <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-3.png"} className="img-fluid"  alt="..." />
                               <div className="location-overlay clearfix">
                                 <div className="location-info">
                                   <h2 className="wow fadeInUp"> 04 </h2>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Environment} from '../../../configurations/environment';
 
 class SelfStorageWhatFits extends Component{
 render(){
@@ -27,7 +28,7 @@ render(){
                 <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div className="tab-content">
                     <div className="row">
-                      <div className="col-md-5 text-center"><img src="img/Services/tiny-5x10.png" /></div>
+                      <div className="col-md-5 text-center"><img src={Environment.STATIC_FILES_END_POINT_URL + "img/Services/tiny-5x10.png"} /></div>
                       <div className="col-md-7">
                         <h5> Tiny - 5'x5' </h5>
                         <h6>Walk-in Closet</h6>
@@ -44,7 +45,7 @@ render(){
                         <h6>Walk-in Closet</h6>
                         <p>This size unit yields 25 square feet of space. Although these 5x5 units are small, they are an excellent size to store all of your extra items, like garden tools, seasonal items, office supplies, or your miscellaneous boxes.</p>
                       </div>
-                      <div className="col-md-5"><img src="img/Services/tiny-5x10.png" /></div>
+                      <div className="col-md-5"><img src={Environment.STATIC_FILES_END_POINT_URL + "img/Services/tiny-5x10.png"} /></div>
                     </div>
                   </div>
                 </div>
@@ -56,7 +57,7 @@ render(){
                         <h6>Walk-in Closet</h6>
                         <p>This size unit yields 25 square feet of space. Although these 5x5 units are small, they are an excellent size to store all of your extra items, like garden tools, seasonal items, office supplies, or your miscellaneous boxes.</p>
                       </div>
-                      <div className="col-md-5"><img src="img/Services/tiny-5x10.png" /></div>
+                      <div className="col-md-5"><img src={Environment.STATIC_FILES_END_POINT_URL + "img/Services/tiny-5x10.png"} /></div>
                     </div>
                   </div>
                 </div>
@@ -68,7 +69,7 @@ render(){
                         <h6>Walk-in Closet</h6>
                         <p>This size unit yields 25 square feet of space. Although these 5x5 units are small, they are an excellent size to store all of your extra items, like garden tools, seasonal items, office supplies, or your miscellaneous boxes.</p>
                       </div>
-                      <div className="col-md-5"><img src="img/Services/tiny-5x10.png" /></div>
+                      <div className="col-md-5"><img src={Environment.STATIC_FILES_END_POINT_URL + "img/Services/tiny-5x10.png"} /></div>
                     </div>
                   </div>
                 </div>
@@ -80,7 +81,7 @@ render(){
                         <h6>Walk-in Closet</h6>
                         <p>This size unit yields 25 square feet of space. Although these 5x5 units are small, they are an excellent size to store all of your extra items, like garden tools, seasonal items, office supplies, or your miscellaneous boxes.</p>
                       </div>
-                      <div className="col-md-5"><img src="img/Services/tiny-5x10.png" /></div>
+                      <div className="col-md-5"><img src={Environment.STATIC_FILES_END_POINT_URL + "img/Services/tiny-5x10.png"} /></div>
                     </div>
                   </div>
                 </div>
@@ -92,7 +93,7 @@ render(){
                         <h6>Walk-in Closet</h6>
                         <p>This size unit yields 25 square feet of space. Although these 5x5 units are small, they are an excellent size to store all of your extra items, like garden tools, seasonal items, office supplies, or your miscellaneous boxes.</p>
                       </div>
-                      <div className="col-md-5"><img src="img/Services/tiny-5x10.png" /></div>
+                      <div className="col-md-5"><img src={Environment.STATIC_FILES_END_POINT_URL + "img/Services/tiny-5x10.png"} /></div>
                     </div>
                   </div>
                 </div>

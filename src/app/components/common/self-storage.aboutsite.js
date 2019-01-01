@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Environment} from '../../../configurations/environment';
 
 class SelfStorageAboutSite extends Component{
 render(){
@@ -31,11 +32,11 @@ render(){
                         <div className="col-md-6">
                           <div className="product-slider"> 
                               <div className="product-big-image gv-radius">
-                                <img src="img/facility/product-large-img.jpg" className="img-fluid gv-radius" alt="" />
+                                <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/product-large-img.jpg"} className="img-fluid gv-radius" alt="" />
                             </div>
                             <div className="product-thumb-img">
-                            <span> <img src="img/facility/thumb1.png" className="img-fluid gv-radius" /></span> <span> <img src="img/facility/thumb2.png" className="img-fluid gv-radius" /> </span> 
-                            <span> <img src="img/facility/thumb1.png" className="img-fluid gv-radius" /></span> <span> <img src="img/facility/thumb2.png" className="img-fluid gv-radius"/> </span>
+                            <span> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/thumb1.png"} className="img-fluid gv-radius" /></span> <span> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/thumb2.png"} className="img-fluid gv-radius" /> </span> 
+                            <span> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/thumb1.png"} className="img-fluid gv-radius" /></span> <span> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/thumb2.png"} className="img-fluid gv-radius"/> </span>
                             </div>
                           </div>
                         </div>

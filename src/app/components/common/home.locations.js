@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Environment} from '../../../configurations/environment';
 
 class HomeLocations extends Component{
 render(){
@@ -10,7 +11,7 @@ render(){
           <div className="row">
             <div className="col-6 col-md-2">
                 <div className="fav-locations text-center">
-                <img src="img/texas.png" className="img-fluid"  alt="..." />
+                <img src={Environment.STATIC_FILES_END_POINT_URL + "img/texas.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                     <div className="location-info">
                     <h2 className="wow fadeInUp"> TX </h2>
@@ -21,7 +22,7 @@ render(){
             </div>
             <div className="col-6 col-md-2">
             <div className="fav-locations text-center">
-                <img src="img/Tennessee.png" className="img-fluid"  alt="..." />
+                <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Tennessee.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                     <div className="location-info">
                     <h2 className="wow fadeInUp"> TN </h2>
@@ -32,7 +33,7 @@ render(){
             </div>
             <div className="col-6 col-md-2">
             <div className="fav-locations text-center">
-                <img src="img/Ohio.png" className="img-fluid"  alt="..." />
+                <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Ohio.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                     <div className="location-info">
                     <h2 className="wow fadeInUp"> OH </h2>
@@ -43,7 +44,7 @@ render(){
             </div>
             <div className="col-6 col-md-2">
             <div className="fav-locations text-center">
-                <img src="img/New-York.png" className="img-fluid"  alt="..." />
+                <img src={Environment.STATIC_FILES_END_POINT_URL + "img/New-York.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                     <div className="location-info">
                     <h2 className="wow fadeInUp"> NY </h2>
@@ -54,7 +55,7 @@ render(){
             </div>
             <div className="col-6 col-md-2">
             <div className="fav-locations text-center">
-                <img src="img/Nevada.png" className="img-fluid"  alt="..." />
+                <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Nevada.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                     <div className="location-info">
                     <h2 className="wow fadeInUp"> NV </h2>
@@ -65,7 +66,7 @@ render(){
             </div>
             <div className="col-6 col-md-2">
             <div className="fav-locations text-center">
-                <img src="img/Missouri.png" className="img-fluid"  alt="..." />
+                <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Missouri.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                     <div className="location-info">
                     <h2 className="wow fadeInUp"> MO </h2>
@@ -81,7 +82,7 @@ render(){
             <div className="col-md-1"> </div>
             <div className="col-6 col-md-2">
             <div className="fav-locations text-center">
-                <img src="img/Mississippi.png" className="img-fluid"  alt="..." />
+                <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Mississippi.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                     <div className="location-info">
                     <h2 className="wow fadeInUp"> MI </h2>
@@ -92,7 +93,7 @@ render(){
             </div>
             <div className="col-6  col-md-2">
             <div className="fav-locations text-center">
-                <img src="img/Indiana.png" className="img-fluid"  alt="..." />
+                <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Indiana.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                     <div className="location-info">
                     <h2 className="wow fadeInUp"> IN </h2>
@@ -103,7 +104,7 @@ render(){
             </div>
             <div className="col-6 col-md-2">
             <div className="fav-locations text-center">
-                <img src="img/Illinois.png" className="img-fluid"  alt="..." />
+                <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Illinois.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                     <div className="location-info">
                     <h2 className="wow fadeInUp"> IL </h2>
@@ -114,7 +115,7 @@ render(){
             </div>
             <div className="col-6 col-md-2">
             <div className="fav-locations text-center">
-                <img src="img/Colorado.png" className="img-fluid"  alt="..." />
+                <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Colorado.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                     <div className="location-info">
                     <h2 className="wow fadeInUp"> CO </h2>
@@ -125,7 +126,7 @@ render(){
             </div>
             <div className="col-6 col-md-2">
             <div className="fav-locations text-center">
-                <img src="img/California.png" className="img-fluid"  alt="..." />
+                <img src={Environment.STATIC_FILES_END_POINT_URL + "img/California.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                     <div className="location-info">
                     <h2 className="wow fadeInUp"> CA </h2>
