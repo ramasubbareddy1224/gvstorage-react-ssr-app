@@ -33,7 +33,7 @@ export const getDiscounts = () => (dispatch) => {
   };
 
   export const getPinCodes_Sites = () => (dispatch) => {
-    Promise.all([ApiRequest.url(`postalcodes`).get().json(postalCodeJson => { return  postalCodeJson}), 
+   return Promise.all([ApiRequest.url(`postalcodes`).get().json(postalCodeJson => { return  postalCodeJson}), 
       ApiRequest.url(`sites`).get().json(sitesJson => {return sitesJson})
     ]).then(function(values) {
       dispatch(actionCreator_PinCodes_Sites(values));
