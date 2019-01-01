@@ -7,6 +7,7 @@ import CommonBreadCrumb from '../../components/common/common.breadcrumb';
 import SearchFilteredData from '../../components/common/search.filtereddata';
 import SearchRelevantData from '../../components/common/search.relevantdata';
 import CommonContactUs from '../../components/common/common.contactus';
+import EventsMapPage from '../../components/googlemap/events_map_page';
 
 export default () => (
   <Page id="search">
@@ -23,6 +24,7 @@ export default () => (
         </section>
 
             <CommonContactUs></CommonContactUs>
+            <EventsMapPage></EventsMapPage>
     </main>
   </Page>
 );
