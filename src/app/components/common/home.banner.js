@@ -1,35 +1,19 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { frontloadConnect } from 'react-frontload';
 import Select from 'react-select';
-import { BrowserRouter, Route } from 'react-router-dom';
 import {Environment} from '../../../configurations/environment';
 
-import {
-  getPinCodes, getSites, getPinCodes_Sites
-  } from '../../../modules/actioncreators/home.actioncreator';
-
-  import {Redirect} from 'react-router';
+import {Redirect} from 'react-router-dom';
 
 
 
-
-
-
-  const frontload = async props => {
-  // Promise.all([props.getPinCodes_Sites(), props.getSites()]).then(function(values) {
-  //   debugger;
-  // });
-  await props.getPinCodes_Sites();
-};
-
-class HomeBanner extends Component{
+export default class HomeBanner extends Component{
   constructor(props)
   {
     super(props);
     this.state={
-      selectedOption: null
+      selectedOption: null,
+      isFindStorageClicked: false,
+      searchDynamicUrl: ''
     }
     //this.handleChange = this.handleChange.bind(this);
     //this.redirectToTarget = this.redirectToTarget.bind(this);
@@ -46,16 +30,24 @@ class HomeBanner extends Component{
 
 
   redirectToTarget=()=>{
- 
-    //var stateWithCityValue = !!this.state.selectedOption.state ? (','+ this.state.selectedOption.state) : '';
+    this.setState({isFindStorageClicked: true, searchDynamicUrl: '/search/'+this.state.selectedOption.value+''});
+   //var stateWithCityValue = !!this.state.selectedOption.state ? (','+ this.state.selectedOption.state) : '';
 
     //window.location.href='/search?filterType='+this.state.selectedOption.type+'&value='+ this.state.selectedOption.value + stateWithCityValue +'';
 
-    window.location.href='/search/'+this.state.selectedOption.value+'';
+    //window.location.href='/search/'+this.state.selectedOption.value+'';
 
   }
 
 render(){
+
+  
+  if (this.state.isFindStorageClicked) {
+    this.setState({isFindStorageClicked: false});
+    return <Redirect to={this.state.searchDynamicUrl} />
+  }
+
+
   const { selectedOption } = this.state;
   const pageName = this.props.pageName;
   // const {allPinCodes} = this.props;
@@ -125,25 +117,3 @@ render(){
 }
 }
 
-
-const mapStateToProps = state => ({
- // allPinCodes: state.pinCodeData.data,
-  allPinCodes_Sites: state.homePageData.pinCodes_Sites,
-  //allSites: state.homePageData.sites,
-});
-
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ 
-    getPinCodes_Sites
-    //, getSites 
-  }, dispatch);
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(
-  frontloadConnect(frontload, {
-    onMount: true,
-    onUpdate: false
-  })(HomeBanner)
-);

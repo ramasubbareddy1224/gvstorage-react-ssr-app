@@ -3,6 +3,43 @@ import {Environment} from '../../../configurations/environment';
 
 class CommonFooter extends Component{
 render(){
+  const { allPinCodes_Sites } = this.props;
+
+
+  var divLocations = '';
+  if(Object.keys(allPinCodes_Sites).length > 0){
+  var divLocations = allPinCodes_Sites[1].locations.map(function(item,index) {
+
+  return (
+    <div className="col-sm-12 col-md-12 section-md-t3" key={index}>
+          
+    <div className="widget-a col-md-3">
+      <div className="w-header-a">
+        <h6 className="w-title-a text-brand">{item.stateName} </h6>
+      </div>
+      <div className="w-body-a">
+        <div className="w-body-a">
+          <ul className="list-unstyled">
+             {
+               
+                item.cities.map(function(city,cityIndex) {
+                  return(
+                 <li key={cityIndex}>  {city.city}, {item.stateCode} ({city.count})</li>
+                  )
+                })
+             }
+             
+          </ul>
+        </div>
+      </div>
+    
+    
+    </div>
+  </div>
+  );
+});
+  }
+
     return(
         <div>
         <section className="section-footer wow fadeInUp">
@@ -11,135 +48,7 @@ render(){
               <h2 >Locations</h2>
             </div>
           <div className="row">
-            <div className="col-sm-12 col-md-3">
-              <div className="widget-a">
-                <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">Texas</h6>
-                </div>
-                <ul className="list-unstyled">
-                       <li>   Austin, TX (5) </li>
-                        <li>Baytown, TX (7)</li>
-                        <li>Canyon Lake, TX (2)</li>
-                        <li>Cedar Park, TX (4)</li>
-                        <li>Dallas, TX (10)</li>
-                        <li>Deer Park, TX (12)</li>
-                        <li>Fort Worth, TX (5)</li>
-                        <li>Houston, TX (5)</li>
-                        <li>La Porte, TX (7)</li>
-                        <li>Leander, TX (5)</li>
-                        <li>Mesquite, TX (2)</li>
-                        <li>Pasadena, TX (9)</li>
-                        <li>San Benito, TX (3)</li>
-                        <li>Texas City, TX (3)</li>
-                        <li>Tomball, TX (1)</li>
-                    </ul>
-                
-              </div>
-            </div>
-            
-            <div className="col-sm-12 col-md-3 section-md-t3">
-              <div className="widget-a">
-                <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">Tennessee </h6>
-                </div>
-                <div className="w-body-a">
-                  <div className="w-body-a">
-                    <ul className="list-unstyled">
-                       <li>  Memphis, TN(3)</li>
-                    </ul>
-                  </div>
-                </div>
-              
-                <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">Ohio </h6>
-                </div>
-                <ul className="list-unstyled">
-                       <li>  Boardman, OH (5) </li>
-                          <li>   Centerville, OH (5)</li>
-                          <li>   Columbus, OH (4)</li>
-                          <li>   Dayton, OH (5)</li>
-                          <li>   Lewis Center, OH (4)</li>
-                          <li>   Mansfield, OH (4)</li>
-                          <li>   Mason, OH (2)</li>
-                          <li>   Miamisburg, OH (7)</li>
-                           <li>  Reynoldsburg, OH (4)</li>
-                           <li>  Trotwood, OH (9)</li>
-                    </ul>
-              </div>
-            </div>
-            
-            <div className="col-sm-12 col-md-3 section-md-t3">
-              <div className="widget-a">
-                <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">New York </h6>
-                </div>
-                <ul className="list-unstyled">
-                       <li>  New York, NY (6) </li>
-                       <li> Hyde Park, NY (4) </li>
-                       <li> Newburgh, NY (2)</li>
-                    </ul>
-                    
-                <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">Nevada </h6>
-                </div>
-                <ul className="list-unstyled">
-                       <li>  Las Vegas, NV (4) </li>
-                </ul>
-                
-                <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">Missouri </h6>
-                </div>
-                <ul className="list-unstyled">
-                       <li>  Kansas City, MO (4) </li>
-                </ul>
-                
-                <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">Mississippi </h6>
-                </div>
-                <ul className="list-unstyled">
-                       <li>  Brandon, MS (3) </li>
-                </ul>
-                
-                <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">Indiana </h6>
-                </div>
-                <ul className="list-unstyled">
-                       <li>  Indianapolis, IN (4) </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="col-sm-12 col-md-3 section-md-t3">
-              <div className="widget-a">
-                <div className="w-header-a">
-                  <h6 className="w-title-a text-brand"> Illinois </h6>
-                </div>
-                <ul className="list-unstyled">
-                       <li> Champaign, IL (2)</li>
-                       <li> Urbana, IL (6)</li>
-                    </ul>
-                    
-                <div className="w-header-a">
-                  <h3 className="w-title-a text-brand"> Colorado </h3>
-                </div>
-                <ul className="list-unstyled">
-                       <li>  Aurora, CO (4) </li>
-                       <li>  Commerce City, CO (2) </li>
-                </ul>
-                
-                <div className="w-header-a">
-                  <h3 className="w-title-a text-brand"> California </h3>
-                </div>
-                <ul className="list-unstyled">
-                       <li>  Cerritos, CA (4) </li>
-                       <li>      Los Angeles, CA (2) </li>
-                        <li>     Newhall, CA (4) </li>
-                </ul>
-                
-                
-              </div>
-            </div>
-            
+            {divLocations}
           </div>
           <hr  style={{borderColor: '#5c5c5c'}} />
         </div>

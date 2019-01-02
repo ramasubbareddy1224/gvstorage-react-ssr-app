@@ -1,5 +1,8 @@
-import React from 'react';
 import Page from '../../components/page';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { frontloadConnect } from 'react-frontload';
 
 import logo from '../../assets/logo.jpg';
 import HomeBanner from '../../components/common/home.banner';
@@ -9,11 +12,22 @@ import HomeWhyUs from '../../components/common/home.whyus';
 import HomeTestimonials from '../../components/common/home.testimonials';
 import CommonContactUs from '../../components/common/common.contactus';
 
-export default () => (
-  <Page id="homepage">
-    <HomeBanner pageName="home"></HomeBanner>
+
+import { getPinCodes_Sites
+  } from '../../../modules/actioncreators/home.actioncreator';
+
+const frontload = async props =>{
+   Promise.all([props.getPinCodes_Sites()]).then(function(values) {
+  });
+}
+
+class HomePage extends Component {
+  render() {
+    return (
+      <Page id="homepage">
+    <HomeBanner pageName="home" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
     <main id="main">
-    <HomeLocations></HomeLocations>
+    <HomeLocations allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeLocations>
     <HomeStorageSolutions></HomeStorageSolutions>
     <HomeWhyUs></HomeWhyUs>
     <HomeStorageSolutions></HomeStorageSolutions>
@@ -21,4 +35,24 @@ export default () => (
     <CommonContactUs></CommonContactUs>
     </main>
   </Page>
+    );
+  }
+}
+
+const mapStateToProps = state => ({
+  allPinCodes_Sites: state.homePageData.pinCodes_Sites,
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({  getPinCodes_Sites }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(
+  frontloadConnect(frontload, {
+    onMount: true,
+    onUpdate: false
+  })(HomePage)
 );
+

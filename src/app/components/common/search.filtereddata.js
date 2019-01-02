@@ -6,34 +6,7 @@ import { frontloadConnect } from 'react-frontload';
 import { getAllSitesByFilters } from '../../../modules/actioncreators/search.actioncreator';
 import {Environment} from '../../../configurations/environment';
 
-const frontload = async props => {
- // await props.getAllSitesByFilters();
-};
-
-class SearchFilteredData extends Component{
-
-  componentDidMount(){
-    const values = queryString.parse(window.location.search);
-
-    this.props.getAllSitesByFilters(values.value);
-
-   
-    // if(values.filterType == 'postalCode'){
-    //   Promise.all([this.props.getAllSitesByFilters(values.filterType, values.value)]).then(function(values) {
-    //     });
-    // }
-    // else if(values.filterType == 'state'){
-    //   Promise.all([this.props.getAllSitesByFilters(values.filterType, values.value)]).then(function(values) {
-    //   });
-    // }
-    // else if(values.filterType == 'city'){
-    //   Promise.all([this.props.getAllSitesByFilters(values.filterType, values.value.split(',')[0], values.value.split(',')[1])]).then(function(values) {
-    //   });
-    // }
-  }
-
-
-
+export default class SearchFilteredData extends Component{
 render(){
   console.log(this.props.allFilters);
 
@@ -110,31 +83,4 @@ render(){
     )
 }
 }
-
-
-
-const mapStateToProps = state => ({
-  // allPinCodes: state.pinCodeData.data,
-   allSites: state.searchPageData.sites,
-   allFilters: state.commonData.filterInfo
-   //allSites: state.homePageData.sites,
- });
- 
- const mapDispatchToProps = dispatch =>
-   bindActionCreators({ 
-    getAllSitesByFilters
-     //, getSites 
-   }, dispatch);
- 
- export default connect(
-   mapStateToProps,
-   mapDispatchToProps
- )(
-   frontloadConnect(frontload, {
-     onMount: true,
-     onUpdate: false
-   })(SearchFilteredData)
- );
- 
-
 

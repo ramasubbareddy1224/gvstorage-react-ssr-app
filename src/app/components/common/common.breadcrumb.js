@@ -53,9 +53,6 @@ render(){
           <span className="checkmark"></span>
         </label>
         </div>
-
-       <div> Praveen {this.state.isClimateChecked}
-        </div>
          <div className="form-check">
         <label className="customcheck"> Vechicle Storage
           <input type="checkbox" />

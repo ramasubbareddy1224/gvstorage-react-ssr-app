@@ -18,14 +18,14 @@ const defaultSep = ' | ';
 class Page extends Component {
 
 
-  shouldComponentUpdate(nextProps) {
-    debugger;
-    if (nextProps.match.params.id !== this.props.match.params.id) {
-      this.props.getCurrentProfile(+nextProps.match.params.id);
-    }
+  // shouldComponentUpdate(nextProps) {
+  //   debugger;
+  //   if (nextProps.match.params.id !== this.props.match.params.id) {
+  //     this.props.getCurrentProfile(+nextProps.match.params.id);
+  //   }
   
-    return true;
-  }
+  //   return true;
+  // }
 
   getMetaTags(
     {

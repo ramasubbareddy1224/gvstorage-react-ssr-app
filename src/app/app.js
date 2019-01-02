@@ -31,18 +31,19 @@ class App extends Component {
           current={this.props.location.pathname}
         /> */}
         <CommonTopBar></CommonTopBar>
-        <CommonMenu></CommonMenu>
+        <CommonMenu allPinCodes_Sites={this.props.allPinCodes_Sites}></CommonMenu>
         <div id="content">
           <Routes />
         </div>
-        <CommonFooter></CommonFooter>
+        <CommonFooter  allPinCodes_Sites={this.props.allPinCodes_Sites}></CommonFooter>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
+  allPinCodes_Sites: state.homePageData.pinCodes_Sites,
 });
 
 const mapDispatchToProps = dispatch =>

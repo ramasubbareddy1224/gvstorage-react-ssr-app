@@ -966,6 +966,8 @@ body.mobile-nav-active #mobile-nav-toggle {
 	padding: 0 0 30px 0;
 	font-size: 14px;
 }
+
+.section-footer .widget-a {float: left;}
 .section-footer .widget-a ul li {
 	color:#fff;
 	font-weight:100;

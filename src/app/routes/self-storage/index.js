@@ -24,7 +24,7 @@ export default () => (
         <SelfStorageWhatFits></SelfStorageWhatFits>
         <SearchRelevantData relevanceType="neighbourhood"></SearchRelevantData>
         <SelfStorageAboutSite></SelfStorageAboutSite>
-        <SearchFilteredData></SearchFilteredData>
+        {/* <SearchFilteredData></SearchFilteredData> */}
         <CommonContactUs></CommonContactUs>
     </main>
   </Page>

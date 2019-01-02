@@ -3,6 +3,30 @@ import {Environment} from '../../../configurations/environment';
 
 class CommonMenu extends Component{
 render(){
+
+  const { allPinCodes_Sites } = this.props;
+
+
+  var divLocations = '';
+  if(Object.keys(allPinCodes_Sites).length > 0){
+  var divLocations = allPinCodes_Sites[1].locations.map(function(item,index) {
+
+  return (
+    <li key={index}><a href="#">{item.stateName}</a>
+     <ul>
+    {
+      item.cities.map(function(city, cityIndex) {
+        return(
+              <li  key={cityIndex}><a href="#">{city.city}</a></li>
+        )
+      })
+    }
+    </ul>
+    </li>
+  );
+});
+  }
+
     return(
     <header id="header">
     <div className="container">
@@ -14,16 +38,19 @@ render(){
       <nav id="nav-menu-container">
         <ul className="nav-menu">
           <li className="menu-has-children"><a href="#">Locations</a>
+            <ul>
+              {divLocations}
+            </ul>
+          </li>
+          <li className="menu-has-children"><a href="#">Storage Options</a>
            <ul>
-              <li><a href="#">Drop Down 1</a></li>
+              <li><a href="#">Drop Down 1</a>
+              <ul>
               <li><a href="#">Drop Down 3</a></li>
               <li><a href="#">Drop Down 4</a></li>
               <li><a href="#">Drop Down 5</a></li>
-            </ul>
-            </li>
-          <li className="menu-has-children"><a href="#">Storage Options</a>
-           <ul>
-              <li><a href="#">Drop Down 1</a></li>
+                </ul>
+              </li>
               <li><a href="#">Drop Down 3</a></li>
               <li><a href="#">Drop Down 4</a></li>
               <li><a href="#">Drop Down 5</a></li>

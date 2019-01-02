@@ -42,7 +42,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serve": "cross-env NODE_ENV=production node ./server/index.js"
+    "serve": "cross-env NODE_ENV=production node ./server/index.js",
+    "bs": "npm run build && npm run serve"
   },
   "eslintConfig": {
     "extends": "react-app"
