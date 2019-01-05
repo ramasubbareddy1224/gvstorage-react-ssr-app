@@ -28,7 +28,7 @@ export default class MyGreatPlaceWithControllableHover extends Component {
        <div className="hint hint--html hint--info hint--top" style={style}>
           <div>{this.props.text}</div>
           <div style={{width: 80}} className="hint__content">
-          {/* Сlick me */}
+            {this.props.hoverDetails.lat} {this.props.hoverDetails.lng}
           </div>
        </div>
     );
@@ -36,5 +36,6 @@ export default class MyGreatPlaceWithControllableHover extends Component {
 }
 MyGreatPlaceWithControllableHover.propTypes={
   hover: PropTypes.bool,
- text: PropTypes.string
+  text: PropTypes.string,
+  hoverDetails:PropTypes.object
 }

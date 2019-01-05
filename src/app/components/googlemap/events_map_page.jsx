@@ -95,13 +95,12 @@ import {K_SIZE} from './my_great_place_with_controllable_hover_styles.js';
     const places = this.props.mapPointers
       .map(place => {
         const {id, ...coords} = place;
-
         return (
           <MyGreatPlaceWithControllableHover
             key={id}
             {...coords}
-            text={id}
-            // use your hover state (from store, react-controllables etc...)
+            text={id.toString()}
+            hoverDetails={place}
             hover={(this.props.centerIndex +1) === id} />
         );
       });

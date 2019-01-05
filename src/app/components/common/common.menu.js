@@ -13,7 +13,8 @@ class CommonMenu extends Component{
     }
   }
  
-  redirectToTarget=(filterName)=>{
+  redirectToTarget=(filterName,event)=>{
+    event.stopPropagation();
     this.setState({isLocationClicked: true, searchDynamicUrl: '/search/'+filterName+''});
   }
 
@@ -32,12 +33,12 @@ render(){
   var divLocations = allPinCodes_Sites[1].locations.map((item,index) => {
 
   return (
-    <li key={index} onClick={() =>{this.redirectToTarget(item.stateName)}}><a href="">{item.stateName}</a>
+    <li key={index} onClick={(event) =>{this.redirectToTarget(item.stateName,event)}}><a href="">{item.stateName}</a>
      <ul>
     {
       item.cities.map((city, cityIndex) => {
         return(
-              <li  key={cityIndex} onClick={() =>{this.redirectToTarget(city.city)}}><a href="">{city.city}</a></li>
+              <li  key={cityIndex} onClick={(event) =>{this.redirectToTarget(city.city,event)}}><a href="">{city.city}</a></li>
         )
       })
     }
