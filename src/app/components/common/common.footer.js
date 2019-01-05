@@ -1,19 +1,41 @@
 import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
+import {Redirect} from 'react-router-dom';
 
 class CommonFooter extends Component{
+
+  constructor()
+  {
+    super();
+   
+    this.state={
+      isLocationClicked: false
+    }
+  }
+ 
+  redirectToTarget=(filterName)=>{
+    this.setState({isLocationClicked: true, searchDynamicUrl: '/search/'+filterName+''});
+  }
+
+
 render(){
+
+  if (this.state.isLocationClicked) {
+    this.setState({isLocationClicked: false});
+    return <Redirect to={this.state.searchDynamicUrl} />
+  }
+
   const { allPinCodes_Sites } = this.props;
 
 
   var divLocations = '';
   if(Object.keys(allPinCodes_Sites).length > 0){
-  var divLocations = allPinCodes_Sites[1].locations.map(function(item,index) {
+  var divLocations = allPinCodes_Sites[1].locations.map((item,index)  =>{
 
   return (
-    <div className="col-sm-12 col-md-12 section-md-t3" key={index}>
+    <div className="col-sm-4 col-md-3 section-md-t3" key={index}  onClick={() =>{this.redirectToTarget(item.stateName)}}>
           
-    <div className="widget-a col-md-3">
+    <div className="widget-a col-md-12">
       <div className="w-header-a">
         <h6 className="w-title-a text-brand">{item.stateName} </h6>
       </div>
@@ -22,9 +44,9 @@ render(){
           <ul className="list-unstyled">
              {
                
-                item.cities.map(function(city,cityIndex) {
+                item.cities.map((city,cityIndex) => {
                   return(
-                 <li key={cityIndex}>  {city.city}, {item.stateCode} ({city.count})</li>
+                 <li key={cityIndex} onClick={() =>{this.redirectToTarget(city.city)}}>  {city.city}, {item.stateCode} ({city.count})</li>
                   )
                 })
              }

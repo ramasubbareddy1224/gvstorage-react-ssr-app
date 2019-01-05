@@ -5,10 +5,38 @@ import { connect } from 'react-redux';
 import { frontloadConnect } from 'react-frontload';
 import { getAllSitesByFilters } from '../../../modules/actioncreators/search.actioncreator';
 import {Environment} from '../../../configurations/environment';
+import {Redirect} from 'react-router-dom';
+import EventsMapPage from '../../components/googlemap/events_map_page';
 
 export default class SearchFilteredData extends Component{
+
+  constructor(){
+    super();
+    this.state={
+      isLocationCodeClicked: false,
+      mapPointers: [],
+      tempCenterPoint: 0
+    }
+  }
+
+  clkRedirectToSelfStorage = (locationCode) =>{
+    this.setState({isLocationCodeClicked: true, searchDynamicUrl: '/self-storage/'+locationCode+''});
+  }
+
+  onSitesHover = (index)=>{
+    this.setState({tempCenterPoint: index})
+  }
+
 render(){
+
+  if (this.state.isLocationCodeClicked) {
+    this.setState({isLocationCodeClicked: false});
+    return <Redirect to={this.state.searchDynamicUrl} />
+  }
+
   console.log(this.props.allFilters);
+  var tempMapPointers =[];
+  var tempCenterPoint = [];
 
   const {allSites} = this.props;
   var items = [
@@ -36,10 +64,11 @@ render(){
     //var a = this.props.allFilters;
     //var temp = Object.assign({}, allSites.siteLocations);
 
-  var divSites = allSites.siteLocations.map(function(item,index) {
+  var divSites = allSites.siteLocations.map((item,index) => {
+    tempMapPointers.push({id: index+1, lat: parseFloat(item.latitude), lng: parseFloat(item.longitude) });
     return (
       <div key={item.siteID}>
-        <div className="row">
+        <div className="row" onMouseOver={() => {this.onSitesHover(index) }}>
             <div className="col-5 col-sm-4 col-md-3">
               <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-2.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
@@ -50,7 +79,7 @@ render(){
               </div>
             </div>
             <div className="col-7 col-sm-8 col-md-9">
-              <h5 className="pt-2"> {item.city} </h5>
+              <h5 className="pt-2" onClick={() => {this.clkRedirectToSelfStorage(item.locationCode) }} > {item.city} </h5>
               <p> {item.address1} <br/>
                 {item.city}, {item.region} {item.postalCode}</p>
             </div>
@@ -60,6 +89,8 @@ render(){
       </div>
     );
   });
+
+  tempCenterPoint.push(tempMapPointers[0].latitude, tempMapPointers[0].longitude)
 }
 
 
@@ -75,6 +106,7 @@ render(){
           <div className="city-page-map">
            <div id="map"> </div>
                {/* <SimpleMap></SimpleMap>  */}
+              { tempMapPointers.length > 0 && <EventsMapPage mapPointers={tempMapPointers} centerIndex={this.state.tempCenterPoint}></EventsMapPage> }
           </div>
         </div>
       </div>

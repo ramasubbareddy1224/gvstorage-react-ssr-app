@@ -19,15 +19,25 @@ import { getPinCodes_Sites
 
 
 const frontload = async props => {
-  const queryParams = queryString.parse(window.location.search);
+  //const queryParams = queryString.parse(window.location.search);
   //await props.getAllSitesByFilters(values.value);
-  Promise.all([props.getPinCodes_Sites(), props.getAllSitesByFilters(queryParams.value)]).then(function(values) {
+  return Promise.all([props.getPinCodes_Sites(), props.getAllSitesByFilters(props.match.params.filter)]).then(function(values) {
   });
 };
 
 
 
 class Search extends Component {  
+
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.match.params.filter !== this.props.match.params.filter) {
+      Promise.all([this.props.getPinCodes_Sites(), this.props.getAllSitesByFilters(nextProps.match.params.filter)]).then(function(values) {
+      });
+    }
+
+    return true;
+  }
+
   render() {
 
     return (
@@ -36,6 +46,7 @@ class Search extends Component {
       <CommonBreadCrumb></CommonBreadCrumb>
       <main id="main" className="citypage-section"> 
           <SearchFilteredData allSites={this.props.allSites} allFilters={this.props.allFilters}></SearchFilteredData>
+        
           <section id="about" className ="city-nearby-lake ">
               <SearchRelevantData relevanceType="neighbourhood"></SearchRelevantData>
               <hr/>
@@ -45,7 +56,6 @@ class Search extends Component {
           </section>
   
               <CommonContactUs></CommonContactUs>
-              <EventsMapPage></EventsMapPage>
       </main>
     </Page>
     );

@@ -28,12 +28,18 @@ import {K_SIZE} from './my_great_place_with_controllable_hover_styles.js';
   // };
 
   static defaultProps = {
-    center: [59.838043, 30.337157],
+    center: [0,0],
     zoom: 9,
     greatPlaces: [
       {id: 'A', lat: 59.955413, lng: 30.337844},
       {id: 'B', lat: 59.724, lng: 30.080}
     ]
+  };
+
+  state = {
+    mapPointers: [],
+    isEventFired: false,
+    centerIndex: -1
   };
 
   //shouldComponentUpdate = shouldPureComponentUpdate;
@@ -48,6 +54,9 @@ import {K_SIZE} from './my_great_place_with_controllable_hover_styles.js';
   }
 
   _onChildClick = (key, childProps) => {
+    this.setState((prevState) => ({
+      isEventFired: true
+    }));
     this.props.onCenterChange([childProps.lat, childProps.lng]);
   }
 
@@ -56,12 +65,34 @@ import {K_SIZE} from './my_great_place_with_controllable_hover_styles.js';
   }
 
   _onChildMouseLeave = (/* key, childProps */) => {
-    this.props.onHoverKeyChange(null);
+   this.props.onHoverKeyChange(null);
+  }
+
+  shouldComponentUpdate(){
+    if(this.state.mapPointers.length > 0 && (this.state.mapPointers.length ==  this.props.mapPointers.length) && (!this.state.isEventFired) &&  (this.state.centerIndex == this.props.centerIndex))
+      return false;
+    else
+    {
+      this.setState((prevState) => ({
+        isEventFired: false,
+        centerIndex: this.props.centerIndex,
+        mapPointers: this.props.mapPointers
+      }));
+      return true;
+    }
   }
 
 
+
   render() {
-    const places = this.props.greatPlaces
+    if(this.props.mapPointers.length > 0)
+   // alert(this.props.centerIndex)
+
+    //this.setState({});
+    this.props.onCenterChange([this.props.mapPointers[this.props.centerIndex].lat, this.props.mapPointers[this.props.centerIndex].lng]);
+    console.log(this.state.mapPointers);
+
+    const places = this.props.mapPointers
       .map(place => {
         const {id, ...coords} = place;
 
@@ -71,7 +102,7 @@ import {K_SIZE} from './my_great_place_with_controllable_hover_styles.js';
             {...coords}
             text={id}
             // use your hover state (from store, react-controllables etc...)
-            hover={this.props.hoverKey === id} />
+            hover={(this.props.centerIndex +1) === id} />
         );
       });
 
@@ -91,6 +122,8 @@ import {K_SIZE} from './my_great_place_with_controllable_hover_styles.js';
         {places}
       </GoogleMap>
       </div>
+
+
       </div>
     );
   }

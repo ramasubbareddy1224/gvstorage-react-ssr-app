@@ -17,7 +17,7 @@ import { getPinCodes_Sites
   } from '../../../modules/actioncreators/home.actioncreator';
 
 const frontload = async props =>{
-   Promise.all([props.getPinCodes_Sites()]).then(function(values) {
+  return Promise.all([props.getPinCodes_Sites()]).then(function(values) {
   });
 }
 

@@ -966,8 +966,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 	padding: 0 0 30px 0;
 	font-size: 14px;
 }
-
-.section-footer .widget-a {float: left;}
 .section-footer .widget-a ul li {
 	color:#fff;
 	font-weight:100;
@@ -1699,12 +1697,35 @@ margin-top:2rem;
 .product-slider .product-thumb-img img {
     width: 120px;
 }
+.w-45 { width:45%;}
+.rent-sec .rent-facility-info { background:#f4f6f4;width:100%; border-radius:10px; border:2px solid #ddd; }
+.rent-sec .rent-facility-info .facility-info { background: #f4f6f4;  border-radius:10px 0; padding:20px;}
+.rent-sec .rent-facility-info .facility-info .facility-data { padding: 15px 0px 15px 0px; border-bottom: 1px solid #ddd;}
+.rent-sec .rent-facility-info .facility-data .data-heading p{ color:#333;}
+.rent-sec .rent-facility-info .facility-data .data-heading p span{ text-decoration:underline;}
+
+.rent-sec .rent-facility-info .rent-your-unit-now{ background:#fff;width:100%; padding:0px 25px; min-height: 900px !important; border-left:1px solid #ddd; position:relative; padding-bottom:50px; }
+
+.rent-sec .rent-facility-info .rent-your-unit-footer  { padding:20px 0px; position:absolute; bottom:15px; right:15px; width:100%; padding-left:15px;}
+
+.exp-saparator { width:7.5%; }
+
+.rent-sec .rent-facility-info .rent-your-unit-now .offer-for-user{ background:#f4f6f4;  padding:10px 25px; }
+.rent-sec .rent-facility-info .rent-your-unit-now .offer-for-user .subscribe { background:#fff; border:1px solid #ddd; padding:10px; margin-bottom:20px}
+.rent-sec .rent-facility-info .rent-your-unit-now .offer-for-user .subscribe .letter-space { letter-spacing:2px;}
+
+.rent-sec .rent-facility-info .rent-your-unit-now .offer-for-user .protection { background:#fff; border:1px solid #ddd; padding:10px;}
 
 
+.hint{
+    width: 45px !important;
+    height: 30px !important;
+  
+    border: 2px solid rgb(0, 95, 37) !important;
+    border-radius: 8px !important;
+   
+}
 
-
-
-
-
-
-
+.hint:hover{
+ background: rgb(0, 95, 37) !important;
+}

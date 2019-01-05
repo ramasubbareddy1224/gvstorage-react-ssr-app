@@ -1,23 +1,43 @@
 import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
+import {Redirect} from 'react-router-dom';
 
 class CommonMenu extends Component{
+
+  constructor()
+  {
+    super();
+   
+    this.state={
+      isLocationClicked: false
+    }
+  }
+ 
+  redirectToTarget=(filterName)=>{
+    this.setState({isLocationClicked: true, searchDynamicUrl: '/search/'+filterName+''});
+  }
+
 render(){
+
+  if (this.state.isLocationClicked) {
+    this.setState({isLocationClicked: false});
+    return <Redirect to={this.state.searchDynamicUrl} />
+  }
 
   const { allPinCodes_Sites } = this.props;
 
 
   var divLocations = '';
   if(Object.keys(allPinCodes_Sites).length > 0){
-  var divLocations = allPinCodes_Sites[1].locations.map(function(item,index) {
+  var divLocations = allPinCodes_Sites[1].locations.map((item,index) => {
 
   return (
-    <li key={index}><a href="#">{item.stateName}</a>
+    <li key={index} onClick={() =>{this.redirectToTarget(item.stateName)}}><a href="">{item.stateName}</a>
      <ul>
     {
-      item.cities.map(function(city, cityIndex) {
+      item.cities.map((city, cityIndex) => {
         return(
-              <li  key={cityIndex}><a href="#">{city.city}</a></li>
+              <li  key={cityIndex} onClick={() =>{this.redirectToTarget(city.city)}}><a href="">{city.city}</a></li>
         )
       })
     }

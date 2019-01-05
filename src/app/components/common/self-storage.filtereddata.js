@@ -1,16 +1,70 @@
 import React, { Component } from 'react';
 import InputRange from 'react-input-range';
 import {Environment} from '../../../configurations/environment';
+import { timeout } from 'q';
 
+
+var filteredUnits = {};
 class SelfStorageFilteredData extends Component{
+  
   constructor(props) {
     super(props);
  
     this.state = {
       value: { min: 0, max: 50 },
+      originalUnits: {},
+      allUnits: {}
     };
   }
+
+  onDimensionRangeChange(){
+   // alert(this.state.value);
+    // var tempUnits = this.props.allUnits.units.map((item,index)=>{
+    //   return item.unitWidth > 0 && item.unitLength <50
+    // });
+    // filteredUnits = tempUnits;
+  }
+
+
 render(){
+
+   
+const {allUnits} = this.props;
+
+  var divUnits = '';
+  if(!!allUnits.units){
+
+    
+    //temp =  [];
+    //var a = this.props.allFilters;
+    //var temp = Object.assign({}, allSites.siteLocations);
+    //filteredUnits = this.props.allUnits;
+
+    filteredUnits = this.props.allUnits.units.filter((item)=> {
+      return ( (item.unitLength * item.unitWidth) >= this.state.value.min && (item.unitLength * item.unitWidth) <= this.state.value.max );
+    });
+
+  var divUnits = filteredUnits.map((item,index) => {
+    return (
+      <tr key={index}>
+                            <td><div className="unit-size"> <strong>{item.unitWidth}X{item.unitLength}</strong> </div></td>
+                            <td><h5> {item.unitTypeName} </h5>
+                              <p>{item.floor} <br />
+                                {item.indoor} </p></td>
+                            <td><div className="gv-text-color"> <strong> {item.specialOffer} </strong> </div></td>
+                            <td><div className="rate-varision">
+                                <p className="d-inline-block rate-info"> WEB RATE <br />
+                                  <strong ><del> ${item.webRate} </del></strong> </p>
+                                <p className="d-inline-block rate-info"> ONSITE RATE <br />
+                                  <strong className="gv-text-color"> ${item.onsiteRate} </strong> </p>
+                              </div></td>
+                            <td className="text-right"><div className="btn btn-gvstore btn-success border-0 green-gradient"> Rent Now </div>
+                              <div className="gv-text-color"> <strong>Reserve for free</strong> </div></td>
+                          </tr>
+    );
+  });
+}
+
     return(
         <section className="facility-filter-tabs wow fadeInUp">
         <div className="container">
@@ -34,7 +88,9 @@ render(){
         maxValue={250}
         minValue={0}
         value={this.state.value}
-        onChange={value => this.setState({ value })} />
+        onChange={value => this.setState({ value })}
+        onChangeComplete={() => { this.onDimensionRangeChange()}}
+        />
                     <br />
                     </div>
                     <div className="selected-filters small">
@@ -92,65 +148,8 @@ render(){
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td><div className="unit-size"> <strong>8X10</strong> </div></td>
-                            <td><h5> Drive Up Storage </h5>
-                              <p> Ground Floor <br />
-                                Exterior Access </p></td>
-                            <td><div className="gv-text-color"> <strong>50% Off 3 Months </strong> </div></td>
-                            <td><div className="rate-varision">
-                                <p className="d-inline-block rate-info"> ONSITE RATE <br />
-                                  <strong ><del> $54 </del></strong> </p>
-                                <p className="d-inline-block rate-info"> ONSITE RATE <br />
-                                  <strong className="gv-text-color"> $45 </strong> </p>
-                              </div></td>
-                            <td className="text-right"><div className="btn btn-gvstore btn-success border-0 green-gradient"> Rent Now </div>
-                              <div className="gv-text-color"> <strong>Reserve for free</strong> </div></td>
-                          </tr>
-                          <tr>
-                            <td><div className="unit-size gv-bg text-white"> <strong>8X10</strong> </div></td>
-                            <td><h5> Drive Up Storage </h5>
-                              <p> Ground Floor <br />
-                                Exterior Access </p></td>
-                            <td><div className="gv-text-color"> <strong>50% Off 3 Months </strong> </div></td>
-                            <td><div className="rate-varision">
-                                <p className="d-inline-block rate-info"> ONSITE RATE <br />
-                                  <strong ><del> $54 </del></strong> </p>
-                                <p className="d-inline-block rate-info"> ONSITE RATE <br />
-                                  <strong className="gv-text-color"> $45 </strong> </p>
-                              </div></td>
-                            <td className="text-right"><div className="btn btn-gvstore btn-success border-0 green-gradient"> Rent Now </div>
-                              <div className="gv-text-color"> <strong>Reserve for free</strong> </div></td>
-                          </tr>
-                          <tr>
-                            <td><div className="unit-size"> <strong>8X10</strong> </div></td>
-                            <td><h5> Drive Up Storage </h5>
-                              <p> Ground Floor <br />
-                                Exterior Access </p></td>
-                            <td><div className="gv-text-color"> <strong>50% Off 3 Months </strong> </div></td>
-                            <td><div className="rate-varision">
-                                <p className="d-inline-block rate-info"> ONSITE RATE <br />
-                                  <strong ><del> $54 </del></strong> </p>
-                                <p className="d-inline-block rate-info"> ONSITE RATE <br />
-                                  <strong className="gv-text-color"> $45 </strong> </p>
-                              </div></td>
-                            <td className="text-right"><div className="btn btn-gvstore btn-success border-0 green-gradient"> Rent Now </div>
-                              <div className="gv-text-color"> <strong>Reserve for free</strong> </div></td>
-                          </tr>
-                          <tr>
-                            <td><div className="unit-size"> <strong>8X10</strong> </div></td>
-                            <td><h5> Drive Up Storage </h5>
-                              <p> Ground Floor <br />
-                                Exterior Access </p></td>
-                            <td><div className="gv-text-color"> <strong>50% Off 3 Months </strong> </div></td>
-                            <td><div className="rate-varision">
-                                <p className="d-inline-block "> </p>
-                                <p className="d-inline-block rate-info"> ONSITE RATE <br />
-                                  <strong className="gv-text-color"> $45 </strong> </p>
-                              </div></td>
-                            <td className="text-right"><div className="btn btn-gvstore btn-success border-0 green-gradient"> Rent Now </div>
-                              <div className="gv-text-color"> <strong>Reserve for free</strong> </div></td>
-                          </tr>
+                          {divUnits}
+                         
                         </tbody>
                       </table>
                     </div>
