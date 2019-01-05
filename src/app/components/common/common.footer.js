@@ -13,7 +13,8 @@ class CommonFooter extends Component{
     }
   }
  
-  redirectToTarget=(filterName)=>{
+  redirectToTarget=(filterName,event)=>{
+    event.stopPropagation();
     this.setState({isLocationClicked: true, searchDynamicUrl: '/search/'+filterName+''});
   }
 
@@ -33,7 +34,7 @@ render(){
   var divLocations = allPinCodes_Sites[1].locations.map((item,index)  =>{
 
   return (
-    <div className="col-sm-4 col-md-3 section-md-t3" key={index}  onClick={() =>{this.redirectToTarget(item.stateName)}}>
+    <div className="col-sm-4 col-md-3 section-md-t3" key={index}  onClick={(event) =>{this.redirectToTarget(item.stateName,event)}}>
           
     <div className="widget-a col-md-12">
       <div className="w-header-a">
@@ -46,7 +47,7 @@ render(){
                
                 item.cities.map((city,cityIndex) => {
                   return(
-                 <li key={cityIndex} onClick={() =>{this.redirectToTarget(city.city)}}>  {city.city}, {item.stateCode} ({city.count})</li>
+                 <li key={cityIndex} onClick={(event) =>{this.redirectToTarget(city.city,event)}}>  {city.city}, {item.stateCode} ({city.count})</li>
                   )
                 })
              }
