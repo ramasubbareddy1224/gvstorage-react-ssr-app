@@ -22,12 +22,18 @@ const frontload = async props => {
   //const queryParams = queryString.parse(window.location.search);
   //await props.getAllSitesByFilters(values.value);
   return Promise.all([props.getPinCodes_Sites(), props.getAllSitesByFilters(props.match.params.filter)]).then(function(values) {
+   
   });
 };
 
 
 
 class Search extends Component {  
+
+  constructor(){
+    super();
+   
+  }
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.match.params.filter !== this.props.match.params.filter) {
@@ -43,7 +49,7 @@ class Search extends Component {
     return (
       <Page id="search">
       <HomeBanner pageName="search" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
-      <CommonBreadCrumb></CommonBreadCrumb>
+      <CommonBreadCrumb filterName={window.location.pathname.split('/')[2].replace(/%20/g, " ")}></CommonBreadCrumb>
       <main id="main" className="citypage-section"> 
           <SearchFilteredData allSites={this.props.allSites} allFilters={this.props.allFilters}></SearchFilteredData>
         

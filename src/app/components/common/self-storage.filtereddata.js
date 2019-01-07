@@ -11,7 +11,7 @@ class SelfStorageFilteredData extends Component{
     super(props);
  
     this.state = {
-      value: { min: 0, max: 50 },
+      value: { min: 0, max: 300 },
       originalUnits: {},
       allUnits: {}
     };
@@ -33,30 +33,48 @@ const {allUnits} = this.props;
 
   var divUnits = '';
   if(!!allUnits.units){
-
-    
     //temp =  [];
     //var a = this.props.allFilters;
     //var temp = Object.assign({}, allSites.siteLocations);
     //filteredUnits = this.props.allUnits;
+    if(this.state.value.max < 300){
+      filteredUnits = this.props.allUnits.units.filter((item)=> {
+        return ( (item.unitLength * item.unitWidth) >= this.state.value.min && (item.unitLength * item.unitWidth) <= this.state.value.max );
+      });
+    }
+    else{
+      filteredUnits = this.props.allUnits.units.filter((item)=> {
+        return ( (item.unitLength * item.unitWidth) >= this.state.value.min);
+      });
+    }
 
-    filteredUnits = this.props.allUnits.units.filter((item)=> {
-      return ( (item.unitLength * item.unitWidth) >= this.state.value.min && (item.unitLength * item.unitWidth) <= this.state.value.max );
-    });
 
   var divUnits = filteredUnits.map((item,index) => {
     return (
       <tr key={index}>
-                            <td><div className="unit-size"> <strong>{item.unitWidth}X{item.unitLength}</strong> </div></td>
+                            <td><div className="unit-size"> <strong>{item.unitWidth}X{item.unitLength}</strong> </div>
+                            {
+                              item.openUnits == 1 &&
+<p className="small text-danger pt-2 pl-3"><b>{item.openUnits} Unit left</b></p> 
+                            }
+                            
+                            </td>
                             <td><h5> {item.unitTypeName} </h5>
-                              <p>{item.floor} <br />
-                                {item.indoor} </p></td>
+                              <p className="mb-0">
+                              {item.floor} </p>
+                               <p  className="mb-0"> {item.indoor}  </p>
+                               <p  className="mb-0"> {item.entryLocation}
+                                </p>
+                            </td>
                             <td><div className="gv-text-color"> <strong> {item.specialOffer} </strong> </div></td>
-                            <td><div className="rate-varision">
+                            <td style={{width:"33%"}}><div className="rate-varision">
+                                { !!item.onsiteRate &&
+                                <p className="d-inline-block rate-info" style={{color: '#c6c6c6'}}> 
+                                ONSITE RATE <br />
+                                  <strong ><del> ${item.onsiteRate} </del></strong> </p>
+                                  }
                                 <p className="d-inline-block rate-info"> WEB RATE <br />
-                                  <strong ><del> ${item.webRate} </del></strong> </p>
-                                <p className="d-inline-block rate-info"> ONSITE RATE <br />
-                                  <strong className="gv-text-color"> ${item.onsiteRate} </strong> </p>
+                                  <strong className="gv-text-color"> ${item.webRate} </strong> </p>
                               </div></td>
                             <td className="text-right"><div className="btn btn-gvstore btn-success border-0 green-gradient"> Rent Now </div>
                               <div className="gv-text-color"> <strong>Reserve for free</strong> </div></td>
@@ -85,12 +103,52 @@ const {allUnits} = this.props;
                     <div className="filter-megerments pt-2 pb-2">
                     <br />
                     <InputRange
-        maxValue={250}
+        maxValue={300}
         minValue={0}
         value={this.state.value}
         onChange={value => this.setState({ value })}
         onChangeComplete={() => { this.onDimensionRangeChange()}}
         />
+        
+        <div class="filter-blocks">
+                    	<div class="filter-blockitems"> </div>
+                        <div class="row">
+                        	<div class="col-md-2">
+                            <div class=" block-item-list">
+                             <span class="range-line"> </span>
+                             Walk-In Closet </div>
+                             </div>
+                             
+                            <div class="col-md-2"> 
+                            <div class=" block-item-list">
+                            <span class="range-line"> </span>
+                            Mid-Size Bedroom </div>
+                            </div>
+                            
+                            <div class="col-md-2"> 
+                            <div class=" block-item-list">
+                            <span class="range-line"> </span>
+                            Family Room </div>
+                            </div>
+                            
+                            <div class="col-md-2"> 
+                            <div class=" block-item-list">
+                            <span class="range-line"> </span>
+                            3 Bed Rooms </div>
+                            </div>
+                            
+                            <div class="col-md-2"> 
+                            <div class=" block-item-list">
+                            <span class="range-line"> </span>
+                            Full House </div>
+                            </div>
+                            <div class="col-md-2"> 
+                            <div class=" block-item-list">
+                            Large House </div>
+                        </div>
+                        </div>
+                    </div>
+
                     <br />
                     </div>
                     <div className="selected-filters small">

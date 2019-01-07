@@ -49,7 +49,7 @@ jQuery(document).ready(function ($) {
       }
     }
   });
-  }, 1000);
+  }, 1500);
  
 
   // Initiate the wowjs animation library

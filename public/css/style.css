@@ -128,6 +128,9 @@ background-color: #fff;
 .banner-search {
 	display:inline-flex;
 }
+.banner-search div {
+	text-align: left;
+}
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -513,6 +516,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	position:relative;
 	display:block;
 	margin-bottom:15px;
+	cursor: pointer;
 }
 #about .fav-locations .location-overlay {
 	position: absolute;
@@ -970,10 +974,11 @@ body.mobile-nav-active #mobile-nav-toggle {
 	color:#fff;
 	font-weight:100;
 	font-size:0.9rem;
+	cursor: pointer;
 }
 .w-header-a h6 {
 	color:#fff;
-	;
+	cursor: pointer;
 }
 .footer-bg-color {
 	background:#333333;
@@ -1455,7 +1460,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ba623', end
 --------------------------------------------------------------*/
 
 
-.individual-city h5{ margin-bottom:0px; }
+.individual-city h5{ margin-bottom:0px; cursor: pointer;}
 .individual-city h5:hover{ color:#37a61d; }
 .city-level-img img:hover{ background:#37a61d; opacity:0.7;}
 .city-page-map iframe{ border-radius: 0px 50px 0px 50px;}
@@ -1729,3 +1734,30 @@ margin-top:2rem;
 .hint:hover{
  background: rgb(0, 95, 37) !important;
 }
+
+.filter-blockitems {    
+    position: relative;
+    z-index: +999;
+    padding: 3px 0px;
+    background: #f4f6f4;
+	 }
+.range-line {position: absolute;
+    top: -21px;
+    border-right: 2px solid #b6b6b6;
+    height: 45px;
+    right: 0px;
+    z-index: +9;
+	}
+.block-item-list { padding:10px 3px}
+
+.input-range__slider {
+    background: #05622a !important;
+    border: 1px solid #05622a !important;
+
+
+}
+.input-range__track--active {
+    background: #05622a !important;
+}
+
+.facility-filter-tabs .facility-tabs .filter-tab-content table .rate-varision{ text-align:right;}

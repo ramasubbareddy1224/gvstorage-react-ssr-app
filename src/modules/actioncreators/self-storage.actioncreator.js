@@ -6,7 +6,7 @@ const getAllUnits = units => ({ type: ACTIONTYPES.SELF_STORAGE.GET_ALL_UNITS_LOC
 
 
   export const getAllUnitsByLocationCode = (locationCode) => (dispatch) => {
-    var apiUrl = 'units/' + 'demo';
+    var apiUrl = 'units/' + locationCode;
 
     return ApiRequest.url(apiUrl)
     .get()

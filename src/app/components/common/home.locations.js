@@ -1,21 +1,41 @@
 import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
+import {Redirect} from 'react-router-dom';
 
 class HomeLocations extends Component{
+
+    constructor()
+    {
+      super();
+      this.state={
+        isLocationClicked: false
+      }
+    }
+
+    redirectToTarget=(filterName,event)=>{
+        event.stopPropagation();
+        this.setState({isLocationClicked: true, searchDynamicUrl: '/search/'+filterName+''});
+      }
+
 render(){
 
+    if (this.state.isLocationClicked) {
+        this.setState({isLocationClicked: false});
+        return <Redirect to={this.state.searchDynamicUrl} />
+      }
+    
 
     const { allPinCodes_Sites } = this.props;
 
 
     var divLocations = '';
     if(Object.keys(allPinCodes_Sites).length > 0){
-    var divLocations = allPinCodes_Sites[1].locations.map(function(item,index) {
+    var divLocations = allPinCodes_Sites[1].locations.map((item,index)=> {
   
     return (
         <div className="col-6 col-md-2" key={index}>
-        <div className="fav-locations text-center">
-            <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Missouri.png"} className="img-fluid"  alt="..." />
+        <div className="fav-locations text-center"  onClick={(event) =>{this.redirectToTarget(item.stateName,event)}}>
+            <img src={Environment.STATIC_FILES_END_POINT_URL + "img/states/" + item.stateCode + ".png"} className="img-fluid"  alt="..." />
             <div className="location-overlay clearfix">
                 <div className="location-info">
                 <h2 className="wow fadeInUp"> {item.stateCode} </h2>

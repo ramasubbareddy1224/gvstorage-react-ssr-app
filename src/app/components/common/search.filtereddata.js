@@ -73,7 +73,7 @@ render(){
               <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-2.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                   <div className="location-info">
-                    <h2 className="wow fadeInUp"> {index+1} </h2>
+                    <h2 className=""> {index+1} </h2>
                   </div>
                 </div>
               </div>
@@ -81,7 +81,7 @@ render(){
             <div className="col-7 col-sm-8 col-md-9">
               <h5 className="pt-2" onClick={() => {this.clkRedirectToSelfStorage(item.locationCode) }} > {item.city} </h5>
               <p> {item.address1} <br/>
-                {item.city}, {item.region} {item.postalCode}</p>
+                {item.city}, {item.stateCode} {item.postalCode}</p>
             </div>
           </div>
           <hr />
