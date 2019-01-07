@@ -74,6 +74,9 @@ class CommonBreadCrumb extends Component{
     }
    
 render(){
+
+  const { allSites } = this.props;
+
     return(
        
 <section className="breadcrumb-section">
@@ -83,8 +86,8 @@ render(){
       <ol className="breadcrumb  border-0">
         <li className="breadcrumb-item"><a href="">Home</a></li>
         <li className="breadcrumb-item"><a >Locations</a></li>
-        {/* <li className="breadcrumb-item"><a href="#"> Texas </a></li> */}
-        <li className="breadcrumb-item active" aria-current="page"> {this.props.filterName} </li>
+    { !!allSites.siteLocations && <li className="breadcrumb-item"><a> {allSites.siteLocations[0].stateName} </a></li> }
+    { !!allSites.siteLocations &&   <li className="breadcrumb-item active" aria-current="page"> {allSites.siteLocations[0].city} </li> }
       </ol>
     </nav>
     
