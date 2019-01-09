@@ -10,8 +10,8 @@ import EventsMapPage from '../../components/googlemap/events_map_page';
 
 export default class SearchFilteredData extends Component{
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state={
       isLocationCodeClicked: false,
       mapPointers: [],
