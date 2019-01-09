@@ -13,65 +13,21 @@ const frontload = async props => {
 class CommonBreadCrumb extends Component{
     constructor(props){
         super(props);
-        this.state = {
-          isClimateControlledChecked : false,
-          isVehicleStorageChecked: false,
-          isDriveUpAccessChecked: false,
-          isWarehouseChecked: false
+        this.state = {         
+          filterInfo:{isClimateControlledChecked:false,isVehicleStorageChecked:false,isDriveUpAccessChecked:false,isWarehouseChecked:false}
         }
     }
 
-    onChangeClimateControlled = () => {
-        
-        this.setState((prevState) => ({
-          isClimateControlledChecked: !prevState.isClimateControlledChecked
-          }));
-          console.log( this.state.isClimateControlledChecked)
-          this.props.setFilterInfo( 
-            {'isClimateControlledChecked': this.state.isClimateControlledChecked,
-            'isVehicleStorageChecked': this.state.isVehicleStorageChecked,
-            'isDriveUpAccessChecked': this.state.isDriveUpAccessChecked,
-            'isWarehouseChecked': this.state.isWarehouseChecked}
-           );
-        
-        //this.props.setFilter(!this.state.isClimateChecked);
-   // this.props.store.dispatch({ type: ACTIONTYPES.SHARED.GET_FILTER_INFO, payload: {isClimateChecked: !this.state.isClimateChecked} });
+    onChangeCheckbox = (event) => {
+      let checkboxname=event.target.name;
+      let checkedstate = event.target.checked;
+      let filterInfo=this.state.filterInfo;
+      filterInfo[checkboxname]=checkedstate;
+      this.setState({filterInfo});      
+      //console.log('fiterinfo',this.state.filterInfo);
+          this.props.setFilterInfo(this.state.filterInfo);       
 
-    }
-
-    onChangeVehicleStorage = () => {
-      this.setState((prevState) => ({
-        isVehicleStorageChecked: !prevState.isVehicleStorageChecked
-        }));
-        this.props.setFilterInfo( 
-          {'isClimateControlledChecked': this.state.isClimateControlledChecked,
-          'isVehicleStorageChecked': this.state.isVehicleStorageChecked,
-          'isDriveUpAccessChecked': this.state.isDriveUpAccessChecked,
-          'isWarehouseChecked': this.state.isWarehouseChecked}
-         );
-    }
-    onChangeDriveUpAccess = () => {
-      this.setState((prevState) => ({
-        isDriveUpAccessChecked: !prevState.isDriveUpAccessChecked
-        }));
-        this.props.setFilterInfo( 
-          {'isClimateControlledChecked': this.state.isClimateControlledChecked,
-          'isVehicleStorageChecked': this.state.isVehicleStorageChecked,
-          'isDriveUpAccessChecked': this.state.isDriveUpAccessChecked,
-          'isWarehouseChecked': this.state.isWarehouseChecked}
-         );
-    }
-    onChangeWarehouse = () => {
-      this.setState((prevState) => ({
-        isWarehouseChecked: !prevState.isWarehouseChecked
-        }));
-        this.props.setFilterInfo( 
-          {'isClimateControlledChecked': this.state.isClimateControlledChecked,
-          'isVehicleStorageChecked': this.state.isVehicleStorageChecked,
-          'isDriveUpAccessChecked': this.state.isDriveUpAccessChecked,
-          'isWarehouseChecked': this.state.isWarehouseChecked}
-         );
-    }
+    }    
    
 render(){
 
@@ -91,35 +47,35 @@ render(){
       </ol>
     </nav>
     
-    {/* <div className="city-page-filters small"> 
+    <div className="city-page-filters small"> 
     
     	 <div className="form-check">
    		 <label className="customcheck"> Climate Controlled
-          <input type="checkbox" onClick={() => {this.onChangeClimateControlled()}}   defaultChecked={this.state.isClimateControlledChecked} />
+          <input type="checkbox" name="isClimateControlledChecked" onChange={(event) => {this.onChangeCheckbox(event)}}   checked={this.state.filterInfo.isClimateControlledChecked} />
           <span className="checkmark"></span>
         </label>
         </div>
          <div className="form-check">
         <label className="customcheck"> Vehicle Storage
-          <input type="checkbox" onClick={() => {this.onChangeVehicleStorage()}}   defaultChecked={this.state.isVehicleStorageChecked} />
+          <input type="checkbox" name="isVehicleStorageChecked" onChange={(event) => {this.onChangeCheckbox(event)}}   checked={this.state.filterInfo.isVehicleStorageChecked} />
           <span className="checkmark"></span>
         </label>
         </div>
         
          <div className="form-check">
         <label className="customcheck"> Drive-UP Access
-          <input type="checkbox" onClick={() => {this.onChangeDriveUpAccess()}}   defaultChecked={this.state.isDriveUpAccessChecked} />
+          <input type="checkbox" name="isDriveUpAccessChecked" onChange={(event) => {this.onChangeCheckbox(event)}}   checked={this.state.filterInfo.isDriveUpAccessChecked} />
           <span className="checkmark"></span>
         </label>
         </div>
         
          <div className="form-check">
         <label className="customcheck">  Warehouse/Office
-          <input type="checkbox" onClick={() => {this.onChangeWarehouse()}}   defaultChecked={this.state.isWarehouseChecked} />
+          <input type="checkbox" name="isWarehouseChecked" onChange={(event) => {this.onChangeCheckbox(event)}}   checked={this.state.filterInfo.isWarehouseChecked} />
           <span className="checkmark"></span>
         </label>
         </div>
-    </div> */}
+    </div>
     </div>
   </div>
 </section>
@@ -152,7 +108,6 @@ const mapStateToProps = state => ({
      })(CommonBreadCrumb)
    );
    
-  
   
   
   
