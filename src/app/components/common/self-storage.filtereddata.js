@@ -13,7 +13,14 @@ class SelfStorageFilteredData extends Component{
     this.state = {
       value: { min: 0, max: 300 },
       originalUnits: {},
-      allUnits: {}
+      allUnits: {},
+      storageFilters: [
+        {Name: 'Walk-In Closet', isSelected: false },
+        {Name: 'Mid-Size Bedroom', isSelected: false},
+        {Name: 'Family Room', isSelected: false},
+        {Name: '3 Bed Rooms', isSelected: false},
+        {Name: 'Full House', isSelected: false},
+        {Name: 'Large House', isSelected: false}]
     };
   }
 
@@ -46,6 +53,7 @@ const {allUnits} = this.props;
       filteredUnits = this.props.allUnits.units.filter((item)=> {
         return ( (item.unitLength * item.unitWidth) >= this.state.value.min);
       });
+
     }
 
 

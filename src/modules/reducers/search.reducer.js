@@ -18,6 +18,5 @@ export default function(state = INITIAL_STATE, action) {
 
 
  function filterData(sites, payload){
-    debugger;
     return [];
  }

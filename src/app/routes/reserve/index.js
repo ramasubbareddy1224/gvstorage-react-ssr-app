@@ -36,7 +36,7 @@ class Reserve extends Component {
 
     return (
     <Page id="reserve">
-        <CommonBreadCrumb></CommonBreadCrumb>
+        {/* <CommonBreadCrumb></CommonBreadCrumb> */}
         <main id="main" className="citypage-section"> 
         <section id="about" className="rent-sec wow fadeInUp">
             <div className="container">
