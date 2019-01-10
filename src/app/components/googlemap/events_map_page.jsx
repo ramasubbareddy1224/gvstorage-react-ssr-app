@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import {Environment} from '../../../configurations/environment';
 /*
  * GoogleMap hover example
  */
@@ -109,7 +110,7 @@ import {K_SIZE} from './my_great_place_with_controllable_hover_styles.js';
       <div>
         <div style={{ height: '100vh', width: '100%' }}>
        <GoogleMap
-        bootstrapURLKeys={{ key: '' }}
+        bootstrapURLKeys={{ key: Environment.GOOGLE_MAP_KEY }}
         center={this.props.center}
         zoom={this.props.zoom}
         hoverDistance={K_SIZE / 2}
