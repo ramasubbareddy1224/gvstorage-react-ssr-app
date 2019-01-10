@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
-import {Redirect} from 'react-router-dom';
+import {Redirect,Link} from 'react-router-dom';
 
 class CommonMenu extends Component{
 
@@ -14,6 +14,7 @@ class CommonMenu extends Component{
   }
  
   redirectToTarget=(filterName,event)=>{
+    // onClick={(event) =>{this.redirectToTarget(city.city,event)}}
     event.stopPropagation();
     this.setState({isLocationClicked: true, searchDynamicUrl: '/search/'+filterName+''});
   }
@@ -33,12 +34,16 @@ render(){
   var divLocations = allPinCodes_Sites[1].locations.map((item,index) => {
 
   return (
-    <li key={index} onClick={(event) =>{this.redirectToTarget(item.stateName,event)}}><a href="">{item.stateName}</a>
+    <li key={index} >
+     <Link to={"/search/"+item.stateName}>{item.stateName}</Link>   
      <ul>
     {
       item.cities.map((city, cityIndex) => {
         return(
-              <li  key={cityIndex} onClick={(event) =>{this.redirectToTarget(city.city,event)}}><a href="">{city.city}</a></li>
+              <li  key={cityIndex}>
+              {/* to={"/search/"+city.city} */}
+              <Link onClick={(event) =>{this.redirectToTarget(city.city,event)}} to="/">{city.city}</Link> 
+              </li>
         )
       })
     }
