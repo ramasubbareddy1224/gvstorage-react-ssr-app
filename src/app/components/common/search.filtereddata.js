@@ -39,6 +39,8 @@ render(){
   var tempCenterPoint = [];
 
   const {allSites} = this.props;
+
+
   var items = [
     { name: 'Matthew', link: 'https://bible.com/1/mat.1' },
     { name: 'Mark', link: 'https://bible.com/1/mrk.1' },
@@ -58,13 +60,18 @@ render(){
   var divSites = '';
   if(!!allSites.siteLocations){
 
+
+    const filteredSites = allSites.siteLocations.filter(x=> (!this.props.allFilters.isVehicleStorageChecked || x.vehicleStorage == true) 
+    && (!this.props.allFilters.isClimateControlledChecked || x.climateControlled == true) 
+    && (!this.props.allFilters.isDriveUpAccessChecked || x.driveupAccess == true) 
+    && (!this.props.allFilters.isWarehouseChecked || x.warehouseOROffice == true) );
  
 
     //temp =  [];
     //var a = this.props.allFilters;
     //var temp = Object.assign({}, allSites.siteLocations);
 
-  var divSites = allSites.siteLocations.map((item,index) => {
+  var divSites = filteredSites.map((item,index) => {
     tempMapPointers.push({id: index+1, lat: parseFloat(item.latitude), lng: parseFloat(item.longitude) });
     return (
       <div key={item.siteID}>
@@ -90,6 +97,7 @@ render(){
     );
   });
 
+  if(tempMapPointers.length > 0)
   tempCenterPoint.push(tempMapPointers[0].latitude, tempMapPointers[0].longitude)
 }
 

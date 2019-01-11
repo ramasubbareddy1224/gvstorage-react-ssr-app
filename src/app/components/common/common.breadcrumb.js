@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { frontloadConnect } from 'react-frontload';
 import {ACTIONTYPES} from '../../../configurations/actiontypes';
 import {setFilterInfo} from '../../../modules/actioncreators/common.actioncreator';
+import {Redirect} from 'react-router-dom';
 
 
 
@@ -14,7 +15,9 @@ class CommonBreadCrumb extends Component{
     constructor(props){
         super(props);
         this.state = {         
-          filterInfo:{isClimateControlledChecked:false,isVehicleStorageChecked:false,isDriveUpAccessChecked:false,isWarehouseChecked:false}
+          filterInfo:{isClimateControlledChecked:false,isVehicleStorageChecked:false,isDriveUpAccessChecked:false,isWarehouseChecked:false},
+          isLocationClicked: false,
+          searchDynamicUrl: ''
         }
     }
 
@@ -28,10 +31,20 @@ class CommonBreadCrumb extends Component{
           this.props.setFilterInfo(this.state.filterInfo);       
 
     }    
+
+    redirectToTarget=(locationName)=>{
+      this.setState({isLocationClicked: true, searchDynamicUrl: '/search/'+locationName+''});
+    }
    
 render(){
 
+  if (this.state.isLocationClicked) {
+    this.setState({isLocationClicked: false});
+    return <Redirect to={this.state.searchDynamicUrl} />
+  }
+
   const { allSites } = this.props;
+  const {allPinCodes_Sites } = this.props;
 
     return(
        
@@ -40,10 +53,27 @@ render(){
   <div className="city-breadcrumb border-bottom">
     <nav aria-label="breadcrumb" className=" d-inline-block">
       <ol className="breadcrumb  border-0">
-        <li className="breadcrumb-item"><a href="">Home</a></li>
+        <li className="breadcrumb-item"><a href="/">Home</a></li>
         <li className="breadcrumb-item"><a >Locations</a></li>
-    { !!allSites.siteLocations && <li className="breadcrumb-item"><a> {allSites.siteLocations[0].stateName} </a></li> }
-    { !!allSites.siteLocations &&   <li className="breadcrumb-item active" aria-current="page"> {allSites.siteLocations[0].city} </li> }
+    { !!allSites.siteLocations && 
+    <li className="breadcrumb-item" onClick={() => {this.redirectToTarget(allSites.siteLocations[0].stateName) }}><a> {allSites.siteLocations[0].stateName} </a></li> }
+    { !!allSites.siteLocations &&  
+       <li className="breadcrumb-item active dropdown">
+          <a className="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            {allSites.siteLocations[0].city} 
+          </a>
+          <div className="dropdown-menu">
+          {
+            (!!allSites.siteLocations && allPinCodes_Sites.length > 0) && 
+            allPinCodes_Sites[1].locations.filter(x=>x.stateCode == allSites.siteLocations[0].stateCode)[0].cities.map((city, index)=> {
+              return (
+                <a className="dropdown-item" key={index}   onClick={() => {this.redirectToTarget(city.city) }}>{city.city}</a>
+              )
+            })
+          }
+          </div>
+        </li>
+    }
       </ol>
     </nav>
     

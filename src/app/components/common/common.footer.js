@@ -34,9 +34,9 @@ render(){
   var divLocations = allPinCodes_Sites[1].locations.map((item,index)  =>{
 
   return (
-    <div className="col-sm-4 col-md-3 section-md-t3" key={index}  onClick={(event) =>{this.redirectToTarget(item.stateName,event)}}>
+    <div className="section-md-t3" key={index}  onClick={(event) =>{this.redirectToTarget(item.stateName,event)}}>
           
-    <div className="widget-a col-md-12">
+    <div className="widget-a">
       <div className="w-header-a">
         <h6 className="w-title-a text-brand">{item.stateName} </h6>
       </div>
@@ -70,8 +70,10 @@ render(){
         <div className="pt-2 pb-3">
               <h2 >Locations</h2>
             </div>
-          <div className="row">
+            <div className="row">
+          <div className="col-md-12 coloum-sprit">
             {divLocations}
+          </div>
           </div>
           <hr  style={{borderColor: '#5c5c5c'}} />
         </div>

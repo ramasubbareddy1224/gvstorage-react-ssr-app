@@ -24,7 +24,6 @@ import { getAllUnitsByLocationCode } from '../../../modules/actioncreators/self-
 
 
 const frontload = async props => {
-  debugger;
   //const queryParams = queryString.parse(window.location.search);
   //await props.getAllSitesByFilters(values.value);
   return Promise.all([
@@ -38,19 +37,18 @@ const frontload = async props => {
 class SelfStorage extends Component {  
   render() {
     const { allUnits } = this.props;
-    debugger;
     return (
       <Page id="self-storage">
       <SelfStorageBanner></SelfStorageBanner>
      
        <main id="main" className="facility-section "> 
-           <SelfStorageFilteredData allUnits={this.props.allUnits}></SelfStorageFilteredData>
+           <SelfStorageFilteredData allUnits={this.props.allUnits} allSites={this.props.allSites} allPinCodes_Sites ={this.props.allPinCodes_Sites}></SelfStorageFilteredData>
            <SelfStorageFeatures></SelfStorageFeatures>
            <SelfStorageReviews></SelfStorageReviews>
            <SelfStorageWhatFits></SelfStorageWhatFits>
            <SearchRelevantData relevanceType="neighbourhood"></SearchRelevantData>
            <SelfStorageAboutSite></SelfStorageAboutSite>
-           <SearchFilteredData allSites={this.props.allSites} allFilters={this.props.allFilters}></SearchFilteredData>
+           <SearchFilteredData allSites={this.props.allSites} allFilters={this.props.allFilters} allPinCodes_Sites ={this.props.allPinCodes_Sites}></SearchFilteredData>
            <CommonContactUs></CommonContactUs>
        </main>
      </Page>

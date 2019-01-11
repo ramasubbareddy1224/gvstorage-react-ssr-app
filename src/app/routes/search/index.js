@@ -49,7 +49,7 @@ class Search extends Component {
     return (
       <Page id="search">
       <HomeBanner pageName="search" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
-      <CommonBreadCrumb allSites={this.props.allSites}></CommonBreadCrumb>
+      <CommonBreadCrumb allSites={this.props.allSites} allPinCodes_Sites ={this.props.allPinCodes_Sites}></CommonBreadCrumb>
       <main id="main" className="citypage-section"> 
           <SearchFilteredData allSites={this.props.allSites} allFilters={this.props.allFilters}></SearchFilteredData>
         

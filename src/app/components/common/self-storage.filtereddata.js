@@ -20,7 +20,8 @@ class SelfStorageFilteredData extends Component{
         {Name: 'Family Room', isSelected: false},
         {Name: '3 Bed Rooms', isSelected: false},
         {Name: 'Full House', isSelected: false},
-        {Name: 'Large House', isSelected: false}]
+        {Name: 'Large House', isSelected: false}],
+        filteredUnitTypes: []
     };
   }
 
@@ -32,11 +33,26 @@ class SelfStorageFilteredData extends Component{
     // filteredUnits = tempUnits;
   }
 
+  onChangeFilter=(event, unitTypeName)=>{
+      var tempFilterData = this.state.filteredUnitTypes;
+     
+      if(event.target.checked){
+        tempFilterData.push(unitTypeName);
+      }
+      else{
+        tempFilterData = tempFilterData.filter(x=> x != unitTypeName)
+      }
+      this.setState({filteredUnitTypes:tempFilterData})
+
+  }
+
 
 render(){
 
    
 const {allUnits} = this.props;
+
+console.log('sa ' + this.state.filteredUnitTypes);
 
   var divUnits = '';
   if(!!allUnits.units){
@@ -56,6 +72,9 @@ const {allUnits} = this.props;
 
     }
 
+    if(this.state.filteredUnitTypes.length > 0){
+      filteredUnits = filteredUnits.filter(x=> this.state.filteredUnitTypes.indexOf(x.unitTypeName) > -1)
+    }
 
   var divUnits = filteredUnits.map((item,index) => {
     return (
@@ -89,7 +108,21 @@ const {allUnits} = this.props;
                           </tr>
     );
   });
+
+    
+    var divFilters = !!allUnits.units && allUnits.units.map(({unitTypeName}) => unitTypeName).filter((value, index, self) => self.indexOf(value) === index).map((unitTypeName)=>  {
+      return(
+      <div className="form-check" key={unitTypeName}>
+      <label className="customcheck"> {unitTypeName}
+      <input type="checkbox" name={unitTypeName}  onChange={(event) => {this.onChangeFilter(event, unitTypeName)}}  />
+      <span className="checkmark"></span>
+    </label>
+    </div>
+    )
+    });
 }
+
+
 
     return(
         <section className="facility-filter-tabs wow fadeInUp">
@@ -160,19 +193,9 @@ const {allUnits} = this.props;
                     <br />
                     </div>
                     <div className="selected-filters small">
-                        <div className="form-check">
-                         <label className="customcheck"> Vehicle Storage/Boat RV
-                          <input type="checkbox"  />
-                          <span className="checkmark"></span>
-                        </label>
-                        </div>
-    
-                        <div className="form-check">
-                         <label className="customcheck"> Drive-Up Access
-                          <input type="checkbox" checked="checked" />
-                          <span className="checkmark"></span>
-                        </label>
-                        </div>
+                       
+                        {divFilters}
+
                         
                         <div className="space-tool">
                             <div className="view-space-tool">
