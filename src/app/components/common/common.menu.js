@@ -41,8 +41,7 @@ render(){
       item.cities.map((city, cityIndex) => {
         return(
               <li  key={cityIndex}>
-              {/* to={"/search/"+city.city} */}
-              <Link onClick={(event) =>{this.redirectToTarget(city.city,event)}} to="/">{city.city}</Link> 
+              <Link to={"/search/"+city.city}>{city.city}</Link> 
               </li>
         )
       })
