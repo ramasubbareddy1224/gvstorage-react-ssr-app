@@ -15,35 +15,116 @@ class SelfStorageFilteredData extends Component{
       originalUnits: {},
       allUnits: {},
       storageFilters: [
-        {Name: 'Walk-In Closet', isSelected: false },
-        {Name: 'Mid-Size Bedroom', isSelected: false},
-        {Name: 'Family Room', isSelected: false},
-        {Name: '3 Bed Rooms', isSelected: false},
-        {Name: 'Full House', isSelected: false},
-        {Name: 'Large House', isSelected: false}],
+        {Name: 'Walk-In Closet', min:-1, max: 51 },
+        {Name: 'Mid-Size Bedroom', min: 50, max:101},
+        {Name: 'Family Room', min: 100, max:151},
+        {Name: '3 Bed Rooms', min: 150, max:201},
+        {Name: 'Full House', min: 200, max:251},
+        {Name: 'Large House', min: 250, max:301}],
         filteredUnitTypes: []
     };
   }
 
   onDimensionRangeChange(){
-   // alert(this.state.value);
-    // var tempUnits = this.props.allUnits.units.map((item,index)=>{
-    //   return item.unitWidth > 0 && item.unitLength <50
-    // });
-    // filteredUnits = tempUnits;
+   // console.log(!!this.props.allUnits.units && this.props.allUnits.units.map(({unitTypeName}) => unitTypeName).filter((value, index, self) => self.indexOf(value) === index))
+
+    // if(!!this.props.allUnits.units){
+    //   var allCheckboxFilterValues = 
+    //   this.props.allUnits.units.map(({unitTypeName}) => unitTypeName).filter((value, index, self) => self.indexOf(value) === index);
+
+    //   var maxFilter = this.state.storageFilters.filter(x=> x.min < this.state.value.max && x.max > this.state.value.max)[0].Name;
+    //   var minFilter = this.state.storageFilters.filter(x=> x.min < this.state.value.min && x.max > this.state.value.min)[0].Name;
+
+    //   var tempFilterData = this.state.filteredUnitTypes;
+    //   var tempObj = minFilter + ' - ' + maxFilter;
+    //   tempFilterData.push(tempObj);
+    //   this.setState({filteredUnitTypes:tempFilterData});
+    // }
+
+    /*    
+    var maxFilter = this.state.storageFilters.filter(x=> x.min < this.state.value.max && x.max > this.state.value.max)[0].Name;
+    var minFilter = this.state.storageFilters.filter(x=> x.min < this.state.value.min && x.max > this.state.value.min)[0].Name;
+
+    var tempFilterData = this.state.filteredUnitTypes;
+    var originalFilterData = this.state.filteredUnitTypes;
+
+    tempFilterData.forEach(x => {
+      console.log(x);
+      this.state.storageFilters.forEach(y => 
+        {
+          if( x.indexOf(y.Name) > -1){
+              originalFilterData = originalFilterData.filter(z=> z != x)
+          }
+        }
+      );
+    });
+    console.log(originalFilterData)
+
+    var tempObj = minFilter + ' - ' + maxFilter;
+    tempFilterData.push(tempObj);
+
+    */
+   // this.setState({filteredUnitTypes:tempFilterData});
+
+
+      var maxFilter = this.state.storageFilters.filter(x=> x.min < this.state.value.max && x.max > this.state.value.max)[0].Name;
+      var minFilter = this.state.storageFilters.filter(x=> x.min < this.state.value.min && x.max > this.state.value.min)[0].Name;
+
+      var tempFilterData = this.state.filteredUnitTypes;
+
+      tempFilterData = tempFilterData.filter(x=> x.isCheckbox);
+
+      var tempVal = minFilter + ' - ' + maxFilter;
+      tempFilterData.push({unitTypeName: tempVal, isCheckbox: false});
+      this.setState({filteredUnitTypes:tempFilterData});
+
+
   }
 
   onChangeFilter=(event, unitTypeName)=>{
       var tempFilterData = this.state.filteredUnitTypes;
      
       if(event.target.checked){
-        tempFilterData.push(unitTypeName);
+        tempFilterData.push({unitTypeName: unitTypeName, isCheckbox: true});
       }
       else{
-        tempFilterData = tempFilterData.filter(x=> x != unitTypeName)
+        tempFilterData = tempFilterData.filter(x=> x.unitTypeName != unitTypeName)
       }
-      this.setState({filteredUnitTypes:tempFilterData})
+      this.setState({filteredUnitTypes:tempFilterData});
 
+  }
+
+  removeFilterClick=(val)=>{
+    if(!!val){
+    var tempFilterData = this.state.filteredUnitTypes;
+    
+    if(!!document.getElementsByName(val)[0]){
+      (document.getElementsByName(val)[0].checked = false);
+    }
+    else{
+     var rangeValues = { min: 0, max: 300 };
+        this.setState({value: rangeValues});
+    }; 
+    tempFilterData = tempFilterData.filter(x=> x.unitTypeName != val)
+    this.setState({filteredUnitTypes:tempFilterData})
+    }
+    else {
+      var tempFilterData = this.state.filteredUnitTypes;
+
+      // document.getElementsByName(val)[0].checked = false;
+     tempFilterData.forEach(x=>   
+      {
+        if(!!document.getElementsByName(x.unitTypeName)[0]){
+          document.getElementsByName(x.unitTypeName)[0].checked = false;
+        }
+        else{
+          var rangeValues = { min: 0, max: 300 };
+          this.setState({value: rangeValues});
+        }
+      }
+    );
+     this.setState({filteredUnitTypes: []});
+    }
   }
 
 
@@ -52,7 +133,7 @@ render(){
    
 const {allUnits} = this.props;
 
-console.log('sa ' + this.state.filteredUnitTypes);
+//console.log('sa ' + this.state.filteredUnitTypes);
 
   var divUnits = '';
   if(!!allUnits.units){
@@ -73,7 +154,9 @@ console.log('sa ' + this.state.filteredUnitTypes);
     }
 
     if(this.state.filteredUnitTypes.length > 0){
-      filteredUnits = filteredUnits.filter(x=> this.state.filteredUnitTypes.indexOf(x.unitTypeName) > -1)
+      if(this.state.filteredUnitTypes.filter(utn=>utn.isCheckbox).map(utn=>utn.unitTypeName).length > 0){
+      filteredUnits = filteredUnits.filter(x=> this.state.filteredUnitTypes.filter(utn=>utn.isCheckbox).map(utn=>utn.unitTypeName).indexOf(x.unitTypeName) > -1)
+    }
     }
 
   var divUnits = filteredUnits.map((item,index) => {
@@ -121,6 +204,17 @@ console.log('sa ' + this.state.filteredUnitTypes);
     )
     });
 }
+
+const divAppliedFilters =  this.state.filteredUnitTypes.map((val,index)=> {
+  return(
+    <div className="checked-filter" key={index}>
+    <p className="small">  {val.unitTypeName}  &nbsp; &nbsp; 
+      <i className="fa fa-times-circle" aria-hidden="true" onClick={()=> {this.removeFilterClick(val.unitTypeName)}} ></i>
+    </p>
+    </div>
+  )
+})
+
 
 
 
@@ -210,15 +304,14 @@ console.log('sa ' + this.state.filteredUnitTypes);
              
              
              <div className="applied-filters">
-                 <div className="checked-filter">
-                    <p className="small">  Mid-Size Bedroom - Full House  &nbsp; &nbsp; <i className="fa fa-times-circle" aria-hidden="true"></i></p>
-                </div>
-                <div className="checked-filter">
-                    <p className="small">  Mid-Size Bedroom - Full House &nbsp; &nbsp; <i className="fa fa-times-circle" aria-hidden="true"></i></p>
-                </div>
-                <div className="checked-filter red">
-                    <p className="small "> Clear FIlters  </p>
-                </div>
+                {divAppliedFilters}
+                {
+                  !!this.state.filteredUnitTypes.length > 0 && 
+                  <div className="checked-filter red" onClick={()=> {this.removeFilterClick()}}>
+                      <p className="small "> Clear FIlters  </p>
+                  </div>
+                }
+
              </div>
               
               <div className="tab-content filter-tab-content" id="myTabContent">

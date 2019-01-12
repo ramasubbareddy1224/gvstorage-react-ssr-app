@@ -13,6 +13,41 @@ class CommonFacilityInfo extends Component{
 
 render(){
 
+    const {insurancePlans} = this.props.allUnits;
+    const {siteLocation} = this.props.allUnits;
+    const {units} = this.props.allUnits;
+    const pathParams = this.props.pathParams;
+    debugger;
+
+    const {moveInCharges} = this.props.moveInCharges;
+    const {totalAmount} = this.props.moveInCharges;
+ 
+    const unitInfo = !!units && units.filter(x=>x.firstAvailableUnitID == pathParams.unitId);
+
+
+    const divMoveIncharges = !!moveInCharges && moveInCharges.map((moveInCharge, index) => {
+        return(
+            <p className="small" key={index}>
+             {moveInCharge.description}: ${moveInCharge.amount} USD
+             <br/>
+             { !!moveInCharge.discount && ('Discount: ' + moveInCharge.discount  ) }
+
+             </p>
+        )
+    })
+
+
+    const divMoveInTaxes = !!moveInCharges && moveInCharges.map((moveInCharge, index) => {
+        return(
+            <p className="small" key={index}>
+             { !!moveInCharge.taxRate1 && (`TAX ${moveInCharge.taxRate1}% : ${moveInCharge.taxAmount1}`) }
+             <br/>
+             { !!moveInCharge.taxRate2 && (`TAX ${moveInCharge.taxRate2}% : ${moveInCharge.taxAmount2}`) }
+
+             </p>
+        )
+    })
+
     return(
         <div className="col-12 col-md-4 ">
         <div className="facility-info">
@@ -25,7 +60,7 @@ render(){
                 <p> LOCATION  <span className=" pull-right gv-text-color"> Change Location </span></p>
             </div>
             <div className="data-info">
-                <p> Texas Storage Park Self Storage </p>
+                <p> {!!siteLocation && siteLocation.name} </p>
             </div>
             </div>
             
@@ -34,7 +69,7 @@ render(){
                 <p> UNIT SIZE  <span className=" pull-right gv-text-color"> Change unit </span></p>
             </div>
             <div className="data-info">
-                <p> 8 X 10 - Medium </p>
+                <p> {!!unitInfo && unitInfo[0].unitWidth} X {!!unitInfo && unitInfo[0].unitLength} - MEDIUM </p>
             </div>
             </div>
             
@@ -45,9 +80,9 @@ render(){
             <div className="data-info">
                 <div className="rate-varision">
                         <p className="d-inline-block rate-info w-45 text-muted"> ONSITE <br />
-                          <strong ><del> $54 </del></strong> </p>
-                        <p className="d-inline-block rate-info w-45"> ONSITE  <br />
-                          <strong className="gv-text-color"> $45 </strong> </p>
+                          <strong ><del> {!!unitInfo && (`$${unitInfo[0].onsiteRate}`)}</del></strong> </p>
+                        <p className="d-inline-block rate-info w-45"> WEB  <br />
+                          <strong className="gv-text-color"> {!!unitInfo && (`$${unitInfo[0].webRate}`)} </strong> </p>
                       </div>
                 <p className="small"> Covers up to $2,000 USD ($10.95 USD / monthly) </p>
             </div>
@@ -58,12 +93,16 @@ render(){
                 <p> MOVE-IN CHARGES </p>
             </div>
             <div className="data-info">
-                <p className="small"> 1st month rent: $39.97 USD <br />
+            {divMoveIncharges}
+                {/* <p className="small"> 1st month rent: $39.97 USD <br />
                 Admin fee: $22.00 USD  <br />
-                1st month protection: $7.42 USD </p>
+                1st month protection: $7.42 USD </p> */}
+
+                {divMoveInTaxes}
             </div>
             
-            <h2 className="gv-text-color"> $69.39 </h2>
+            <h2 className="gv-text-color"> {!!totalAmount && (`$${totalAmount}`)} </h2>
+
             </div>
             
             </div>

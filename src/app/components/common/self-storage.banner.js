@@ -3,6 +3,7 @@ import {Environment} from '../../../configurations/environment';
 
 class SelfStorageBanner extends Component{
 render(){
+  const { siteLocation } = this.props.allUnits; 
     return(
         <div>
         <section id="inner-banner" className="inner-banner-cls">
@@ -23,12 +24,12 @@ render(){
       </div>
     </div>
     <div className="about-room-facility">
-      <h5> Texas Storage Park Self Storage </h5>
+      <h5> {!!siteLocation && siteLocation.name} </h5>
       <div className="storage-room-block">
         <div className="storage-room-image"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/facility-banner-img.png"} alt="" /> </div>
         <div className="storage-room-content">
-          <p className="small"> <i className="fa fa-fa-map-marker"> </i> 10013 RR FM 620 N, Austin, TX 78726. <br />
-            <i className="fa fa-phone"> </i> (512) 649-0442 <br />
+          <p className="small"> <i className="fa fa-fa-map-marker"> </i> {!!siteLocation && siteLocation.address1}, {!!siteLocation && siteLocation.city}, {!!siteLocation && siteLocation.stateCode} {!!siteLocation && siteLocation.postalCode}. <br />
+            <i className="fa fa-phone"> </i> {!!siteLocation && siteLocation.fax} <br />
           </p>
           <div className="landmark ">
             <p className="d-inline-block pr-5 small-text"> <strong>Near</strong> <br />

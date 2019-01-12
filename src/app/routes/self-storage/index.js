@@ -39,7 +39,7 @@ class SelfStorage extends Component {
     const { allUnits } = this.props;
     return (
       <Page id="self-storage">
-      <SelfStorageBanner></SelfStorageBanner>
+      {Object.keys(this.props.allUnits).length > 0 && <SelfStorageBanner allUnits={this.props.allUnits}></SelfStorageBanner>}
      
        <main id="main" className="facility-section "> 
            <SelfStorageFilteredData allUnits={this.props.allUnits} allSites={this.props.allSites} allPinCodes_Sites ={this.props.allPinCodes_Sites}></SelfStorageFilteredData>

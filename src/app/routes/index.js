@@ -75,7 +75,7 @@ export default () => (
 
     <Route exact path="/search/:filter" component={Search} />
     <Route exact path="/self-storage/:locationCode" component={SelfStorage}/>
-    <Route exact path="/reserve" component={Reserve}/>
+    <Route exact path="/reserve/:locationCode/:unitId" component={Reserve}/>
 
     <Route component={NotFound} />
   </Switch>

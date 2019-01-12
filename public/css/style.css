@@ -1656,12 +1656,16 @@ margin-top:2rem;
 .facility-filter-tabs .facility-tabs .storage-filters-block .selected-filters .view-space-tool { float:right; }
 
 .facility-filter-tabs .facility-tabs .applied-filters { padding:20px 0px;}
-.facility-filter-tabs .facility-tabs .applied-filters .checked-filter{background:#f2f2f2; padding:15px 10px 10px 10px; display:inline-block; margin:0px; border-radius:4px; }
+.facility-filter-tabs .facility-tabs .applied-filters .checked-filter{background:#f2f2f2; padding:15px 10px 10px 10px; display:inline-block; margin:0px; border-radius:4px; cursor: pointer;}
 .facility-filter-tabs .facility-tabs .applied-filters .red{ background:none; color:red; }
 
 .facility-filter-tabs .facility-tabs .applied-filters .checked-filter p{ margin:0px;}
 .facility-filter-tabs .facility-tabs .filter-tab-content table .unit-size { border-radius: 0px 10px 0px 10px; padding:25% 10px; 
- border:1px solid #37a61d; text-align:center; width:100px; height:100px; color:#37a61d;}
+ border:1px solid #37a61d; text-align:center; width:100px; height:100px; color:#37a61d; cursor: pointer;}
+
+ .facility-filter-tabs .facility-tabs .filter-tab-content table .unit-size:hover {    background: linear-gradient(to right, rgba(59,166,35,1) 0%, rgba(0,95,38,1) 100%);}
+ .facility-filter-tabs .facility-tabs .filter-tab-content table .unit-size:hover strong{  color: #fff;}
+
 .facility-filter-tabs .facility-tabs .filter-tab-content table .rate-varision p{     
 	width: 45%;
     padding: 5% 7%;
@@ -1840,3 +1844,49 @@ margin-top:2rem;
 .map-pointer-default:after:hover {border-color:#005f25; }
 
 .hint span { font-weight: 400; }
+
+.input-range__label-container {	display: none;}
+
+.nav-menu.breadcrumb ul {
+    margin: 0px 0 0 0;
+    padding: 0px;
+    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+    background: #fff;
+	color:#333;
+}
+.nav-menu.breadcrumb ul li a{
+	color:#333;
+}
+.nav-menu.breadcrumb ul li:hover > a {
+    color: #fff;
+}
+.nav-menu.breadcrumb ul.ul-locations::before {    content: "";
+    border: 10px solid #fff;
+    position: absolute;
+    right: 20px;
+    top: -20px;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-top-color: transparent;
+}
+
+a.sf-with-ul-breadcrumb:after {
+    content: "\f107";
+    position: absolute;
+	top: 10px;
+	padding: 0px 10px;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+}
+
+.react-autosuggest__container {width: 100%;}
+.react-autosuggest__container input{width: 100%;}
+.react-autosuggest__suggestions-list {
+	position: absolute;
+    background: #fff;
+    width: 71%;
+	list-style: none;
+	padding: 10px 10px;
+	cursor: pointer;
+}

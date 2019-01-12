@@ -32,7 +32,8 @@ class CommonBreadCrumb extends Component{
 
     }    
 
-    redirectToTarget=(locationName)=>{
+    redirectToTarget=(event,locationName)=>{
+      event.stopPropagation();
       this.setState({isLocationClicked: true, searchDynamicUrl: '/search/'+locationName+''});
     }
    
@@ -46,35 +47,52 @@ render(){
   const { allSites } = this.props;
   const {allPinCodes_Sites } = this.props;
 
+
+  const divBreadcrumbLocations =  allPinCodes_Sites.length > 0 && 
+  allPinCodes_Sites[1].locations.map((state,index)=> {
+    return (
+            <li class=""  key={index} onClick={(event) => {this.redirectToTarget(event, state.stateName) }}>
+            <a class="">{state.stateName}</a>
+             
+            <ul>
+                {
+                  state.cities.map((city,newIndex)=>{
+                    return (
+                      <li class="" key={newIndex} onClick={(event) => {this.redirectToTarget(event, city.city) }}><a>{city.city}</a></li>
+                    )
+                  })
+                }
+               
+              </ul>
+
+           </li>
+    )
+  }) 
+  
     return(
        
 <section className="breadcrumb-section">
   <div className="container">
   <div className="city-breadcrumb border-bottom">
     <nav aria-label="breadcrumb" className=" d-inline-block">
-      <ol className="breadcrumb  border-0">
+      <ul className="nav-menu breadcrumb  border-0">
         <li className="breadcrumb-item"><a href="/">Home</a></li>
         <li className="breadcrumb-item"><a >Locations</a></li>
+       
+
     { !!allSites.siteLocations && 
-    <li className="breadcrumb-item" onClick={() => {this.redirectToTarget(allSites.siteLocations[0].stateName) }}><a> {allSites.siteLocations[0].stateName} </a></li> }
-    { !!allSites.siteLocations &&  
-       <li className="breadcrumb-item active dropdown">
-          <a className="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            {allSites.siteLocations[0].city} 
-          </a>
-          <div className="dropdown-menu">
-          {
-            (!!allSites.siteLocations && allPinCodes_Sites.length > 0) && 
-            allPinCodes_Sites[1].locations.filter(x=>x.stateCode == allSites.siteLocations[0].stateCode)[0].cities.map((city, index)=> {
-              return (
-                <a className="dropdown-item" key={index}   onClick={() => {this.redirectToTarget(city.city) }}>{city.city}</a>
-              )
-            })
-          }
-          </div>
-        </li>
-    }
-      </ol>
+    <li className="breadcrumb-item" onClick={() => {this.redirectToTarget(allSites.siteLocations[0].stateName) }}><a> {allSites.siteLocations[0].stateName} </a></li> 
+  }
+
+       { !!allSites.siteLocations &&
+      <li class="breadcrumb-item menu-has-children"><a class="sf-with-ul-breadcrumb"> {allSites.siteLocations[0].city} </a>
+        <ul class="ul-locations">
+           {divBreadcrumbLocations}
+        </ul>
+      </li>
+       }
+   
+      </ul>
     </nav>
     
     <div className="city-page-filters small"> 

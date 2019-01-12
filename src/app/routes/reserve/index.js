@@ -12,28 +12,29 @@ import ReserveFormFilling from '../../components/common/reserve.formfilling';
 import { getAllSitesByFilters } from '../../../modules/actioncreators/search.actioncreator';
 import { getPinCodes_Sites
 } from '../../../modules/actioncreators/home.actioncreator';
+import { getAllUnitsByLocationCode } from '../../../modules/actioncreators/self-storage.actioncreator';
+import { getAllMoveInCharges } from '../../../modules/actioncreators/reserve.actioncreator';
 
+
+var pathParams = {};
 
 const frontload = async props => {
-  return Promise.all([props.getPinCodes_Sites(), props.getAllSitesByFilters(props.match.params.filter)]).then(function(values) {
+  pathParams = props.match.params;
+  return Promise.all([
+    props.getPinCodes_Sites(), 
+    props.getAllUnitsByLocationCode(props.match.params.locationCode),
+    props.getAllMoveInCharges('')  ]).then(function(values) {
   });
+  
 };
-
 
 
 class Reserve extends Component {  
 
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.match.params.filter !== this.props.match.params.filter) {
-      Promise.all([this.props.getPinCodes_Sites(), this.props.getAllSitesByFilters(nextProps.match.params.filter)]).then(function(values) {
-      });
-    }
-
-    return true;
-  }
-
   render() {
-
+    const { allUnits } = this.props;
+    const {moveInCharges} = this.props;
+    console.log(pathParams)
     return (
     <Page id="reserve">
         {/* <CommonBreadCrumb></CommonBreadCrumb> */}
@@ -43,7 +44,7 @@ class Reserve extends Component {
             <div className="row">
                 <div className="rent-facility-info">
                 <div className="row">
-                    <CommonFacilityInfo></CommonFacilityInfo>
+                    <CommonFacilityInfo allUnits={allUnits} pathParams={pathParams} moveInCharges={moveInCharges}></CommonFacilityInfo>
                     <ReserveFormFilling></ReserveFormFilling>
                     </div>
                 </div>
@@ -58,12 +59,12 @@ class Reserve extends Component {
 
 const mapStateToProps = state => ({
   allPinCodes_Sites: state.homePageData.pinCodes_Sites,
-   allSites: state.searchPageData.sites,
-   allFilters: state.commonData.filterInfo
+   allUnits: state.selfStorageData.units,
+   moveInCharges: state.reserveData.moveInCharges
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ getPinCodes_Sites, getAllSitesByFilters }, dispatch);
+  bindActionCreators({ getPinCodes_Sites, getAllSitesByFilters,getAllUnitsByLocationCode, getAllMoveInCharges }, dispatch);
 
 export default connect(
   mapStateToProps,

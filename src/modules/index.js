@@ -9,6 +9,7 @@ import homePageData from '../modules/reducers/home.reducer';
 import searchPageData from '../modules/reducers/search.reducer';
 import commonData from '../modules/reducers/common.reducer';
 import selfStorageData from '../modules/reducers/self-storage.reducer';
+import reserveData from '../modules/reducers/reserve.reducer';
 
 export default combineReducers({
   auth,
@@ -19,5 +20,6 @@ export default combineReducers({
   homePageData,
   searchPageData,
   commonData,
-  selfStorageData
+  selfStorageData,
+  reserveData
 });

@@ -15,7 +15,8 @@ export default class SearchFilteredData extends Component{
     this.state={
       isLocationCodeClicked: false,
       mapPointers: [],
-      tempCenterPoint: 0
+      tempCenterPoint: 0,
+      selectedLocation: {}
     }
   }
 
@@ -23,14 +24,16 @@ export default class SearchFilteredData extends Component{
     this.setState({isLocationCodeClicked: true, searchDynamicUrl: '/self-storage/'+locationCode+''});
   }
 
-  onSitesHover = (index)=>{
-    this.setState({tempCenterPoint: index})
+  onSitesHover = (index, item)=>{
+    this.setState({tempCenterPoint: index, selectedLocation: item})
   }
+  
 
 render(){
 
   if (this.state.isLocationCodeClicked) {
-    this.setState({isLocationCodeClicked: false});
+    this.setState({isLocationCodeClicked: false, selectedLocation: {}});
+
     return <Redirect to={this.state.searchDynamicUrl} />
   }
 
@@ -65,7 +68,11 @@ render(){
     && (!this.props.allFilters.isClimateControlledChecked || x.climateControlled == true) 
     && (!this.props.allFilters.isDriveUpAccessChecked || x.driveupAccess == true) 
     && (!this.props.allFilters.isWarehouseChecked || x.warehouseOROffice == true) );
- 
+
+
+    if(filteredSites.length > 0 && Object.keys(this.state.selectedLocation).length == 0) {
+      this.setState({selectedLocation: filteredSites[0]})
+    }
 
     //temp =  [];
     //var a = this.props.allFilters;
@@ -75,7 +82,7 @@ render(){
     tempMapPointers.push({id: index+1, lat: parseFloat(item.latitude), lng: parseFloat(item.longitude) });
     return (
       <div key={item.siteID}>
-        <div className="row" onMouseOver={() => {this.onSitesHover(index) }}>
+        <div className="row" onMouseOver={() => {this.onSitesHover(index, item) }}>
             <div className="col-5 col-sm-4 col-md-3">
               <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-2.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
@@ -97,8 +104,10 @@ render(){
     );
   });
 
-  if(tempMapPointers.length > 0)
-  tempCenterPoint.push(tempMapPointers[0].latitude, tempMapPointers[0].longitude)
+  if(tempMapPointers.length > 0){
+  tempCenterPoint.push(tempMapPointers[0].latitude, tempMapPointers[0].longitude);
+  
+  }
 }
 
 
@@ -114,7 +123,7 @@ render(){
           <div className="city-page-map">
            <div id="map"> </div>
                {/* <SimpleMap></SimpleMap>  */}
-              { tempMapPointers.length > 0 && <EventsMapPage mapPointers={tempMapPointers} centerIndex={this.state.tempCenterPoint}></EventsMapPage> }
+              { tempMapPointers.length > 0 && <EventsMapPage mapPointers={tempMapPointers} centerIndex={this.state.tempCenterPoint} selectedLocation={this.state.selectedLocation}></EventsMapPage> }
           </div>
         </div>
       </div>

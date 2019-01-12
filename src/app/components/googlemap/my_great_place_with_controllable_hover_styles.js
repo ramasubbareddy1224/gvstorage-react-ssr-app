@@ -24,7 +24,8 @@ const greatPlaceStyleHover = {
   ...greatPlaceStyle,
   border: '5px solid #3f51b5',
   color: '#fff',
-  backgroundColor: 'rgb(0, 95, 37)'
+  backgroundColor: 'rgb(0, 95, 37)',
+  zIndex: 1
 };
 
 export {greatPlaceStyle, greatPlaceStyleHover, K_SIZE};

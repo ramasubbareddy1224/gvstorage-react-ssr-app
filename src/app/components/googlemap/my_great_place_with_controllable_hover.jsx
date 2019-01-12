@@ -20,7 +20,10 @@ export default class MyGreatPlaceWithControllableHover extends Component {
     super(props);
   }
 
+  
+
   render() {
+   // const {selectedLocation} = this.props.selectedLocation;
     const style = this.props.hover ? greatPlaceStyleHover : greatPlaceStyle;
 
 
@@ -35,10 +38,16 @@ export default class MyGreatPlaceWithControllableHover extends Component {
       <div className="props-count">{this.props.text}</div>
       <div style={{width: 80}}  className={this.props.hover ? 'map-hover' : 'map-default'}>
            {/* {this.props.hoverDetails.lat} {this.props.hoverDetails.lng} */}
-           <p className="gv-text-color mb-1">Production</p>
-            {/* {this.props.hoverDetails.lat} {this.props.hoverDetails.lng} */}
-            <span>4641 Production Dr
-            Dallas, TX 75235</span>
+           {
+             
+              !!this.props.selectedLocation &&
+              <div>
+              <p className="gv-text-color mb-1">{this.props.selectedLocation.city}</p>
+           
+              <span> {this.props.selectedLocation.address1}, {this.props.selectedLocation.stateCode} {this.props.selectedLocation.postalCode}</span>
+              </div>
+            }
+            
          </div>
          
          

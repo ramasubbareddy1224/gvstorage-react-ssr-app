@@ -4,6 +4,8 @@ import {Environment} from '../../../configurations/environment';
 
 import {Redirect} from 'react-router-dom';
 
+import {AutoComplete} from '../typeahead/index';
+
 
 
 export default class HomeBanner extends Component{
@@ -13,7 +15,8 @@ export default class HomeBanner extends Component{
     this.state={
       selectedOption: null,
       isFindStorageClicked: false,
-      searchDynamicUrl: ''
+      searchDynamicUrl: '',
+      selectedAutoCompleteValue: ''
     }
     //this.handleChange = this.handleChange.bind(this);
     //this.redirectToTarget = this.redirectToTarget.bind(this);
@@ -30,13 +33,17 @@ export default class HomeBanner extends Component{
 
 
   redirectToTarget=()=>{
-    this.setState({isFindStorageClicked: true, searchDynamicUrl: '/search/'+this.state.selectedOption.value+''});
+    this.setState({isFindStorageClicked: true, searchDynamicUrl: '/search/'+this.state.selectedAutoCompleteValue+''});
    //var stateWithCityValue = !!this.state.selectedOption.state ? (','+ this.state.selectedOption.state) : '';
 
     //window.location.href='/search?filterType='+this.state.selectedOption.type+'&value='+ this.state.selectedOption.value + stateWithCityValue +'';
 
     //window.location.href='/search/'+this.state.selectedOption.value+'';
 
+  }
+
+  handleAutocompleteValueChange=(val)=>{
+    this.setState({selectedAutoCompleteValue: val});
   }
 
 render(){
@@ -89,11 +96,15 @@ render(){
                return <option key={key} value={e.value}>{e.label}</option>;
     })}
               </select> */}
-              <Select 
+
+               <AutoComplete autoCompleteValues={options} onAutocompleteValueChange={this.handleAutocompleteValueChange}></AutoComplete>
+
+              {/* <Select 
         value={selectedOption}
         onChange={this.handleChange}
         options={options }
-        /> &nbsp; &nbsp; &nbsp;
+        />  */}
+        &nbsp; &nbsp; &nbsp;
               <span className="btn btn-gvstore btn-success border-0" id="basic-addon2" onClick={this.redirectToTarget}>Find Storage &nbsp; <i className="fa fa-arrow-right"> </i> </span>
              </div>
              </form>

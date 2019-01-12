@@ -102,7 +102,8 @@ import {K_SIZE} from './my_great_place_with_controllable_hover_styles.js';
             {...coords}
             text={id.toString()}
             hoverDetails={place}
-            hover={(this.props.centerIndex +1) === id} />
+            hover={(this.props.centerIndex +1) === id} 
+            selectedLocation={this.props.selectedLocation}/>
         );
       });
 
