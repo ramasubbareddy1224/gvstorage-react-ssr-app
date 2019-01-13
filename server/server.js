@@ -14,7 +14,6 @@ require('dotenv').config();
 // Our loader - this basically acts as the entry point for each page load
 import loader from './loader';
 
-console.log(process.env);
 // Create our express app using the port optionally specified
 const app = express();
 const PORT = process.env.PORT || 5000;
