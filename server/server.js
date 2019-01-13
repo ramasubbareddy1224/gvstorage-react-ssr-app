@@ -7,7 +7,7 @@ import path from 'path';
 import forceDomain from 'forcedomain';
 import Loadable from 'react-loadable';
 import cookieParser from 'cookie-parser';
-
+var cors = require('cors');
 // Our loader - this basically acts as the entry point for each page load
 import loader from './loader';
 
@@ -27,6 +27,7 @@ const PORT = process.env.PORT || 5000;
 // }
 
 // Compress, parse, log, and raid the cookie jar
+app.use(cors());
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
