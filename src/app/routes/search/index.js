@@ -21,7 +21,14 @@ import { getPinCodes_Sites
 const frontload = async props => {
   //const queryParams = queryString.parse(window.location.search);
   //await props.getAllSitesByFilters(values.value);
-  return Promise.all([props.getPinCodes_Sites(), props.getAllSitesByFilters(props.match.params.filter)]).then(function(values) {
+    var dynamicRequestList = [];
+  if(Object.keys(props.allPinCodes_Sites).length == 0){
+    dynamicRequestList.push(props.getPinCodes_Sites());
+  }
+
+  dynamicRequestList.push(props.getAllSitesByFilters(props.match.params.filter));
+
+  return Promise.all([dynamicRequestList]).then(function(values) {
    
   });
 };
@@ -37,7 +44,7 @@ class Search extends Component {
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.match.params.filter !== this.props.match.params.filter) {
-      Promise.all([this.props.getPinCodes_Sites(), this.props.getAllSitesByFilters(nextProps.match.params.filter)]).then(function(values) {
+      Promise.all([this.props.getAllSitesByFilters(nextProps.match.params.filter)]).then(function(values) {
       });
     }
 

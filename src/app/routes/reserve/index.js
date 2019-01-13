@@ -22,8 +22,10 @@ const frontload = async props => {
   pathParams = props.match.params;
   return Promise.all([
     props.getPinCodes_Sites(), 
-    props.getAllUnitsByLocationCode(props.match.params.locationCode),
-    props.getAllMoveInCharges('')  ]).then(function(values) {
+    props.getAllUnitsByLocationCode(props.match.params.locationCode)
+    ]).then(function(values) {
+      debugger;
+      props.getAllMoveInCharges('')
   });
   
 };

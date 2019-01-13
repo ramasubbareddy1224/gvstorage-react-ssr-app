@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
 import {Redirect} from 'react-router-dom';
-import $ from 'jquery'; 
 
 class CommonFooter extends Component{
 
@@ -17,7 +16,7 @@ class CommonFooter extends Component{
   redirectToTarget=(filterName,event)=>{
     event.stopPropagation();
     this.setState({isLocationClicked: true, searchDynamicUrl: '/search/'+filterName+''});
-    $('html,body').scrollTop(0);
+    !!window && window.scrollTo(0,0);
   }
 
 
