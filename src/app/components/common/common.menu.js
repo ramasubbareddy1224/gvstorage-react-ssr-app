@@ -13,9 +13,9 @@ class CommonMenu extends Component{
     }
   }
 
-  shouldComponentUpdate(nextProps) {
-    return (Object.keys(nextProps.allPinCodes_Sites).length==0)   
-  }
+  // shouldComponentUpdate(nextProps) {
+  //   return (Object.keys(nextProps.allPinCodes_Sites).length==0)   
+  // }
  
   redirectToTarget=(filterName,event)=>{
     // onClick={(event) =>{this.redirectToTarget(city.city,event)}}
