@@ -17,7 +17,7 @@ const { store, history } = createStore();
 const Application = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Frontload noServerRender={true}>
+      <Frontload noServerRender={false}>
         <App />
       </Frontload>
     </ConnectedRouter>
