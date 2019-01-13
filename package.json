@@ -11,6 +11,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "@mars/heroku-js-runtime-env": "^3.0.2",
     "babel-plugin-dynamic-import-node": "^2.1.0",
     "connected-react-router": "^4.5.0",
     "cookie-parser": "^1.4.3",
