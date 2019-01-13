@@ -12,6 +12,10 @@ class CommonMenu extends Component{
       isLocationClicked: false
     }
   }
+
+  shouldComponentUpdate(nextProps) {
+    return (Object.keys(nextProps.allPinCodes_Sites).length==0)   
+  }
  
   redirectToTarget=(filterName,event)=>{
     // onClick={(event) =>{this.redirectToTarget(city.city,event)}}
