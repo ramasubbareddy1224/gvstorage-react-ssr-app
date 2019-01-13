@@ -51,14 +51,14 @@ render(){
   const divBreadcrumbLocations =  allPinCodes_Sites.length > 0 && 
   allPinCodes_Sites[1].locations.map((state,index)=> {
     return (
-            <li class=""  key={index} onClick={(event) => {this.redirectToTarget(event, state.stateName) }}>
-            <a class="">{state.stateName}</a>
+            <li className=""  key={index} onClick={(event) => {this.redirectToTarget(event, state.stateName) }}>
+            <a className="">{state.stateName}</a>
              
             <ul>
                 {
                   state.cities.map((city,newIndex)=>{
                     return (
-                      <li class="" key={newIndex} onClick={(event) => {this.redirectToTarget(event, city.city) }}><a>{city.city}</a></li>
+                      <li className="" key={newIndex} onClick={(event) => {this.redirectToTarget(event, city.city) }}><a>{city.city}</a></li>
                     )
                   })
                 }
