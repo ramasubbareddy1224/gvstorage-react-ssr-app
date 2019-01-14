@@ -10,6 +10,7 @@ class CommonMenu extends Component{
     this.state={
       isLocationClicked: false
     }
+    this.redirectToTarget=this.redirectToTarget.bind(this);
   }
 
   // shouldComponentUpdate(nextProps) {
@@ -34,17 +35,17 @@ render(){
 
   var divLocations = '';
   if(Object.keys(allPinCodes_Sites).length > 0){
-  var divLocations = allPinCodes_Sites[1].locations.map((item,index) => {
+  var divLocations = allPinCodes_Sites[1].locations.map((parentMenu,parentindex) => {
 
   return (
-    <li key={"parent_menu_"+index} onClick={(event) => {this.redirectToTarget(event, item.stateName) }} >
+    <li key={"parent_menu_"+parentindex}  onClick={(event) => {this.redirectToTarget(event,parentMenu.stateName)}} >
      {/* <Link to={"/search/"+item.stateName}>{item.stateName}</Link>    */}
-     <a>{item.stateName}</a>
+     <a href="">{parentMenu.stateName}</a>
      <ul>
     {
-      item.cities.map((city, cityIndex) => {
+      parentMenu.cities.map((city, cityIndex) => {
         return(
-              <li  key={"child_menu_"+cityIndex} onClick={(event) => {this.redirectToTarget(event, city.city) }}>
+              <li  key={"child_bc_"+parentindex+"_"+cityIndex} onClick={(event) => {this.redirectToTarget(event, city.city) }}>
               {/* <Link to={"/search/"+city.city}>{city.city}</Link>  */}
               <a>{city.city}</a>
               </li>
