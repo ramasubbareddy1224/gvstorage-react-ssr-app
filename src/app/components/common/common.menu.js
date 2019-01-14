@@ -4,7 +4,7 @@ import {Redirect,Link} from 'react-router-dom';
 
 class CommonMenu extends Component{
 
-  constructor()
+  constructor(props)
   {
     super(props);   
     this.state={
