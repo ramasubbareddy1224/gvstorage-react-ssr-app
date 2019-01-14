@@ -84,8 +84,8 @@ render(){
   }
 
        { !!allSites.siteLocations &&
-      <li class="breadcrumb-item menu-has-children"><a class="sf-with-ul-breadcrumb"> {allSites.siteLocations[0].city} </a>
-        <ul class="ul-locations">
+      <li className="breadcrumb-item menu-has-children"><a className="sf-with-ul-breadcrumb"> {allSites.siteLocations[0].city} </a>
+        <ul className="ul-locations">
            {divBreadcrumbLocations}
         </ul>
       </li>

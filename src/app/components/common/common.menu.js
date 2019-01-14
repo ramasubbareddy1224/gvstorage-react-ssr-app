@@ -17,7 +17,7 @@ class CommonMenu extends Component{
   //   return (Object.keys(nextProps.allPinCodes_Sites).length==0)   
   // }
  
-  redirectToTarget=(filterName,event)=>{
+  redirectToTarget=(event,filterName)=>{
     // onClick={(event) =>{this.redirectToTarget(city.city,event)}}
     event.stopPropagation();
     this.setState({isLocationClicked: true, searchDynamicUrl: '/search/'+filterName+''});
@@ -40,7 +40,7 @@ render(){
   return (
     <li key={"parent_menu_"+parentindex}  onClick={(event) => {this.redirectToTarget(event,parentMenu.stateName)}} >
      {/* <Link to={"/search/"+item.stateName}>{item.stateName}</Link>    */}
-     <a href="">{parentMenu.stateName}</a>
+     <a>{parentMenu.stateName}</a>
      <ul>
     {
       parentMenu.cities.map((city, cityIndex) => {
@@ -59,11 +59,12 @@ render(){
   }
 
     return(
+      <div id="header-menu">
     <header id="header">
     <div className="container">
 
       <div id="logo" className="pull-left">
-        <h1><a className="navbar-brand text-brand" href="/"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/great-value-store-logo.png"} alt="logo" /> </a></h1>
+        <h1><Link to="/" className="navbar-brand text-brand"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/great-value-store-logo.png"} alt="logo" /> </Link></h1>
       </div>
 
       <nav id="nav-menu-container">
@@ -110,6 +111,7 @@ render(){
       </nav>
     </div>
   </header>
+  </div>
     )
 }
 }

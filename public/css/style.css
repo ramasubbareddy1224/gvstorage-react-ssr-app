@@ -1890,3 +1890,5 @@ a.sf-with-ul-breadcrumb:after {
 	padding: 10px 10px;
 	cursor: pointer;
 }
+
+.nav-menu ul li a {color: #fff !important; cursor: pointer;}
