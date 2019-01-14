@@ -21,11 +21,10 @@ import { getPinCodes_Sites
 const frontload = async props => {
   //const queryParams = queryString.parse(window.location.search);
   //await props.getAllSitesByFilters(values.value);
-    var dynamicRequestList = [];
-  if(Object.keys(props.allPinCodes_Sites).length == 0){
+  var dynamicRequestList = [];
+  if(props.allPinCodes_Sites.length == 0){
     dynamicRequestList.push(props.getPinCodes_Sites());
   }
-
   dynamicRequestList.push(props.getAllSitesByFilters(props.match.params.filter));
 
   return Promise.all([dynamicRequestList]).then(function(values) {

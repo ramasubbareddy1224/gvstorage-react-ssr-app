@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import InputRange from 'react-input-range';
 import {Environment} from '../../../configurations/environment';
 import { timeout } from 'q';
+import {Link} from 'react-router-dom';
 
 
 var filteredUnits = {};
@@ -132,6 +133,7 @@ render(){
 
    
 const {allUnits} = this.props;
+const {pathParams} = this.props;
 
 //console.log('sa ' + this.state.filteredUnitTypes);
 
@@ -187,7 +189,8 @@ const {allUnits} = this.props;
                                   <strong className="gv-text-color"> ${item.webRate} </strong> </p>
                               </div></td>
                             <td className="text-right"><div className="btn btn-gvstore btn-success border-0 green-gradient"> Rent Now </div>
-                              <div className="gv-text-color"> <strong>Reserve for free</strong> </div></td>
+                              <div className="gv-text-color"> <strong><Link to={`/reserve/${pathParams.locationCode}/${item.firstAvailableUnitID}`}> Reserve for free </Link> </strong> </div>
+                              </td>
                           </tr>
     );
   });

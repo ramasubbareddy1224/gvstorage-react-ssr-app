@@ -1,7 +1,7 @@
 
 import {ACTIONTYPES} from '../../configurations/actiontypes'
 
-const INITIAL_STATE = {sites: {}, pinCodes: {}, pinCodes_Sites: {},  error: null, loading: false};
+const INITIAL_STATE = {sites: {}, pinCodes: {}, pinCodes_Sites: [],  error: null, loading: false};
 
 export default function(state = INITIAL_STATE, action) {
     switch(action.type) {

@@ -15,15 +15,22 @@ render(){
 
     const {insurancePlans} = this.props.allUnits;
     const {siteLocation} = this.props.allUnits;
-    const {units} = this.props.allUnits;
+    const {units} =  this.props.allUnits;
     const pathParams = this.props.pathParams;
+
+    const {unit} = this.props.selectedUnitInfo;
     debugger;
 
     const {moveInCharges} = this.props.moveInCharges;
     const {totalAmount} = this.props.moveInCharges;
  
-    const unitInfo = !!units && units.filter(x=>x.firstAvailableUnitID == pathParams.unitId);
-
+    var unitInfo = '';
+    if(!pathParams.isReloaded){
+         unitInfo = !!unit ? unit : {};
+    }
+    else {
+        unitInfo = !!units ? units.filter(x=>x.firstAvailableUnitID == pathParams.unitId)[0] : {};
+    }
 
     const divMoveIncharges = !!moveInCharges && moveInCharges.map((moveInCharge, index) => {
         return(
@@ -69,7 +76,7 @@ render(){
                 <p> UNIT SIZE  <span className=" pull-right gv-text-color"> Change unit </span></p>
             </div>
             <div className="data-info">
-                <p> {!!unitInfo && unitInfo[0].unitWidth} X {!!unitInfo && unitInfo[0].unitLength} - MEDIUM </p>
+                <p> {Object.keys(unitInfo).length > 0 && unitInfo.unitWidth} X {Object.keys(unitInfo).length && unitInfo.unitLength} - MEDIUM </p>
             </div>
             </div>
             
@@ -80,9 +87,9 @@ render(){
             <div className="data-info">
                 <div className="rate-varision">
                         <p className="d-inline-block rate-info w-45 text-muted"> ONSITE <br />
-                          <strong ><del> {!!unitInfo && (`$${unitInfo[0].onsiteRate}`)}</del></strong> </p>
+                          <strong ><del> {Object.keys(unitInfo).length && (`$${unitInfo.onsiteRate}`)}</del></strong> </p>
                         <p className="d-inline-block rate-info w-45"> WEB  <br />
-                          <strong className="gv-text-color"> {!!unitInfo && (`$${unitInfo[0].webRate}`)} </strong> </p>
+                          <strong className="gv-text-color"> {Object.keys(unitInfo).length && (`$${unitInfo.webRate}`)} </strong> </p>
                       </div>
                 <p className="small"> Covers up to $2,000 USD ($10.95 USD / monthly) </p>
             </div>

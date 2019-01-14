@@ -29,7 +29,7 @@ render(){
 
 
     var divLocations = '';
-    if(Object.keys(allPinCodes_Sites).length > 0){
+    if(allPinCodes_Sites.length > 0){
     var divLocations = allPinCodes_Sites[1].locations.map((item,index)=> {
   
     return (

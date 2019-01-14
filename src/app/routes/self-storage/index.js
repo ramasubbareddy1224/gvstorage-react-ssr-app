@@ -23,14 +23,29 @@ import { getPinCodes_Sites } from '../../../modules/actioncreators/home.actioncr
 import { getAllUnitsByLocationCode } from '../../../modules/actioncreators/self-storage.actioncreator';
 
 
+var pathParams = {};
+
 const frontload = async props => {
+  pathParams = props.match.params;
+
   //const queryParams = queryString.parse(window.location.search);
   //await props.getAllSitesByFilters(values.value);
-  return Promise.all([
-    props.getPinCodes_Sites() 
-    ,props.getAllSitesByFilters(props.match.params.locationCode)
-    ,props.getAllUnitsByLocationCode(props.match.params.locationCode) ]).then(function(values) {
+  
+  var dynamicRequestList = [];
+  if(props.allPinCodes_Sites.length == 0){
+    dynamicRequestList.push(props.getPinCodes_Sites());
+  }
+  dynamicRequestList.push(props.getAllUnitsByLocationCode(props.match.params.locationCode));
+
+  return Promise.all([dynamicRequestList]).then(function(values) {
+   
   });
+  
+  // return Promise.all([
+  //   props.getPinCodes_Sites() 
+  //   ,props.getAllSitesByFilters(props.match.params.locationCode)
+  //   ,props.getAllUnitsByLocationCode(props.match.params.locationCode) ]).then(function(values) {
+  // });
 };
 
 
@@ -42,7 +57,7 @@ class SelfStorage extends Component {
       {Object.keys(this.props.allUnits).length > 0 && <SelfStorageBanner allUnits={this.props.allUnits}></SelfStorageBanner>}
      
        <main id="main" className="facility-section "> 
-           <SelfStorageFilteredData allUnits={this.props.allUnits} allSites={this.props.allSites} allPinCodes_Sites ={this.props.allPinCodes_Sites}></SelfStorageFilteredData>
+           <SelfStorageFilteredData pathParams={pathParams} allUnits={this.props.allUnits} allSites={this.props.allSites} allPinCodes_Sites ={this.props.allPinCodes_Sites}></SelfStorageFilteredData>
            <SelfStorageFeatures></SelfStorageFeatures>
            <SelfStorageReviews></SelfStorageReviews>
            <SelfStorageWhatFits></SelfStorageWhatFits>
