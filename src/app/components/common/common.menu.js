@@ -6,8 +6,7 @@ class CommonMenu extends Component{
 
   constructor()
   {
-    super();
-   
+    super(props);   
     this.state={
       isLocationClicked: false
     }
@@ -38,14 +37,16 @@ render(){
   var divLocations = allPinCodes_Sites[1].locations.map((item,index) => {
 
   return (
-    <li key={index} >
-     <Link to={"/search/"+item.stateName}>{item.stateName}</Link>   
+    <li key={"parent_menu_"+index} onClick={(event) => {this.redirectToTarget(event, item.stateName) }} >
+     {/* <Link to={"/search/"+item.stateName}>{item.stateName}</Link>    */}
+     <a>{item.stateName}</a>
      <ul>
     {
       item.cities.map((city, cityIndex) => {
         return(
-              <li  key={cityIndex}>
-              <Link to={"/search/"+city.city}>{city.city}</Link> 
+              <li  key={"child_menu_"+cityIndex} onClick={(event) => {this.redirectToTarget(event, city.city) }}>
+              {/* <Link to={"/search/"+city.city}>{city.city}</Link>  */}
+              <a>{city.city}</a>
               </li>
         )
       })
