@@ -27,7 +27,7 @@ const frontload = async props => {
   }
   dynamicRequestList.push(props.getAllSitesByFilters(props.match.params.filter));
 
-  return Promise.all([dynamicRequestList]).then(function(values) {
+  return Promise.all(dynamicRequestList).then(function(values) {
    
   });
 };

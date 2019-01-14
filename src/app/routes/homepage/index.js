@@ -20,7 +20,7 @@ const frontload = async props =>{
 
   //var dynamicRequestList = [];
   if(props.allPinCodes_Sites.length == 0){
-    return Promise.all([props.getPinCodes_Sites()]).then(function(values) {
+    return Promise.all(props.getPinCodes_Sites()).then(function(values) {
     });
   }
 
