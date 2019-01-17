@@ -188,7 +188,9 @@ const {pathParams} = this.props;
                                 <p className="d-inline-block rate-info"> WEB RATE <br />
                                   <strong className="gv-text-color"> ${item.webRate} </strong> </p>
                               </div></td>
-                            <td className="text-right"><div className="btn btn-gvstore btn-success border-0 green-gradient"> Rent Now </div>
+                            <td className="text-right"><div className="btn btn-gvstore btn-success border-0 green-gradient">
+                            <Link to={`/rent/${pathParams.locationCode}/${item.firstAvailableUnitID}`}> Rent Now </Link>
+                            </div>
                               <div className="gv-text-color"> <strong><Link to={`/reserve/${pathParams.locationCode}/${item.firstAvailableUnitID}`}> Reserve for free </Link> </strong> </div>
                               </td>
                           </tr>

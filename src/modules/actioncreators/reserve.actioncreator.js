@@ -8,15 +8,6 @@ const getAllSelectedUnitInfoActionCreator = selectedUnitInfo => ({type: ACTIONTY
 
   export const getAllMoveInCharges = (requestData) => (dispatch) => {
     var apiUrl = 'moveincharges';
-    // var data = {
-    //     "concessionID": 1731,
-    //     "insurCoverageID": 669,
-    //     "locationCode": "DEMO4",
-    //     "moveInDate": "2019-01-12",
-    //     "siteID": 7022,
-    //     "tenantID": 0,
-    //     "unitID": 32988
-    //   }
     return ApiRequest.url(apiUrl)
     .post(requestData)
     .json(json=>dispatch(getAllMoveInChargesActionCreator(json)));
@@ -27,6 +18,13 @@ const getAllSelectedUnitInfoActionCreator = selectedUnitInfo => ({type: ACTIONTY
     return ApiRequest.url(apiUrl).
     get()
     .json(json=>dispatch(getAllSelectedUnitInfoActionCreator(json)));
+  }
+
+  export const reserveNow = (formData) =>{
+    var apiUrl = 'reservation';
+    return ApiRequest.url(apiUrl).
+    post(formData)
+    .json(json=> json);
   }
 
 

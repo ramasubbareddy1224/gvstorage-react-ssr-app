@@ -30,6 +30,7 @@
     "react": "^16.7.0",
     "react-autosuggest": "^9.4.3",
     "react-controllables": "^0.6.0",
+    "react-datepicker": "^2.0.0",
     "react-dom": "^16.7.0",
     "react-frontload": "^1.0.3",
     "react-helmet": "^5.2.0",

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
-import {Redirect} from 'react-router-dom';
+import {Redirect,Link} from 'react-router-dom';
 
 class CommonFacilityInfo extends Component{
 
@@ -13,12 +13,16 @@ class CommonFacilityInfo extends Component{
 
 render(){
 
-    const {insurancePlans} = this.props.allUnits;
-    const {siteLocation} = this.props.allUnits;
+    //const {insurancePlans} = this.props.allUnits;
+    //const {siteLocation} = this.props.allUnits;
     const {units} =  this.props.allUnits;
     const pathParams = this.props.pathParams;
 
     const {unit} = this.props.selectedUnitInfo;
+    //const selectedSiteLocation = this.props.selectedUnitInfo.siteLocation; 
+    
+    const {siteLocation} = Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
+    const {insurancePlans} =  Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
     debugger;
 
     const {moveInCharges} = this.props.moveInCharges;
@@ -64,16 +68,32 @@ render(){
             
             <div className="facility-data">
             <div className="data-heading">
-                <p> LOCATION  <span className=" pull-right gv-text-color"> Change Location </span></p>
+                <p> LOCATION  
+                  {!!siteLocation &&  <span className=" pull-right gv-text-color"> 
+                  <Link to={`/search/${siteLocation.stateName}`}> Change Location
+                  </Link>
+                  </span>
+                  }
+                  {/* {!!selectedSiteLocation &&  <span className=" pull-right gv-text-color">   
+                  <Link to={`/search/${selectedSiteLocation.stateName}`}> Change Location
+                  </Link></span>
+                } */}
+                
+                </p>
             </div>
             <div className="data-info">
                 <p> {!!siteLocation && siteLocation.name} </p>
+                {/* <p> {!!selectedSiteLocation && selectedSiteLocation.name} </p> */}
             </div>
             </div>
             
             <div className="facility-data">
             <div className="data-heading">
-                <p> UNIT SIZE  <span className=" pull-right gv-text-color"> Change unit </span></p>
+                <p> UNIT SIZE  
+                <Link to={`/self-storage/${pathParams.locationCode}`}>
+                    <span className=" pull-right gv-text-color"> Change unit </span>
+                </Link>
+                </p>
             </div>
             <div className="data-info">
                 <p> {Object.keys(unitInfo).length > 0 && unitInfo.unitWidth} X {Object.keys(unitInfo).length && unitInfo.unitLength} - MEDIUM </p>
@@ -91,7 +111,10 @@ render(){
                         <p className="d-inline-block rate-info w-45"> WEB  <br />
                           <strong className="gv-text-color"> {Object.keys(unitInfo).length && (`$${unitInfo.webRate}`)} </strong> </p>
                       </div>
-                <p className="small"> Covers up to $2,000 USD ($10.95 USD / monthly) </p>
+                      { 
+                          !!insurancePlans &&
+                                      <p className="small"> Covers up to ${insurancePlans[1].coverage} USD (${insurancePlans[1].premium} USD / monthly) </p>
+                      }
             </div>
             </div>
             

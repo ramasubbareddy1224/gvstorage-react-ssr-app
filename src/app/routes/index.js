@@ -55,9 +55,15 @@ const SelfStorage = Loadable({
 });
 
 const Reserve = Loadable({
-  loader: () => import(/* webpackChunkName: "self-storage" */ './reserve'),
+  loader: () => import(/* webpackChunkName: "reserve" */ './reserve'),
   loading: () => null,
   modules: ['reserve']
+});
+
+const Rent = Loadable({
+  loader: () => import(/* webpackChunkName: "rent" */ './rent'),
+  loading: () => null,
+  modules: ['rent']
 });
 
 export default () => (
@@ -76,6 +82,7 @@ export default () => (
     <Route exact path="/search/:filter" component={Search} />
     <Route exact path="/self-storage/:locationCode" component={SelfStorage}/>
     <Route exact path="/reserve/:locationCode/:unitId" component={Reserve}/>
+    <Route exact path="/rent/:locationCode/:unitId" component={Rent}/>
 
     <Route component={NotFound} />
   </Switch>

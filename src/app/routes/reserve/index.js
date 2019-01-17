@@ -33,12 +33,15 @@ const frontload = async props => {
     dynamicRequestList.push(props.getSelectedUnitInfo(pathParams.locationCode, pathParams.unitId));
     return Promise.all(dynamicRequestList).then(function(values) {
 
+     
+      var value =  values.filter(x=> (!!x && x["type"] == "GET_SELECTED_UNIT_INFO"))[0]
+
       var requestObj = {
-        "concessionID": values[1].payload.unit.concessionID,
-        "insurCoverageID": values[1].payload.insurancePlans[0].insurCoverageID,
+        "concessionID": value.payload.unit.concessionID,
+        "insurCoverageID": value.payload.insurancePlans[0].insurCoverageID,
         "locationCode": pathParams.locationCode,
         "moveInDate": "2019-01-12",
-        "siteID": values[1].payload.unit.siteID,
+        "siteID": value.payload.unit.siteID,
         "tenantID": 0,
         "unitID": pathParams.unitId
       };
@@ -99,7 +102,7 @@ class Reserve extends Component {
                 <div className="rent-facility-info">
                 <div className="row">
                     <CommonFacilityInfo allUnits={allUnits} selectedUnitInfo={selectedUnitInfo} pathParams={pathParams} moveInCharges={moveInCharges}></CommonFacilityInfo>
-                    <ReserveFormFilling></ReserveFormFilling>
+                    <ReserveFormFilling allUnits={allUnits} selectedUnitInfo={selectedUnitInfo} pathParams={pathParams} moveInCharges={moveInCharges}></ReserveFormFilling>
                     </div>
                 </div>
                 </div>
