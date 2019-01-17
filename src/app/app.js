@@ -15,7 +15,7 @@ import './app.css';
 import CommonTopBar from './components/common/common.topbar';
 import CommonMenu from './components/common/common.menu';
 import CommonFooter from './components/common/common.footer';
-
+import LoadingBar from 'react-redux-loading-bar'
 class App extends Component {
   componentWillMount() {
     if (!isServer) {
@@ -30,6 +30,7 @@ class App extends Component {
           isAuthenticated={this.props.isAuthenticated}
           current={this.props.location.pathname}
         /> */}
+        <LoadingBar />
         <CommonTopBar></CommonTopBar>
         <CommonMenu allPinCodes_Sites={this.props.allPinCodes_Sites}></CommonMenu>
         <div id="content">
