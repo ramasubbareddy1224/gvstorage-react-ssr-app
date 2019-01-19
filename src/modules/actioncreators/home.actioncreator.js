@@ -22,24 +22,42 @@ export const getDiscounts = () => (dispatch) => {
   };
 
   export const getPinCodes = () => (dispatch) => {
-    return ApiRequest.url(`postalcodes`)
-    .get()
-    .json(json=>dispatch(getAllPinCodes(json)));
+    return new Promise(resolve=>{
+      return ApiRequest.url(`postalcodes`)
+      .get()
+      .json(json=>resolve(json));
+    })
+    
   };
 
   export const getSites = () => (dispatch) => {
-    return ApiRequest.url(`sites`)
-    .get()
-    .json(json=>dispatch(getAllSites(json)));
+    return new Promise(resolve=>{
+      return ApiRequest.url(`sites`)
+      .get()
+      .json(json=>resolve(json));
+    })
   };
 
+  // export const getPinCodes_Sites = () => (dispatch) => {
+  //   dispatch(showLoading());
+  //  return Promise.all(
+  //    [
+  //      ApiRequest.url(`postalcodes`).get().json(postalCodeJson => { return  postalCodeJson}), 
+  //      ApiRequest.url(`sites`).get().json(sitesJson => {return sitesJson})
+  //   ]).then(function(values) {
+  //     dispatch(hideLoading());
+  //     dispatch(actionCreator_PinCodes_Sites(values));
+     
+  //   });
+
   export const getPinCodes_Sites = () => (dispatch) => {
-    dispatch(showLoading());
-   return Promise.all([ApiRequest.url(`postalcodes`).get().json(postalCodeJson => { return  postalCodeJson}), 
-      ApiRequest.url(`sites`).get().json(sitesJson => {return sitesJson})
-    ]).then(function(values) {
-      dispatch(actionCreator_PinCodes_Sites(values));
-      dispatch(hideLoading());
-    });
+    return new Promise(resolve=>{
+      dispatch(showLoading());
+      Promise.all([getPinCodes(),getSites()]).then(response=>{
+        dispatch(hideLoading());
+        dispatch(actionCreator_PinCodes_Sites(response));
+      })
+    })   
+
   };
 
