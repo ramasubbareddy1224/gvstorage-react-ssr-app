@@ -3,9 +3,10 @@ import {Environment} from '../../../configurations/environment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ReserveFormView from './reserve.formview';
-import { reserveNow
-} from '../../../modules/actioncreators/reserve.actioncreator';
-import { allResolved } from 'q';
+import { addTenant
+} from '../../../modules/actioncreators/rent.actioncreator';
+
+import {Link, Redirect} from 'react-router-dom';
 
 class RentFormFilling extends Component{
   constructor(props) {
@@ -17,7 +18,9 @@ class RentFormFilling extends Component{
       errors: {},
       selectedDate: new Date(),
       textMeUpdate: false,
-      isInViewPage: false
+      isInViewPage: false,
+      isRedirectActivated: false,
+      tenantID: 0
     };
 
 
@@ -48,14 +51,55 @@ class RentFormFilling extends Component{
   submitReserveNowForm(e) {
     e.preventDefault();
     if (this.validateForm()) {
-      this.setState({isInViewPage: true});
-        // let fields = {};
-        // fields["FirstName"] = "";
-        // fields["LastName"] = "";
-        // fields["PhoneNumber"] = "";
-        // fields["Email"] = "";
-        // this.setState({fields:fields});
-        //alert("Form submitted");
+
+      const {unit} = this.props.selectedUnitInfo;
+      const {units} =  this.props.allUnits;
+      const {pathParams} = this.props;
+
+      var unitInfo = '';
+      if(!pathParams.isReloaded){
+           unitInfo = !!unit ? unit : {};
+      }
+      else {
+          unitInfo = !!units ? units.filter(x=>x.firstAvailableUnitID == pathParams.unitId)[0] : {};
+      }
+
+      //const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
+     
+
+     var requestData = {
+        "address": this.state.fields.Address,
+        "city": this.state.fields.City,
+        "company": !!this.state.fields.CompanyName ? this.state.fields.CompanyName: '',
+        "concessionID": Object.keys(unitInfo).length > 0 && unitInfo.concessionID,
+        "country": this.state.fields.Country,
+        "county": this.state.fields.County,
+        "emailAddress": this.state.fields.Email,
+        "faxNumber": !!this.state.fields.FaxNumber ? this.state.fields.FaxNumber : '',
+        "firstName": this.state.fields.FirstName,
+        "insurCoverageID": parseInt(this.state.fields.ProtectionCoverage),
+        "lastName": this.state.fields.LastName,
+        "locationCode": this.props.pathParams.locationCode,
+        "phoneNumber": this.state.fields.PhoneNumber,
+        "siteID": Object.keys(unitInfo).length > 0 && unitInfo.siteID,
+        "state": this.state.fields.State,
+        "tenantID": 0,
+        "textMeUpdates": this.state.textMeUpdate,
+        "unitID": this.props.pathParams.unitId,
+        "uuid": "",
+        "zipCode": this.state.fields.Zip,
+      };
+
+      addTenant(requestData).then((success)=>{
+        if(success.status.code  == 200){
+          alert('Added Tenant succesfully');
+          this.setState({isRedirectActivated: true, tenantID: success.tenantID});
+        }
+      },
+      (error)=>{
+        alert((JSON.parse(error.text)).status.message);
+        debugger;
+      });
     }
   }
 
@@ -123,12 +167,12 @@ class RentFormFilling extends Component{
       }
     }
 
-    if (typeof fields["FaxNumber"] !== "undefined") {
-      if (!fields["FaxNumber"].match(/^[0-9]{9}$/)) {
-        formIsValid = false;
-        errors["FaxNumber"] = "Please enter valid Fax Number.";
-      }
-    }
+    // if (typeof fields["FaxNumber"] !== "undefined") {
+    //   if (!fields["FaxNumber"].match(/^[0-9]{9}$/)) {
+    //     formIsValid = false;
+    //     errors["FaxNumber"] = "Please enter valid Fax Number.";
+    //   }
+    // }
 
     if (!fields["Address"]) {
       formIsValid = false;
@@ -217,46 +261,6 @@ class RentFormFilling extends Component{
     this.setState({isInViewPage: false});
   }
 
-  reserveNowClick=()=>{
-
-
-    //const {insurancePlans} = this.props.allUnits;
-    const {siteLocation} = this.props.allUnits;
-    const {units} =  this.props.allUnits;
-    const pathParams = this.props.pathParams;
-
-    const {unit} = this.props.selectedUnitInfo;
-    const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
-    const selectedSiteLocation = this.props.selectedUnitInfo.siteLocation; 
-    debugger;
-
-    const {moveInCharges} = this.props.moveInCharges;
-    const {totalAmount} = this.props.moveInCharges;
-
-    var requestData =
-    {
-      "concessionID": Object.keys(unit).length > 0 && unit.concessionID,
-      "emailAddress": this.state.fields.Email,
-      "firstName": this.state.fields.FirstName,
-      "insurCoverageID": insurancePlans.length > 0 ? insurancePlans[0].insurCoverageID : 0,
-      "lastName": this.state.fields.LastName,
-      "locationCode": pathParams.locationCode,
-      "moveInDate": this.formatDate(this.state.selectedDate),
-      "phoneNumber": this.state.fields.PhoneNumber,
-      "siteID": Object.keys(unit).length > 0 && unit.siteID,
-      "tenantID": 0,
-      "textMeUpdates": this.state.textMeUpdate,
-      "unitID": pathParams.unitId,
-      "uuid": "string"
-    };
-
-      reserveNow(requestData).then((success)=>{
-        debugger;
-      },
-      (error)=>{
-        debugger;
-      });
-  }
 
   formatDate(date) {
     var d = new Date(date),
@@ -271,6 +275,11 @@ class RentFormFilling extends Component{
 }
 
 render(){
+
+  if (this.state.isRedirectActivated) {
+    this.setState({isRedirectActivated: false});
+    return <Redirect to={`/rent-payment/${this.props.pathParams.locationCode}/${this.props.pathParams.unitId}/${this.state.tenantID}`} />
+  }
 
   const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
 

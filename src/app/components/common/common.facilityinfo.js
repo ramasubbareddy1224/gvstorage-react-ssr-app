@@ -131,7 +131,7 @@ render(){
                 {divMoveInTaxes}
             </div>
             
-            <h2 className="gv-text-color"> {!!totalAmount && (`$${totalAmount}`)} </h2>
+            <h2 className="gv-text-color"> {!!totalAmount && (`$${totalAmount.toFixed(2)} USD`)} </h2>
 
             </div>
             

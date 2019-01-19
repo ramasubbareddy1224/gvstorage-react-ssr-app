@@ -86,16 +86,31 @@ render(){
             <div className="col-5 col-sm-4 col-md-3">
               <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-2.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
-                  <div className="location-info">
+                  <div className="location-info" onClick={() => {this.clkRedirectToSelfStorage(item.locationCode) }}>
                     <h2 className=""> {index+1} </h2>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-7 col-sm-8 col-md-9">
+            {/* <div className="col-7 col-sm-8 col-md-9">
               <h5 className="pt-2" onClick={() => {this.clkRedirectToSelfStorage(item.locationCode) }} > {item.city} </h5>
               <p> {item.address1} <br/>
                 {item.city}, {item.stateCode} {item.postalCode}</p>
+            </div> */}
+            <div className="col-7 col-sm-8 col-md-8 search-left-panel">
+              <h6 className="mb-0" onClick={() => {this.clkRedirectToSelfStorage(item.locationCode) }}> {item.city} </h6>
+              <p className="mb-0 small"> {item.address1} <br />
+              {item.city}, {item.stateCode} {item.postalCode} </p>
+                <p className="reviews "> 
+                <span><i className="text-warning fa fa-star small"></i></span>
+                <span><i className="text-warning fa fa-star"></i></span>
+                <span><i className="text-warning fa fa-star"></i></span>
+                <span><i className="text-warning fa fa-star"></i></span>
+                <span><i className="text-warning fa fa-star-half-o"></i></span> 
+                <br />
+                <span className="font-weight-bold text-underline"> 150 reviews  </span>
+              </p>
+              <a className="btn btn-gvstore btn-success border-0 green-gradient" style={{minWidth:'100px', color: '#fff'}} onClick={() => {this.clkRedirectToSelfStorage(item.locationCode) }}> View Facility </a>
             </div>
           </div>
           <hr />

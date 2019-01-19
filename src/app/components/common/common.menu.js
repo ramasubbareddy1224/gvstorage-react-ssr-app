@@ -76,37 +76,34 @@ render(){
           </li>
           <li className="menu-has-children"><a href="#">Storage Options</a>
            <ul>
-              <li><a href="#">Drop Down 1</a>
-              <ul>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
+              <li><Link to="/why-choose-us">Why Choose Us</Link></li>
+              <li><Link to="/personal-storage">Personal Storage</Link></li>
+              <li><Link to="/business-storage">Business Storage</Link></li>
+              <li><Link to="/vehicle-storage">Vehicle Storage</Link></li>
+              <li><Link to="/gvs-services">GVS Services</Link></li>
             </ul>
             </li>
           <li className="menu-has-children"> <a href="#">Storage Tools</a>
            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
+              <li><Link to="/size-guide">Size Guide</Link></li>
+              <li><Link to="/space-calculator">Space Calculator</Link></li>
+              <li><Link to="/tips">Tips</Link></li>
+              <li><Link to="/packing-supplies">Packing Supplies</Link></li>
+              <li><Link to="/faqs">FAQs</Link></li>
             </ul>
             </li>
           <li className="menu-has-children"><a href="#">Company</a>
            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li>
+              <li><Link to="/about-us">About Us</Link></li>
+              <li><Link to="/contact-us">Contact</Link></li>
+              <li><Link to="/careers">Careers</Link></li>
+              <li><Link to="/blogs">Blogs</Link></li>
+              <li><Link to="/">Reviews Us</Link></li>
             </ul>
             </li>
-          <li><a href="#">Contact Us</a></li>
+          <li><Link to="/contact-us">Contact Us</Link></li>
          
-          <li><a href="##">FAQs</a></li>
+          <li><Link to="/faqs">FAQs</Link></li>
         </ul>
       </nav>
     </div>

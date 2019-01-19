@@ -175,6 +175,7 @@ class ReserveFormFilling extends Component{
         }
       },
       (error)=>{
+        alert((JSON.parse(error.text)).status.message);
         debugger;
       });
   }

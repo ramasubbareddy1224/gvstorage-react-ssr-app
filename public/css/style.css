@@ -1429,10 +1429,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ba623', end
 .storage-location-info-img:after {
     content: "";
     position: absolute;
-    top: 30px;
+    top: 25px;
     border: 2px solid #38a61d;
     width: 99%;
-    height: 90%;
+    height: 95%;
     border-radius: 0 30px 0 30px;
     left: 14px;
 }
@@ -1878,6 +1878,25 @@ margin-top:2rem;
 	 
 }
 
+/*  Static Pave styles  */
+
+.static-page-lists { padding-left: 20px;}
+.static-page-lists ul { list-style: none; padding-left: 15px;  }
+.static-page-lists li { position: relative; margin-bottom:10px; line-height:18px; font-size:14px; }
+.static-page-lists ul li::before { position: absolute;
+    left: -20px;
+    display: inline-block;
+	color: #59A438;
+	top: 7px;
+	content: "\f00c";
+	font: normal normal normal 14px/1 FontAwesome;
+	
+}
+.storage-location-info-img img { border-radius:0px 30px 0px 30px; width:255px; height:275px;}
+
+.about_video { padding-top:15%;}
+
+
 
 
 .facility-filter-tabs .facility-tabs .filter-tab-content table .rate-varision{ text-align:right;}
@@ -2012,5 +2031,15 @@ a.sf-with-ul-breadcrumb:after {
 .errorMsg {color: #dc3545 !important}
 .react-datepicker-wrapper, .react-datepicker__input-container {width: 100%}
 .btn-gvstore a {
-    color: #fff;
+	color: #fff;
+	cursor: pointer;
+}
+
+
+.search-left-panel h6{
+	cursor: pointer;
+}
+
+.cursor-pointer{
+	cursor: pointer;
 }

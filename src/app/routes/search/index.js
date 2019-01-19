@@ -18,7 +18,9 @@ import { getPinCodes_Sites
 } from '../../../modules/actioncreators/home.actioncreator';
 
 
+var pathParams = {};
 const frontload = async props => {
+  pathParams = props.match.params;
   //const queryParams = queryString.parse(window.location.search);
   //await props.getAllSitesByFilters(values.value);
   var dynamicRequestList = [];
@@ -31,7 +33,6 @@ const frontload = async props => {
    
   });
 };
-
 
 
 class Search extends Component {  
@@ -54,7 +55,7 @@ class Search extends Component {
 
     return (
       <Page id="search">
-      <HomeBanner pageName="search" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
+      <HomeBanner pageName="search" allPinCodes_Sites ={this.props.allPinCodes_Sites} siteCount={!!this.props.allSites.siteLocations ?  this.props.allSites.siteLocations.length : 0} siteName={pathParams.filter}></HomeBanner>
       <CommonBreadCrumb allSites={this.props.allSites} allPinCodes_Sites ={this.props.allPinCodes_Sites}></CommonBreadCrumb>
       <main id="main" className="citypage-section"> 
           <SearchFilteredData allSites={this.props.allSites} allFilters={this.props.allFilters}></SearchFilteredData>

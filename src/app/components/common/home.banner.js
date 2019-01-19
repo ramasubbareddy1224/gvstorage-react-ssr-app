@@ -60,6 +60,8 @@ render(){
   // const {allPinCodes} = this.props;
   // const {allSites} = this.props;
   const {allPinCodes_Sites} = this.props;
+  const {siteCount} = this.props;
+  const {siteName} = this.props;
 
   const options = [];
 
@@ -84,8 +86,26 @@ render(){
       <section id={pageName == 'home' ? 'intro' :'inner-banner'}>
     
         <div className={pageName == 'home' ?  'intro-content wow zoomIn':'inner-banner-content wow zoomIn' }>
-          <h2>We've got room {this.props.pageName}</h2>
+        { this.props.pageName == 'home' && 
+        <div>
+          <h2>We've got room</h2>
           <p> Personal and business storage solutions </p>
+          </div>
+        }
+        { this.props.pageName == 'search' && 
+        <div>
+          <h2>{siteName} : {siteCount} Loctions</h2>
+          <p>Let us find you the perfect unit</p>
+          </div>
+        }
+        {
+          (this.props.pageName != 'home' && this.props.pageName != 'search') &&
+          <div>
+            <h2>{pageName}</h2>
+            <br />
+          </div>
+        }
+        
           <div className="find-storage">
                <form action="" method="post" role="form" className="contactForm">
              <label htmlFor="label" className="small text-left float-left" style ={ {fontSize: "70%", paddingLeft: '15px'}}> Search Using</label>
