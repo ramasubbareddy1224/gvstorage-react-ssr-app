@@ -21,7 +21,7 @@ export const getDiscounts = () => (dispatch) => {
     .json(json=>dispatch(getAllDiscounts(json)));
   };
 
-  export const getPinCodes = () => (dispatch) => {
+  export const getPinCodes = () => {
     return new Promise(resolve=>{
       return ApiRequest.url(`postalcodes`)
       .get()
@@ -30,7 +30,7 @@ export const getDiscounts = () => (dispatch) => {
     
   };
 
-  export const getSites = () => (dispatch) => {
+  export const getSites = () => {
     return new Promise(resolve=>{
       return ApiRequest.url(`sites`)
       .get()
@@ -56,6 +56,7 @@ export const getDiscounts = () => (dispatch) => {
       Promise.all([getPinCodes(),getSites()]).then(response=>{
         dispatch(hideLoading());
         dispatch(actionCreator_PinCodes_Sites(response));
+        resolve({});
       })
     })   
 
