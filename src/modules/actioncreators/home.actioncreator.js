@@ -3,6 +3,7 @@ import wretch from "wretch"
 import {Environment} from '../../configurations/environment';
 import {ACTIONTYPES} from '../../configurations/actiontypes';
 import { ApiRequest } from '../../utility' ;
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 const getAllDiscounts = discounts => ({ type: ACTIONTYPES.HOME.GET_ALL_DISCOUNTS, payload: discounts });
 const getAllPinCodes = pincodes => ({ type: ACTIONTYPES.HOME.GET_ALL_PINCODES, payload: pincodes });
@@ -33,10 +34,12 @@ export const getDiscounts = () => (dispatch) => {
   };
 
   export const getPinCodes_Sites = () => (dispatch) => {
+    dispatch(showLoading());
    return Promise.all([ApiRequest.url(`postalcodes`).get().json(postalCodeJson => { return  postalCodeJson}), 
       ApiRequest.url(`sites`).get().json(sitesJson => {return sitesJson})
     ]).then(function(values) {
       dispatch(actionCreator_PinCodes_Sites(values));
+      dispatch(hideLoading());
     });
   };
 

@@ -10,7 +10,7 @@ import searchPageData from '../modules/reducers/search.reducer';
 import commonData from '../modules/reducers/common.reducer';
 import selfStorageData from '../modules/reducers/self-storage.reducer';
 import reserveData from '../modules/reducers/reserve.reducer';
-
+import { loadingBarReducer } from 'react-redux-loading-bar'
 export default combineReducers({
   auth,
   profile,
@@ -21,5 +21,6 @@ export default combineReducers({
   searchPageData,
   commonData,
   selfStorageData,
-  reserveData
+  reserveData,
+  loadingBar: loadingBarReducer
 });
