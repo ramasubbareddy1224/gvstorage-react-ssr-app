@@ -38,7 +38,7 @@ const frontload = async props => {
       // }
       // dynamicRequestList.push(props.getAllUnitsByLocationCode(props.match.params.locationCode));
       // await Promise.all(dynamicRequestList);
-     await props.getAllUnitsByLocationCode(props.match.params.locationCode);
+     return props.getAllUnitsByLocationCode(props.match.params.locationCode);
   }
   catch(error)
   {
