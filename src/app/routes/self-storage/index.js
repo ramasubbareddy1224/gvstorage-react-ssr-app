@@ -32,13 +32,13 @@ const frontload = async props => {
   pathParams = props.match.params;
 
   try{
-      var dynamicRequestList = [];
-      if(props.allPinCodes_Sites.length == 0){
-        dynamicRequestList.push(props.getPinCodes_Sites());
-      }
-      dynamicRequestList.push(props.getAllUnitsByLocationCode(props.match.params.locationCode));
-      await Promise.all(dynamicRequestList);
-      //await props.getAllUnitsByLocationCode(props.match.params.locationCode);
+      // var dynamicRequestList = [];
+      // if(props.allPinCodes_Sites.length == 0){
+      //   dynamicRequestList.push(props.getPinCodes_Sites());
+      // }
+      // dynamicRequestList.push(props.getAllUnitsByLocationCode(props.match.params.locationCode));
+      // await Promise.all(dynamicRequestList);
+      await props.getAllUnitsByLocationCode(props.match.params.locationCode);
   }
   catch(error)
   {
