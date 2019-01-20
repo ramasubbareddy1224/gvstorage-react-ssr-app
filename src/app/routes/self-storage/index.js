@@ -25,7 +25,7 @@ import { getAllUnitsByLocationCode,resetSelfStorageUnits } from '../../../module
 
 var pathParams = {};
 
-const frontload = props => {
+const frontload = async props => {
 
   props.resetSelfStorageUnits();
 
@@ -38,7 +38,7 @@ const frontload = props => {
       // }
       // dynamicRequestList.push(props.getAllUnitsByLocationCode(props.match.params.locationCode));
       // await Promise.all(dynamicRequestList);
-      props.getAllUnitsByLocationCode(props.match.params.locationCode).then(data=>{});
+     await props.getAllUnitsByLocationCode(props.match.params.locationCode);
   }
   catch(error)
   {
