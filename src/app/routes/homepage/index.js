@@ -13,10 +13,20 @@ import HomeTestimonials from '../../components/common/home.testimonials';
 import CommonContactUs from '../../components/common/common.contactus';
 
 
-import { getPinCodes_Sites
+import { getPinCodes_Sites, getCurrentLocation, getNearByLocations
   } from '../../../modules/actioncreators/home.actioncreator';
+import CommonNearBy from '../../components/common/common.nearby';
 
 const frontload = async props =>{
+
+
+  getCurrentLocation().then((success) =>{
+   props.getNearByLocations(success.city, success.region_name, success.zip).then(function(values) {
+    });
+
+  }, (error)=>{
+
+  });
 
   var dynamicRequestList = [];
   if(props.allPinCodes_Sites.length == 0){
@@ -31,9 +41,14 @@ const frontload = async props =>{
 
 class HomePage extends Component {
   render() {
+    const {nearByLocations} = this.props;
+   
     return (
       <Page id="homepage">
     <HomeBanner pageName="home" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
+   { !!nearByLocations.siteLocations && nearByLocations.siteLocations.length >0 &&
+     <CommonNearBy></CommonNearBy>
+   }
     <main id="main">
     <HomeLocations allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeLocations>
     <HomeStorageSolutions></HomeStorageSolutions>
@@ -49,10 +64,11 @@ class HomePage extends Component {
 
 const mapStateToProps = state => ({
   allPinCodes_Sites: state.homePageData.pinCodes_Sites,
+  nearByLocations: state.homePageData.nearByLocations
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({  getPinCodes_Sites }, dispatch);
+  bindActionCreators({  getPinCodes_Sites, getNearByLocations }, dispatch);
 
 export default connect(
   mapStateToProps,

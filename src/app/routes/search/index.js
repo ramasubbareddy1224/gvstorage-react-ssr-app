@@ -61,11 +61,23 @@ class Search extends Component {
           <SearchFilteredData allSites={this.props.allSites} allFilters={this.props.allFilters}></SearchFilteredData>
         
           <section id="about" className ="city-nearby-lake ">
-              <SearchRelevantData relevanceType="neighbourhood"></SearchRelevantData>
-              <hr/>
-               <SearchRelevantData relevanceType="nearbylakes"></SearchRelevantData>
-               <hr/>
-                <SearchRelevantData relevanceType="nearbyuniversities"></SearchRelevantData>
+         
+          {!!this.props.allSites.siteLocations && this.props.allSites.siteLocations[0].content.gvsnearneighborhoods.length > 0 &&
+              <SearchRelevantData relevanceType="neighbourhood" content={this.props.allSites.siteLocations[0].content.gvsnearneighborhoods}></SearchRelevantData>
+              
+        } 
+        <hr />
+        {!!this.props.allSites.siteLocations && !!this.props.allSites.siteLocations[0].content.gvsnearlakes.length > 0 &&
+               <SearchRelevantData relevanceType="nearbylakes" content={this.props.allSites.siteLocations[0].content.gvsnearlakes}></SearchRelevantData>
+              
+        } 
+        <hr />
+        {!!this.props.allSites.siteLocations && !!this.props.allSites.siteLocations[0].content.gvsnearuniversities.length > 0 &&
+              <SearchRelevantData relevanceType="nearbyuniversities" content={this.props.allSites.siteLocations[0].content.gvsnearuniversities}></SearchRelevantData>    
+        } 
+      
+        
+                
           </section>
   
               <CommonContactUs></CommonContactUs>

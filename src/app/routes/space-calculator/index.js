@@ -5,15 +5,11 @@ import { connect } from 'react-redux';
 import { frontloadConnect } from 'react-frontload';
 
 import HomeBanner from '../../components/common/home.banner';
-import HomeLocations from '../../components/common/home.locations';
-import HomeStorageSolutions from '../../components/common/home.storagesolutions';
-import HomeWhyUs from '../../components/common/home.whyus';
-import HomeTestimonials from '../../components/common/home.testimonials';
-import CommonContactUs from '../../components/common/common.contactus';
-
 
 import { getPinCodes_Sites
   } from '../../../modules/actioncreators/home.actioncreator';
+import CommonStaticBreadCrumb from '../../components/common/common.static-breadcrumb';
+import CommonSpaceCalculator from '../../components/common/common.space-calculator';
 
 const frontload = async props =>{
 
@@ -29,17 +25,15 @@ const frontload = async props =>{
 class SpaceCalculator extends Component {
   render() {
     return (
-      <Page id="homepage">
-    <HomeBanner pageName="home" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
-    <main id="main">
-    <HomeLocations allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeLocations>
-    <HomeStorageSolutions></HomeStorageSolutions>
-    <HomeWhyUs></HomeWhyUs>
-    <HomeStorageSolutions></HomeStorageSolutions>
-    <HomeTestimonials></HomeTestimonials>
-    <CommonContactUs></CommonContactUs>
-    </main>
-  </Page>
+      <Page id="space-calculator">
+      <HomeBanner pageName="Space Calculator" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
+      <CommonStaticBreadCrumb pageName="Space Calculator" routeName="Space Calculator"></CommonStaticBreadCrumb>
+      <main id="main">
+      <section id="spacecalc">
+          <CommonSpaceCalculator allPinCodes_Sites ={this.props.allPinCodes_Sites}></CommonSpaceCalculator>
+          </section>
+      </main>
+    </Page>
     );
   }
 }

@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
 
 class SelfStorageAboutSite extends Component{
+  
 render(){
+  const {content} = this.props;
     return(
         <section className="about-location">
         <div className="container">
           <div className="col-12">
-            <h2> About Texas Storage Park </h2>
+            <h2> About Site </h2>
             <div className="about-storage-location pt-3">
               <div className="about-storage-tab ">
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
@@ -19,7 +21,7 @@ render(){
                   <div className="tab-pane fade show active" id="Info" role="tabpanel" aria-labelledby="home-tab">
                     <div className="tab-content">
                       <div className="row">
-                        <div className="col-md-6"> 
+                        {/* <div className="col-md-6"> 
                             <h5> Texas Storage Park </h5>                    
                             
                             <p> Welcome to Great Value StorageⓇ in Austin, Texas. Our convenient self-storage facility is located Northwest of downtown Austin on FM 620 Ranch Road. Just South of Anderson Mill Road and less than 5 miles from Lake Travis. Without a doubt, our number one priority is to make sure all of our customers are happy and satisfied with their storage solution. We take on your stress so that you are able to have peace of mind while moving.</p>
@@ -28,7 +30,11 @@ render(){
     </p>
     <p>
     Great Value Storage is a growing self-storage company throughout the United States. We proudly serve the areas of Austin, Anderson Mill, Lakeline, Canyon Creek and surrounding neighborhoods. We provide the most value for your dollar. Remember, Value is our middle name. Come and take a tour of our facility or reserve your unit online today.</p>
-                        </div>
+                        </div> */}
+                      <div className="col-md-6"> 
+                          <div dangerouslySetInnerHTML={{ __html: content.aboutus }} />
+                      </div>
+
                         <div className="col-md-6">
                           <div className="product-slider"> 
                               <div className="product-big-image gv-radius">

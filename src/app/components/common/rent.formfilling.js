@@ -77,7 +77,7 @@ class RentFormFilling extends Component{
         "emailAddress": this.state.fields.Email,
         "faxNumber": !!this.state.fields.FaxNumber ? this.state.fields.FaxNumber : '',
         "firstName": this.state.fields.FirstName,
-        "insurCoverageID": parseInt(this.state.fields.ProtectionCoverage),
+        "insurCoverageID": 0, //parseInt(this.state.fields.ProtectionCoverage),
         "lastName": this.state.fields.LastName,
         "locationCode": this.props.pathParams.locationCode,
         "phoneNumber": this.state.fields.PhoneNumber,
@@ -240,10 +240,10 @@ class RentFormFilling extends Component{
       }
     }
 
-    if (!fields["ProtectionCoverage"]) {
-      formIsValid = false;
-      errors["ProtectionCoverage"] = "Please select Protection Coverage.";
-    }
+    // if (!fields["ProtectionCoverage"]) {
+    //   formIsValid = false;
+    //   errors["ProtectionCoverage"] = "Please select Protection Coverage.";
+    // }
 
     this.setState({
       errors: errors
@@ -418,7 +418,7 @@ return (
                   </div>
                   
                   
-                  <div className="row pb-3">  
+                  {/* <div className="row pb-3">  
                     <div className="col-md-6">
                       <div className="form-group">
                         <label for="First Name"> Movie-In Date <span className="text-danger"> * </span> </label>
@@ -431,11 +431,11 @@ return (
                       </div>
                     </div>
                     
-                    </div>
+                    </div> */}
                     
                   
                    
-                  <div className="row pb-3">  
+                  {/* <div className="row pb-3">  
                     <div className="col-md-10">
                       <div className="form-group">
                         <label for="First Name">Select Protection coverage <span className="text-danger"> * </span> </label>
@@ -449,7 +449,7 @@ return (
                     </div>
                     
                     </div>
-                  
+                   */}
                   <div className="clearfix"> </div>
 
   <hr />

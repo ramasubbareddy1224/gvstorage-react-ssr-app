@@ -64,10 +64,16 @@ render(){
   if(!!allSites.siteLocations){
 
 
-    const filteredSites = allSites.siteLocations.filter(x=> (!this.props.allFilters.isVehicleStorageChecked || x.vehicleStorage == true) 
-    && (!this.props.allFilters.isClimateControlledChecked || x.climateControlled == true) 
-    && (!this.props.allFilters.isDriveUpAccessChecked || x.driveupAccess == true) 
-    && (!this.props.allFilters.isWarehouseChecked || x.warehouseOROffice == true) );
+    // const filteredSites = allSites.siteLocations.filter(x=> (!this.props.allFilters.isVehicleStorageChecked || x.vehicleStorage == true) 
+    // && (!this.props.allFilters.isClimateControlledChecked || x.climateControlled == true) 
+    // && (!this.props.allFilters.isDriveUpAccessChecked || x.driveupAccess == true) 
+    // && (!this.props.allFilters.isWarehouseChecked || x.warehouseOROffice == true) );
+
+    const filteredSites = allSites.siteLocations.filter(x=> 
+      (!this.props.allFilters.isVehicleStorageChecked || x.content.vehicle == true) 
+    && (!this.props.allFilters.isClimateControlledChecked || x.content.climate == true) 
+    && (!this.props.allFilters.isDriveUpAccessChecked || x.content.driveup == true) 
+    && (!this.props.allFilters.isWarehouseChecked || x.content.warehouse_office == true) );
 
 
     if(filteredSites.length > 0 && Object.keys(this.state.selectedLocation).length == 0) {
