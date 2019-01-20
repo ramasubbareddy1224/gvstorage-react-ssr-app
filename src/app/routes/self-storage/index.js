@@ -26,9 +26,7 @@ import { getAllUnitsByLocationCode,resetSelfStorageUnits } from '../../../module
 var pathParams = {};
 
 const frontload = props => {
-
   props.resetSelfStorageUnits();
-
   pathParams = props.match.params;
 
   try{
