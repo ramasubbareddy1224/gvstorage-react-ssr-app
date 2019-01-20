@@ -20,27 +20,42 @@ import CommonContactUs from '../../components/common/common.contactus';
 
 import { getAllSitesByFilters } from '../../../modules/actioncreators/search.actioncreator';
 import { getPinCodes_Sites } from '../../../modules/actioncreators/home.actioncreator';
-import { getAllUnitsByLocationCode } from '../../../modules/actioncreators/self-storage.actioncreator';
+import { getAllUnitsByLocationCode,resetSelfStorageUnits } from '../../../modules/actioncreators/self-storage.actioncreator';
 
 
 var pathParams = {};
 
 const frontload = async props => {
+  props.resetSelfStorageUnits();
   pathParams = props.match.params;
 
-  //const queryParams = queryString.parse(window.location.search);
-  //await props.getAllSitesByFilters(values.value);
-  
-  var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
+  try{
+      var dynamicRequestList = [];
+      if(props.allPinCodes_Sites.length == 0){
+        dynamicRequestList.push(props.getPinCodes_Sites());
+      }
+      dynamicRequestList.push(props.getAllUnitsByLocationCode(props.match.params.locationCode));
+      await Promise.all(dynamicRequestList);
+    // return props.getAllUnitsByLocationCode(props.match.params.locationCode);
   }
-  dynamicRequestList.push(props.getAllUnitsByLocationCode(props.match.params.locationCode));
+  catch(error)
+  {
+    console.log('error',error);
+  }
 
-  return Promise.all(dynamicRequestList).then(function(values) {
-   
-  });
+
   
+  // var dynamicRequestList = [];
+  // if(props.allPinCodes_Sites.length == 0){
+  //   dynamicRequestList.push(props.getPinCodes_Sites());
+  // }
+  // dynamicRequestList.push(props.getAllUnitsByLocationCode(props.match.params.locationCode));
+
+  // return Promise.all(dynamicRequestList).then(function(values) {   
+  // });
+  
+
+
   // return Promise.all([
   //   props.getPinCodes_Sites() 
   //   ,props.getAllSitesByFilters(props.match.params.locationCode)
@@ -98,7 +113,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ getPinCodes_Sites, getAllSitesByFilters, getAllUnitsByLocationCode }, dispatch);
+  bindActionCreators({ getPinCodes_Sites, getAllSitesByFilters, getAllUnitsByLocationCode,resetSelfStorageUnits }, dispatch);
 
 export default connect(
   mapStateToProps,

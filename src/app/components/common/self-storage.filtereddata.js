@@ -250,40 +250,40 @@ const divAppliedFilters =  this.state.filteredUnitTypes.map((val,index)=> {
         onChangeComplete={() => { this.onDimensionRangeChange()}}
         />
         
-        <div class="filter-blocks">
-                    	<div class="filter-blockitems"> </div>
-                        <div class="row">
-                        	<div class="col-md-2">
-                            <div class=" block-item-list">
-                             <span class="range-line"> </span>
+        <div className="filter-blocks">
+                    	<div className="filter-blockitems"> </div>
+                        <div className="row">
+                        	<div className="col-md-2">
+                            <div className=" block-item-list">
+                             <span className="range-line"> </span>
                              Walk-In Closet </div>
                              </div>
                              
-                            <div class="col-md-2"> 
-                            <div class=" block-item-list">
-                            <span class="range-line"> </span>
+                            <div className="col-md-2"> 
+                            <div className=" block-item-list">
+                            <span className="range-line"> </span>
                             Mid-Size Bedroom </div>
                             </div>
                             
-                            <div class="col-md-2"> 
-                            <div class=" block-item-list">
-                            <span class="range-line"> </span>
+                            <div className="col-md-2"> 
+                            <div className=" block-item-list">
+                            <span className="range-line"> </span>
                             Family Room </div>
                             </div>
                             
-                            <div class="col-md-2"> 
-                            <div class=" block-item-list">
-                            <span class="range-line"> </span>
+                            <div className="col-md-2"> 
+                            <div className=" block-item-list">
+                            <span className="range-line"> </span>
                             3 Bed Rooms </div>
                             </div>
                             
-                            <div class="col-md-2"> 
-                            <div class=" block-item-list">
-                            <span class="range-line"> </span>
+                            <div className="col-md-2"> 
+                            <div className=" block-item-list">
+                            <span className="range-line"> </span>
                             Full House </div>
                             </div>
-                            <div class="col-md-2"> 
-                            <div class=" block-item-list">
+                            <div className="col-md-2"> 
+                            <div className=" block-item-list">
                             Large House </div>
                         </div>
                         </div>
