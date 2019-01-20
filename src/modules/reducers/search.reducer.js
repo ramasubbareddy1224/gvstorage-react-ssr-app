@@ -10,6 +10,8 @@ export default function(state = INITIAL_STATE, action) {
           return { ...state, sites: action.payload, originalSites: action.payload};
         case ACTIONTYPES.SEARCH.GET_ALL_SITES_BY_CHECKBOXES:
           return { ...state, sites: filterData(state.originalSites, action.payload) }
+          case ACTIONTYPES.SEARCH.RESET_ALL_SITES_BY_FILTER:
+          return INITIAL_STATE;
 
       default:
       return state;

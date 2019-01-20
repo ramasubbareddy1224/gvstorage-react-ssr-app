@@ -13,13 +13,14 @@ import SearchRelevantData from '../../components/common/search.relevantdata';
 import CommonContactUs from '../../components/common/common.contactus';
 import EventsMapPage from '../../components/googlemap/events_map_page';
 
-import { getAllSitesByFilters } from '../../../modules/actioncreators/search.actioncreator';
+import { getAllSitesByFilters,resetAllSites } from '../../../modules/actioncreators/search.actioncreator';
 import { getPinCodes_Sites
 } from '../../../modules/actioncreators/home.actioncreator';
 
 
 var pathParams = {};
 const frontload = async props => {
+  //props.resetAllSites();
   pathParams = props.match.params;
   //const queryParams = queryString.parse(window.location.search);
   //await props.getAllSitesByFilters(values.value);
@@ -29,9 +30,7 @@ const frontload = async props => {
   }
   dynamicRequestList.push(props.getAllSitesByFilters(props.match.params.filter));
 
-  return Promise.all(dynamicRequestList).then(function(values) {
-   
-  });
+  await Promise.all(dynamicRequestList);
 };
 
 
@@ -82,7 +81,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ getPinCodes_Sites, getAllSitesByFilters }, dispatch);
+  bindActionCreators({ getPinCodes_Sites, getAllSitesByFilters,resetAllSites }, dispatch);
 
 export default connect(
   mapStateToProps,

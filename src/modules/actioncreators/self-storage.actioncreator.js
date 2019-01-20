@@ -7,18 +7,18 @@ import axios from 'axios';
 const getAllUnits = units => ({ type: ACTIONTYPES.SELF_STORAGE.GET_ALL_UNITS_LOCATION_CODE, payload: units });
 const resetUnit=()=>({type:ACTIONTYPES.SELF_STORAGE.RESET_SELF_STORAGE_ALL_UNITS,payload:{}});
 
-  // export const getAllUnitsByLocationCode = (locationCode) => (dispatch) => {
-  //  return new Promise(resolve=>{
-  //     var apiUrl = 'units/' + locationCode;
-  //    return ApiRequest.url(apiUrl)
-  //     .get()
-  //     .json(json=> {        
-  //       dispatch(getAllUnits(json));
-  //       resolve(json);
-  //     });
-  //   })
+  export const getAllUnitsByLocationCode = (locationCode) => (dispatch) => {
+   return new Promise(resolve=>{
+      var apiUrl = 'units/' + locationCode;
+     return ApiRequest.url(apiUrl)
+      .get()
+      .json(json=> {        
+        dispatch(getAllUnits(json));
+        resolve(json);
+      });
+    })
    
-  // };
+  };
 
   // export const getAllUnitsByLocationCode = (locationCode) => (dispatch) => {
   // return new Promise(resolve=>{
@@ -38,11 +38,11 @@ const resetUnit=()=>({type:ACTIONTYPES.SELF_STORAGE.RESET_SELF_STORAGE_ALL_UNITS
     
   //  };
 
-  export const getAllUnitsByLocationCode = (locationCode) => async dispatch => {
-    const res = await axios.get(`${Environment.MW_END_POINT_URL}gvs/api/units/${locationCode}`);
-    console.log('result',res);
-    return dispatch(getAllUnits(res.data));
-  }
+  // export const getAllUnitsByLocationCode = (locationCode) => async dispatch => {
+  //   const res = await axios.get(`${Environment.MW_END_POINT_URL}gvs/api/units/${locationCode}`);
+  //   console.log('result',res);
+  //   return dispatch(getAllUnits(res.data));
+  // }
 
 export const resetSelfStorageUnits=()=> dispatch=>{
   return dispatch(resetUnit());
