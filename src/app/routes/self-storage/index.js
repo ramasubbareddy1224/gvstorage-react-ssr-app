@@ -25,7 +25,7 @@ import { getAllUnitsByLocationCode,resetSelfStorageUnits } from '../../../module
 
 var pathParams = {};
 
-const frontload = async props => {
+const frontload = props => {
 
   props.resetSelfStorageUnits();
 
