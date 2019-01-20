@@ -17,7 +17,7 @@ const { store, history } = createStore();
 const Application = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Frontload noServerRender={true}>
+      <Frontload noServerRender={false}>
         <App />
       </Frontload>
     </ConnectedRouter>
@@ -25,6 +25,8 @@ const Application = (
 );
 
 const root = document.querySelector('#root');
+
+console.log('root has child',root.hasChildNodes());
 
 if (root.hasChildNodes() === true) {
   // If it's an SSR, we use hydrate to get fast page loads by just
