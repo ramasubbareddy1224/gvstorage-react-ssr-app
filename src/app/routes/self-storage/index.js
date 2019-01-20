@@ -67,6 +67,15 @@ const frontload = async props => {
 class SelfStorage extends Component {  
   render() {
     const { allUnits } = this.props;
+    const {allSites} = this.props;
+
+    var allSitesNearBy = {};  
+    var siteLocations =  !!allUnits.siteLocation && allUnits.siteLocation.content && 
+    allUnits.siteLocation.content.gvsnearsites.length > 0 && 
+    allUnits.siteLocation.content.gvsnearsites.map(x=>x.siteLocation);
+    
+    allSitesNearBy.siteLocations = siteLocations;
+
     return (
       <Page id="self-storage">
       {Object.keys(this.props.allUnits).length > 0 && <SelfStorageBanner allUnits={this.props.allUnits}></SelfStorageBanner>}
@@ -76,9 +85,19 @@ class SelfStorage extends Component {
            <SelfStorageFeatures></SelfStorageFeatures>
            <SelfStorageReviews></SelfStorageReviews>
            <SelfStorageWhatFits></SelfStorageWhatFits>
-           <SearchRelevantData relevanceType="neighbourhood"></SearchRelevantData>
-           <SelfStorageAboutSite></SelfStorageAboutSite>
-           <SearchFilteredData allSites={this.props.allSites} allFilters={this.props.allFilters} allPinCodes_Sites ={this.props.allPinCodes_Sites}></SearchFilteredData>
+           {/* <SearchRelevantData relevanceType="neighbourhood"></SearchRelevantData> */}
+
+              {!!allSites.siteLocations && allSites.siteLocations[0].content.gvsnearneighborhoods.length > 0 &&
+                <SearchRelevantData relevanceType="neighbourhood" content={allSites.siteLocations[0].content.gvsnearneighborhoods}></SearchRelevantData>
+                
+              } 
+            { !!allUnits.siteLocation && allUnits.siteLocation.content &&
+           <SelfStorageAboutSite content={allUnits.siteLocation.content}></SelfStorageAboutSite>
+            }
+           {!!allUnits.siteLocation && allUnits.siteLocation.content && allUnits.siteLocation.content.gvsnearsites.length > 0 &&
+          
+           <SearchFilteredData allSites={allSitesNearBy} allFilters={this.props.allFilters} allPinCodes_Sites ={this.props.allPinCodes_Sites}></SearchFilteredData>
+           }
            <CommonContactUs></CommonContactUs>
        </main>
      </Page>

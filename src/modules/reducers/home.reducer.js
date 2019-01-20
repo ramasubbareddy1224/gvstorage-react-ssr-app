@@ -1,7 +1,7 @@
 
 import {ACTIONTYPES} from '../../configurations/actiontypes'
 
-const INITIAL_STATE = {sites: {}, pinCodes: {}, pinCodes_Sites: [],  error: null, loading: false};
+const INITIAL_STATE = {sites: {}, pinCodes: {}, pinCodes_Sites: [], nearByLocations: {},  error: null, loading: false};
 
 export default function(state = INITIAL_STATE, action) {
     switch(action.type) {
@@ -13,6 +13,9 @@ export default function(state = INITIAL_STATE, action) {
     
       case ACTIONTYPES.HOME.GET_ALL_PINCODES_SITES:
       return { ...state, pinCodes_Sites: action.payload }
+
+      case ACTIONTYPES.HOME.GET_NEAR_BY_LOCATIONS:
+      return { ...state, nearByLocations: action.payload}
 
       default:
       return state;

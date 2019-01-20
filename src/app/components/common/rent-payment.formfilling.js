@@ -4,18 +4,43 @@ import {Environment} from '../../../configurations/environment';
 import { confirmPayment
 } from '../../../modules/actioncreators/rent.actioncreator';
 import {Link, Redirect} from 'react-router-dom';
+import DatePicker from "react-datepicker";
 
 class RentPaymentFormFilling extends Component{
   constructor(props) {
     super(props);
     this.state = {
+      startDate: new Date(),
+      endDate: this.addDays(new Date(),12),
+      selectedDate: new Date(),
       fields: {},
       errors: {},
       isRedirectActivated: false,
     };
 
-   
+    this.handleChange = this.handleChange.bind(this);
   }
+
+  handleChange(date){
+    this.setState({
+      selectedDate: date
+    });
+  }
+  addDays(theDate, days) {
+    return new Date(theDate.getTime() + days*24*60*60*1000);
+  }
+
+  formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+}
 
   handleFormChange=(e)=> {
     let fields = this.state.fields;
@@ -43,8 +68,8 @@ class RentPaymentFormFilling extends Component{
       else {
           unitInfo = !!units ? units.filter(x=>x.firstAvailableUnitID == pathParams.unitId)[0] : {};
       }
-
-      const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
+      const {moveInCharges} = this.props.moveInCharges;
+      //const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
 
      var requestData = {
       "accessCode": "",
@@ -57,25 +82,26 @@ class RentPaymentFormFilling extends Component{
       "cnumber": this.state.fields.CardNumber,
       "concessionID": Object.keys(unitInfo).length > 0 && unitInfo.concessionID,
       "ctype": 0,
-      "endDate": "",
-      "insurCoverageID": insurancePlans.length > 0 ? insurancePlans[0].insurCoverageID: 0,
+      "endDate": moveInCharges[0].date,
+      "insurCoverageID": parseInt(this.state.fields.ProtectionCoverage),
       "locationCode": pathParams.locationCode,
-      "payMethod": 0,
+      "payMethod": 6,
       "paymentAmount": this.props.moveInCharges.totalAmount,
       "siteID": Object.keys(unitInfo).length > 0 && unitInfo.concessionID,
-      "startDate": "",
+      "startDate": this.formatDate(this.state.selectedDate),
       "tenantID": pathParams.tenantId,
       "unitID": pathParams.unitId,
       "uuid": ""
     }
 
       confirmPayment(requestData).then((success)=>{
+        alert(success.status.message);
         if(success.status.code  == 200){
-          alert('Payment done');
+          //alert('Payment done');
           this.setState({isRedirectActivated: true});
         }
         else if(success.status.code == -83){
-          alert(success.status.message);
+         // alert(success.status.message);
         }
       },
       (error)=>{
@@ -90,6 +116,12 @@ class RentPaymentFormFilling extends Component{
     let fields = this.state.fields;
     let errors = {};
     let formIsValid = true;
+
+    if (!fields["ProtectionCoverage"]) {
+      formIsValid = false;
+      errors["ProtectionCoverage"] = "Please select Protection Coverage.";
+    }
+
 
     if (!fields["CardName"]) {
       formIsValid = false;
@@ -195,7 +227,15 @@ render(){
     const {tenantInfo} = this.props;
     const {moveInCharges} = this.props.moveInCharges;
     const {totalAmount} = this.props.moveInCharges;
-    debugger;
+    const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
+
+
+    
+  const optionsProtectionCoverage = !!insurancePlans && insurancePlans.map((val, index) =>{
+return (
+      <option key={index} value={val.insurCoverageID}>Covers up to ${val.coverage} USD - ${val.premium} USD/Month</option>
+  )
+  })
 
 
     const divMoveIncharges = !!moveInCharges && moveInCharges.map((moveInCharge, index) => {
@@ -299,6 +339,35 @@ render(){
                 </div>
                   
                  <div  className="billing-info pt-2">
+
+                
+                <div className="row pb-3">
+                	<div className="col-md-12">
+                      <div className="form-group">
+                      <label for="ProtectionCoverage">Select Protection coverage <span className="text-danger"> * </span> </label>
+                        <p className="small"> We ask thea each of out customers select a property protection option. Our property protection plans listed below provided added peace of mind to protect your valuablea against demages from unfortunate and un pedictable incidents while in storage.</p>
+                        <select className="form-control" id="Select Protection coverage"  name="ProtectionCoverage" value={this.state.fields.ProtectionCoverage} onChange={this.handleFormChange}>
+                              <option value="">Select Protection coverage</option>
+                              {optionsProtectionCoverage}
+                        </select>
+                        <div className="errorMsg">{this.state.errors.ProtectionCoverage}</div>
+                      </div>
+                    </div>
+
+                    	<div className="col-md-12">
+                      <div className="form-group">
+                      <label for="First Name"> Movie-In Date <span className="text-danger"> * </span> </label>
+                        <DatePicker className="form-control"
+                          selected={this.state.selectedDate}
+                          onChange={this.handleChange}
+                          minDate={this.state.startDate}
+                          maxDate={this.state.endDate}
+                        />
+                      </div>
+                    </div>
+                    </div>  
+
+
                  <p className="pb-2"> <strong>Billing Information</strong> </p>
                 {/* <form className=""> */}
                 <div className="row pb-3">

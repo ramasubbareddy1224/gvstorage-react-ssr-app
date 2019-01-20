@@ -1,8 +1,7 @@
 import "isomorphic-fetch";
 import {ACTIONTYPES} from '../../configurations/actiontypes';
 import { ApiRequest } from '../../utility' ;
-import {Environment} from '../../configurations/environment';
-import axios from 'axios';
+
 
 const getAllUnits = units => ({ type: ACTIONTYPES.SELF_STORAGE.GET_ALL_UNITS_LOCATION_CODE, payload: units });
 const resetUnit=()=>({type:ACTIONTYPES.SELF_STORAGE.RESET_SELF_STORAGE_ALL_UNITS,payload:{}});

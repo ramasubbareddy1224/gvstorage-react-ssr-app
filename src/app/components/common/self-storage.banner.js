@@ -38,10 +38,14 @@ render(){
               Griffi's canyon creek, Exteriors outside furniture </p>
           </div>
           <div className="storage-timings">
+            { !!siteLocation && !!siteLocation.content && !!siteLocation.content.accesshours &&
             <div className="d-inline-block pr-5 small-text office-hours"> <strong> Office Hours</strong> <br />
-              Monday to Friday: 9:00am - 5:30pm  |  Saturday: 9:00am - 4pm  |  Sunday: Closed </div>
+              {siteLocation.content.accesshours}</div>
+            }
+            {  !!siteLocation && !!siteLocation.content   && !!siteLocation.content.officehours &&
             <div className="d-inline-block small-text access-hours"> <strong>Access Hours</strong> <br />
-              6:00am - 10:00pm, 365 days </div>
+             {siteLocation.content.officehours} </div>
+            }
           </div>
           <div className="clearfix"> </div>
           <div className="wether-block">

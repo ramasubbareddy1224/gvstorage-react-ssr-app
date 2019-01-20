@@ -6,6 +6,8 @@ import {Redirect} from 'react-router-dom';
 
 import {AutoComplete} from '../typeahead/index';
 
+import $ from 'jquery';
+
 
 
 export default class HomeBanner extends Component{
@@ -44,6 +46,27 @@ export default class HomeBanner extends Component{
 
   handleAutocompleteValueChange=(val)=>{
     this.setState({selectedAutoCompleteValue: val});
+  }
+
+  componentDidMount(){
+
+    // const script = document.createElement("script");
+
+    //     script.src = "/lib/owlcarousel/owl.carousel.min.js";
+    //     script.async = true;
+
+    //     document.body.appendChild(script);
+
+    // setTimeout(() => {
+    //   $("#intro-carousel").owlCarousel({
+    //     autoplay: true,
+    //     dots: false,
+    //     loop: true,
+    //     animateOut: 'fadeOut',
+    //     items: 1
+    //   });
+    // }, 5000);
+    
   }
 
 render(){

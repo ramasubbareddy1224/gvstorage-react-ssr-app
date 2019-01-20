@@ -5,9 +5,12 @@ import {ACTIONTYPES} from '../../configurations/actiontypes';
 import { ApiRequest } from '../../utility' ;
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
+
 const getAllDiscounts = discounts => ({ type: ACTIONTYPES.HOME.GET_ALL_DISCOUNTS, payload: discounts });
 const getAllPinCodes = pincodes => ({ type: ACTIONTYPES.HOME.GET_ALL_PINCODES, payload: pincodes });
 const getAllSites = sites => ({ type: ACTIONTYPES.HOME.GET_ALL_SITES, payload: sites });
+
+const getAllNearByLocations = locations => ({ type: ACTIONTYPES.HOME.GET_NEAR_BY_LOCATIONS, payload: locations });
 
 
 const actionCreator_PinCodes_Sites = pincodes_sites  => ({ type: ACTIONTYPES.HOME.GET_ALL_PINCODES_SITES, payload: pincodes_sites });
@@ -62,3 +65,18 @@ export const getDiscounts = () => (dispatch) => {
 
   };
 
+  export const getCurrentLocation = () =>{
+    var apiUrl = 'http://api.ipstack.com/check?access_key=15b4c193218ce5e4f4488a6ec7e5ccaa';
+    return wretch()
+    .url(apiUrl).
+    get()
+    .json(json=> json);
+  };
+
+
+  export const getNearByLocations = (state,city, zipCode) => (dispatch) => {
+    var apiUrl = `search/${state}/${city}/${zipCode}`;
+    return ApiRequest.url(apiUrl)
+    .get()
+    .json(json=>dispatch(getAllNearByLocations(json)));
+  };
