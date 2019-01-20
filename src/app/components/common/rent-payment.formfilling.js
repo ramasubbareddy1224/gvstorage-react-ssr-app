@@ -357,12 +357,13 @@ return (
                     	<div className="col-md-12">
                       <div className="form-group">
                       <label for="First Name"> Movie-In Date <span className="text-danger"> * </span> </label>
-                        <DatePicker className="form-control"
+                      { typeof document !== 'undefined' &&  <DatePicker className="form-control"
                           selected={this.state.selectedDate}
                           onChange={this.handleChange}
                           minDate={this.state.startDate}
                           maxDate={this.state.endDate}
                         />
+                      }
                       </div>
                     </div>
                     </div>  
