@@ -20,7 +20,7 @@ const resetUnit=()=>({type:ACTIONTYPES.SELF_STORAGE.RESET_SELF_STORAGE_ALL_UNITS
   // };
 
   export const getAllUnitsByLocationCode = (locationCode) => (dispatch) => {
-   // return new Promise(resolve=>{
+  return new Promise(resolve=>{
    return fetch(`${Environment.MW_END_POINT_URL}gvs/api/units/${locationCode}`)
     .then(function(response) {
         if (response.status >= 400) {
@@ -31,9 +31,9 @@ const resetUnit=()=>({type:ACTIONTYPES.SELF_STORAGE.RESET_SELF_STORAGE_ALL_UNITS
     .then(function(json) {
         console.log(json);
         dispatch(getAllUnits(json));
-        //resolve(json);
+        resolve(json);
     });    
-   //  })
+     })
     
    };
 
