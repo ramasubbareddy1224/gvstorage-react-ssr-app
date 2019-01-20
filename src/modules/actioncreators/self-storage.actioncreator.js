@@ -31,7 +31,7 @@ const resetUnit=()=>({type:ACTIONTYPES.SELF_STORAGE.RESET_SELF_STORAGE_ALL_UNITS
     .then(function(json) {
         console.log(json);
         dispatch(getAllUnits(json));
-        resolve(json);
+        //resolve(json);
     });    
    //  })
     
