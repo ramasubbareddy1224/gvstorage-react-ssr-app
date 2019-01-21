@@ -125,7 +125,7 @@ class ReserveFormFilling extends Component{
     }
 
     if (typeof fields["PhoneNumber"] !== "undefined") {
-      if (!fields["PhoneNumber"].match(/^[0-9]{9}$/)) {
+      if (!fields["PhoneNumber"].match(/^[0-9]{10}$/)) {
         formIsValid = false;
         errors["PhoneNumber"] = "Please enter valid Phone Number.";
       }

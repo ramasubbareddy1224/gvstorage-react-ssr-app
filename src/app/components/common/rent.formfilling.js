@@ -92,7 +92,7 @@ class RentFormFilling extends Component{
 
       addTenant(requestData).then((success)=>{
         if(success.status.code  == 200){
-          alert('Added Tenant succesfully');
+          // alert('Added Tenant succesfully');
           this.setState({isRedirectActivated: true, tenantID: success.tenantID});
         }
       },
@@ -147,7 +147,7 @@ class RentFormFilling extends Component{
     }
 
     if (typeof fields["PhoneNumber"] !== "undefined") {
-      if (!fields["PhoneNumber"].match(/^[0-9]{9}$/)) {
+      if (!fields["PhoneNumber"].match(/^[0-9]{10}$/)) {
         formIsValid = false;
         errors["PhoneNumber"] = "Please enter valid Phone Number.";
       }
@@ -167,12 +167,12 @@ class RentFormFilling extends Component{
       }
     }
 
-    // if (typeof fields["FaxNumber"] !== "undefined") {
-    //   if (!fields["FaxNumber"].match(/^[0-9]{9}$/)) {
-    //     formIsValid = false;
-    //     errors["FaxNumber"] = "Please enter valid Fax Number.";
-    //   }
-    // }
+    if (!!fields["FaxNumber"]) {
+      if (!fields["FaxNumber"].match(/^[0-9]{10}$/)) {
+        formIsValid = false;
+        errors["FaxNumber"] = "Please enter valid Fax Number.";
+      }
+    }
 
     if (!fields["Address"]) {
       formIsValid = false;
