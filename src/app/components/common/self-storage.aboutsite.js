@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
 
 class SelfStorageAboutSite extends Component{
+
+  constructor(){
+    super();
+    this.state ={
+      imageIndex: 0
+    }
+  }
   
 render(){
   const {content} = this.props;
@@ -34,18 +41,26 @@ render(){
                       <div className="col-md-6"> 
                           <div dangerouslySetInnerHTML={{ __html: content.aboutus }} />
                       </div>
-
+                        { content.images.length > 0 &&
                         <div className="col-md-6">
                           <div className="product-slider"> 
                               <div className="product-big-image gv-radius">
-                                <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/product-large-img.jpg"} className="img-fluid gv-radius" alt="" />
+                                <img src={Environment.STATIC_FILES_END_POINT_URL + `img/sites/${content.images[this.state.imageIndex]}`} className="img-fluid gv-radius" alt="" />
                             </div>
                             <div className="product-thumb-img">
-                            <span> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/thumb1.png"} className="img-fluid gv-radius" /></span> <span> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/thumb2.png"} className="img-fluid gv-radius" /> </span> 
-                            <span> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/thumb1.png"} className="img-fluid gv-radius" /></span> <span> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/thumb2.png"} className="img-fluid gv-radius"/> </span>
+                            {
+                              content.images.map((image,index)=>{
+                              return  <span className="cursor-pointer" onClick={()=>{this.setState({imageIndex : index})}}> <img src={Environment.STATIC_FILES_END_POINT_URL + `img/sites/${content.images[index]}`} className="img-fluid gv-radius" /></span> 
+                              })
+                            }
+                            {/* <span> <img src={Environment.STATIC_FILES_END_POINT_URL + `img/sites/${content.images[0]}`} className="img-fluid gv-radius" /></span> 
+                            <span> <img src={Environment.STATIC_FILES_END_POINT_URL + `img/sites/${content.images[1]}`} className="img-fluid gv-radius" /> </span> 
+                            <span> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/thumb1.png"} className="img-fluid gv-radius" /></span>
+                            <span> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/thumb2.png"} className="img-fluid gv-radius"/> </span> */}
                             </div>
                           </div>
                         </div>
+                        }
                       </div>
                     </div>
                   </div>

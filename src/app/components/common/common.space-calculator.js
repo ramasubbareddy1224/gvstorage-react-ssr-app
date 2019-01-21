@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
+import {Redirect,Link} from 'react-router-dom';
 
 
 var sum = 0;
@@ -11,6 +12,16 @@ var max_size = 300;
 var citiesList = [];
 
  class CommonSpaceCalculator extends Component{ 
+
+    constructor(){
+        super();
+        this.state={
+            cities: [],
+            selectedState: '',
+            selectedCity: '',
+            isLocationCodeClicked: false
+        }
+    }
 
     componentDidMount(){
 
@@ -168,8 +179,6 @@ decreaseValue=(dataValue, id)=> {
     this.updateSelectedItems();
 }
 
-	
-	
 findRightSize=(total)=>{
 	total = Math.round( total * 1.15 );				
 		var size;
@@ -214,19 +223,64 @@ findRightSize=(total)=>{
 		$('#selectedSizeId').text(size);
 }
 
+stateChange(event){
+    var cities = [];
+    if(!!event.target.value ){
+    cities = this.props.allPinCodes_Sites[1].locations.filter(x=> x.stateName==event.target.value)[0].cities;
+
+    this.setState({cities: cities, selectedState: event.target.value});
+    }
+    else{
+        this.setState({cities: [], selectedState: ''});
+    }
+}
+
+cityChange(event){
+    if(!!event.target.value ){
+    this.setState({selectedCity: event.target.value});
+    }
+    else{
+        this.setState({selectedCity: ''});
+    }
+}
+
+clkRedirectToSelfStorage = (state, city) =>{
+
+    if(!!this.state.selectedState){
+        var filterName = '';
+        if(!!this.state.selectedCity){
+       var filterName = this.state.selectedCity;
+      }
+      else{
+        var filterName = this.state.selectedState;
+      }
+      this.setState({isLocationCodeClicked: true, searchDynamicUrl: '/search/'+filterName+''});
+    }
+    else{
+        alert('select state to continue')
+    }
+  }
 
     render(){
+
+        
+  if (this.state.isLocationCodeClicked) {
+    this.setState({isLocationCodeClicked: false, selectedLocation: {}});
+
+    return <Redirect to={this.state.searchDynamicUrl} />
+  }
+
         const {allPinCodes_Sites} = this.props;
 
        const states = allPinCodes_Sites.length > 0 && allPinCodes_Sites[1].locations.map(x=>x.stateName);
-       const originalCities = allPinCodes_Sites.length > 0 && allPinCodes_Sites[1].locations.map(x=>x.cities);
+      // const originalCities = allPinCodes_Sites.length > 0 && allPinCodes_Sites[1].locations.map(x=>x.cities);
        
-       if(!!originalCities){
-           debugger;
-            for(var i=0;i<originalCities.length;i++){
-                citiesList.push(originalCities[i]);
-            }
-       }
+    //    if(!!originalCities){
+    //        debugger;
+    //         for(var i=0;i<originalCities.length;i++){
+    //             citiesList.push(originalCities[i]);
+    //         }
+    //    }
 
         debugger;
 
@@ -1135,24 +1189,31 @@ findRightSize=(total)=>{
                                 <form>
                                     <p> <strong>Select Location </strong> </p>
                                     <div className="form-group">
-                                        <select className="form-control" id="exampleFormControlSelect1">
-                                            <option>Texas </option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <select className="form-control" id="exampleFormControlSelect1" value={this.state.selectedState}  onChange={(event)=> this.stateChange(event)}>
+                                                
+                                           <option value="">Select State</option>
+                                                {
+                                                    !!states && states.map((val, index) =>{
+                                                return (
+                                                    <option key={index} value={val}>{val}</option>
+                                                )
+                                                })
+                                                }
                                         </select>
                                     </div>
                                     <div className="form-group">
-                                        <select className="form-control" id="exampleFormControlSelect1">
-                                            <option>Austin</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
+                                        <select className="form-control" id="exampleFormControlSelect1" value={this.state.selectedCity} onChange={(event)=> this.cityChange(event)}>
+                                        <option value="">Select City</option>
+                                        {
+                                                    !!this.state.cities && this.state.cities.map((val, index) =>{
+                                                return (
+                                                    <option key={index} value={val.city}>{val.city}</option>
+                                                )
+                                                })
+                                                }
                                         </select>
                                     </div>
-                                    <div className="btn btn-gvstore btn-success border-0 green-gradient" href="#"> Find a storage </div>
+                                    <div className="btn btn-gvstore btn-success border-0 green-gradient" onClick={this.clkRedirectToSelfStorage}> Find a storage </div>
                                 </form>
                             </div>
                         </div>

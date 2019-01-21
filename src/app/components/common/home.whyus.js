@@ -7,7 +7,7 @@ render(){
         <section id="clients" className="wow fadeInUp p-5">
         <div className="container">
           <div className="text-center p-3">
-            <h2>Why Us</h2>
+            <h2>Why Choose Great Value Storage</h2>
           </div>
            
           <div className="row why-section text-center">

@@ -16,12 +16,15 @@ import CommonContactUs from '../../components/common/common.contactus';
 import { getPinCodes_Sites, getCurrentLocation, getNearByLocations
   } from '../../../modules/actioncreators/home.actioncreator';
 import CommonNearBy from '../../components/common/common.nearby';
+import HomeHowStorageWorks from '../../components/common/home.howstorageworks';
 
 const frontload = async props =>{
 
 
   getCurrentLocation().then((success) =>{
-   props.getNearByLocations(success.city, success.region_name, success.zip).then(function(values) {
+    
+   props.getNearByLocations(success.region_code, success.city, success.zip).then(function(values) {
+   // props.getNearByLocations('MA', 'Springfield', '99878').then(function(values) {
     });
 
   }, (error)=>{
@@ -47,12 +50,13 @@ class HomePage extends Component {
       <Page id="homepage">
     <HomeBanner pageName="home" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
    { !!nearByLocations.siteLocations && nearByLocations.siteLocations.length >0 &&
-     <CommonNearBy></CommonNearBy>
+     <CommonNearBy nearByLocations={nearByLocations.siteLocations}></CommonNearBy>
    }
     <main id="main">
     <HomeLocations allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeLocations>
     <HomeStorageSolutions></HomeStorageSolutions>
     <HomeWhyUs></HomeWhyUs>
+    <HomeHowStorageWorks></HomeHowStorageWorks>
     <HomeStorageSolutions></HomeStorageSolutions>
     <HomeTestimonials></HomeTestimonials>
     <CommonContactUs></CommonContactUs>

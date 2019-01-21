@@ -32,10 +32,12 @@ render(){
             <i className="fa fa-phone"> </i> {!!siteLocation && siteLocation.fax} <br />
           </p>
           <div className="landmark ">
-            <p className="d-inline-block pr-5 small-text"> <strong>Near</strong> <br />
-              St. Thomas catholic church </p>
+            {/* <p className="d-inline-block pr-5 small-text"> <strong>Near</strong> <br />
+              St. Thomas catholic church </p> */}
+           { !!siteLocation && !!siteLocation.content && !!siteLocation.content.gvssitestreets.length > 0 &&
             <p className="d-inline-block small-text"> <strong>Street Interactions</strong> <br />
-              Griffi's canyon creek, Exteriors outside furniture </p>
+              {(siteLocation.content.gvssitestreets.map(x=>x.name)).join(', ')} </p>
+           }
           </div>
           <div className="storage-timings">
             { !!siteLocation && !!siteLocation.content && !!siteLocation.content.accesshours &&
@@ -49,11 +51,13 @@ render(){
           </div>
           <div className="clearfix"> </div>
           <div className="wether-block">
+          {  !!siteLocation && !!siteLocation.content   && !!siteLocation.content.weather &&
             <div className="d-inline-block small-text office-hours">
               <p className="orange-gradient wether-info d-inline-block"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/wether-icon1.png"} alt="wether" /> </p>
-              <p className="wether-info-content d-inline-block small"> It will be 35 in Texas Storage Park. <br/>
-                Consider a climate controlled unit!</p>
-            </div> &nbsp; &nbsp; &nbsp; &nbsp; 
+              <p className="wether-info-content d-inline-block small">  {siteLocation.content.weather}</p>
+            </div>
+          }
+            &nbsp; &nbsp; &nbsp; &nbsp; 
             <div className="d-inline-block small-text access-hours">
               <p className="red-greadient wether-info d-inline-block"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/percent.png"} alt="wether" /> </p>
               <p className="wether-info-content d-inline-block small"> Resrve a Unit in 30 Secounds. <br />
