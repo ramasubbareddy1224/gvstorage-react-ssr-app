@@ -182,13 +182,13 @@ const {pathParams} = this.props;
                             <td style={{width:"33%"}}><div className="rate-varision">
                                 { !!item.onsiteRate &&
                                 <p className="d-inline-block rate-info" style={{color: '#c6c6c6'}}> 
-                                ONSITE RATE <br />
+                                <span className="fotnt-weight-normal"> ONSITE RATE </span><br />
                                   <strong ><del> ${item.onsiteRate} </del></strong> </p>
                                   }
-                                <p className="d-inline-block rate-info"> WEB RATE <br />
+                                <p className="d-inline-block rate-info"> <span className="fotnt-weight-normal"> WEB RATE </span><br />
                                   <strong className="gv-text-color"> ${item.webRate} </strong> </p>
                               </div></td>
-                            <td className="text-right"><div className="btn btn-gvstore btn-success border-0 green-gradient">
+                            <td className="text-center"><div className="btn btn-gvstore btn-success border-0 green-gradient">
                             <Link to={`/rent/${pathParams.locationCode}/${item.firstAvailableUnitID}`}> Rent Now </Link>
                             </div>
                               <div className="gv-text-color"> <strong><Link to={`/reserve/${pathParams.locationCode}/${item.firstAvailableUnitID}`}> Reserve for free </Link> </strong> </div>

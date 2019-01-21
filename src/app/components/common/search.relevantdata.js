@@ -16,7 +16,7 @@ render(){
 
    
     const divContent = content.map((data, index)=> {
-    return   <div className="item col-md-4" key={index}>
+    return   <div className="item" key={index}>
                           <div className="row pt-3">
                           <div className="col-5 col-sm-4 col-md-3">
                             <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-3.png"} className="img-fluid"  alt="..." />

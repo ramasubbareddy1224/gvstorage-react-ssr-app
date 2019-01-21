@@ -50,14 +50,14 @@ render(){
           <div className="clearfix"> </div>
           <div className="wether-block">
             <div className="d-inline-block small-text office-hours">
-              <p className="gv-bg wether-info d-inline-block"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/wether-icon1.png"} alt="wether" /> </p>
+              <p className="orange-gradient wether-info d-inline-block"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/wether-icon1.png"} alt="wether" /> </p>
               <p className="wether-info-content d-inline-block small"> It will be 35 in Texas Storage Park. <br/>
                 Consider a climate controlled unit!</p>
-            </div>
+            </div> &nbsp; &nbsp; &nbsp; &nbsp; 
             <div className="d-inline-block small-text access-hours">
-              <p className="gv-bg wether-info d-inline-block"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/wether-icon1.png"} alt="wether" /> </p>
-              <p className="wether-info-content d-inline-block small"> It will be 35 in Texas Storage Park. <br />
-                Consider a climate controlled unit!</p>
+              <p className="red-greadient wether-info d-inline-block"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/percent.png"} alt="wether" /> </p>
+              <p className="wether-info-content d-inline-block small"> Resrve a Unit in 30 Secounds. <br />
+              No Credit Card required</p>
             </div>
           </div>
         </div>

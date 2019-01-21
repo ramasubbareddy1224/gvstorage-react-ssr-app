@@ -13,10 +13,10 @@ const greatPlaceStyle = {
   borderRadius: K_SIZE,
   backgroundColor: 'white',
   textAlign: 'center',
-  color: '#3f51b5',
-  fontSize: 16,
+  color: '#37a125',
+  fontSize: 12,
   fontWeight: 'bold',
-  padding: 4,
+  padding: 6,
   cursor: 'pointer'
 };
 
@@ -24,7 +24,7 @@ const greatPlaceStyleHover = {
   ...greatPlaceStyle,
   border: '5px solid #3f51b5',
   color: '#fff',
-  backgroundColor: 'rgb(0, 95, 37)',
+  backgroundColor: '#37a125',
   zIndex: 1
 };
 

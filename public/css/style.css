@@ -1,3 +1,10 @@
+html, body
+{
+    height: 100%;
+    margin:0;
+    padding:0;
+}
+
 body {
 	background: #fff;
 	color: #333333;
@@ -1672,7 +1679,12 @@ margin-top:2rem;
 .facility-space { margin-top:15rem;}
 #inner-banner .storage-room-content .wether-block {padding-top:2rem}
 
-#inner-banner .storage-room-content .wether-block .wether-info { padding:20px 15px; border-radius:0px 10px 0px 10px; margin:0px; vertical-align:top;}
+#inner-banner .storage-room-content .wether-block .wether-info {     padding: 21px 15px;
+    border-radius: 0px 10px 0px 10px;
+    margin: 0px;
+	vertical-align: top;
+	margin-right: 5px;
+}
 #inner-banner .storage-room-content .wether-block .wether-info-content { background:#414c5b; padding:15px; border-radius:0px 10px 0px 10px; margin:0px; vertical-align:top; color:#fff;}
 
 .facility-filter-tabs .facility-tabs { width:100%; position:relative;}
@@ -1723,7 +1735,7 @@ margin-top:2rem;
     font-weight: bold;
     padding-right: 10px;
 	text-align:center;
-	margin-right: -5px;
+	margin-right: 5px;
 	 }
 .facility-filter-tabs .facility-tabs .filter-tab-content table .rate-varision .rate-info{ background:#f4f6f4;}
 
@@ -1793,7 +1805,8 @@ margin-top:2rem;
 }
 .text-underline{ text-decoration:underline;}
 .hint:hover{
- background: rgb(0, 95, 37) !important;
+	background:rgb(55, 161, 37) !important;
+	color: #fff !important;
 }
 
 .filter-blockitems {    
@@ -1912,10 +1925,10 @@ margin-top:2rem;
 	
 .hint{
     width: 45px !important;
-    height: 30px !important;
+    height: 25px !important;
   
     border: 0px solid rgb(0, 95, 37) !important;
-    border-radius: 8px !important;
+    border-radius: 4px !important;
    
 }
 
@@ -1940,13 +1953,14 @@ margin-top:2rem;
 
 /*  Map styles */
 .map-hover {
-	width: 150px !important;
+	width: 170px !important;
 	display: inline-table;
 	background: #fff;
 	color: #333;
-	padding: 15px 15px;
+	padding: 15px 15px 15px 20px;
+	text-align: left;
 	font-size: 12px;
-	margin: 0px -60px;
+	margin: 0px -70px;
 	border-radius: 0px 20px;
 	position: relative;
 	top: -110px;
@@ -1968,15 +1982,15 @@ margin-top:2rem;
 .map-pointer-hover:after{
 	content: "";
     position: absolute;
-    border: 10px solid #005f25;
-    bottom: -20px;
+    border: 7px solid rgb(55, 161, 37);
+    bottom: -12px;
     border-bottom-color: transparent;
     border-left-color: transparent;
     border-right-color: transparent;
-    left: 30%;
+    left: 33%;
 }
 
-.map-pointer-default:after:hover {border-color:#005f25; }
+.map-pointer-default:after:hover {border-color:rgb(55, 161, 37); }
 
 .hint span { font-weight: 400; }
 
@@ -2042,4 +2056,19 @@ a.sf-with-ul-breadcrumb:after {
 
 .cursor-pointer{
 	cursor: pointer;
+}
+
+.preloader {
+	position:relative;
+    height: 100%;
+	width:100%; 
+}
+
+.preloader img {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    margin:auto;
 }

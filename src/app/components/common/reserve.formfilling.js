@@ -3,9 +3,11 @@ import {Environment} from '../../../configurations/environment';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ReserveFormView from './reserve.formview';
-import { reserveNow
+import { reserveNow, getAllMoveInCharges
 } from '../../../modules/actioncreators/reserve.actioncreator';
 import {Link, Redirect} from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 class ReserveFormFilling extends Component{
   constructor(props) {
@@ -31,6 +33,32 @@ class ReserveFormFilling extends Component{
     this.setState({
       selectedDate: date
     });
+    //console.log(this.formatDate(date));
+    const {units} =  this.props.allUnits;
+    const pathParams = this.props.pathParams;
+
+    const {unit} = this.props.selectedUnitInfo;
+    const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
+
+    var unitInfo = '';
+    if(!pathParams.isReloaded){
+         unitInfo = !!unit ? unit : {};
+    }
+    else {
+        unitInfo = !!units ? units.filter(x=>x.firstAvailableUnitID == pathParams.unitId)[0] : {};
+    }
+
+    var requestObj = {
+      "concessionID": unitInfo.concessionID,
+      "insurCoverageID": insurancePlans[0].insurCoverageID,
+      "locationCode": pathParams.locationCode,
+      "moveInDate": this.formatDate(date),
+      "siteID": unitInfo.siteID,
+      "tenantID": 0,
+      "unitID": pathParams.unitId
+    };
+
+   this.props.getAllMoveInCharges(requestObj);
   }
 
   handleFormChange(e) {
@@ -151,9 +179,18 @@ class ReserveFormFilling extends Component{
     const {moveInCharges} = this.props.moveInCharges;
     const {totalAmount} = this.props.moveInCharges;
 
+    
+    var unitInfo = '';
+    if(!pathParams.isReloaded){
+         unitInfo = !!unit ? unit : {};
+    }
+    else {
+        unitInfo = !!units ? units.filter(x=>x.firstAvailableUnitID == pathParams.unitId)[0] : {};
+    }
+
     var requestData =
     {
-      "concessionID": Object.keys(unit).length > 0 && unit.concessionID,
+      "concessionID": Object.keys(unitInfo).length > 0 && unitInfo.concessionID,
       "emailAddress": this.state.fields.Email,
       "firstName": this.state.fields.FirstName,
       "insurCoverageID": insurancePlans.length > 0 ? insurancePlans[0].insurCoverageID : 0,
@@ -161,7 +198,7 @@ class ReserveFormFilling extends Component{
       "locationCode": pathParams.locationCode,
       "moveInDate": this.formatDate(this.state.selectedDate),
       "phoneNumber": this.state.fields.PhoneNumber,
-      "siteID": Object.keys(unit).length > 0 && unit.siteID,
+      "siteID": Object.keys(unitInfo).length > 0 && unitInfo.siteID,
       "tenantID": 0,
       "textMeUpdates": this.state.textMeUpdate,
       "unitID": pathParams.unitId,
@@ -311,4 +348,9 @@ render(){
 }
 }
 
-export default ReserveFormFilling;
+//export default ReserveFormFilling;
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ getAllMoveInCharges }, dispatch);
+
+export default connect(null, mapDispatchToProps)(ReserveFormFilling);

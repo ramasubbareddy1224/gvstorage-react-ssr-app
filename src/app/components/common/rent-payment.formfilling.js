@@ -5,6 +5,10 @@ import { confirmPayment
 } from '../../../modules/actioncreators/rent.actioncreator';
 import {Link, Redirect} from 'react-router-dom';
 import DatePicker from "react-datepicker";
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { getAllMoveInCharges
+} from '../../../modules/actioncreators/reserve.actioncreator';
 
 class RentPaymentFormFilling extends Component{
   constructor(props) {
@@ -25,10 +29,50 @@ class RentPaymentFormFilling extends Component{
     this.setState({
       selectedDate: date
     });
+
+    this.getMoveInData();
   }
   addDays(theDate, days) {
     return new Date(theDate.getTime() + days*24*60*60*1000);
   }
+
+
+getMoveInData(){
+  const {units} =  this.props.allUnits;
+  const pathParams = this.props.pathParams;
+
+  const {unit} = this.props.selectedUnitInfo;
+  const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
+
+  var unitInfo = '';
+  if(!pathParams.isReloaded){
+       unitInfo = !!unit ? unit : {};
+  }
+  else {
+      unitInfo = !!units ? units.filter(x=>x.firstAvailableUnitID == pathParams.unitId)[0] : {};
+  }
+
+  
+  var insuranceProtectionCoverage =  this.state.fields.ProtectionCoverage;
+  if(!this.state.fields.ProtectionCoverage )
+  {
+    insuranceProtectionCoverage =  !!insurancePlans && insurancePlans[0].insurCoverageID; 
+  }
+
+  
+
+  var requestObj = {
+    "concessionID": unitInfo.concessionID,
+    "insurCoverageID": parseInt(insuranceProtectionCoverage),
+    "locationCode": pathParams.locationCode,
+    "moveInDate": this.formatDate(this.state.selectedDate),
+    "siteID": unitInfo.siteID,
+    "tenantID": 0,
+    "unitID": pathParams.unitId
+  };
+
+ this.props.getAllMoveInCharges(requestObj);
+}
 
   formatDate(date) {
     var d = new Date(date),
@@ -48,6 +92,10 @@ class RentPaymentFormFilling extends Component{
     this.setState({
       fields
     });
+
+    if(e.target.name == "ProtectionCoverage"){
+      this.getMoveInData();
+    }
 
   }
 
@@ -69,6 +117,8 @@ class RentPaymentFormFilling extends Component{
           unitInfo = !!units ? units.filter(x=>x.firstAvailableUnitID == pathParams.unitId)[0] : {};
       }
       const {moveInCharges} = this.props.moveInCharges;
+
+      const allProps = this.props;
       //const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
 
      var requestData = {
@@ -86,7 +136,7 @@ class RentPaymentFormFilling extends Component{
       "insurCoverageID": parseInt(this.state.fields.ProtectionCoverage),
       "locationCode": pathParams.locationCode,
       "payMethod": 6,
-      "paymentAmount": this.props.moveInCharges.totalAmount,
+      "paymentAmount":   parseFloat((this.props.moveInCharges.totalAmount).toFixed(2)), //,
       "siteID": Object.keys(unitInfo).length > 0 && unitInfo.concessionID,
       "startDate": this.formatDate(this.state.selectedDate),
       "tenantID": pathParams.tenantId,
@@ -236,6 +286,8 @@ return (
       <option key={index} value={val.insurCoverageID}>Covers up to ${val.coverage} USD - ${val.premium} USD/Month</option>
   )
   })
+
+  
 
 
     const divMoveIncharges = !!moveInCharges && moveInCharges.map((moveInCharge, index) => {
@@ -508,4 +560,9 @@ return (
 }
 }
 
-export default RentPaymentFormFilling;
+//export default RentPaymentFormFilling;
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ getAllMoveInCharges }, dispatch);
+
+export default connect(null, mapDispatchToProps)(RentPaymentFormFilling);

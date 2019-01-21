@@ -17,6 +17,18 @@ import RentPaymentFormFilling from '../../components/common/rent-payment.formfil
 import {getTenantInfo} from '../../../modules/actioncreators/rent.actioncreator';
 
 
+const formatDate=(date) =>{
+  var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+  if (month.length < 2) month = '0' + month;
+  if (day.length < 2) day = '0' + day;
+
+  return [year, month, day].join('-');
+}
+
 var pathParams = {};
 var tenantInfo = {};
 
@@ -54,7 +66,7 @@ const frontload = async props => {
         "concessionID": value.payload.unit.concessionID,
         "insurCoverageID": value.payload.insurancePlans[0].insurCoverageID,
         "locationCode": pathParams.locationCode,
-        "moveInDate": "2019-01-12",
+        "moveInDate": formatDate(new Date()),
         "siteID": value.payload.unit.siteID,
         "tenantID": 0,
         "unitID": pathParams.unitId
@@ -73,7 +85,7 @@ const frontload = async props => {
       "concessionID": unitInfo[0].concessionID,
       "insurCoverageID": props.allUnits.insurancePlans[0].insurCoverageID,
       "locationCode": pathParams.locationCode,
-      "moveInDate": "2019-01-12",
+      "moveInDate": formatDate(new Date()),
       "siteID": unitInfo[0].siteID,
       "tenantID": 0,
       "unitID": pathParams.unitId

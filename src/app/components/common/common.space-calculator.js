@@ -121,24 +121,51 @@ updateSelectedItems=()=>{
 }
 
 increaseValue=(dataValue, id) => {  
-  var value = parseInt($('.'+id).val(), 10);  
-  value = isNaN(value) ? 0 : value;
-  value++;
-  $('.'+id).val(value);
-  this.updateSelectedItems();  
-  var total = sum + (dataValue * value);				  
-  this.findRightSize(total);  
+    var value = parseInt($('.'+id).val(), 10);  
+    value = isNaN(value) ? 0 : value;
+    value = value < 1 ?  1 : value;
+    value++;
+    $('.'+id).val(value);    
+    var add = (dataValue * value);	
+    var sub = (dataValue * value+1);
+    var total = 0;
+        $(inputs).each(function() {
+            var num = parseInt( $(this).val() );
+            if (isNaN(num) || num < 0) {
+                num = 0;
+            }	
+            var value = $(this).data('value');			
+            if (isNaN(value)) {
+                value = 0;
+            }         
+            total += ( num * value );			
+        });
+      this.findRightSize(total); 
+      this.updateSelectedItems(); 
 }
 
 decreaseValue=(dataValue, id)=> {
-  var value = parseInt($('.'+id).val(), 10);
-  value = isNaN(value) ? 0 : value;
-  value = value < 1 ?  1 : value;
-  value--;
-  $('.'+id).val(value);
-  this.updateSelectedItems();  
-  var total = sum + (dataValue * value);				  
-  this.findRightSize(total); 
+    var value = parseInt($('.'+id).val(), 10);
+    value = isNaN(value) ? 0 : value;
+    value = value < 1 ?  1 : value;
+    value--;
+    $('.'+id).val(value);
+    var add = (dataValue * value);	
+    var sub = (dataValue * value+1);   
+    var total = 0;
+    $(inputs).each(function() {
+        var num = parseInt( $(this).val() );
+        if (isNaN(num) || num < 0) {
+            num = 0;
+        }	
+        var value = $(this).data('value');
+        if (isNaN(value)) {
+            value = 0;
+        }
+        total += ( num * value );			
+    });   
+    this.findRightSize(total);
+    this.updateSelectedItems();
 }
 
 	
@@ -565,9 +592,9 @@ findRightSize=(total)=>{
                                                                 <td> Chair </td>
                                                                 <td>
                                                                     <form>
-                                                                        <div className="value-button" id="decrease" onClick={()=> { this.decreaseValue(12, 'Chair')}} value="Decrease Value">-</div>
-                                                                        <input type="number" className="Chair" id="number" data-value="12" />
-                                                                        <div className="value-button" id="increase" onClick={()=> { this.increaseValue(12, 'Chair')}} value="Increase Value">+</div>
+                                                                        <div className="value-button" id="decrease" onClick={()=> { this.decreaseValue(12, 'Chair_Bed')}} value="Decrease Value">-</div>
+                                                                        <input type="number" className="Chair_Bed" id="number" data-value="12" />
+                                                                        <div className="value-button" id="increase" onClick={()=> { this.increaseValue(12, 'Chair_Bed')}} value="Increase Value">+</div>
                                                                     </form>
                                                                 </td>
                                                             </tr>
@@ -708,9 +735,9 @@ findRightSize=(total)=>{
                                                                 <td> Chair </td>
                                                                 <td>
                                                                     <form>
-                                                                        <div className="value-button" id="decrease" onClick={()=> { this.decreaseValue(12, 'Chair')}} value="Decrease Value">-</div>
-                                                                        <input type="number" className="Chair" id="number" data-value="12" />
-                                                                        <div className="value-button" id="increase" onClick={()=> { this.increaseValue(12, 'Chair')}} value="Increase Value">+</div>
+                                                                        <div className="value-button" id="decrease" onClick={()=> { this.decreaseValue(12, 'Chair_Kitchen')}} value="Decrease Value">-</div>
+                                                                        <input type="number" className="Chair_Kitchen" id="number" data-value="12" />
+                                                                        <div className="value-button" id="increase" onClick={()=> { this.increaseValue(12, 'Chair_Kitchen')}} value="Increase Value">+</div>
                                                                     </form>
                                                                 </td>
                                                             </tr>
