@@ -11,7 +11,8 @@ render(){
     return(
        
 <section className="breadcrumb-section">
-  <div className="container">
+  <div className="container-fluid">
+  <div className="container-fluid-padding">
   <div className="city-breadcrumb border-bottom">
     <nav aria-label="breadcrumb" className=" d-inline-block">
       <ul className="nav-menu breadcrumb  border-0">
@@ -22,6 +23,7 @@ render(){
       </ul>
     </nav>
     
+    </div>
     </div>
   </div>
 </section>

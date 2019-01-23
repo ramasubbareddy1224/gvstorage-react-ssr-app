@@ -4,7 +4,7 @@ class CommonTopBar extends Component{
 render(){
     return(
       <section id="topbar" className="d-none d-lg-block">
-    <div className="container clearfix">
+    <div className="container-fluid clearfix">
       <div className="contact-info float-left">
         <i className="fa fa-phone"></i> Toll free number <strong className="tf-num">+1 5589 55488 55</strong>
       </div>

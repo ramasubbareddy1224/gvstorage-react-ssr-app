@@ -72,7 +72,10 @@ const frontload = async props => {
         "unitID": pathParams.unitId
       };
 
-     props.getAllMoveInCharges(requestObj);
+    var promise = props.getAllMoveInCharges(requestObj);
+    promise.then((success)=>{
+      document.getElementById('div-preloader').style.display = 'none';
+    });
     });
   }
   else{
@@ -95,7 +98,7 @@ const frontload = async props => {
 
 
    return Promise.all(dynamicRequestList).then(function(values) {
-    
+    document.getElementById('div-preloader').style.display = 'none';
    });
   }
   

@@ -40,7 +40,8 @@ render(){
 
 
     return(
-        <div className="container pb-5">
+        <div className="container-fluid pb-5">
+         <div className="container-fluid-padding">
 
 {(function() {
         switch(relevanceType) {
@@ -66,13 +67,18 @@ render(){
               <div className="resCarousel-inner" >
                       {divContent}
               </div>
+              {content.length > 3 &&
               <button className='btn btn-default leftLst'><i className="fa fa-fw fa-angle-left"></i></button>
+             }
+             {content.length > 3 &&
               <button className='btn btn-default rightLst'><i className="fa fa-fw fa-angle-right"></i></button>
+             }
           </div>
           }
       </div>
       
       
+        </div>
         </div>
       </div>
     )

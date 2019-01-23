@@ -10,7 +10,6 @@ import { getPinCodes_Sites
 import  CommonStaticBreadCrumb from '../../components/common/common.static-breadcrumb';
 import CommonStaticContent from '../../components/common/common.static-content';
 
-import $ from 'jquery'
 import { StaticContent } from '../../../static-content';
 
 
@@ -21,8 +20,9 @@ const frontload = async props =>{
   if(props.allPinCodes_Sites.length == 0){
     dynamicRequestList.push(props.getPinCodes_Sites());
   }
-
+  document.getElementById('div-preloader').style.display = 'block';
   return Promise.all(dynamicRequestList).then(function(values) {
+    document.getElementById('div-preloader').style.display = 'none';
   });
 }
 
@@ -30,6 +30,7 @@ class VehicleStorage extends Component {
 
 
   componentDidMount(){
+    let $=require('jquery');
     $('#vehicle-storage-head').addClass('active');
     $('#vehicle-storage-content').addClass('active');
 

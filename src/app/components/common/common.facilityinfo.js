@@ -118,7 +118,7 @@ render(){
             </div>
             </div>
             
-            <div className="facility-data">
+            <div className="facility-data border-0">
             <div className="data-heading">
                 <p> MOVE-IN CHARGES </p>
             </div>

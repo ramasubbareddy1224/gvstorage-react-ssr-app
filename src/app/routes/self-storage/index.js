@@ -35,7 +35,12 @@ const frontload = async props => {
         dynamicRequestList.push(props.getPinCodes_Sites());
       }
       dynamicRequestList.push(props.getAllUnitsByLocationCode(props.match.params.locationCode));
-      await Promise.all(dynamicRequestList);
+      document.getElementById('div-preloader').style.display = 'block';
+      //await Promise.all(dynamicRequestList);
+      return Promise.all(dynamicRequestList).then(function(values) {
+        debugger;
+        document.getElementById('div-preloader').style.display = 'none';
+      });
     // return props.getAllUnitsByLocationCode(props.match.params.locationCode);
   }
   catch(error)
@@ -70,7 +75,7 @@ class SelfStorage extends Component {
     const {allSites} = this.props;
 
     var allSitesNearBy = {};  
-    var siteLocations =  !!allUnits.siteLocation && allUnits.siteLocation.content && 
+    var siteLocations = !!allUnits && !!allUnits.siteLocation && allUnits.siteLocation.content && 
     allUnits.siteLocation.content.gvsnearsites.length > 0 && 
     allUnits.siteLocation.content.gvsnearsites.map(x=>x.siteLocation);
     
@@ -78,12 +83,12 @@ class SelfStorage extends Component {
 
     return (
       <Page id="self-storage">
-      {Object.keys(this.props.allUnits).length > 0 && <SelfStorageBanner allUnits={this.props.allUnits}></SelfStorageBanner>}
+      {Object.keys(this.props.allUnits).length > 0 && <SelfStorageBanner pathParams={pathParams} allUnits={this.props.allUnits}></SelfStorageBanner>}
      
        <main id="main" className="facility-section "> 
            <SelfStorageFilteredData pathParams={pathParams} allUnits={this.props.allUnits} allSites={this.props.allSites} allPinCodes_Sites ={this.props.allPinCodes_Sites}></SelfStorageFilteredData>
            <SelfStorageFeatures></SelfStorageFeatures>
-           <SelfStorageReviews></SelfStorageReviews>
+           {/* <SelfStorageReviews></SelfStorageReviews> */}
            <SelfStorageWhatFits></SelfStorageWhatFits>
            {/* <SearchRelevantData relevanceType="neighbourhood"></SearchRelevantData> */}
 

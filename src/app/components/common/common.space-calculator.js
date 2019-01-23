@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
 import {Redirect,Link} from 'react-router-dom';
 
 
@@ -24,7 +23,7 @@ var citiesList = [];
     }
 
     componentDidMount(){
-
+        let $=require('jquery');
         inputs = $('#spacecalc .active input');
         inputs.off();
 
@@ -116,6 +115,7 @@ var citiesList = [];
     }
     
 updateSelectedItems=()=>{
+    let $=require('jquery');
 	var selectedItems = 0;
 	var totalQuantity = 0;
 	$(inputs).each(function() {
@@ -132,6 +132,7 @@ updateSelectedItems=()=>{
 }
 
 increaseValue=(dataValue, id) => {  
+    let $=require('jquery');
     var value = parseInt($('.'+id).val(), 10);  
     value = isNaN(value) ? 0 : value;
     value = value < 1 ?  1 : value;
@@ -156,6 +157,7 @@ increaseValue=(dataValue, id) => {
 }
 
 decreaseValue=(dataValue, id)=> {
+    let $=require('jquery');
     var value = parseInt($('.'+id).val(), 10);
     value = isNaN(value) ? 0 : value;
     value = value < 1 ?  1 : value;
@@ -180,6 +182,7 @@ decreaseValue=(dataValue, id)=> {
 }
 
 findRightSize=(total)=>{
+    let $=require('jquery');
 	total = Math.round( total * 1.15 );				
 		var size;
 		var section;
@@ -286,6 +289,7 @@ clkRedirectToSelfStorage = (state, city) =>{
 
         return(
             <div className="container">
+              <div className="">
             <div className="self-storage-content w-100" id="space-calculator-inputs">
                 <div className="row">
                     <div className="col-md-9 col-sm-12 col-12 bhoechie-tab-container">
@@ -295,16 +299,16 @@ clkRedirectToSelfStorage = (state, city) =>{
                                 <div className="list-group">
                                     <h4> Category </h4>
                                     <a href="#" className="list-group-item active">
-                                        <span> Living Room </span>
+                                        <span><img src="img/living-room.png" className="img-fluid" /> Living Room </span>
                                     </a>
                                     <a href="#" className="list-group-item ">
-                                        <span> Bed Room </span>
+                                        <span> <img src="img/bed-room.png" className="img-fluid" /> Bed Room </span>
                                     </a>
                                     <a href="#" className="list-group-item">
-                                        <span> Kitchen and Dining Room </span>
+                                        <span> <img src="img/kichin-dining.png" className="img-fluid" /> Kitchen and Dining Room </span>
                                     </a>
                                     <a href="#" className="list-group-item">
-                                        <span> Miscellaneous </span>
+                                        <span> <img src="img/mislanious.png" className="img-fluid" /> Miscellaneous </span>
                                     </a>
     
                                 </div>
@@ -312,7 +316,7 @@ clkRedirectToSelfStorage = (state, city) =>{
                             </div>
                             <div className="col-md-8 col-sm-8 col-12 bhoechie-tab">
                           
-                                <div className="bhoechie-tab-content active">
+                                <div className="bhoechie-tab-content searh-calc-height active">
     
                                     <div className="storage-size">
     
@@ -555,7 +559,7 @@ clkRedirectToSelfStorage = (state, city) =>{
                                     </div>
                                 </div>
 
-                                <div className="bhoechie-tab-content">
+                                <div className="bhoechie-tab-content searh-calc-height">
                                     <div className="storage-size">
     
                                         <div className="row">
@@ -742,7 +746,7 @@ clkRedirectToSelfStorage = (state, city) =>{
                                 </div>
     
                             
-                                <div className="bhoechie-tab-content">
+                                <div className="bhoechie-tab-content searh-calc-height">
                                     <div className="storage-size">
     
                                         <div className="row">
@@ -939,7 +943,7 @@ clkRedirectToSelfStorage = (state, city) =>{
                                     </div>
                                 </div>
     
-                                <div className="bhoechie-tab-content ">
+                                <div className="bhoechie-tab-content searh-calc-height">
                                     <div className="storage-size">
     
                                         <div className="row">
@@ -1220,6 +1224,7 @@ clkRedirectToSelfStorage = (state, city) =>{
                     </div>
                 </div>
     
+            </div>
             </div>
         </div>
         )

@@ -4,8 +4,9 @@ import {Environment} from '../../../configurations/environment';
 class SelfStorageWhatFits extends Component{
 render(){
     return(
-        <section className="what-fit-inside">
-        <div className="container">
+        <section id="selfstoragewhatfits" className="what-fit-inside pb-5">
+        <div className="container-fluid">
+        <div className="container-fluid-padding">
           <div className="storage-size">
             <h2> What fits inside </h2>
             <p className="small"> An equally important decision you'll need to make is choosing the size of your unit. Storage typically comes in the following standard sizes: </p>
@@ -100,6 +101,7 @@ render(){
               </div>
             </div>
             
+          </div>
           </div>
         </div>
       </section>

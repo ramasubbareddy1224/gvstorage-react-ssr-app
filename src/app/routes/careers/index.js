@@ -32,12 +32,7 @@ class Careers extends Component {
       <Page id="homepage">
     <HomeBanner pageName="home" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
     <main id="main">
-    <HomeLocations allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeLocations>
-    <HomeStorageSolutions></HomeStorageSolutions>
-    <HomeWhyUs></HomeWhyUs>
-    <HomeStorageSolutions></HomeStorageSolutions>
-    <HomeTestimonials></HomeTestimonials>
-    <CommonContactUs></CommonContactUs>
+        <h2>Coming Soon</h2>
     </main>
   </Page>
     );

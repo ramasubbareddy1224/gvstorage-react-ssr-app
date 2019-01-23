@@ -50,11 +50,12 @@ render(){
 
     return(
         <section id="about" className="wow fadeInDown">
-    
-        <div className="container">
-          <h2 className="text-center p-3 ">Our Locations</h2>
+        <div className="container-fluid">
+        <div className="container-fluid-padding">
+          <h2 className="text-center p-3 ">Our Storage Locations</h2>
           <div className="row">
            {divLocations}
+          </div>
           </div>
         </div>
       </section>

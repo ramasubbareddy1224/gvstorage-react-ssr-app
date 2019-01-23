@@ -66,7 +66,8 @@ export const getDiscounts = () => (dispatch) => {
   };
 
   export const getCurrentLocation = () =>{
-    var apiUrl = 'http://api.ipstack.com/check?access_key=15b4c193218ce5e4f4488a6ec7e5ccaa';
+    var apiUrl = Environment.IP_STACK_ENDPOINT;
+    console.log(apiUrl)
     return wretch()
     .url(apiUrl).
     get()

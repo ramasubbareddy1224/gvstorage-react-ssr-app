@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
 
 class SelfStorageReviews extends Component{
+  componentDidMount(){
+    
+  } 
 render(){
     return(
         <section id="testimonials" className="wow fadeInUp">
-        <div className="container bg-reviews">
+        <div className="container-fluid bg-reviews">
           <div className="pt-3 pb-3">
             <h2 >Reviews <span className="pull-right gv-text-color small" style={{fontSize: '12px'}}> View More </span> </h2>
           </div>

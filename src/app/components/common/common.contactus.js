@@ -4,7 +4,7 @@ class CommonContactUs extends Component{
 render(){
     return(
         <section id="call-to-action" className="wow fadeInUp">
-<div className="container bg-contact-strip pt-5 pb-5">
+<div className="container-fluid bg-contact-strip pt-5 pb-5">
   <div className="row">
     <div className="col-md-12 text-center">
       <h3 className="cta-title">For information about availability, <br/>

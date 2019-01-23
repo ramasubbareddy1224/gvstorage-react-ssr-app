@@ -155,6 +155,12 @@ const VehicleStorage = Loadable({
   modules: ['vehicle-storage']
 });
 
+ const StorageOptions = Loadable({
+  loader: () => import(/* webpackChunkName: "storage-options" */ './storage-options'),
+  loading: () => null,
+  modules: ['storage-options']
+});
+
 export default () => (
   <Switch>
     <Route exact path="/" component={Homepage} />
@@ -174,6 +180,7 @@ export default () => (
     <Route exact path="/rent/:locationCode/:unitId" component={Rent}/>
     <Route exact path="/rent-payment/:locationCode/:unitId/:tenantId" component={RentPayment}/>
 
+    <Route exact path="/storage-options" component={StorageOptions}/>
     <Route exact path="/why-choose-us" component={WhyChooseUs}/>
     <Route exact path="/about-us" component={AboutUs}/>
     <Route exact path="/business-storage" component={BusinessStorage}/>

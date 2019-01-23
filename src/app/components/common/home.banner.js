@@ -6,7 +6,6 @@ import {Redirect} from 'react-router-dom';
 
 import {AutoComplete} from '../typeahead/index';
 
-import $ from 'jquery';
 
 
 
@@ -111,27 +110,29 @@ render(){
         <div className={pageName == 'home' ?  'intro-content wow zoomIn':'inner-banner-content wow zoomIn' }>
         { this.props.pageName == 'home' && 
         <div>
-          <h2>We've got room</h2>
-          <p> Personal and business storage solutions </p>
+         <h2>Need Storage Space? We've got room!</h2>
+          <p> Find and rent personal and business storage solutions </p>
           </div>
         }
         { this.props.pageName == 'search' && 
         <div>
-          <h2>{siteName} : {siteCount} Loctions</h2>
+          <h2>{siteName} : {siteCount} Locations</h2>
           <p>Let us find you the perfect unit</p>
           </div>
         }
         {
           (this.props.pageName != 'home' && this.props.pageName != 'search') &&
           <div>
-            <h2>{pageName}</h2>
-            <br />
+            {/* <h2>{pageName}</h2>
+            <br /> */}
+              <h2> We've got room!</h2>
+          <p>Let us find you the perfect unit </p>
           </div>
         }
         
           <div className="find-storage">
                <form action="" method="post" role="form" className="contactForm">
-             <label htmlFor="label" className="small text-left float-left" style ={ {fontSize: "70%", paddingLeft: '15px'}}> Search Using</label>
+             <label htmlFor="label" className="small text-left float-left" style ={ {fontSize: "70%", paddingLeft: '15px'}}> Search Storage</label>
              <div className="col-md-12 banner-search">
               {/* <input type="text" className="form-control " placeholder="Zip, Address of City "  /> */}
               {/* <select value={selectedOption} onChange={this.handleLocationChange} >

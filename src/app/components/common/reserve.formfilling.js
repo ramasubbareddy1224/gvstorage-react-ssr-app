@@ -20,7 +20,8 @@ class ReserveFormFilling extends Component{
       selectedDate: new Date(),
       textMeUpdate: false,
       isInViewPage: false,
-      isRedirectActivated: false
+      isRedirectActivated: false,
+      reserveNowResponse: {}
     };
 
 
@@ -57,8 +58,11 @@ class ReserveFormFilling extends Component{
       "tenantID": 0,
       "unitID": pathParams.unitId
     };
-
-   this.props.getAllMoveInCharges(requestObj);
+    document.getElementById('div-preloader').style.display = 'block';
+  var promise = this.props.getAllMoveInCharges(requestObj);
+  promise.then((success)=>{
+    document.getElementById('div-preloader').style.display = 'none';
+  })
   }
 
   handleFormChange(e) {
@@ -77,14 +81,7 @@ class ReserveFormFilling extends Component{
   submitReserveNowForm(e) {
     e.preventDefault();
     if (this.validateForm()) {
-      this.setState({isInViewPage: true});
-        // let fields = {};
-        // fields["FirstName"] = "";
-        // fields["LastName"] = "";
-        // fields["PhoneNumber"] = "";
-        // fields["Email"] = "";
-        // this.setState({fields:fields});
-        //alert("Form submitted");
+      this.reserveNowClick();
     }
   }
 
@@ -94,27 +91,34 @@ class ReserveFormFilling extends Component{
     let errors = {};
     let formIsValid = true;
 
+    var invalidFieldNames = [];
+
+    document.getElementById("FirstName").focus();
     if (!fields["FirstName"]) {
       formIsValid = false;
       errors["FirstName"] = "Please enter your First Name.";
+      
     }
 
     if (typeof fields["FirstName"] !== "undefined") {
       if (!fields["FirstName"].match(/^[a-zA-Z ]*$/)) {
         formIsValid = false;
         errors["FirstName"] = "Please enter alphabet characters only.";
+        
       }
     }
 
     if (!fields["LastName"]) {
       formIsValid = false;
       errors["LastName"] = "Please enter your Last Name.";
+      
     }
 
     if (typeof fields["LastName"] !== "undefined") {
       if (!fields["LastName"].match(/^[a-zA-Z ]*$/)) {
         formIsValid = false;
         errors["LastName"] = "Please enter alphabet characters only.";
+        
       }
     }
     
@@ -122,18 +126,21 @@ class ReserveFormFilling extends Component{
     if (!fields["PhoneNumber"]) {
       formIsValid = false;
       errors["PhoneNumber"] = "Please enter your Phone Number.";
+      
     }
 
     if (typeof fields["PhoneNumber"] !== "undefined") {
       if (!fields["PhoneNumber"].match(/^[0-9]{10}$/)) {
         formIsValid = false;
         errors["PhoneNumber"] = "Please enter valid Phone Number.";
+        invalidFieldNames.push("PhoneNumber");
       }
     }
 
     if (!fields["Email"]) {
       formIsValid = false;
       errors["Email"] = "Please enter your Email Id.";
+      
     }
 
     if (typeof fields["Email"] !== "undefined") {
@@ -142,7 +149,19 @@ class ReserveFormFilling extends Component{
       if (!pattern.test(fields["Email"])) {
         formIsValid = false;
         errors["Email"] = "Please enter valid Email Id.";
+        
       }
+    }
+
+    if(Object.keys(errors).length > 0){
+      document.getElementById(Object.keys(errors)[0]).focus();
+
+      Object.keys(errors).reduce((object, key) => {
+        if (key !== Object.keys(errors)[0]) {
+          delete errors[key]
+        }
+      });
+   
     }
 
 
@@ -151,8 +170,6 @@ class ReserveFormFilling extends Component{
       errors: errors
     });
     return formIsValid;
-
-
   }
 
   onChangeTextMeUpdates(event){
@@ -205,16 +222,24 @@ class ReserveFormFilling extends Component{
       "uuid": "string"
     };
 
+    document.getElementById('div-preloader').style.display = 'block';
       reserveNow(requestData).then((success)=>{
         if(success.status.code  == 200){
+          document.getElementById('div-preloader').style.display = 'none';
           alert('Reserved succesfully');
-          this.setState({isRedirectActivated: true});
+         // this.setState({isRedirectActivated: true});
+        
+         this.setState({reserveNowResponse: success, isInViewPage: true});
         }
       },
       (error)=>{
         alert((JSON.parse(error.text)).status.message);
-        debugger;
+        document.getElementById('div-preloader').style.display = 'none';
       });
+  }
+
+  reserveConfirmationDone =()=>{
+    this.setState({isRedirectActivated: true});
   }
 
   formatDate(date) {
@@ -238,7 +263,7 @@ render(){
 
     return(
       <div className="col-12 col-md-8">
-      {this.state.isInViewPage && <ReserveFormView formData={this.state.fields} eventEditMode={this.isEditClicked} ReserveNowClick={this.reserveNowClick}></ReserveFormView> }
+      {this.state.isInViewPage && <ReserveFormView formData={this.state.fields} reservationData={this.state.reserveNowResponse} eventEditMode={this.isEditClicked}></ReserveFormView> }
 
       {!this.state.isInViewPage &&
       <div className="" >
@@ -248,11 +273,12 @@ render(){
         <hr />
         <p> Contact Information </p>
         <form method="post"  name="frmReserveNow"  onSubmit= {this.submitReserveNowForm}>
+        <div className="fill-rent-info">
         <div className="row pb-3">
           <div className="col-md-6">
               <div className="form-group">
                 <label for="First Name">First Name <span className="text-danger"> * </span></label>
-                <input type="text" className="form-control" placeholder="First Name" name="FirstName" value={this.state.fields.FirstName} onChange={this.handleFormChange} />
+                <input type="text" className="form-control" placeholder="First Name" id="FirstName" name="FirstName" value={this.state.fields.FirstName} onChange={this.handleFormChange} />
                 <div className="errorMsg">{this.state.errors.FirstName}</div>
               </div>
             </div>
@@ -260,7 +286,7 @@ render(){
             <div className="col-md-6">  
               <div className="form-group">
                 <label for="formGroupExampleInput2"> Last Name <span className="text-danger"> * </span> </label>
-                <input type="text" className="form-control"  placeholder="Last Name" name="LastName" value={this.state.fields.LastName} onChange={this.handleFormChange} />
+                <input type="text" className="form-control"  placeholder="Last Name" name="LastName" id="LastName" value={this.state.fields.LastName} onChange={this.handleFormChange} />
                 <div className="errorMsg">{this.state.errors.LastName}</div>
               </div>
             </div>  
@@ -271,7 +297,7 @@ render(){
             <div className="col-md-6">
               <div className="form-group">
                 <label for="First Name"> Phone Number <span className="text-danger"> * </span> </label>
-                <input type="text" className="form-control" placeholder="Enter your phone number" name="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange} />
+                <input type="text" className="form-control" placeholder="Enter your phone number" name="PhoneNumber" id="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange} />
                 <div className="errorMsg">{this.state.errors.PhoneNumber}</div>
                 
               </div>
@@ -280,7 +306,7 @@ render(){
             <div className="col-md-6">  
               <div className="form-group">
                 <label for="formGroupExampleInput2"> Email <span className="text-danger"> * </span> </label>
-                <input type="text" className="form-control"  placeholder="Enter your email address"  name="Email" value={this.state.fields.Email} onChange={this.handleFormChange} />
+                <input type="text" className="form-control"  placeholder="Enter your email address"  name="Email" id="Email" value={this.state.fields.Email} onChange={this.handleFormChange} />
                 <div className="errorMsg">{this.state.errors.Email}</div>
               </div>
             </div> 
@@ -308,8 +334,8 @@ render(){
             </div>
             
             </div>          
+      </div>
 
- <hr />
       
 
  <div className="rent-your-unit-footer ">

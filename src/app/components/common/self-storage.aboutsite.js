@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
+import CommonFAQS from './common.faq';
 
 class SelfStorageAboutSite extends Component{
 
@@ -14,10 +15,11 @@ render(){
   const {content} = this.props;
     return(
         <section className="about-location">
-        <div className="container">
-          <div className="col-12">
+        <div className="container-fluid">
+        <div className="container-fluid-padding">
+          <div className="">
             <h2> About Site </h2>
-            <div className="about-storage-location pt-3">
+            <div className="about-storage-location">
               <div className="about-storage-tab ">
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                   <li className="nav-item"> <a className="nav-link active" id="home-tab" data-toggle="tab" href="#Info" role="tab" aria-controls="home" aria-selected="true">Info</a> </li>
@@ -44,7 +46,7 @@ render(){
                         { content.images.length > 0 &&
                         <div className="col-md-6">
                           <div className="product-slider"> 
-                              <div className="product-big-image gv-radius">
+                              <div className="product-big-image gv-radius pb-3">
                                 <img src={Environment.STATIC_FILES_END_POINT_URL + `img/sites/${content.images[this.state.imageIndex]}`} className="img-fluid gv-radius" alt="" />
                             </div>
                             <div className="product-thumb-img">
@@ -66,7 +68,9 @@ render(){
                   </div>
                   <div className="tab-pane fade" id="FAQ" role="tabpanel" aria-labelledby="profile-tab">
                     <div className="tab-content">
-                      <div className="row"> FAQ's Content </div>
+                      <div className="col-12 faq-section">
+                              <CommonFAQS></CommonFAQS>
+                       </div>
                     </div>
                   </div>
                   <div className="tab-pane fade" id="Storage" role="tabpanel" aria-labelledby="contact-tab">
@@ -77,6 +81,7 @@ render(){
                 </div>
               </div>
             </div>
+          </div>
           </div>
         </div>
       </section>

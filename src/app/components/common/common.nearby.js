@@ -59,11 +59,11 @@ render(){
     })
 
     return(
-        <div className="container">
-          <h2 className=" pt-5 pb-5 text-center"> Storage Facilities Near   
-          <span className="nav-menu sf-js-enabled sf-arrows d-inline-block text-left storage-droupdown">
-            <li className="menu-has-children text-left"><a href="#" className="sf-with-ul header-text gv-text-color">{nearByLocations[0].city}</a>
-           
+        <div className="container-fluid">
+          <h2 className=" pt-5 pb-5 text-center"> Storage Facilities Near    &nbsp;
+          <span className="nav-menu d-inline-block text-left storage-droupdown">
+    
+            <li className="menu-has-children text-left"><Link to={`/search/${nearByLocations[0].city}`} className="header-text gv-text-color text-underline">{nearByLocations[0].city}</Link>
           </li>
           </span>
           </h2>
@@ -77,7 +77,7 @@ render(){
           <div className="clearfix"> </div> <br />
           
        <div className="view-more mt-5"> 
-            <p className="text-center p-2"> View More Storage facilities in dallas </p>
+            <p className="text-center p-2"> View More Storage facilities in  <Link to={`/search/${nearByLocations[0].city}`}>{nearByLocations[0].city} </Link> </p>
         </div>
         
         </div>

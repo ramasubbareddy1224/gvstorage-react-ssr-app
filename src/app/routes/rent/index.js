@@ -58,8 +58,12 @@ const frontload = async props => {
         "tenantID": 0,
         "unitID": pathParams.unitId
       };
+      document.getElementById('div-preloader').style.display = 'block';
+    var promise = props.getAllMoveInCharges(requestObj);
+    promise.then((success)=>{
+      document.getElementById('div-preloader').style.display = 'none';
+    });
 
-     props.getAllMoveInCharges(requestObj);
     });
   }
   else{
@@ -79,10 +83,10 @@ const frontload = async props => {
     };
 
     dynamicRequestList.push(props.getAllMoveInCharges(requestObj));
-
+    document.getElementById('div-preloader').style.display = 'block';
 
    return Promise.all(dynamicRequestList).then(function(values) {
-    
+    document.getElementById('div-preloader').style.display = 'none';
    });
   }
   

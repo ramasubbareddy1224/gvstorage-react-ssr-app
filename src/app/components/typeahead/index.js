@@ -71,7 +71,7 @@ export class AutoComplete extends React.Component {
 
     // Autosuggest will pass through all these props to the input.
     const inputProps = {
-      placeholder: 'Enter Locality, city or zipcode',
+      placeholder: 'Enter Locality, City or Zip Code',
       value,
       onChange: this.onChange
     };

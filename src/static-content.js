@@ -1,7 +1,8 @@
 export const StaticContent = {
     WhyChooseUs: 
     `
-    <div class="container">
+    <div class="container-fluid">
+    <div class="container-fluid-padding">
            <div class="statement">
                     <p>At Great Value Storage, you can expect great service from our friendly, professional and knowledgeable storage managers. If you ask any one of them what their number one priority is, it would be to exceed our customers’ expectations. Followed closely by the need to provide a worry- and stress-free storage experience. From answering all your questions to anticipating the questions you might not know to ask, our managers will make sure to find you the right space and the right price to solve your storage needs.</p>
                     <br />
@@ -89,12 +90,13 @@ export const StaticContent = {
                 </div>
             </div>
             </div>
-        
+        </div>
          </div>
      `,
      StorageOptions:
      `
-     <div class="container">
+     <div class="container-fluid">
+     <div class="container-fluid-padding">
        <div class="self-storage-content"> 
 		<div class="row">
         <div class="col-md-12 col-sm-12 col-12 bhoechie-tab-container">
@@ -513,11 +515,13 @@ At lower rates than most commercial space, renting small business storage units 
      </div>
      
   </div>
+  </div>
 </div>
      `,
   StorageTools: 
   `
-  <div class="container">
+  <div class="container-fluid">
+  <div class="container-fluid-padding">
        <div class="self-storage-content"> 
 		<div class="row">
         <div class="col-md-12 col-sm-12 col-12 bhoechie-tab-container">
@@ -567,7 +571,7 @@ At lower rates than most commercial space, renting small business storage units 
 								<a class="nav-link" id="contact-tab" data-toggle="tab" href="#Huge-10" role="tab" aria-controls="contact" aria-selected="false">Huge <br> 10'x 20'</a>
 							  </li>
 							   <li class="nav-item">
-								<a class="nav-link" id="contact-tab" data-toggle="tab" href="#Gigantic" role="tab" aria-controls="contact" aria-selected="false">Gigantic <br> 5'x 10'</a>
+								<a class="nav-link" id="contact-tab" data-toggle="tab" href="#Gigantic" role="tab" aria-controls="contact" aria-selected="false">Gigantic <br> 10’x30’</a>
 							  </li>
 							</ul>
 							<div class="tab-content" id="myTabContent">
@@ -1704,13 +1708,14 @@ At lower rates than most commercial space, renting small business storage units 
      </div>
      
   </div>
+  </div>
 	</div>
 
   `,
   AboutUs: 
   `
-  <div class="container">
- 
+  <div class="container-fluid">
+  <div class="container-fluid-padding">
    <div class="row">
      <div class="col-lg-5 col-md-5 col-sm-6 about-img">
  <div class="">
@@ -1772,7 +1777,7 @@ At lower rates than most commercial space, renting small business storage units 
 </div>
      </div>
    </div>
-   
+   </div>
  </div>
   `
 

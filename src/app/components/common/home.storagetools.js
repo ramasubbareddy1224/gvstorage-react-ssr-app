@@ -5,7 +5,7 @@ class HomeStorageTools extends Component{
 render(){
     return(
         <section id="storage-tools" className="wow fadeInUp">
-        <div className="container bg-storage-tool pb-5">
+        <div className="container-fluid pb-5">
           <div className="text-center pt-5 pb-3">
             <h2>Storage Tools</h2>
           </div>

@@ -7,7 +7,8 @@ render(){
 
 
     return(
-      <div className="container">
+      <div className="container-fluid">
+        <div className="container-fluid-padding">
       {/* <h2 className="text-center pb-3"> Contact Us </h2>
        */}
         <div className="rent-facility-info">
@@ -58,6 +59,7 @@ render(){
                <hr />
                <p> Contact Information </p>
                <form>
+               <div className="fill-rent-info">
                <div className="row pb-3">
                  <div className="col-md-6">
                      <div className="form-group">
@@ -188,13 +190,12 @@ render(){
                   
                            
        
-                
+                </div>
                  
                    
                </form> 
                
              </div>
-              <hr />
              
              <div className="rent-your-unit-footer ">
              
@@ -218,7 +219,7 @@ render(){
        
        </div>
      </div>
-               
+            </div>   
      </div>
     )
 }

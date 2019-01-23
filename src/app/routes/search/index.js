@@ -29,8 +29,12 @@ const frontload = async props => {
     dynamicRequestList.push(props.getPinCodes_Sites());
   }
   dynamicRequestList.push(props.getAllSitesByFilters(props.match.params.filter));
-
-  await Promise.all(dynamicRequestList);
+  document.getElementById('div-preloader').style.display = 'block';
+  //await Promise.all(dynamicRequestList);
+  return Promise.all(dynamicRequestList).then(function(values) {
+    debugger;
+    document.getElementById('div-preloader').style.display = 'none';
+  });
 };
 
 
@@ -43,7 +47,9 @@ class Search extends Component {
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.match.params.filter !== this.props.match.params.filter) {
+      document.getElementById('div-preloader').style.display = 'block';
       Promise.all([this.props.getAllSitesByFilters(nextProps.match.params.filter)]).then(function(values) {
+        document.getElementById('div-preloader').style.display = 'none';
       });
     }
 
@@ -62,17 +68,23 @@ class Search extends Component {
           <section id="about" className ="city-nearby-lake ">
          
           {!!this.props.allSites.siteLocations && this.props.allSites.siteLocations[0].content.gvsnearneighborhoods.length > 0 &&
-              <SearchRelevantData relevanceType="neighbourhood" content={this.props.allSites.siteLocations[0].content.gvsnearneighborhoods}></SearchRelevantData>
-              
+             <div>
+             <SearchRelevantData relevanceType="neighbourhood" content={this.props.allSites.siteLocations[0].content.gvsnearneighborhoods}></SearchRelevantData>
+             <hr />
+              </div>
         } 
-        <hr />
         {!!this.props.allSites.siteLocations && !!this.props.allSites.siteLocations[0].content.gvsnearlakes.length > 0 &&
-               <SearchRelevantData relevanceType="nearbylakes" content={this.props.allSites.siteLocations[0].content.gvsnearlakes}></SearchRelevantData>
-              
+             <div>
+             <SearchRelevantData relevanceType="nearbylakes" content={this.props.allSites.siteLocations[0].content.gvsnearlakes}></SearchRelevantData>
+              <hr />
+              </div>
         } 
-        <hr />
+        
         {!!this.props.allSites.siteLocations && !!this.props.allSites.siteLocations[0].content.gvsnearuniversities.length > 0 &&
-              <SearchRelevantData relevanceType="nearbyuniversities" content={this.props.allSites.siteLocations[0].content.gvsnearuniversities}></SearchRelevantData>    
+             <div>
+             <SearchRelevantData relevanceType="nearbyuniversities" content={this.props.allSites.siteLocations[0].content.gvsnearuniversities}></SearchRelevantData>    
+             <hr />
+             </div>
         } 
       
         

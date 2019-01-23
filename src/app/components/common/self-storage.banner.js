@@ -4,6 +4,7 @@ import {Environment} from '../../../configurations/environment';
 class SelfStorageBanner extends Component{
 render(){
   const { siteLocation } = this.props.allUnits; 
+  const {pathParams} = this.props;
     return(
         <div>
         <section id="inner-banner" className="inner-banner-cls">
@@ -17,8 +18,8 @@ render(){
           <ol className="breadcrumb ">
             <li className="breadcrumb-item"><a className="text-white" href="#">Home</a></li>
             <li className="breadcrumb-item"><a className="text-white" href="#">Storage options</a></li>
-            <li className="breadcrumb-item"><a className="text-white" href="#"> Texas </a></li>
-            <li className="breadcrumb-item text-white active" aria-current="page"> Dallas </li>
+            <li className="breadcrumb-item"><a className="text-white" href="#"> {pathParams.locationCode} </a></li>
+            {/* <li className="breadcrumb-item text-white active" aria-current="page"> Dallas </li> */}
           </ol>
         </nav>
       </div>
@@ -29,7 +30,7 @@ render(){
         <div className="storage-room-image"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/facility-banner-img.png"} alt="" /> </div>
         <div className="storage-room-content">
           <p className="small"> <i className="fa fa-fa-map-marker"> </i> {!!siteLocation && siteLocation.address1}, {!!siteLocation && siteLocation.city}, {!!siteLocation && siteLocation.stateCode} {!!siteLocation && siteLocation.postalCode}. <br />
-            <i className="fa fa-phone"> </i> {!!siteLocation && siteLocation.fax} <br />
+            <i className="fa fa-phone"> </i> {!!siteLocation && siteLocation.phone} <br />
           </p>
           <div className="landmark ">
             {/* <p className="d-inline-block pr-5 small-text"> <strong>Near</strong> <br />
@@ -40,13 +41,13 @@ render(){
            }
           </div>
           <div className="storage-timings">
-            { !!siteLocation && !!siteLocation.content && !!siteLocation.content.accesshours &&
-            <div className="d-inline-block pr-5 small-text office-hours"> <strong> Office Hours</strong> <br />
-              {siteLocation.content.accesshours}</div>
+            { !!siteLocation && !!siteLocation.content && !!siteLocation.content. officehours &&
+            <div className="d-inline-block pr-5 small-text office-hours"> <strong className="font-weight-bold"> Office Hours</strong> <br />
+              {siteLocation.content.officehours}</div>
             }
-            {  !!siteLocation && !!siteLocation.content   && !!siteLocation.content.officehours &&
-            <div className="d-inline-block small-text access-hours"> <strong>Access Hours</strong> <br />
-             {siteLocation.content.officehours} </div>
+            {  !!siteLocation && !!siteLocation.content   && !!siteLocation.content.accesshours &&
+            <div className="d-inline-block small-text access-hours"> <strong className="font-weight-bold">Access Hours</strong> <br />
+             {siteLocation.content.accesshours} </div>
             }
           </div>
           <div className="clearfix"> </div>

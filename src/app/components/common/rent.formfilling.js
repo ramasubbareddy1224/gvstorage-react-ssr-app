@@ -90,15 +90,17 @@ class RentFormFilling extends Component{
         "zipCode": this.state.fields.Zip,
       };
 
+      document.getElementById('div-preloader').style.display = 'block';
       addTenant(requestData).then((success)=>{
         if(success.status.code  == 200){
           // alert('Added Tenant succesfully');
+          document.getElementById('div-preloader').style.display = 'none';
           this.setState({isRedirectActivated: true, tenantID: success.tenantID});
         }
       },
       (error)=>{
+        document.getElementById('div-preloader').style.display = 'none';
         alert((JSON.parse(error.text)).status.message);
-        debugger;
       });
     }
   }
@@ -108,6 +110,7 @@ class RentFormFilling extends Component{
     let fields = this.state.fields;
     let errors = {};
     let formIsValid = true;
+    
 
     if (!fields["FirstName"]) {
       formIsValid = false;
@@ -140,18 +143,7 @@ class RentFormFilling extends Component{
       }
     }
     
-    
-    if (!fields["PhoneNumber"]) {
-      formIsValid = false;
-      errors["PhoneNumber"] = "Please enter your Phone Number.";
-    }
-
-    if (typeof fields["PhoneNumber"] !== "undefined") {
-      if (!fields["PhoneNumber"].match(/^[0-9]{10}$/)) {
-        formIsValid = false;
-        errors["PhoneNumber"] = "Please enter valid Phone Number.";
-      }
-    }
+   
 
     if (!fields["Email"]) {
       formIsValid = false;
@@ -164,6 +156,19 @@ class RentFormFilling extends Component{
       if (!pattern.test(fields["Email"])) {
         formIsValid = false;
         errors["Email"] = "Please enter valid Email Id.";
+      }
+    }
+
+     
+    if (!fields["PhoneNumber"]) {
+      formIsValid = false;
+      errors["PhoneNumber"] = "Please enter your Phone Number.";
+    }
+
+    if (typeof fields["PhoneNumber"] !== "undefined") {
+      if (!fields["PhoneNumber"].match(/^[0-9]{10}$/)) {
+        formIsValid = false;
+        errors["PhoneNumber"] = "Please enter valid Phone Number.";
       }
     }
 
@@ -234,7 +239,7 @@ class RentFormFilling extends Component{
     }
 
     if (typeof fields["Zip"] !== "undefined") {
-      if (!fields["Zip"].match(/^[0-9]{6}$/)) {
+      if (!fields["Zip"].match(/^[0-9]{5}$/)) {
         formIsValid = false;
         errors["Zip"] = "Please enter valid Zip/Postal Code.";
       }
@@ -244,6 +249,17 @@ class RentFormFilling extends Component{
     //   formIsValid = false;
     //   errors["ProtectionCoverage"] = "Please select Protection Coverage.";
     // }
+
+    if(Object.keys(errors).length > 0){
+      document.getElementById(Object.keys(errors)[0]).focus();
+
+      Object.keys(errors).reduce((object, key) => {
+        if (key !== Object.keys(errors)[0]) {
+          delete errors[key]
+        }
+      });
+   
+    }
 
     this.setState({
       errors: errors
@@ -298,6 +314,8 @@ return (
                 <h5 className="pt-3"> Rent your unit now! </h5>
                 <hr />
                 <form className="mb-5 " method="post"  name="frmRentNow"  onSubmit= {this.submitReserveNowForm}>
+
+                <div className="fill-rent-info">
                 <div className="row pb-3">
                 	<div className="col-md-6">
                       <div className="form-group">
@@ -310,7 +328,7 @@ return (
                     <div className="col-md-6">  
                       <div className="form-group">
                         <label for="formGroupExampleInput2"> Last Name <span className="text-danger"> * </span> </label>
-                        <input type="text" className="form-control"  placeholder="Last Name" name="LastName" value={this.state.fields.LastName} onChange={this.handleFormChange} />
+                        <input type="text" className="form-control"  placeholder="Last Name" name="LastName" id="LastName" value={this.state.fields.LastName} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.LastName}</div>
                       </div>
                     </div>  
@@ -321,7 +339,7 @@ return (
                     <div className="col-md-6">
                       <div className="form-group">
                         <label for="First Name">Company </label>
-                        <input type="text" className="form-control" placeholder="Enter your company name" name="CompanyName" value={this.state.fields.CompanyName} onChange={this.handleFormChange} />
+                        <input type="text" className="form-control" placeholder="Enter your company name" name="CompanyName" id="CompanyName" value={this.state.fields.CompanyName} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.CompanyName}</div>
                       </div>
                     </div>
@@ -329,7 +347,7 @@ return (
                     <div className="col-md-6">  
                       <div className="form-group">
                         <label for="formGroupExampleInput2"> Email <span className="text-danger"> * </span> </label>
-                        <input type="text" className="form-control"  placeholder="Enter your email address" name="Email" value={this.state.fields.Email} onChange={this.handleFormChange} />
+                        <input type="text" className="form-control"  placeholder="Enter your email address" name="Email" id="Email" value={this.state.fields.Email} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.Email}</div>
                       </div>
                     </div>  
@@ -340,7 +358,7 @@ return (
                     <div className="col-md-6">
                       <div className="form-group">
                         <label for="First Name"> Phone <span className="text-danger"> * </span> </label>
-                        <input type="text" className="form-control" placeholder="Enter your phone number" name="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange} />
+                        <input type="text" className="form-control" placeholder="Enter your phone number" id="PhoneNumber" name="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.PhoneNumber}</div>
                         
                       </div>
@@ -349,7 +367,7 @@ return (
                     <div className="col-md-6">  
                       <div className="form-group">
                         <label for="formGroupExampleInput2"> Fax </label>
-                        <input type="text" className="form-control"  placeholder="Enter your Fax number" name="FaxNumber" value={this.state.fields.FaxNumber} onChange={this.handleFormChange} />
+                        <input type="text" className="form-control"  placeholder="Enter your Fax number" name="FaxNumber" id="FaxNumber" value={this.state.fields.FaxNumber} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.FaxNumber}</div>
                       </div>
                     </div>  
@@ -365,7 +383,7 @@ return (
                     <div className="col-md-6">
                       <div className="form-group">
                         <label for="First Name">Address <span className="text-danger"> * </span> </label>
-                        <input type="text" className="form-control" placeholder="Enter your address"  name="Address" value={this.state.fields.Address} onChange={this.handleFormChange} />
+                        <input type="text" className="form-control" placeholder="Enter your address"  name="Address" id="Address" value={this.state.fields.Address} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.Address}</div>
                       </div>
                     </div>
@@ -373,7 +391,7 @@ return (
                     <div className="col-md-6">  
                       <div className="form-group">
                         <label for="formGroupExampleInput2"> City <span className="text-danger"> * </span> </label>
-                        <input type="text" className="form-control" placeholder="Enter your city"  name="City" value={this.state.fields.City} onChange={this.handleFormChange} />
+                        <input type="text" className="form-control" placeholder="Enter your city"  name="City" id="City" value={this.state.fields.City} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.City}</div>
                       </div>
                     </div>  
@@ -384,7 +402,7 @@ return (
                     <div className="col-md-6">
                       <div className="form-group">
                         <label className="d-block" for="First Name">State / Province <span className="text-danger"> * </span></label>
-                        <input type="text" className="form-control" placeholder="Enter your state"  name="State" value={this.state.fields.State} onChange={this.handleFormChange} />
+                        <input type="text" className="form-control" placeholder="Enter your state"  name="State" id="State" value={this.state.fields.State} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.State}</div>
                       </div>
                     </div>
@@ -392,7 +410,7 @@ return (
                     <div className="col-md-6">  
                       <div className="form-group">
                         <label for="formGroupExampleInput2"> County <span className="text-danger"> * </span> </label>
-                        <input type="text" className="form-control" placeholder="Enter your county"  name="County" value={this.state.fields.County} onChange={this.handleFormChange} />
+                        <input type="text" className="form-control" placeholder="Enter your county"  name="County" id="County" value={this.state.fields.County} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.County}</div>
                       </div>
                     </div>  
@@ -403,7 +421,7 @@ return (
                     <div className="col-md-6">
                       <div className="form-group">
                       <label className="d-block">Country / Region <span className="text-danger"> * </span> <span className="small pull-right"> (required if not in US & Canada) </span> </label>
-                      <input type="text" className="form-control" placeholder="Enter your country"  name="Country" value={this.state.fields.Country} onChange={this.handleFormChange} />
+                      <input type="text" className="form-control" placeholder="Enter your country" id="Country" name="Country" value={this.state.fields.Country} onChange={this.handleFormChange} />
                       <div className="errorMsg">{this.state.errors.Country}</div>
                       </div>
                     </div>
@@ -411,7 +429,7 @@ return (
                     <div className="col-md-6">  
                       <div className="form-group">
                         <label for="formGroupExampleInput2"> Postal / Zip <span className="text-danger"> * </span> </label>
-                        <input type="text" className="form-control" placeholder="Enter your Zip"   name="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange} />
+                        <input type="text" className="form-control" placeholder="Enter your Zip"   name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.Zip}</div>
                       </div>
                     </div>  
@@ -451,9 +469,12 @@ return (
                     
                     </div>
                    */}
-                  <div className="clearfix"> </div>
+                
+                </div>
 
-  <hr />
+                <div className="clearfix"> </div>
+
+ 
                <div className="rent-your-unit-footer ">
               
                	<div className="unit-submit  pl-4 pr-4">

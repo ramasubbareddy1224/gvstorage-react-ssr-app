@@ -60,7 +60,11 @@ const frontload = async props => {
         "unitID": pathParams.unitId
       };
 
-     props.getAllMoveInCharges(requestObj);
+      document.getElementById('div-preloader').style.display = 'block';
+    var promise = props.getAllMoveInCharges(requestObj);
+    promise.then((success)=>{
+      document.getElementById('div-preloader').style.display = 'none';
+    })
     });
   }
   else{
@@ -80,10 +84,10 @@ const frontload = async props => {
     };
 
     dynamicRequestList.push(props.getAllMoveInCharges(requestObj));
-
-
+    document.getElementById('div-preloader').style.display = 'block';
+  
    return Promise.all(dynamicRequestList).then(function(values) {
-    
+    document.getElementById('div-preloader').style.display = 'none';
    });
   }
 

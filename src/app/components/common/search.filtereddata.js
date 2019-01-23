@@ -134,7 +134,8 @@ render(){
 
     return(
   <section id="about" className="about-sec individual-city wow fadeInUp">
-    <div className="container">
+    <div className="container-fluid">
+    <div className="container-fluid-padding">
       <div className="row">
         <div className="col-md-6 content city-pageviews pt-2">  
         {divSites}
@@ -147,6 +148,7 @@ render(){
               { tempMapPointers.length > 0 && <EventsMapPage mapPointers={tempMapPointers} centerIndex={this.state.tempCenterPoint} selectedLocation={this.state.selectedLocation}></EventsMapPage> }
           </div>
         </div>
+      </div>
       </div>
     </div>
   </section>

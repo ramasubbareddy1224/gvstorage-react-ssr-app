@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { getAllMoveInCharges
 } from '../../../modules/actioncreators/reserve.actioncreator';
+import RentConfirmation from './rent.confirmation';
 
 class RentPaymentFormFilling extends Component{
   constructor(props) {
@@ -20,6 +21,8 @@ class RentPaymentFormFilling extends Component{
       fields: {},
       errors: {},
       isRedirectActivated: false,
+      isInViewPage: false,
+      confirmPaymentReponse: {}
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -70,8 +73,13 @@ getMoveInData(){
     "tenantID": 0,
     "unitID": pathParams.unitId
   };
-
- this.props.getAllMoveInCharges(requestObj);
+  document.getElementById('div-preloader').style.display = 'block';
+    var promise = this.props.getAllMoveInCharges(requestObj);
+    promise.then((success)=>{
+      document.getElementById('div-preloader').style.display = 'none';
+    }, (error)=>{
+      document.getElementById('div-preloader').style.display = 'none';
+    });
 }
 
   formatDate(date) {
@@ -120,7 +128,7 @@ getMoveInData(){
 
       const allProps = this.props;
       //const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
-
+      document.getElementById('div-preloader').style.display = 'block';
      var requestData = {
       "accessCode": "",
       "billingAddress": this.state.fields.BillingAddress,
@@ -146,17 +154,21 @@ getMoveInData(){
 
       confirmPayment(requestData).then((success)=>{
         alert(success.status.message);
+        document.getElementById('div-preloader').style.display = 'none';
         if(success.status.code  == 200){
           //alert('Payment done');
-          this.setState({isRedirectActivated: true});
+          //this.setState({isRedirectActivated: true});
+   
+          this.setState({isInViewPage: true, confirmPaymentReponse: success});
         }
         else if(success.status.code == -83){
          // alert(success.status.message);
+         document.getElementById('div-preloader').style.display = 'none';
         }
       },
       (error)=>{
         alert((JSON.parse(error.text)).status.message);
-        debugger;
+        document.getElementById('div-preloader').style.display = 'none';
       });
     }
   }
@@ -203,7 +215,7 @@ getMoveInData(){
     }
 
     if (typeof fields["Zip"] !== "undefined") {
-      if (!fields["Zip"].match(/^[0-9]{6}$/)) {
+      if (!fields["Zip"].match(/^[0-9]{5}$/)) {
         formIsValid = false;
         errors["Zip"] = "Please enter valid Zip/Postal Code.";
       }
@@ -241,6 +253,18 @@ getMoveInData(){
     if (!fields["ExpiryYear"]) {
       formIsValid = false;
       errors["ExpiryYear"] = "Please select Expiry Year.";
+    }
+
+    
+    if(Object.keys(errors).length > 0){
+      document.getElementById(Object.keys(errors)[0]).focus();
+
+      Object.keys(errors).reduce((object, key) => {
+        if (key !== Object.keys(errors)[0]) {
+          delete errors[key]
+        }
+      });
+   
     }
 
 
@@ -309,7 +333,7 @@ return (
               (`TAX ${moveInCharge.taxRate1}% :`) }
 
               { !!moveInCharge.taxRate1 && <span className="pull-right">${moveInCharge.taxAmount1} USD</span>  }
-           <br/>
+          
                     
           { !!moveInCharge.taxRate2 && 
             (`TAX ${moveInCharge.taxRate2}% :`) }
@@ -337,7 +361,12 @@ return (
 
 
     return(
+      
         <div className="col-12 col-md-8">
+
+ {this.state.isInViewPage && <RentConfirmation rentConfirmationData={this.state.confirmPaymentReponse} tenantInfo={tenantInfo}></RentConfirmation> }
+
+      {!this.state.isInViewPage &&
             	<div className="">
                 <div className="rent-your-unit-now pt-3 pb-3">
                 <form  method="post"  name="frmRentPayment"  onSubmit= {this.submitRentPaymentForm}>
@@ -345,16 +374,16 @@ return (
                 <h5 className="pt-3"> Rent your unit now! </h5>
                 <hr />
                 
+                <div className="fill-rent-info">
                 <div className="row">
-                <div className="col-md-7"> 
+                <div className="col-md-12"> 
                 <p> Your Information </p>
                 <p> 
                 <strong>{tenantInfo.firstName} {tenantInfo.lastName} <br />
                 {tenantInfo.emailAddress} <br />
                 {tenantInfo.phoneNumber}</strong>
                 </p>
-                {/* <p className="small"><strong> <span className="gv-text-color text-underline"> View More </span> &nbsp; &nbsp; <span className="gv-text-color text-underline">  Edit Info </span> </strong> </p>
-                 */}
+                
                 <hr />
                 
                 
@@ -378,7 +407,7 @@ return (
                 <div className="clearfix"> </div>
                 <hr />
                 
-                <div className="offer-on-months">
+                {/* <div className="offer-on-months">
                 <div className="alert alert-bg align-text-top">
                 <div className="form-check small">
                 <label className="customcheck"> Rent out for 6 Months of storage & get 50% Off of the total rental amount <br />
@@ -388,17 +417,17 @@ return (
                 <span styleName={{fontSize:'1.5rem', fontWeight: 'bold'}}> <del className="text-muted"> $408 </del> &nbsp; <span className="gv-text-color"> $204 </span> <span className="text-dark"> USD  </span> </span> for 6 Months
                 </div>
                 </div>
-                </div>
+                </div> */}
                   
-                 <div  className="billing-info pt-2">
+                 <div  className="billing-info pt-2 pb-5">
 
                 
                 <div className="row pb-3">
-                	<div className="col-md-12">
+                	<div className="col-md-6">
                       <div className="form-group">
                       <label for="ProtectionCoverage">Select Protection coverage <span className="text-danger"> * </span> </label>
-                        <p className="small"> We ask thea each of out customers select a property protection option. Our property protection plans listed below provided added peace of mind to protect your valuablea against demages from unfortunate and un pedictable incidents while in storage.</p>
-                        <select className="form-control" id="Select Protection coverage"  name="ProtectionCoverage" value={this.state.fields.ProtectionCoverage} onChange={this.handleFormChange}>
+                       
+                        <select className="form-control" id="ProtectionCoverage"  name="ProtectionCoverage" value={this.state.fields.ProtectionCoverage} onChange={this.handleFormChange}>
                               <option value="">Select Protection coverage</option>
                               {optionsProtectionCoverage}
                         </select>
@@ -406,7 +435,7 @@ return (
                       </div>
                     </div>
 
-                    	<div className="col-md-12">
+                    	<div className="col-md-6">
                       <div className="form-group">
                       <label for="First Name"> Movie-In Date <span className="text-danger"> * </span> </label>
                       { typeof document !== 'undefined' &&  <DatePicker className="form-control"
@@ -421,85 +450,96 @@ return (
                     </div>  
 
 
-                 <p className="pb-2"> <strong>Billing Information</strong> </p>
+                 <h6> <strong>Billing Information</strong> </h6>
                 {/* <form className=""> */}
                 <div className="row pb-3">
-                	<div className="col-md-12">
+                	<div className="col-md-6">
                       <div className="form-group">
                         <label for="First Name">Name on card  <span className="text-danger"> * </span></label>
                         <div className="clearfix"> </div>
-                        <input type="text" className="form-control width-60" placeholder="Enter the Name" name="CardName" value={this.state.fields.CardName} onChange={this.handleFormChange} />
+                        <input type="text" className="form-control" placeholder="Enter the Name" name="CardName" id="CardName" value={this.state.fields.CardName} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.CardName}</div>
                       </div>
                     </div>
 
-                    	<div className="col-md-12">
+                    	<div className="col-md-6">
                       <div className="form-group">
                         <label for="First Name">Address  <span className="text-danger"> * </span></label>
                         <div className="clearfix"> </div>
-                        <input type="text" className="form-control width-60" placeholder="Enter the Address" name="BillingAddress" value={this.state.fields.BillingAddress} onChange={this.handleFormChange} />
+                        <input type="text" className="form-control" placeholder="Enter the Address" name="BillingAddress" id="BillingAddress" value={this.state.fields.BillingAddress} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.BillingAddress}</div>
                       </div>
                     </div>
+                  </div>
 
-                    
-                    <div className="col-md-12">
+                    <div className="row pb-3"> 
+                    <div className="col-md-6">
                       <div className="form-group">
                         <label for="First Name">  Postal / Zip  <span className="text-danger"> * </span></label>
                         <div className="clearfix"> </div>
-                        <input type="text" className="form-control width-60" placeholder="Enter the Zip" name="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange} />
+                        <input type="text" className="form-control" placeholder="Enter the Zip" name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.Zip}</div>
                       </div>
                     </div>
                     
-                    <div className="col-md-12">  
+                    <div className="col-md-6">  
                       <div className="form-group ">
                         <label for="formGroupExampleInput2"> Card Number  <span className="text-danger"> * </span> </label>
                         <div className="clearfix"> </div>
-                        <input type="password" className="form-control width-60 d-inline"  placeholder="Enter your card number" id="CardNumber" name="CardNumber" value={this.state.fields.CardNumber} onChange={this.handleFormChange} />
+                        <input type="password" className="form-control width-60 d-inline"  placeholder="Enter your card number" id="CardNumber" name="CardNumber" value={this.state.fields.CardNumber} onChange={this.handleFormChange} /> &nbsp;
                         <span className="d-inline gv-text-color small text-underline cursor-pointer" onClick={() => this.CardNumberShowHideClick()}> Show/Hide </span>
                         <div className="errorMsg">{this.state.errors.CardNumber}</div>
                       </div>
                       
                       
-                    </div>  
-                  </div>   
+                    </div> 
+                    </div> 
+                    
                   
                   
                    <div className="row pb-3">
-                    <div className="col-md-12">
+                    <div className="col-md-6">
                       <div className="form-group">
                         <label for="First Name">CVV Number  <span className="text-danger"> * </span> </label>
                         <div className="clearfix"> </div>
-                        <input type="password" className="form-control width-60 d-inline" placeholder="Enter the CVV" id="CardCVV"  name="CardCVV" value={this.state.fields.CardCVV} onChange={this.handleFormChange} />
+                        <input type="password" className="form-control w-45 d-inline" placeholder="Enter the CVV" id="CardCVV"  name="CardCVV" value={this.state.fields.CardCVV} onChange={this.handleFormChange} />
                         <span className="d-inline gv-text-color small text-underline cursor-pointer" onClick={() => this.CVVShowHideClick()}>  <a > Show/Hide </a> </span>  &nbsp;
                         <span className="d-inline gv-text-color small text-underline cursor-pointer">   <a> What is this </a></span>
                         <div className="errorMsg">{this.state.errors.CardCVV}</div>
                       </div>
                     </div>
                     
-                    <div className="col-md-12">  
+                    <div className="col-md-6">  
                       <div className="form-group">
                         <label for="formGroupExampleInput2"> Expiry date  <span className="text-danger"> * </span> </label>
                         <div className="clearfix"> </div>
-                        <div className="col-12 width-60">
+                        <div className="col-12 ">
                         <div className="row">
-                        <select className="form-control col-6" id="ExpiryMonth"  name="ExpiryMonth" value={this.state.fields.ExpiryMonth} onChange={this.handleFormChange}>
+                        
+                        <select className="form-control col-5 " id="ExpiryMonth"  name="ExpiryMonth" value={this.state.fields.ExpiryMonth} onChange={this.handleFormChange}>
                               <option value="">Month</option>
                               {optionMonths}
-                        </select>
+                        </select> 
                         <div className="errorMsg">{this.state.errors.ExpiryMonth}</div>
-                        {/* <span className="exp-saparator"> </span> */}
-                        <select className="form-control col-6 " id="ExpiryYear"  name="ExpiryYear" value={this.state.fields.ExpiryYear} onChange={this.handleFormChange}>
+                        
+                        <span className="exp-saparator col-1 "> </span>
+                      
+                        <select className="form-control col-5 " id="ExpiryYear"  name="ExpiryYear" value={this.state.fields.ExpiryYear} onChange={this.handleFormChange}>
                               <option value="">Year</option>
                               {optionYears}
                         </select>
                         <div className="errorMsg">{this.state.errors.ExpiryYear}</div>
                         {/* <input type="text" className="form-control col-5"  placeholder="Year" /> */}
+                        
                         </div>
                         </div>
                       </div>
-                      
+                      </div>
+                    
+                    
+                        
+                  </div>
+                  <div className="row pb-3">
                       <div className="form-check small" styleName={{paddingLeft:'0px'}}>
                          <label className="customcheck"> Setup autopay using this credit card. 
                           <input type="checkbox"   />
@@ -507,9 +547,7 @@ return (
                    		 </label>
                          <span className="text-underline gv-text-color"> View autopay Terms </span>
                     </div>
-                    </div>  
-                  </div>
-                  
+                    </div>
                  
                   
                
@@ -518,7 +556,7 @@ return (
                
                 </div>
                 
-                <div className="col-md-5"> 
+                {/* <div className="col-md-5"> 
                 	<div className="offer-for-user">
                     	 <p> <span> <img src ={Environment.STATIC_FILES_END_POINT_URL + "img/offer-icon.png"} alt=" " width="35" /> </span> <strong> Offers for you </strong> </p>
                     	<div className="subscribe">
@@ -538,17 +576,18 @@ return (
                         <p className="small gv-text-color text-underline pt-3 text-center"> View More Offers </p>
                     </div>
                 </div>
+                 */}
                 </div>
-                
+            </div>
                 
                </div>
                
-               <hr />
+            
                <div className="rent-your-unit-footer ">
-              
+              <br/>
                	<div className="unit-submit  pl-4 pr-4">
                		{!!totalAmount && 
-                    <input type="submit" className="btn btn-gvstore btn-success border-0 green-gradient ml-3"  value={`Pay $${totalAmount.toFixed(2)} and Rent Now`}/> 
+                    <input type="submit" className="btn btn-gvstore btn-success pull-right border-0 green-gradient ml-3"  value={`Pay $${totalAmount.toFixed(2)} and Rent Now`}/> 
                    }
                     <br />
                 </div>
@@ -556,6 +595,7 @@ return (
                </form> 
             </div>
             </div>
+            }
          	</div>
     )
 }

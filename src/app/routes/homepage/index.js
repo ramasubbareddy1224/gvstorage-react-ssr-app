@@ -17,6 +17,8 @@ import { getPinCodes_Sites, getCurrentLocation, getNearByLocations
   } from '../../../modules/actioncreators/home.actioncreator';
 import CommonNearBy from '../../components/common/common.nearby';
 import HomeHowStorageWorks from '../../components/common/home.howstorageworks';
+import HomeRightStorageSpace from '../../components/common/home.rightstoragespace';
+import HomeStorageTools from '../../components/common/home.storagetools';
 
 const frontload = async props =>{
 
@@ -34,11 +36,13 @@ const frontload = async props =>{
   var dynamicRequestList = [];
   if(props.allPinCodes_Sites.length == 0){
     dynamicRequestList.push(props.getPinCodes_Sites());
+    document.getElementById('div-preloader').style.display = 'block'
     // return Promise.all(props.getPinCodes_Sites()).then(function(values) {
     // });
   }
 
   return Promise.all(dynamicRequestList).then(function(values) {
+    document.getElementById('div-preloader').style.display = 'none';
   });
 }
 
@@ -57,7 +61,9 @@ class HomePage extends Component {
     <HomeStorageSolutions></HomeStorageSolutions>
     <HomeWhyUs></HomeWhyUs>
     <HomeHowStorageWorks></HomeHowStorageWorks>
-    <HomeStorageSolutions></HomeStorageSolutions>
+    <HomeRightStorageSpace></HomeRightStorageSpace>
+    <HomeStorageTools></HomeStorageTools>
+    {/* <HomeStorageSolutions></HomeStorageSolutions> */}
     <HomeTestimonials></HomeTestimonials>
     <CommonContactUs></CommonContactUs>
     </main>

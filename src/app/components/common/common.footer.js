@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
-import {Redirect} from 'react-router-dom';
+import {Redirect, Link} from 'react-router-dom';
+
 
 class CommonFooter extends Component{
 
@@ -67,7 +68,8 @@ render(){
     return(
         <div>
         <section className="section-footer wow fadeInUp">
-        <div className="container footer-bg-color pb-3">
+        <div className="container-fluid footer-bg-color pb-3">
+        <div className="container-fluid-padding">
         <div className="pt-2 pb-3">
               <h2 >Locations</h2>
             </div>
@@ -77,15 +79,16 @@ render(){
           </div>
           </div>
           <hr  style={{borderColor: '#5c5c5c'}} />
+          </div>
         </div>
         
-        <div className="container footer-bg-color pb-1">
-        
+        <div className="container-fluid footer-bg-color pb-1">
+        <div className="container-fluid-padding">
           <div className="row">
             <div className="col-sm-12 col-md-3">
               <div className="widget-a">
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">Storage Options</h6>
+                  <h6 className="w-title-a text-brand"><Link to="/storage-options">Storage Options</Link></h6>
                 </div>
                 
                 <div className="w-header-a">
@@ -101,7 +104,7 @@ render(){
                 </div>
                 
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">Business storage </h6>
+                  <h6 className="w-title-a text-brand"><Link to="/business-storage">Business storage</Link> </h6>
                 </div>
                 
                 <div className="w-body-a">
@@ -129,15 +132,15 @@ render(){
                     </div>
                 
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand"> Size Guide </h6>
+                  <h6 className="w-title-a text-brand"><Link to="/size-guide"> Size Guide </Link></h6>
                 </div>
                 
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand"> Space Calculator </h6>
+                  <h6 className="w-title-a text-brand"><Link to="/space-calculator"> Space Calculator </Link></h6>
                 </div>
                 
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">Self Storage Tips</h6>
+                  <h6 className="w-title-a text-brand"><Link to="/tips">Self Storage Tips</Link></h6>
                 </div>
               
               </div>
@@ -155,12 +158,12 @@ render(){
                 </div>
     
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand"> About Us </h6>
+                  <h6 className="w-title-a text-brand"><Link to="/about-us"> About Us </Link></h6>
                 </div>
     
                 
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand"> Contact Us </h6>
+                  <h6 className="w-title-a text-brand"><Link to="/contact-us"> Contact Us </Link> </h6>
                 </div>
     
                 
@@ -215,11 +218,13 @@ render(){
           </div>
           
           <hr  style={{borderColor: '#5c5c5c'}}/>
+          </div>
         </div>
       </section>
      
       <footer>
-        <div className="container footer-bg-color ">
+        <div className="container-fluid footer-bg-color ">
+        <div className="container-fluid-padding">
           <div className="row">
             <div className="col-md-12">
               <div className="copyright-footer">
@@ -234,6 +239,7 @@ render(){
               </div>
               
             </div>
+          </div>
           </div>
         </div>
       </footer>

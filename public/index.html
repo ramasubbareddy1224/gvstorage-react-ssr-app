@@ -49,12 +49,12 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <!-- <div class="preloader">
-        <img src="/img/gvstore-preloader.gif" />
-      </div> -->
+    <div class="preloader" id="div-preloader">
+        <img src="/img/gvstore-preloader.gif" class="preloader-img" />
+      </div>
     <div id="root"></div>
 
-    <div id="map"> </div>
+    <!-- <div id="map"> </div> -->
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -87,93 +87,6 @@
 
 
 
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script> <!-- google maps -->
-<script>
-
-     /* <![CDATA[ */
-  jQuery(document).ready(function ($) {
-      'use strict';
-      // GOOGLE MAPS START
-      var locations = [
-          ['Condados em Califórnia',34.3872, 118.1123, 1, 'img/pin1.png'],
-          ['Calibrated ', 42.7917, 85.9305, 2, 'img/pin2.png']
-
-       
-      ];
-
-
-      var style = [
-          {"featureType": "road",
-              "elementType":
-                      "labels.icon",
-              "stylers": [
-                  {"saturation": 1},
-                  {"gamma": 1},
-                  {"visibility": "on"},
-                  {"hue": "#e6ff00"}
-              ]
-          },
-          {"elementType": "geometry", "stylers": [
-                  {"saturation": -85}
-              ]
-          }
-      ];
-
-      var map = new google.maps.Map(document.getElementById('map'), {
-          // SET THE CENTER
-          center: new google.maps.LatLng(34.3872, 118.1123), 
-          // SET THE MAP STYLE & ZOOM LEVEL
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          zoom: 6,
-          // SET THE BACKGROUND COLOUR
-          backgroundColor: "#eeeeee",
-          // REMOVE ALL THE CONTROLS EXCEPT ZOOM
-          panControl: true,
-          zoomControl: true,
-          mapTypeControl: true,
-          scaleControl: true,
-          streetViewControl: true,
-          overviewMapControl: true,
-          scrollwheel: false,
-          zoomControlOptions: {
-              style: google.maps.ZoomControlStyle.SMALL
-          }
-      });
-
-      var mapType = new google.maps.StyledMapType(style, {name: "Grayscale"});
-      map.mapTypes.set('grey', mapType);
-      map.setMapTypeId('grey');
-
-      var infowindow = new google.maps.InfoWindow();
-
-      //CREATE A CUSTOM PIN ICON
-      var marker_image = 'img/pin.png';
-      var pinIcon = new google.maps.MarkerImage(marker_image, null, null, null, new google.maps.Size(70, 40));
-
-      var marker, i;
-
-      for (i = 0; i < locations.length; i++) {
-//alert(locations[i][1]);
-var index = i + 1;
-          marker = new google.maps.Marker({
-              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-              map: map,
-              icon: marker_image, //locations[i][4],
-  label : ''+index, //locations[i][3]
-          });
-
-          google.maps.event.addListener(marker, 'click', (function (marker, i) {
-              return function () {
-                  infowindow.setContent(locations[i][0]);
-                  infowindow.open(map, marker);
-              }
-          })(marker, i));
-      }
-  });
-  /* ]]> */
-
- 
-</script>
 
 
   </body>

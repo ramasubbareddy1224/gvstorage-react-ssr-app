@@ -38,16 +38,18 @@ render(){
   var divLocations = allPinCodes_Sites[1].locations.map((parentMenu,parentindex) => {
 
   return (
-    <li key={"parent_menu_"+parentindex}  onClick={(event) => {this.redirectToTarget(event,parentMenu.stateName)}} >
-     {/* <Link to={"/search/"+item.stateName}>{item.stateName}</Link>    */}
-     <a>{parentMenu.stateName}</a>
+    <li key={"parent_menu_"+parentindex}  >
+     {/* onClick={(event) => {this.redirectToTarget(event,parentMenu.stateName)}} */}
+     <Link to={"/search/"+parentMenu.stateName}>{parentMenu.stateName}</Link>   
+     {/* <a>{parentMenu.stateName}</a> */}
      <ul>
     {
       parentMenu.cities.map((city, cityIndex) => {
         return(
-              <li  key={"child_bc_"+parentindex+"_"+cityIndex} onClick={(event) => {this.redirectToTarget(event, city.city) }}>
-              {/* <Link to={"/search/"+city.city}>{city.city}</Link>  */}
-              <a>{city.city}</a>
+              <li  key={"child_bc_"+parentindex+"_"+cityIndex}>
+               {/* onClick={(event) => {this.redirectToTarget(event, city.city) }} */}
+              <Link to={"/search/"+city.city}>{city.city}</Link> 
+              {/* <a>{city.city}</a> */}
               </li>
         )
       })
@@ -61,8 +63,8 @@ render(){
     return(
       <div id="header-menu">
     <header id="header">
-    <div className="container">
-
+    <div className="container-fluid">
+  <div className="container-fluid-padding">
       <div id="logo" className="pull-left">
         <h1><Link to="/" className="navbar-brand text-brand"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/great-value-store-logo.png"} alt="logo" /> </Link></h1>
       </div>
@@ -74,7 +76,7 @@ render(){
               {divLocations}
             </ul>
           </li>
-          <li className="menu-has-children"><a href="#">Storage Options</a>
+          <li className="menu-has-children"><Link to="/storage-options">Storage Options</Link>
            <ul>
               <li><Link to="/why-choose-us">Why Choose Us</Link></li>
               <li><Link to="/personal-storage">Personal Storage</Link></li>
@@ -96,7 +98,7 @@ render(){
            <ul>
               <li><Link to="/about-us">About Us</Link></li>
               <li><Link to="/contact-us">Contact</Link></li>
-              <li><Link to="/careers">Careers</Link></li>
+              <li><Link to="">Careers</Link></li>
               <li><Link to="/blogs">Blogs</Link></li>
               <li><Link to="/">Reviews Us</Link></li>
             </ul>
@@ -106,6 +108,7 @@ render(){
           <li><Link to="/faqs">FAQs</Link></li>
         </ul>
       </nav>
+    </div>
     </div>
   </header>
   </div>

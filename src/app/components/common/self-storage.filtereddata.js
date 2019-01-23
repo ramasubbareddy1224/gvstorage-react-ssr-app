@@ -128,6 +128,14 @@ class SelfStorageFilteredData extends Component{
     }
   }
 
+   scrollTabClick(value){
+    let $=require('jquery');
+    $('html, body').animate({ scrollTop: $(`#selfstorage${value}`).offset().top }, 'slow');
+    
+     //alert(value);
+     //'feature'
+   }
+
 
 render(){
 
@@ -225,14 +233,15 @@ const divAppliedFilters =  this.state.filteredUnitTypes.map((val,index)=> {
 
     return(
         <section className="facility-filter-tabs wow fadeInUp">
-        <div className="container">
+        <div className="container-fluid">
+        <div className="container-fluid-padding">
           <div className="row">
             <div className=" col-12 facility-tabs">
               <ul className="nav nav-tabs" id="myTab" role="tablist">
                 <li className="nav-item"> <a className="nav-link active" id="home-tab" data-toggle="tab" href="#storage" role="tab" aria-controls="home" aria-selected="true"> Storage units </a> </li>
-                <li className="nav-item"> <a className="nav-link" id="profile-tab" data-toggle="tab" href="#features" role="tab" aria-controls="profile" aria-selected="false"> Features </a> </li>
-                <li className="nav-item"> <a className="nav-link" id="contact-tab" data-toggle="tab" href="#reviews" role="tab" aria-controls="contact" aria-selected="false"> Reviews </a> </li>
-                <li className="nav-item"> <a className="nav-link" id="contact-tab" data-toggle="tab" href="#fitsInside" role="tab" aria-controls="contact" aria-selected="false"> What Fits Inside </a> </li>
+                <li className="nav-item cursor-pointer" onClick={()=>this.scrollTabClick('features')}> <a className="nav-link" id="profile-tab"  role="tab" aria-controls="profile" aria-selected="false"> Features </a> </li>
+                {/* <li className="nav-item"> <a className="nav-link" id="contact-tab" role="tab" aria-controls="contact" aria-selected="false"> Reviews </a> </li> */}
+                <li className="nav-item cursor-pointer" onClick={()=> this.scrollTabClick('whatfits')}> <a className="nav-link" id="contact-tab" role="tab" aria-controls="contact" aria-selected="false"> What Fits Inside </a> </li>
                 
                 <li className="nav-item pull-right storage-filters"> <a href="#" className="nav-link"> <i className="fa fa-sliders" aria-hidden="true"></i>  Storage Filters </a> </li>
               </ul>
@@ -349,8 +358,11 @@ const divAppliedFilters =  this.state.filteredUnitTypes.map((val,index)=> {
             </div>
           </div>
           <div className="clearfix"> </div>
+          {!!allUnits && !!allUnits.siteLocation &&
           <div className="help-no">
-            <p className="text-center"> Other unit sizes may be available. Call <strong>(512) 649-0442</strong> for more information. </p>
+            <p className="text-center"> Other unit sizes may be available. Call <strong className="font-weight-bold">{allUnits.siteLocation.phone}</strong> for more information. </p>
+          </div>
+          }
           </div>
         </div>
       </section>
