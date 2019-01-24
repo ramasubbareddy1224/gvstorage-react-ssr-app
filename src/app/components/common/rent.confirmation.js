@@ -14,7 +14,6 @@ class RentConfirmation extends Component{
 render(){
     const {rentConfirmationData} = this.props;
     const {tenantInfo} = this.props;
-    debugger;
     return(
         <div className="">
         <div className="rent-your-unit-now pt-3 pb-3">

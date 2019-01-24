@@ -50,6 +50,11 @@ const frontload = async props => {
      
       var value =  values.filter(x=> (!!x && x["type"] == "GET_SELECTED_UNIT_INFO"))[0]
 
+      if(!value || !value.payload.unit )
+      {
+        props.history.push(`/self-storage/${pathParams.locationCode}`)
+        return false;
+      }
       var requestObj = {
         "concessionID": value.payload.unit.concessionID,
         "insurCoverageID": value.payload.insurancePlans[0].insurCoverageID,
@@ -64,6 +69,9 @@ const frontload = async props => {
     var promise = props.getAllMoveInCharges(requestObj);
     promise.then((success)=>{
       document.getElementById('div-preloader').style.display = 'none';
+    }, (error)=>{
+      console.log('error' + error);
+      document.getElementById('div-preloader').style.display = 'none';
     })
     });
   }
@@ -72,6 +80,11 @@ const frontload = async props => {
     pathParams.isReloaded = true;
 
     const unitInfo = props.allUnits.units.filter(x=>x.firstAvailableUnitID == pathParams.unitId);
+
+    if(unitInfo.length == 0){
+      props.history.push(`/self-storage/${pathParams.locationCode}`)
+      return false;
+    }
 
     var requestObj = {
       "concessionID": unitInfo[0].concessionID,
@@ -88,14 +101,17 @@ const frontload = async props => {
   
    return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
-   });
+   }, (error)=>{
+    console.log('error' + error);
+    document.getElementById('div-preloader').style.display = 'none';
+  });
   }
 
   // return Promise.all([
   //   props.getPinCodes_Sites(), 
   //   props.getAllUnitsByLocationCode(props.match.params.locationCode)
   //   ]).then(function(values) {
-  //     debugger;
+
   //     props.getAllMoveInCharges('')
   // });
   

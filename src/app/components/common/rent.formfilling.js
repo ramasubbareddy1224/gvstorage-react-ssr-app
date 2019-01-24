@@ -93,7 +93,6 @@ class RentFormFilling extends Component{
       document.getElementById('div-preloader').style.display = 'block';
       addTenant(requestData).then((success)=>{
         if(success.status.code  == 200){
-          // alert('Added Tenant succesfully');
           document.getElementById('div-preloader').style.display = 'none';
           this.setState({isRedirectActivated: true, tenantID: success.tenantID});
         }

@@ -21,15 +21,23 @@ export const getDiscounts = () => (dispatch) => {
     //   .then(data => dispatch(getAllDiscounts(data)))
     return ApiRequest.url(`/NOP/Discount/GetAllDiscounts`)
     .get()
-    .json(json=>dispatch(getAllDiscounts(json)));
+    .json(json=>dispatch(getAllDiscounts(json)))
+    .catch( err => {
+      console.log(err);
+      document.getElementById('div-preloader').style.display = 'none';
+      })
   };
 
   export const getPinCodes = () => {
     return new Promise(resolve=>{
       return ApiRequest.url(`postalcodes`)
       .get()
-      .json(json=>resolve(json));
-    })
+      .json(json=>resolve(json))
+      .catch( err => {
+        console.log(err);
+        document.getElementById('div-preloader').style.display = 'none';
+        })
+    });
     
   };
 
@@ -37,7 +45,11 @@ export const getDiscounts = () => (dispatch) => {
     return new Promise(resolve=>{
       return ApiRequest.url(`sites`)
       .get()
-      .json(json=>resolve(json));
+      .json(json=>resolve(json))
+      .catch( err => {
+        console.log(err);
+        document.getElementById('div-preloader').style.display = 'none';
+        })
     })
   };
 
@@ -55,12 +67,12 @@ export const getDiscounts = () => (dispatch) => {
 
   export const getPinCodes_Sites = () => (dispatch) => {
     return new Promise(resolve=>{
-      dispatch(showLoading());
+     // dispatch(showLoading());
       Promise.all([getPinCodes(),getSites()]).then(response=>{
-        dispatch(hideLoading());
+        //dispatch(hideLoading());
         dispatch(actionCreator_PinCodes_Sites(response));
-        resolve({});
-      })
+        resolve({})
+      }, error => {console.log(error)})
     })   
 
   };
@@ -71,7 +83,11 @@ export const getDiscounts = () => (dispatch) => {
     return wretch()
     .url(apiUrl).
     get()
-    .json(json=> json);
+    .json(json=> json)
+    .catch( err => {
+      console.log(err);
+      document.getElementById('div-preloader').style.display = 'none';
+      });
   };
 
 
@@ -79,5 +95,9 @@ export const getDiscounts = () => (dispatch) => {
     var apiUrl = `search/${state}/${city}/${zipCode}`;
     return ApiRequest.url(apiUrl)
     .get()
-    .json(json=>dispatch(getAllNearByLocations(json)));
+    .json(json=>dispatch(getAllNearByLocations(json)))
+    .catch( err => {
+      console.log(err);
+      document.getElementById('div-preloader').style.display = 'none';
+      });
   };

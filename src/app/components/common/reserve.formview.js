@@ -14,7 +14,7 @@ class ReserveFormView extends Component{
 render(){
     const formData = this.props.formData;
     const {reservationData} = this.props;
-    debugger;
+    
     return(
         <div className="">
         <div className="rent-your-unit-now pt-3 pb-3">

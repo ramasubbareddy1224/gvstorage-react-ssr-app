@@ -5,6 +5,7 @@ import queryString from 'query-string';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { frontloadConnect } from 'react-frontload';
+import {Redirect,Link} from 'react-router-dom';
 
 import logo from '../../assets/logo.jpg';
 import SelfStorageBanner from '../../components/common/self-storage.banner';
@@ -38,13 +39,16 @@ const frontload = async props => {
       document.getElementById('div-preloader').style.display = 'block';
       //await Promise.all(dynamicRequestList);
       return Promise.all(dynamicRequestList).then(function(values) {
-        debugger;
+        if(values[values.length -1].status.code < 0){
+          props.history.push(`/`)
+        }
         document.getElementById('div-preloader').style.display = 'none';
       });
     // return props.getAllUnitsByLocationCode(props.match.params.locationCode);
   }
   catch(error)
   {
+    document.getElementById('div-preloader').style.display = 'none';
     console.log('error',error);
   }
 
@@ -71,6 +75,7 @@ const frontload = async props => {
 
 class SelfStorage extends Component {  
   render() {
+
     const { allUnits } = this.props;
     const {allSites} = this.props;
 

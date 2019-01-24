@@ -28,7 +28,6 @@ class CommonPayBill extends Component{
             });
         }, 100);
       
-       // alert(locationCode)
     }
     backToLocations(){
         this.setState({isLocationClicked: false});

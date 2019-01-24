@@ -191,7 +191,7 @@ class ReserveFormFilling extends Component{
     const {unit} = this.props.selectedUnitInfo;
     const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
     const selectedSiteLocation = this.props.selectedUnitInfo.siteLocation; 
-    debugger;
+    
 
     const {moveInCharges} = this.props.moveInCharges;
     const {totalAmount} = this.props.moveInCharges;
@@ -226,7 +226,7 @@ class ReserveFormFilling extends Component{
       reserveNow(requestData).then((success)=>{
         if(success.status.code  == 200){
           document.getElementById('div-preloader').style.display = 'none';
-          alert('Reserved succesfully');
+          // alert('Reserved succesfully');
          // this.setState({isRedirectActivated: true});
         
          this.setState({reserveNowResponse: success, isInViewPage: true});

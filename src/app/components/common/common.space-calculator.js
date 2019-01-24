@@ -276,16 +276,7 @@ clkRedirectToSelfStorage = (state, city) =>{
         const {allPinCodes_Sites} = this.props;
 
        const states = allPinCodes_Sites.length > 0 && allPinCodes_Sites[1].locations.map(x=>x.stateName);
-      // const originalCities = allPinCodes_Sites.length > 0 && allPinCodes_Sites[1].locations.map(x=>x.cities);
-       
-    //    if(!!originalCities){
-    //        debugger;
-    //         for(var i=0;i<originalCities.length;i++){
-    //             citiesList.push(originalCities[i]);
-    //         }
-    //    }
-
-        debugger;
+    
 
         return(
             <div className="container">

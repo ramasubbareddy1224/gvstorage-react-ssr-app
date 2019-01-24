@@ -32,7 +32,6 @@ const frontload = async props => {
   document.getElementById('div-preloader').style.display = 'block';
   //await Promise.all(dynamicRequestList);
   return Promise.all(dynamicRequestList).then(function(values) {
-    debugger;
     document.getElementById('div-preloader').style.display = 'none';
   });
 };

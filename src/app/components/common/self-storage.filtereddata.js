@@ -132,7 +132,6 @@ class SelfStorageFilteredData extends Component{
     let $=require('jquery');
     $('html, body').animate({ scrollTop: $(`#selfstorage${value}`).offset().top }, 'slow');
     
-     //alert(value);
      //'feature'
    }
 

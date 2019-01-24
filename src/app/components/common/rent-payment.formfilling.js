@@ -156,13 +156,11 @@ getMoveInData(){
         alert(success.status.message);
         document.getElementById('div-preloader').style.display = 'none';
         if(success.status.code  == 200){
-          //alert('Payment done');
-          //this.setState({isRedirectActivated: true});
+         
    
           this.setState({isInViewPage: true, confirmPaymentReponse: success});
         }
         else if(success.status.code == -83){
-         // alert(success.status.message);
          document.getElementById('div-preloader').style.display = 'none';
         }
       },

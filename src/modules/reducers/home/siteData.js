@@ -10,7 +10,7 @@ export default function(state = INITIAL_STATE, action) {
       return { ...state, sites: action.payload};
     
       case ACTIONTYPES.HOME.GET_ALL_PINCODES_SITES:
-      debugger;
+    
       return { ...state, pinCodes_Sites: action.payload }
 
       default:

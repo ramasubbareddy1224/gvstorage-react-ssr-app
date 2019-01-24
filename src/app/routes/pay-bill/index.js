@@ -33,7 +33,7 @@ class PayBill extends Component {
 
   render() {
     const {allPinCodes_Sites} = this.props;
-    debugger;
+    
     return (
       <Page id="personal-storage">
     <CommonStaticBreadCrumb pageName="Pay Bill" ></CommonStaticBreadCrumb>

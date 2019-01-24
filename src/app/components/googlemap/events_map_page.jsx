@@ -87,8 +87,7 @@ import {K_SIZE} from './my_great_place_with_controllable_hover_styles.js';
 
   render() {
     if(this.props.mapPointers.length > 0)
-   // alert(this.props.centerIndex)
-
+  
     //this.setState({});
     { !!this.props.mapPointers[this.props.centerIndex] &&
     this.props.onCenterChange([this.props.mapPointers[this.props.centerIndex].lat, this.props.mapPointers[this.props.centerIndex].lng]);

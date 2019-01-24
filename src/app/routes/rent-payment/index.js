@@ -36,15 +36,18 @@ const frontload = async props => {
   pathParams = props.match.params;
 
 
-   
   getTenantInfo(pathParams.tenantId, pathParams.locationCode).then((success)=>{
+    if(!!success){
+     
     if(success.status.code  == 200){
       tenantInfo = success;
+    } 
     }
   },
   (error)=>{
-    debugger;
-    //alert((JSON.parse(error.text)).status.message);
+    document.getElementById('div-preloader').style.display = 'none';
+    console.log('error' + error);
+   
   });
 
 

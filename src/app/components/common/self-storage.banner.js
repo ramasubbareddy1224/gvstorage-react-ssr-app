@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
+import {Link, Redirect} from 'react-router-dom';
 
 class SelfStorageBanner extends Component{
 render(){
@@ -16,9 +17,11 @@ render(){
       <div className="">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb ">
-            <li className="breadcrumb-item"><a className="text-white" href="#">Home</a></li>
-            <li className="breadcrumb-item"><a className="text-white" href="#">Storage options</a></li>
-            <li className="breadcrumb-item"><a className="text-white" href="#"> {pathParams.locationCode} </a></li>
+            <li className="breadcrumb-item"><a className="text-white" >Home</a></li>
+            <li className="breadcrumb-item"><a className="text-white" >Storage options</a></li>
+            <li className="breadcrumb-item"><Link className="text-white" to={`/search/${siteLocation.stateName}`} > {siteLocation.stateName} </Link></li>
+            <li className="breadcrumb-item"><Link className="text-white"  to={`/search/${siteLocation.city}`}> {siteLocation.city} </Link></li>
+            <li className="breadcrumb-item"><a className="text-white" > {siteLocation.name} </a></li>
             {/* <li className="breadcrumb-item text-white active" aria-current="page"> Dallas </li> */}
           </ol>
         </nav>

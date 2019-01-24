@@ -41,7 +41,7 @@ render(){
             <p className="small" key={index}>
              {moveInCharge.description}: ${moveInCharge.amount} USD
              <br/>
-             { !!moveInCharge.discount && ('Discount: ' + moveInCharge.discount  ) }
+             { !!moveInCharge.discount && ('Discount: $' + moveInCharge.discount + ' USD'  ) }
 
              </p>
         )
@@ -96,7 +96,7 @@ render(){
                 </p>
             </div>
             <div className="data-info">
-                <p> {Object.keys(unitInfo).length > 0 && unitInfo.unitWidth} X {Object.keys(unitInfo).length && unitInfo.unitLength} - MEDIUM </p>
+                <p> {Object.keys(unitInfo).length > 0 && unitInfo.unitWidth} X {Object.keys(unitInfo).length && unitInfo.unitLength} </p>
             </div>
             </div>
             
@@ -106,8 +106,10 @@ render(){
             </div>
             <div className="data-info">
                 <div className="rate-varision">
+                        {Object.keys(unitInfo).length && !!unitInfo.onsiteRate &&
                         <p className="d-inline-block rate-info w-45 text-muted"> ONSITE <br />
-                          <strong ><del> {Object.keys(unitInfo).length && (`$${unitInfo.onsiteRate}`)}</del></strong> </p>
+                          <strong ><del> { (`$${unitInfo.onsiteRate}`)}</del></strong> </p>
+                          }
                         <p className="d-inline-block rate-info w-45"> WEB  <br />
                           <strong className="gv-text-color"> {Object.keys(unitInfo).length && (`$${unitInfo.webRate}`)} </strong> </p>
                       </div>
