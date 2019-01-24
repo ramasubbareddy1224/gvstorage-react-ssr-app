@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
-import {Link, Redirect} from 'react-router-dom';
 
 class SelfStorageBanner extends Component{
 render(){
@@ -17,8 +16,8 @@ render(){
       <div className="">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb ">
-            <li className="breadcrumb-item"><a className="text-white" >Home</a></li>
-            <li className="breadcrumb-item"><a className="text-white" >Storage options</a></li>
+            <li className="breadcrumb-item"><a className="text-white" href="#">Home</a></li>
+            <li className="breadcrumb-item"><a className="text-white" href="#">Storage options</a></li>
             <li className="breadcrumb-item"><Link className="text-white" to={`/search/${siteLocation.stateName}`} > {siteLocation.stateName} </Link></li>
             <li className="breadcrumb-item"><Link className="text-white"  to={`/search/${siteLocation.city}`}> {siteLocation.city} </Link></li>
             <li className="breadcrumb-item"><a className="text-white" > {siteLocation.name} </a></li>
@@ -30,7 +29,9 @@ render(){
     <div className="about-room-facility">
       <h4> {!!siteLocation && siteLocation.name}  <span className="gv-text-color text-underline pull-right font-weight-bold font-big pr-1 align-top"> <i class="fa fa-map-marker"> </i> </span></h4> 
       <div className="storage-room-block">
-        <div className="storage-room-image"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/facility-banner-img.png"} alt="" /> </div>
+        <div className="storage-room-image"> 
+        <div className="storage-img-l">  <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/facility-banner-img.png"} alt="" /> </div>
+        </div>
         <div className="storage-room-content">
           <p className="small"> <i className="fa fa-map-marker"> </i> {!!siteLocation && siteLocation.address1}, {!!siteLocation && siteLocation.city}, {!!siteLocation && siteLocation.stateCode} {!!siteLocation && siteLocation.postalCode}. &nbsp;
           <a class="btn btn-gvstore btn-success btn-sm border-0 bg-light text-success font-normal "> Get Direction </a> <br />

@@ -1691,7 +1691,18 @@ margin-top:2rem;
 
 .font-big { font-size: 34px;}
 .about-room-facility { padding-top:20px; }
-.storage-room-image { display:inline-block; padding-right: 50px; vertical-align:top; }
+.storage-room-image { display:inline-block; padding-right: 50px; vertical-align:top; position: relative; }
+
+.storage-img-l:after {
+    content: "";
+    position: absolute;
+    top: 30px;
+    border: 2px solid #38a61d;
+    width: 80%;
+    height: 98%;
+    border-radius: 0 30px 0 30px;
+    left: 25px;
+}
 .storage-room-block { padding-top:10px;}
 .storage-room-content { display:inline-block; padding-top:2rem;}
 .storage-room-content p a.btn { margin-left: 20px;}
@@ -1712,15 +1723,26 @@ margin-top:2rem;
 #inner-banner .storage-room-content .wether-block {padding-top:2rem}
 #inner-banner .storage-room-content .wether-block .office-hours { margin-right: 3rem;}
 
-#inner-banner .storage-room-content .wether-block .wether-info {     padding: 21px 15px;
-    border-radius: 0px 10px 0px 10px;
+#inner-banner .storage-room-content .wether-block .wether-info {     padding: 17px 15px;
+	border-radius: 0px 10px 0px 10px;
+	min-height: 70px;
     margin: 0px;
 	vertical-align: top;
-	margin-right: 5px;
+	margin-right: 10px;
 }
-#inner-banner .storage-room-content .wether-block .wether-info-content { background:#414c5b; padding:15px; 
-	border-radius:0px 10px 0px 10px; margin:0px; vertical-align:top; color:#fff; min-height: 80px;
-	width: 300px;
+#inner-banner .storage-room-content .wether-block .wether-info-content { background:#414c5b; padding:10px 15px; 
+	border-radius:0px; margin:0px; vertical-align:top; color:#fff; min-height: 70px;
+	width: 320px; position: relative;
+}
+p.wether-info-content.d-inline-block.small:before {
+    content: "";
+    position: absolute;
+    border: 9px solid #414c5b;
+    left: -5px;
+    top: 0px;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
 }
 
 .facility-filter-tabs .facility-tabs { width:100%; position:relative;}
@@ -1982,8 +2004,9 @@ margin-top:2rem;
 /* .filter-tab-content .facility-grid table tbody { height: 300px; overflow-y: auto; table-layout:fixed;} */
 
 .facility-grid tbody {
-    display:block;
-    /* height:720px; */
+	display:block;
+	min-height: 100px;
+    max-height:720px;
     overflow:auto;
 }
 .facility-grid thead, tbody tr {
