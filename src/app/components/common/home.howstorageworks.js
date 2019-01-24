@@ -4,7 +4,7 @@ import {Environment} from '../../../configurations/environment';
 class HomeHowStorageWorks extends Component{
 render(){
     return(
-        <section id="storage-tools" className="wow fadeInUp">
+        <section id="storage-tools" className="wow fadeInUp pt-3">
         <div className="container-fluid">
           
           <div className="how-storage-works">

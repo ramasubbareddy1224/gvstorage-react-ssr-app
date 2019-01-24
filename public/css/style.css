@@ -28,13 +28,15 @@ p {
 	padding: 0;
 	margin: 0 0 15px 0;
 	font-family: 'NunitoRegular', sans-serif;
+	font-weight: 500;
 }
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'NunitoBold', sans-serif;
+	font-family: 'NunitoRegular', sans-serif;
 	font-weight: 500;
 	margin: 0 0 15px 0;
 	padding: 0;
 }
+h5, h6 { font-weight: 600;}
 .h2, h2{ font-size:1.8rem;}
 .btn { font-family: 'NunitoRegular', sans-serif;}
 
@@ -105,7 +107,7 @@ background-color: #fff;
     border-radius: 8px;
 }
 label {
-	font-family: 'NunitoBold', sans-serif;
+	font-family: 'NunitoRegular', sans-serif;
     font-weight: 500;
     font-size: 0.85rem;
 	
@@ -195,7 +197,7 @@ label {
 	margin: 0;
 	padding: 0;
 	line-height: 1;
-	font-family: 'NunitoBold', sans-serif;
+	font-family: 'NunitoRegular', sans-serif;
 	font-weight: 700;
 }
 #header #logo h1 a {
@@ -260,7 +262,7 @@ label {
 	margin-bottom: 0px;
 	font-size: 50px;
 	font-family: 'NunitoRegular', sans-serif;
-	font-weight:600;
+	
 }
 #intro .intro-content p {
 	color: #fff;
@@ -396,9 +398,9 @@ label {
 	padding: 10px 8px;
 	text-decoration: none;
 	display: inline-block;
-	color: #555;
-	font-family: 'nunitolight', sans-serif ;
-	font-weight: 700;
+	color: #333;
+	font-family: 'NunitoRegular', sans-serif ;
+	font-weight: 400;
 	font-size: 14px;
 	outline: none;
 }
@@ -560,7 +562,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 .section-header h3 {
 	font-size: 28px;
 	color: #fff;
-	font-weight: 700;
 	position: relative;
 	padding-bottom: 20px;
 }
@@ -619,7 +620,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	color: #ffffff;
 	margin: 0;
 	text-transform: capitalize;
-	font-family: 'NunitoBold', sans-serif;
+	font-family: 'NunitoRegular', sans-serif;
 }
 #about .fav-locations p {
 	color: #333;
@@ -656,7 +657,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	padding: 60px 0 40px 0;
 }
 .bg-storage {
-	background:#333;
+	background:#1d1e20;
 }
 #services .storage-img-block {
 	width:145px;
@@ -664,6 +665,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	border:1px solid #fff;
 	margin: 0px auto;
 	border-radius:0px 25px 0px 25px;
+	margin-bottom: 20px;
 }
 #services .box {
 	padding: 40px;
@@ -698,12 +700,14 @@ body.mobile-nav-active #mobile-nav-toggle {
 #services .storage-solution {
 	margin-bottom:30px;
 }
+#services .storage-solution h5 { font-weight: 500; color: #fff;}
 #services .storage-solution p {
-	color: #fff;
+	color: #9c9c9c;
 	margin: 10px 0px 0px 0px;
 	font-weight: normal;
 	text-align: center;
 	line-height: 26px;
+	font-weight: normal;
 }
 #services .box h4 a {
 	color: #444;
@@ -883,13 +887,12 @@ body.mobile-nav-active #mobile-nav-toggle {
 #call-to-action .cta-title {
 	color: #fff;
 	font-size: 28px;
-	font-weight: 700;
-}
+	}
 #call-to-action .cta-text {
 	color: #fff;
 }
 #call-to-action .cta-btn {
-	font-family: 'NunitoBold', sans-serif;
+	font-family: 'NunitoRegular', sans-serif;
 	font-weight: 700;
 	font-size: 16px;
 	letter-spacing: 1px;
@@ -1045,14 +1048,16 @@ body.mobile-nav-active #mobile-nav-toggle {
 	font-size: 14px;
 }
 .section-footer .widget-a ul li {
-	color:#fff;
+	color:#9c9c9c;
 	font-weight:100;
 	font-size:0.9rem;
 	cursor: pointer;
 }
+.section-footer h5, .section-footer h6{ font-weight: normal; font-family: 'nunitolight', sans-serif;}
 .w-header-a h6 {
 	color:#fff;
 	cursor: pointer;
+	font-size: 1.05rem;
 }
 .footer-bg-color {
 	background:#333333;
@@ -1219,7 +1224,7 @@ margin:0px !important;
 	margin-bottom: 0px;
 	font-size: 48px;
 	font-family: 'NunitoRegular', sans-serif;
-	font-weight:600;
+
 }
 #inner-banner .inner-banner-content p {
 	color: #fff;
@@ -1297,7 +1302,11 @@ margin:0px !important;
     border-bottom: 1px solid #ddd;
     padding: 1rem 1rem;
 	}
-.breadcrumb .breadcrumb-item a{ color:#474747; }
+.breadcrumb li.breadcrumb-item {
+		margin-left: 0px;
+	}
+.breadcrumb .breadcrumb-item a{ color:#333; padding: 0px; font-size: 14px; }
+.breadcrumb li:last-child a{ font-weight:500; color: #000;}
 .breadcrumb .breadcrumb-item.active { color:#333; font-weight:600; }
 
 
@@ -1310,7 +1319,7 @@ margin:0px !important;
 	margin: 0;
 	text-align:left;
 	text-transform: capitalize;
-	font-family: 'NunitoBold', sans-serif;
+	font-family: 'NunitoRegular', sans-serif;
 }
 #storage .storage-location-info .area-info{
 	padding-left:10px;
@@ -1464,12 +1473,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ba623', end
 .about-img-l:after {
     content: "";
     position: absolute;
-    top: 23px;
-    border: 3px solid #38a61d;
-    width: 99%;
+    top: 35px;
+    border: 2px solid #38a61d;
+    width: 90%;
     height: 100%;
     border-radius: 0 30px 0 30px;
-    left: 11px;
+    left: 35px;
 }
 .about-img-l{
 	position:relative
@@ -1680,20 +1689,28 @@ margin-top:2rem;
 # Facility Page view
 --------------------------------------------------------------*/
 
-
+.font-big { font-size: 34px;}
 .about-room-facility { padding-top:20px; }
-.storage-room-image { display:inline-block; padding-right: 20px; vertical-align:top; }
+.storage-room-image { display:inline-block; padding-right: 50px; vertical-align:top; }
 .storage-room-block { padding-top:10px;}
 .storage-room-content { display:inline-block; padding-top:2rem;}
-#inner-banner .about-room-facility h5 { color: #fff; font-size:21px;}
+.storage-room-content p a.btn { margin-left: 20px;}
+#inner-banner .about-room-facility h4 { color: #fff; font-size:21px;}
 #inner-banner .storage-room-content p { font-size:16px;}
 #inner-banner .storage-room-content p.small-text { font-size:80%;}
 
-#inner-banner .storage-room-content .landmark { padding-top:10px;}
-#inner-banner .storage-room-content .storage-timings { padding-top:3rem;}
-#inner-banner .storage-room-content .storage-timings .small-text { font-size:80%;}
-.facility-space { margin-top:15rem;}
+#inner-banner .storage-room-content .landmark { 
+	padding-top: 10px;
+	min-height: 80px;
+}
+#inner-banner .storage-room-content .storage-timings { padding-top:1.5rem;}
+#inner-banner .storage-room-content .storage-timings .small-text { font-size:90%;}
+.facility-space { margin-top:14rem;}
+
+#inner-banner .storage-room-content .storage-timings .office-hours{ width: 75%;}
+#inner-banner .storage-room-content .storage-timings .access-hours{ width: 25%;}
 #inner-banner .storage-room-content .wether-block {padding-top:2rem}
+#inner-banner .storage-room-content .wether-block .office-hours { margin-right: 3rem;}
 
 #inner-banner .storage-room-content .wether-block .wether-info {     padding: 21px 15px;
     border-radius: 0px 10px 0px 10px;
@@ -1703,7 +1720,7 @@ margin-top:2rem;
 }
 #inner-banner .storage-room-content .wether-block .wether-info-content { background:#414c5b; padding:15px; 
 	border-radius:0px 10px 0px 10px; margin:0px; vertical-align:top; color:#fff; min-height: 80px;
-	width: 260px;
+	width: 300px;
 }
 
 .facility-filter-tabs .facility-tabs { width:100%; position:relative;}
@@ -1717,10 +1734,11 @@ margin-top:2rem;
 .facility-filter-tabs .facility-tabs .filter-tab-content table tr th{ background:#f4f6f4; border:0px; }
 .facility-filter-tabs .facility-tabs .filter-tab-content table tr td{ padding:20px 10px}
 .facility-page-banner-content {
-    left: 5% !important;
+    left: 8% !important;
     text-align: left !important;
     display: inline-block !important;
     top: 10% !important;
+    right: 8% !important;
 }
 .facility-filter-tabs .facility-tabs .storage-filters { position:absolute; right:15px}
 .facility-filter-tabs .facility-tabs .storage-filters i {transform: rotate(90deg);}
@@ -1923,13 +1941,18 @@ margin-top:2rem;
 	 left:0px;
 	 right:0px;
 	 margin:0px auto;
-	 width:50%;
+	 width:35%;
 	 text-align:center;
 	 z-index:+9;
 	 position:absolute;
 	 color:#fff;
 	 
 }
+
+.choose-right-space .choose-right-space-txt{ width: 40%;}
+.choose-right-space .storage-data-info{ width:80%; margin: 0px auto;}
+
+.storage-tools-block .storage-tools-info{ width:80%; margin: 0px auto;}
 
 /*  Static Pave styles  */
 
@@ -1960,7 +1983,7 @@ margin-top:2rem;
 
 .facility-grid tbody {
     display:block;
-    height:720px;
+    /* height:720px; */
     overflow:auto;
 }
 .facility-grid thead, tbody tr {
@@ -2056,7 +2079,7 @@ margin-top:2rem;
 /*  bread crumb  navigation */
 
 .nav-menu.breadcrumb ul {
-    margin: 1px 0 0 0;
+    margin: 5px 0 0 0;
     padding: 0px;
     box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.5);
     background: #fff;
@@ -2064,6 +2087,7 @@ margin-top:2rem;
 }
 .nav-menu.breadcrumb .breadcrumb-item  ul li  a{
 	color:#333 !important;
+	padding: 10px 15px;
 }
 .nav-menu.breadcrumb ul li:hover > a {
     color: #fff;
@@ -2082,7 +2106,7 @@ margin-top:2rem;
 a.sf-with-ul-breadcrumb:after {
     content: "\f107";
     position: absolute;
-	top: 10px;
+	top: 7px;
 	padding: 0px 10px;
     font-family: FontAwesome;
     font-style: normal;
@@ -2154,7 +2178,25 @@ color: #fff;
 .footer-bg-color a{color: #fff;}
 
 .container-fluid-padding {
-	padding: 0px 5%;
+	padding: 0px 8%;
 }
 
 .img-how-storage-works{max-height: 700px;}
+
+.iframe-pay-login{
+	width: 100%;
+	height: 1000px;
+}
+
+.pay-bill-list ul{
+	list-style: none;
+	padding: 0px;
+}
+.pay-bill-list ul li{
+	width: 20%;
+	float: left;
+	margin: 10px 30px;
+}
+.pay-bill-list ul li span{
+	color: #005d2c;
+}

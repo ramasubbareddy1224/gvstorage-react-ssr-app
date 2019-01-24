@@ -52,7 +52,7 @@ render(){
         <section id="about" className="wow fadeInDown">
         <div className="container-fluid">
         <div className="container-fluid-padding">
-          <h2 className="text-center p-3 ">Our Storage Locations</h2>
+          <h2 className="text-center p-3 pb-5 ">Our Storage Locations</h2>
           <div className="row">
            {divLocations}
           </div>

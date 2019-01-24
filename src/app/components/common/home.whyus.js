@@ -4,13 +4,13 @@ import {Environment} from '../../../configurations/environment';
 class HomeWhyUs extends Component{
 render(){
     return(
-        <section id="clients" className="wow fadeInUp p-5">
+        <section id="clients" className="wow fadeInUp p-3 pb-5">
         <div className="container-fluid">
-          <div className="text-center p-3">
+          <div className="text-center pb-3">
             <h2>Why Choose Great Value Storage</h2>
           </div>
            
-          <div className="row why-section text-center">
+          <div className="row why-section text-center pb-5">
           <div className="col-md-1"> </div>
             <div className="col-md-3">
                 <div className="why-us-img wow fadeInLeft">

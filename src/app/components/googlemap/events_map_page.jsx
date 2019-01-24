@@ -90,7 +90,9 @@ import {K_SIZE} from './my_great_place_with_controllable_hover_styles.js';
    // alert(this.props.centerIndex)
 
     //this.setState({});
+    { !!this.props.mapPointers[this.props.centerIndex] &&
     this.props.onCenterChange([this.props.mapPointers[this.props.centerIndex].lat, this.props.mapPointers[this.props.centerIndex].lng]);
+    }
     console.log(this.state.mapPointers);
 
     const places = this.props.mapPointers

@@ -5,7 +5,7 @@ class SelfStorageFeatures extends Component{
 render(){
     return(
    <section id="selfstoragefeatures" className="wow zoomIn pt-5 pb-5" >
-    <div className="container-fluid bg-storage pb-5">
+    <div className="container-fluid bg-storage pb-5 pt-3">
       <div className="section-header">
         <h2 className="text-center text-white pt-5 pb-3"> Features </h2>
       </div>

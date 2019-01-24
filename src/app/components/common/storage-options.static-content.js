@@ -23,7 +23,7 @@ class StorageOptionsStaticContent extends Component{
     <section id="about" class="about-sec wow fadeInUp">
       <div class="container-fluid">
       <div className="container-fluid-padding">
-        <div class="row">
+        <div class="row p-3">
           <div class="col-lg-6 col-md-6 col-sm-6 about-img">
 		  <div class="about-img-l">
             <img src="img/about-storage-space.png" alt="" />
@@ -46,18 +46,19 @@ class StorageOptionsStaticContent extends Component{
 
     <section id="services">
       <div class="container-fluid bg-storage pb-5">
+        <div className="container-fluid-padding">
         <div class="section-header">
-          <h3 class="text-center pt-5"> Storage made easy </h3>
+          <h3 class="text-center pt-5 pb-5"> Storage made easy </h3>
         </div>
 
-        <div class="row text-center">
+        <div class="row text-center pb-5">
 		
           <div class="col-md-3">
             <div class="wow storage-solution zoomIn">
               <div class="storage-img-block">
               	<img src="img/Services/verity-size.png" alt="home storage" />
               </div>
-              <p class="title"> A wide variety of sizes </p>
+              <h5 class="title"> A wide variety of sizes </h5>
               <p> A wide variety of sizes, to find <br />the perfect fit for your things.</p>
             </div>
           </div>
@@ -67,7 +68,7 @@ class StorageOptionsStaticContent extends Component{
               <div class="storage-img-block">
               	<img src="img/Services/gsv-storage.png" alt="home storage" />
               </div>
-              <p class="title"> Competitive pricing </p>
+              <h5 class="title"> Competitive pricing </h5>
               <p> Competitive pricing, we are <br />the low-cost value leader. </p>
             </div>
           </div>
@@ -77,7 +78,7 @@ class StorageOptionsStaticContent extends Component{
               <div class="storage-img-block">
               	<img src="img/Services/heigh-secure.png" alt="home storage" />
               </div>
-              <p class="title"> Highly secure </p>
+              <h5 class="title"> Highly secure </h5>
               <p> Electronic keypad access, for <br />an extra layer of security. </p>
             </div>
           </div>
@@ -87,13 +88,13 @@ class StorageOptionsStaticContent extends Component{
               <div class="storage-img-block">
               	<img src="img/Services/location.png" alt="home storage" />
               </div>
-              <p class="title"> Convenient locations </p>
+              <h5 class="title"> Convenient locations </h5>
               <p> No matter what time of day <br /> your things are close by. </p>
             </div>
           </div>
           
         </div>
-
+    </div>
       </div>
     </section>
 

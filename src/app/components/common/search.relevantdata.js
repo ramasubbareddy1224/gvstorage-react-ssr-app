@@ -18,7 +18,7 @@ render(){
     const divContent = content.map((data, index)=> {
     return   <div className="item" key={index}>
                           <div className="row pt-3">
-                          <div className="col-5 col-sm-4 col-md-3">
+                          <div className="col-5  col-md-3">
                             <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-3.png"} className="img-fluid"  alt="..." />
                               <div className="location-overlay clearfix">
                                 <div className="location-info">
@@ -27,7 +27,7 @@ render(){
                               </div>
                             </div>
                           </div>
-                          <div className="col-7 col-sm-8 col-md-9">
+                          <div className="col-7 col-md-9">
                             <p className="pt-0"> <strong>{data.name}</strong> </p>
                            {!!data.distance && <p className="small"> {data.distance}  Miles </p> }
                             {/* <br />
@@ -40,7 +40,7 @@ render(){
 
 
     return(
-        <div className="container-fluid pb-5">
+        <div className="container-fluid">
          <div className="container-fluid-padding">
 
 {(function() {

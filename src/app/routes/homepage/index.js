@@ -43,6 +43,9 @@ const frontload = async props =>{
 
   return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
+  }, function(error){ 
+    console.log(error);
+    document.getElementById('div-preloader').style.display = 'none';
   });
 }
 

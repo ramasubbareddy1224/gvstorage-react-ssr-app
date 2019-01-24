@@ -4,19 +4,20 @@ import {Environment} from '../../../configurations/environment';
 class HomeStorageTools extends Component{
 render(){
     return(
-        <section id="storage-tools" className="wow fadeInUp">
+        <section id="storage-tools" className="wow fadeInUp storage-tools-block">
         <div className="container-fluid pb-5">
+        <div className="storage-tools-info">
           <div className="text-center pt-5 pb-3">
             <h2>Storage Tools</h2>
           </div>
   
-           <div className="row pt-2">
-            <div className="col-md-1"> </div>
+           <div className="row p-3">
+            
             <div className="col-md-5 about-storage-tools pt-2 wow fadeInLeft">
               <p>  At Great Value Storage, you can expect great service from our friendly, professional and knowledgeable storage managers. If you ask any one of them what their number one priority is, it would be to exceed our customers' expectations. Followed closely by the need to provide a worry- and stress-free storage experience. </p>
             </div>
               
-           <div className="col-md-1"> </div> 
+            <div className="col-md-2"> </div>
             <div className="col-md-5 content">
             
             <div className="row">
@@ -39,7 +40,7 @@ render(){
   
             </div>
           </div>
-                  
+        </div>       
       
         </div>
       </section>

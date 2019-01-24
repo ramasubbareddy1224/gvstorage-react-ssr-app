@@ -5,12 +5,12 @@ class HomeStorageSolutions extends Component{
 render(){
     return(
         <section id="services">
-        <div className="container-fluid bg-storage pb-5">
+        <div className="container-fluid bg-storage pb-5 pt-4">
           <div className="section-header">
-            <h2 className="text-center text-white pt-5">Our Storage Solutions</h2>
+            <h2 className="text-center text-white pt-5 pb-3">Our Storage Solutions</h2>
           </div>
   
-          <div className="row text-center">
+          <div className="row text-center pb-5">
           
           <div className="col-md-2"> </div>
           

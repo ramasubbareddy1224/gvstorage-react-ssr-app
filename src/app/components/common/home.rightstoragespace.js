@@ -4,14 +4,14 @@ import {Environment} from '../../../configurations/environment';
 class HomeRightStorageSpace extends Component{
 render(){
     return(
-        <section id="storage-tools" className="">
+        <section id="storage-tools" className="choose-right-space">
         <div className="container-fluid bg-storage-tool pb-5">
           <div className="text-center pt-5 pb-3">
-            <h2 className="p-3">Choose the right storage space</h2>
-            <p className="w-75 m-auto"> An equally important decision you'll nee to make is choosing the size of your unit Storage typically comes in the following standard sizes. </p>
+            <h2 className="p-3 pb-5">Choose the right storage space</h2>
+            <p className="choose-right-space-txt m-auto"> An equally important decision you'll nee to make is choosing the size of your unit Storage typically comes in the following standard sizes. </p>
           </div>
           
-          <div className="storage-size width-90 m-auto p-3">
+          <div className="storage-size storage-data-info m-auto p-3">
                             
                                <div className="storage-size-tab bg-white home-storage-size">
                                <ul className="nav nav-tabs" id="myTab" role="tablist">
@@ -39,12 +39,15 @@ render(){
                                 <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                   <div className="tab-content">
                                       <div className="row container-fluid-padding">
-                                      <div className="col-md-7 p-5">
+                                      
+                                      <div className="col-md-3 p-5"><img src="img/5x5.png" className="img-fluid" /></div>
+                                      <div className="col-md-1"> </div>
+                                      <div className="col-md-6 p-5">
                                       <h5> Tiny - 5'x5' </h5>
                                       <h6>Walk-in Closet</h6>
                                       <p>This size unit yields 25 square feet of space. Although these 5x5 units are small, they are an excellent size to store all of your extra items, like garden tools, seasonal items, office supplies, or your miscellaneous boxes.</p>
                                       </div>
-                                      <div className="col-md-5 p-5"><img src="img/5x5.png" className="img-fluid" /></div>
+                                      <div className="col-md-2"> </div>
                                       
                                       </div>
                                   </div>

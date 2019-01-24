@@ -25,18 +25,19 @@ render(){
       </div>
     </div>
     <div className="about-room-facility">
-      <h5> {!!siteLocation && siteLocation.name} </h5>
+      <h4> {!!siteLocation && siteLocation.name}  <span className="gv-text-color text-underline pull-right font-weight-bold font-big pr-1 align-top"> <i class="fa fa-map-marker"> </i> </span></h4> 
       <div className="storage-room-block">
         <div className="storage-room-image"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/facility-banner-img.png"} alt="" /> </div>
         <div className="storage-room-content">
-          <p className="small"> <i className="fa fa-fa-map-marker"> </i> {!!siteLocation && siteLocation.address1}, {!!siteLocation && siteLocation.city}, {!!siteLocation && siteLocation.stateCode} {!!siteLocation && siteLocation.postalCode}. <br />
+          <p className="small"> <i className="fa fa-map-marker"> </i> {!!siteLocation && siteLocation.address1}, {!!siteLocation && siteLocation.city}, {!!siteLocation && siteLocation.stateCode} {!!siteLocation && siteLocation.postalCode}. &nbsp;
+          <a class="btn btn-gvstore btn-success btn-sm border-0 bg-light text-success font-normal "> Get Direction </a> <br />
             <i className="fa fa-phone"> </i> {!!siteLocation && siteLocation.phone} <br />
           </p>
           <div className="landmark ">
             {/* <p className="d-inline-block pr-5 small-text"> <strong>Near</strong> <br />
               St. Thomas catholic church </p> */}
            { !!siteLocation && !!siteLocation.content && !!siteLocation.content.gvssitestreets.length > 0 &&
-            <p className="d-inline-block small-text"> <strong>Street Interactions</strong> <br />
+            <p className="d-inline-block small-text"> Street Interactions <br />
               {(siteLocation.content.gvssitestreets.map(x=>x.name)).join(', ')} </p>
            }
           </div>
@@ -58,7 +59,7 @@ render(){
               <p className="wether-info-content d-inline-block small">  {siteLocation.content.weather}</p>
             </div>
           }
-            &nbsp; &nbsp; &nbsp; &nbsp; 
+            
             <div className="d-inline-block small-text access-hours">
               <p className="red-greadient wether-info d-inline-block"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/percent.png"} alt="wether" /> </p>
               <p className="wether-info-content d-inline-block small"> Resrve a Unit in 30 Secounds. <br />

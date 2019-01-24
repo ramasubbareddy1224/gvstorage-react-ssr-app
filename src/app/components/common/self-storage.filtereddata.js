@@ -175,7 +175,7 @@ const {pathParams} = this.props;
                             <td><div className="unit-size"> <strong>{item.unitWidth}X{item.unitLength}</strong> </div>
                             {
                               item.openUnits == 1 &&
-<p className="small text-danger pt-2 pl-3"><b>{item.openUnits} Unit left</b></p> 
+<p className="small text-danger pt-2 pl-3 m-0"><b>{item.openUnits} Unit left</b></p> 
                             }
                             
                             </td>
@@ -232,7 +232,7 @@ const divAppliedFilters =  this.state.filteredUnitTypes.map((val,index)=> {
 
 
     return(
-        <section className="facility-filter-tabs wow fadeInUp">
+        <section className="facility-filter-tabs pt-5 wow fadeInUp">
         <div className="container-fluid">
         <div className="container-fluid-padding">
           <div className="row">

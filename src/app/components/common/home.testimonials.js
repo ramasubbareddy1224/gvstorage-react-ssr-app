@@ -6,6 +6,7 @@ render(){
     return(
       <section id="testimonials" className="wow fadeInUp">
       <div className="container-fluid">
+      <div className="container-fluid-padding">
         <div className="text-center pt-3 pb-3">
           <h2 >What people say about Great Value Storage</h2>
         </div>
@@ -77,7 +78,7 @@ render(){
             </div>
 
         </div>
-
+      </div>
       </div>
     </section>
     )

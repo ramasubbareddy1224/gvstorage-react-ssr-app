@@ -161,6 +161,12 @@ const VehicleStorage = Loadable({
   modules: ['storage-options']
 });
 
+const PayBill = Loadable({
+  loader: () => import(/* webpackChunkName: "pay-bill" */ './pay-bill'),
+  loading: () => null,
+  modules: ['pay-bill']
+});
+
 export default () => (
   <Switch>
     <Route exact path="/" component={Homepage} />
@@ -194,6 +200,7 @@ export default () => (
     <Route exact path="/space-calculator" component={SpaceCalculator}/>
     <Route exact path="/tips" component={Tips}/>
     <Route exact path="/vehicle-storage" component={VehicleStorage}/>
+    <Route exact path="/pay-bill" component={PayBill} />
 
 
     <Route component={NotFound} />
