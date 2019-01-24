@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
+import {Link} from 'react-router-dom';
 
 class SelfStorageBanner extends Component{
 render(){
