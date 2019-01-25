@@ -23,7 +23,7 @@ import HomeStorageTools from '../../components/common/home.storagetools';
 const frontload = async props =>{
 
 
-  /*
+  
   getCurrentLocation().then((success) =>{
     if(!!success){
    props.getNearByLocations(success.region_code, success.city, success.zip).then(function(values) {
@@ -33,7 +33,7 @@ const frontload = async props =>{
   }, (error)=>{
 
   });
-  */
+  
 
   var dynamicRequestList = [];
   if(props.allPinCodes_Sites.length == 0){

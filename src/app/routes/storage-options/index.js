@@ -15,7 +15,7 @@ import StorageOptionsStaticContent from '../../components/common/storage-options
 
 const frontload = async props =>{
 
-  /*
+  
     getCurrentLocation().then((success) =>{
     
       if(!!success){
@@ -27,7 +27,7 @@ const frontload = async props =>{
        }, (error)=>{
      
        });
-*/
+
     
   var dynamicRequestList = [];
   if(props.allPinCodes_Sites.length == 0){

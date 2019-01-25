@@ -77,7 +77,7 @@ export const getDiscounts = () => (dispatch) => {
 
   export const getCurrentLocation = () =>{
     var apiUrl = Environment.IP_STACK_ENDPOINT;
-    console.log(apiUrl)
+    //console.log(apiUrl)
     return wretch()
     .url(apiUrl).
     get()
