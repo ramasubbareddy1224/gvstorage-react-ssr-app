@@ -22,11 +22,17 @@ class RentPaymentFormFilling extends Component{
       errors: {},
       isRedirectActivated: false,
       isInViewPage: false,
-      confirmPaymentReponse: {}
+      confirmPaymentReponse: {},
+      showDatePicker: false
     };
 
     this.handleChange = this.handleChange.bind(this);
   }
+
+  componentDidMount(){
+    this.setState({showDatePicker: true});
+  }
+
 
   handleChange(date){
     this.setState({
@@ -436,7 +442,7 @@ return (
                     	<div className="col-md-6">
                       <div className="form-group">
                       <label for="First Name"> Movie-In Date <span className="text-danger"> * </span> </label>
-                      { typeof document !== 'undefined' &&  <DatePicker className="form-control"
+                      {!!this.state.showDatePicker &&   <DatePicker className="form-control"
                           selected={this.state.selectedDate}
                           onChange={this.handleChange}
                           minDate={this.state.startDate}

@@ -66,7 +66,7 @@ render(){
     <div className="container-fluid">
   <div className="container-fluid-padding">
       <div id="logo" className="pull-left">
-        <h1><Link to="/" className="navbar-brand text-brand"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/great-value-store-logo.png"} alt="logo" /> </Link></h1>
+        <h1><Link to="/" className="navbar-brand text-brand"> <img src={"/img/great-value-store-logo.png"} alt="logo" /> </Link></h1>
       </div>
 
       <nav id="nav-menu-container">

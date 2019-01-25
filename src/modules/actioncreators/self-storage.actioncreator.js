@@ -14,11 +14,7 @@ const resetUnit=()=>({type:ACTIONTYPES.SELF_STORAGE.RESET_SELF_STORAGE_ALL_UNITS
       .json(json=> {        
         dispatch(getAllUnits(json));
         resolve(json);
-      })
-      .catch( err => {
-        console.log(err);
-        document.getElementById('div-preloader').style.display = 'none';
-        });
+      });
     })
    
   };

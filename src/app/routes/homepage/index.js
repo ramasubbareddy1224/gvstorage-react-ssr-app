@@ -23,15 +23,17 @@ import HomeStorageTools from '../../components/common/home.storagetools';
 const frontload = async props =>{
 
 
+  /*
   getCurrentLocation().then((success) =>{
-    
+    if(!!success){
    props.getNearByLocations(success.region_code, success.city, success.zip).then(function(values) {
    // props.getNearByLocations('MA', 'Springfield', '99878').then(function(values) {
     });
-
+  }
   }, (error)=>{
 
   });
+  */
 
   var dynamicRequestList = [];
   if(props.allPinCodes_Sites.length == 0){
@@ -41,7 +43,7 @@ const frontload = async props =>{
     // });
   }
 
-  return Promise.all(dynamicRequestList).then(function(values) {
+  return await Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
   }, function(error){ 
     console.log(error);

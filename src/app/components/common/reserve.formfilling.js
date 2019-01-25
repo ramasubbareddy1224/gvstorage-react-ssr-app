@@ -21,7 +21,8 @@ class ReserveFormFilling extends Component{
       textMeUpdate: false,
       isInViewPage: false,
       isRedirectActivated: false,
-      reserveNowResponse: {}
+      reserveNowResponse: {},
+      showDatePicker: false
     };
 
 
@@ -63,6 +64,10 @@ class ReserveFormFilling extends Component{
   promise.then((success)=>{
     document.getElementById('div-preloader').style.display = 'none';
   })
+  }
+
+  componentDidMount(){
+    this.setState({showDatePicker: true});
   }
 
   handleFormChange(e) {
@@ -323,12 +328,15 @@ render(){
             <div className="col-md-6">
               <div className="form-group">
                 <label for="First Name"> Movie-In Date <span className="text-danger"> * </span> </label>
+               
+              {!!this.state.showDatePicker && 
                 <DatePicker className="form-control"
         selected={this.state.selectedDate}
         onChange={this.handleChange}
         minDate={this.state.startDate}
         maxDate={this.state.endDate}
       />
+    }
 
               </div>
             </div>

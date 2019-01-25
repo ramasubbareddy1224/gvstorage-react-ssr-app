@@ -13,11 +13,7 @@ const resetSites=()=>({type:ACTIONTYPES.SEARCH.RESET_ALL_SITES_BY_FILTER,payload
       .json(json=>{
         dispatch(getAllSites(json));
         resolve(json);
-      })
-      .catch( err => {
-        console.log(err);
-        document.getElementById('div-preloader').style.display = 'none';
-        });
+      });
     });
 
     // if(filterType == 'postalCode'){

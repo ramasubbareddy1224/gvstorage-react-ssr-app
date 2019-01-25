@@ -21,35 +21,33 @@ export const getDiscounts = () => (dispatch) => {
     //   .then(data => dispatch(getAllDiscounts(data)))
     return ApiRequest.url(`/NOP/Discount/GetAllDiscounts`)
     .get()
-    .json(json=>dispatch(getAllDiscounts(json)))
-    .catch( err => {
-      console.log(err);
-      document.getElementById('div-preloader').style.display = 'none';
-      })
+    .json(json=>dispatch(getAllDiscounts(json)));
   };
 
   export const getPinCodes = () => {
     return new Promise(resolve=>{
+      try{
       return ApiRequest.url(`postalcodes`)
       .get()
-      .json(json=>resolve(json))
-      .catch( err => {
-        console.log(err);
-        document.getElementById('div-preloader').style.display = 'none';
-        })
+      .json(json=>resolve(json));
+    }
+    catch{
+      resolve({})
+    }
     });
     
   };
 
   export const getSites = () => {
     return new Promise(resolve=>{
+      try{
       return ApiRequest.url(`sites`)
       .get()
-      .json(json=>resolve(json))
-      .catch( err => {
-        console.log(err);
-        document.getElementById('div-preloader').style.display = 'none';
-        })
+      .json(json=>resolve(json));
+      }
+      catch{
+        resolve({})
+      }
     })
   };
 
@@ -72,7 +70,7 @@ export const getDiscounts = () => (dispatch) => {
         //dispatch(hideLoading());
         dispatch(actionCreator_PinCodes_Sites(response));
         resolve({})
-      }, error => {console.log(error)})
+      })
     })   
 
   };
@@ -83,11 +81,7 @@ export const getDiscounts = () => (dispatch) => {
     return wretch()
     .url(apiUrl).
     get()
-    .json(json=> json)
-    .catch( err => {
-      console.log(err);
-      document.getElementById('div-preloader').style.display = 'none';
-      });
+    .json(json=> json);
   };
 
 
@@ -95,9 +89,5 @@ export const getDiscounts = () => (dispatch) => {
     var apiUrl = `search/${state}/${city}/${zipCode}`;
     return ApiRequest.url(apiUrl)
     .get()
-    .json(json=>dispatch(getAllNearByLocations(json)))
-    .catch( err => {
-      console.log(err);
-      document.getElementById('div-preloader').style.display = 'none';
-      });
+    .json(json=>dispatch(getAllNearByLocations(json)));
   };

@@ -4,8 +4,9 @@ import {Link} from 'react-router-dom';
 
 class SelfStorageBanner extends Component{
 render(){
-  const { siteLocation } = this.props.allUnits; 
+  const  siteLocation  = this.props.allUnits.siteLocation || {}; 
   const {pathParams} = this.props;
+
     return(
         <div>
         <section id="inner-banner" className="inner-banner-cls">
@@ -19,6 +20,7 @@ render(){
           <ol className="breadcrumb ">
             <li className="breadcrumb-item"><a className="text-white" href="#">Home</a></li>
             <li className="breadcrumb-item"><a className="text-white" href="#">Storage options</a></li>
+            
             <li className="breadcrumb-item"><Link className="text-white" to={`/search/${siteLocation.stateName}`} > {siteLocation.stateName} </Link></li>
             <li className="breadcrumb-item"><Link className="text-white"  to={`/search/${siteLocation.city}`}> {siteLocation.city} </Link></li>
             <li className="breadcrumb-item"><a className="text-white" > {siteLocation.name} </a></li>

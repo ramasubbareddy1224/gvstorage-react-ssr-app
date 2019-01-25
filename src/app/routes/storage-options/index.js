@@ -15,16 +15,20 @@ import StorageOptionsStaticContent from '../../components/common/storage-options
 
 const frontload = async props =>{
 
+  /*
     getCurrentLocation().then((success) =>{
     
+      if(!!success){
         props.getNearByLocations(success.region_code, success.city, success.zip).then(function(values) {
         // props.getNearByLocations('MA', 'Springfield', '99878').then(function(values) {
          });
+       }
      
        }, (error)=>{
      
        });
-
+*/
+    
   var dynamicRequestList = [];
   if(props.allPinCodes_Sites.length == 0){
     dynamicRequestList.push(props.getPinCodes_Sites());
