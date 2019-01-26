@@ -77,6 +77,7 @@ class SelfStorage extends Component {
   render() {
 
     const { allUnits } = this.props;
+    const  selectedSiteLocation = this.props.allUnits.siteLocation || {};
     const {allSites} = this.props;
 
     var allSitesNearBy = {};  
@@ -97,10 +98,38 @@ class SelfStorage extends Component {
            <SelfStorageWhatFits></SelfStorageWhatFits>
            {/* <SearchRelevantData relevanceType="neighbourhood"></SearchRelevantData> */}
 
-              {!!allSites.siteLocations && allSites.siteLocations[0].content.gvsnearneighborhoods.length > 0 &&
-                <SearchRelevantData relevanceType="neighbourhood" content={allSites.siteLocations[0].content.gvsnearneighborhoods}></SearchRelevantData>
-                
-              } 
+
+ {!!selectedSiteLocation.content  && selectedSiteLocation.content.gvsnearneighborhoods.length > 0 &&
+             <div>
+             <SearchRelevantData pageName="self-storage" relevanceType="neighbourhood" content={selectedSiteLocation.content.gvsnearneighborhoods}></SearchRelevantData>
+             <hr />
+              </div>
+        } 
+        {!!selectedSiteLocation.content  && selectedSiteLocation.content.gvsnearlakes.length > 0 &&
+             <div>
+             <SearchRelevantData pageName="self-storage" relevanceType="nearbylakes" content={selectedSiteLocation.content.gvsnearlakes}></SearchRelevantData>
+              <hr />
+              </div>
+        } 
+        
+        {!!selectedSiteLocation.content  && selectedSiteLocation.content.gvsnearuniversities.length > 0 &&
+             <div>
+             <SearchRelevantData pageName="self-storage" relevanceType="nearbyuniversities" content={selectedSiteLocation.content.gvsnearuniversities}></SearchRelevantData>    
+             <hr />
+             </div>
+        } 
+      
+         
+      {!!selectedSiteLocation.content  && selectedSiteLocation.content.gvsnearzipcodes.length > 0 &&
+             <div>
+             <SearchRelevantData pageName="self-storage" relevanceType="nearbyzipcodes" content={selectedSiteLocation.content.gvsnearzipcodes}></SearchRelevantData>    
+             <hr />
+             </div>
+        } 
+
+
+
+              
             { !!allUnits.siteLocation && allUnits.siteLocation.content &&
            <SelfStorageAboutSite content={allUnits.siteLocation.content}></SelfStorageAboutSite>
             }

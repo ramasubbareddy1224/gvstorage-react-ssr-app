@@ -43,6 +43,7 @@ class Search extends Component {
     super();
    
   }
+  
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.match.params.filter !== this.props.match.params.filter) {
@@ -68,25 +69,31 @@ class Search extends Component {
          
           {!!this.props.allSites.siteLocations && this.props.allSites.siteLocations[0].content.gvsnearneighborhoods.length > 0 &&
              <div>
-             <SearchRelevantData relevanceType="neighbourhood" content={this.props.allSites.siteLocations[0].content.gvsnearneighborhoods}></SearchRelevantData>
+             <SearchRelevantData pageName="search" relevanceType="neighbourhood" content={this.props.allSites.siteLocations[0].content.gvsnearneighborhoods}></SearchRelevantData>
              <hr />
               </div>
         } 
         {!!this.props.allSites.siteLocations && !!this.props.allSites.siteLocations[0].content.gvsnearlakes.length > 0 &&
              <div>
-             <SearchRelevantData relevanceType="nearbylakes" content={this.props.allSites.siteLocations[0].content.gvsnearlakes}></SearchRelevantData>
+             <SearchRelevantData pageName="search" relevanceType="nearbylakes" content={this.props.allSites.siteLocations[0].content.gvsnearlakes}></SearchRelevantData>
               <hr />
               </div>
         } 
         
         {!!this.props.allSites.siteLocations && !!this.props.allSites.siteLocations[0].content.gvsnearuniversities.length > 0 &&
              <div>
-             <SearchRelevantData relevanceType="nearbyuniversities" content={this.props.allSites.siteLocations[0].content.gvsnearuniversities}></SearchRelevantData>    
+             <SearchRelevantData pageName="search" relevanceType="nearbyuniversities" content={this.props.allSites.siteLocations[0].content.gvsnearuniversities}></SearchRelevantData>    
              <hr />
              </div>
         } 
       
-        
+         
+      {!!this.props.allSites.siteLocations && !!this.props.allSites.siteLocations[0].content.gvsnearzipcodes.length > 0 &&
+             <div>
+             <SearchRelevantData pageName="search" relevanceType="nearbyzipcodes" content={this.props.allSites.siteLocations[0].content.gvsnearzipcodes}></SearchRelevantData>    
+             <hr />
+             </div>
+        } 
                 
           </section>
   

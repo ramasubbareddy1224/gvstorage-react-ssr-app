@@ -13,6 +13,8 @@ class SearchRelevantData extends Component{
 render(){
     const relevanceType = this.props.relevanceType;
     const {content} = this.props;
+    const {pageName} = this.props;
+
 
    
     const divContent = content.map((data, index)=> {
@@ -46,11 +48,13 @@ render(){
 {(function() {
         switch(relevanceType) {
           case 'neighbourhood':
-            return  <h2 className="p-3 "> Dallas neighbourhoods we serve</h2>;
+            return  <h2 className="p-3 "> Neighbourhoods we serve</h2>;
           case 'nearbylakes':
-            return  <h2 className="p-3 "> Nearby lakes with boat storage</h2>;
+            return  <h2 className="p-3 "> Near by lakes with boat storage</h2>;
           case 'nearbyuniversities':
-            return  <h2 className="p-3 ">  Nearby universities with self storage </h2>;
+            return  <h2 className="p-3 ">  Near by universities with self storage </h2>;
+            case 'nearbyzipcodes':
+            return  <h2 className="p-3 ">  Near by Zipcodes </h2>;
           default:
             return null;
         }
