@@ -26,6 +26,10 @@ class Page extends Component {
   //   return true;
   // }
 
+  componentDidMount(){
+    !!window && window.scrollTo(0,0);
+  }
+
   getMetaTags(
     {
       title,
@@ -75,8 +79,7 @@ class Page extends Component {
   render() {
     const { children, id, className, ...rest } = this.props;
 
-    !!window && window.scrollTo(0,0);
-
+   
     return (
       <div id={id} className={className}>
         <Helmet
