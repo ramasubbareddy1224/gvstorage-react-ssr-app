@@ -582,7 +582,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 	overflow: hidden;
 }
 #about .about-img img {
-	margin-left: -15px;
+	margin-left: 0px;
 	max-width: 100%;
 }
 #about .fav-locations {
@@ -1203,7 +1203,7 @@ margin:0px !important;
 	position: relative;
 	/* background: url("../img/intro-carousel/1.jpg") no-repeat;*/
   background-size: cover;
-    background: #696969;
+    background: #f5f5f5;
 }
 #inner-banner .inner-banner-content {
 	position: absolute;

@@ -160,6 +160,7 @@
 }
 #inner-banner .find-storage{
 width: 90%;
+margin-top: 2rem;
 }
 
 .est-sizes { width:100%; float:none;}
@@ -209,6 +210,9 @@ width: 90%;
     font-size: 12px;
     padding: 5px 10px;
 }
+#inner-banner .find-storage {
+     padding: 40px 10px;
+}
 }
 
 
@@ -223,7 +227,7 @@ width: 90%;
     font-size: 20px;
 }
 #inner-banner {
-    height: 58vh;
+    height: 48vh;
 }
 .h2, h2 {
     font-size: 1.5rem;
@@ -247,6 +251,11 @@ width: 90%;
 }
 .how-storage-text { position: relative; color: #333; padding-top: 20px; width: 80% ; margin: 0px auto;}
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{     border-bottom: 1px solid #005f26 !important;}
+#inner-banner .inner-banner-content {
+    
+    bottom: auto;
+    top: 40px;
+}
 }
 
 

@@ -89,7 +89,7 @@ render(){
     return (
       <div key={item.siteID}>
         <div className="row" onMouseOver={() => {this.onSitesHover(index, item) }}>
-            <div className="col-5 col-sm-4 col-md-3">
+            <div className="col-5 col-sm-4 col-md-4">
               <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-2.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                   <div className="location-info" onClick={() => {this.clkRedirectToSelfStorage(item.locationCode) }}>
@@ -137,12 +137,12 @@ render(){
   <section id="about" className="about-sec individual-city wow fadeInUp">
     <div className="container-fluid">
     <div className="container-fluid-padding">
-      <div className="row">
-        <div className="col-md-6 content city-pageviews pt-2">  
+      <div className="row w-100">
+        <div className="col-12 col-sm-12 col-md-6 content city-pageviews pt-2">  
         {divSites}
           
         </div>
-        <div className="col-lg-6 col-md-6 col-sm-6 about-img">
+        <div className="col-12 col-sm-12 col-md-6 about-img">
           <div className="city-page-map">
            <div id="map"> </div>
                {/* <SimpleMap></SimpleMap>  */}
