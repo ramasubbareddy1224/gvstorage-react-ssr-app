@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
 import {Redirect,Link} from 'react-router-dom';
+import NumberFormat from 'react-number-format';
 
 class CommonFacilityInfo extends Component{
 
@@ -133,7 +134,12 @@ render(){
                 {divMoveInTaxes}
             </div>
             
-            <h2 className="gv-text-color"> {!!totalAmount && (`$${totalAmount.toFixed(2)} USD`)} </h2>
+            <h2 className="gv-text-color">
+            {!!totalAmount &&
+            <NumberFormat value={totalAmount.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'}  />
+            } USD
+             {/* {!!totalAmount && (`$${totalAmount.toFixed(2)} USD`)}  */}
+             </h2>
 
             </div>
             

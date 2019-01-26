@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { getAllMoveInCharges
 } from '../../../modules/actioncreators/reserve.actioncreator';
 import RentConfirmation from './rent.confirmation';
+import NumberFormat from 'react-number-format';
 
 class RentPaymentFormFilling extends Component{
   constructor(props) {
@@ -481,7 +482,8 @@ return (
                       <div className="form-group">
                         <label for="First Name">  Postal / Zip  <span className="text-danger"> * </span></label>
                         <div className="clearfix"> </div>
-                        <input type="text" className="form-control" placeholder="Enter the Zip" name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange} />
+                        {/* <input type="text" className="form-control" placeholder="Enter the Zip" name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange} /> */}
+                        <NumberFormat format="#####" className="form-control" placeholder="Enter the Zip" name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange}/>
                         <div className="errorMsg">{this.state.errors.Zip}</div>
                       </div>
                     </div>
@@ -506,7 +508,8 @@ return (
                       <div className="form-group">
                         <label for="First Name">CVV Number  <span className="text-danger"> * </span> </label>
                         <div className="clearfix"> </div>
-                        <input type="password" className="form-control w-45 d-inline" placeholder="Enter the CVV" id="CardCVV"  name="CardCVV" value={this.state.fields.CardCVV} onChange={this.handleFormChange} />
+                        {/* <input type="password" className="form-control w-45 d-inline" placeholder="Enter the CVV" id="CardCVV"  name="CardCVV" value={this.state.fields.CardCVV} onChange={this.handleFormChange} /> */}
+                        <NumberFormat format="###" className="form-control w-45 d-inline" placeholder="Enter the CVV" id="CardCVV"  name="CardCVV" value={this.state.fields.CardCVV} onChange={this.handleFormChange} />
                         <span className="d-inline gv-text-color small text-underline cursor-pointer" onClick={() => this.CVVShowHideClick()}>  <a > Show/Hide </a> </span>  &nbsp;
                         <span className="d-inline gv-text-color small text-underline cursor-pointer">   <a> What is this </a></span>
                         <div className="errorMsg">{this.state.errors.CardCVV}</div>

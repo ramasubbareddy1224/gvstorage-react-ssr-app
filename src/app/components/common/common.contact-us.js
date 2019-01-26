@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Redirect} from 'react-router-dom';
 import { contactUs
 } from '../../../modules/actioncreators/common.actioncreator';
+import NumberFormat from 'react-number-format';
+
  class CommonContactUs extends Component{
    constructor(){
      super();
@@ -32,7 +34,7 @@ import { contactUs
      var requestData = {
       "firstName": this.state.fields.FirstName,
       "lastName": this.state.fields.LastName,
-      "phoneNumber": this.state.fields.PhoneNumber,
+      "phoneNumber": this.state.fields.PhoneNumber.replace(/[^\w]/g, ''),
       "email": this.state.fields.Email,
       "siteName": this.state.fields.SiteName,
       "comments": this.state.fields.Comments
@@ -99,7 +101,7 @@ import { contactUs
     }
 
     if (typeof fields["PhoneNumber"] !== "undefined") {
-      if (!fields["PhoneNumber"].match(/^[0-9]{10}$/)) {
+      if (!fields["PhoneNumber"].match(/^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/)) {
         formIsValid = false;
         errors["PhoneNumber"] = "Please enter valid Phone Number.";
         invalidFieldNames.push("PhoneNumber");
@@ -239,7 +241,8 @@ render(){
                    <div className="col-md-6">
                      <div className="form-group">
                        <label htmlFor="First Name"> Phone Number <span className="text-danger"> * </span> </label>
-                       <input type="text" className="form-control" id="PhoneNumber"  name="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange}  placeholder="Enter your phone number" />
+                       {/* <input type="text" className="form-control" id="PhoneNumber"  name="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange}  placeholder="Enter your phone number" /> */}
+                       <NumberFormat format="(###) ###-####" mask="_" className="form-control" placeholder="Enter your phone number" name="PhoneNumber" id="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange}/>
                        <div className="errorMsg">{this.state.errors.PhoneNumber}</div>
                        
                      </div>

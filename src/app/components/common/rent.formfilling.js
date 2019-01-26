@@ -5,6 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import ReserveFormView from './reserve.formview';
 import { addTenant
 } from '../../../modules/actioncreators/rent.actioncreator';
+import NumberFormat from 'react-number-format';
+
 
 import {Link, Redirect} from 'react-router-dom';
 
@@ -75,12 +77,12 @@ class RentFormFilling extends Component{
         "country": this.state.fields.Country,
         "county": '',
         "emailAddress": this.state.fields.Email,
-        "faxNumber": !!this.state.fields.FaxNumber ? this.state.fields.FaxNumber : '',
+        "faxNumber": !!this.state.fields.FaxNumber ? this.state.fields.FaxNumber.replace(/[^\w]/g, '') : '',
         "firstName": this.state.fields.FirstName,
         "insurCoverageID": 0, //parseInt(this.state.fields.ProtectionCoverage),
         "lastName": this.state.fields.LastName,
         "locationCode": this.props.pathParams.locationCode,
-        "phoneNumber": this.state.fields.PhoneNumber,
+        "phoneNumber": this.state.fields.PhoneNumber.replace(/[^\w]/g, ''),
         "siteID": Object.keys(unitInfo).length > 0 && unitInfo.siteID,
         "state": this.state.fields.State,
         "tenantID": 0,
@@ -165,14 +167,15 @@ class RentFormFilling extends Component{
     }
 
     if (typeof fields["PhoneNumber"] !== "undefined") {
-      if (!fields["PhoneNumber"].match(/^[0-9]{10}$/)) {
+      if (!fields["PhoneNumber"].match(/^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/)) {
         formIsValid = false;
         errors["PhoneNumber"] = "Please enter valid Phone Number.";
       }
     }
 
     if (!!fields["FaxNumber"]) {
-      if (!fields["FaxNumber"].match(/^[0-9]{10}$/)) {
+      // if (!fields["FaxNumber"].match(/^[0-9]{10}$/)) {
+        if (!fields["FaxNumber"].match(/^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/)) {
         formIsValid = false;
         errors["FaxNumber"] = "Please enter valid Fax Number.";
       }
@@ -357,7 +360,8 @@ return (
                     <div className="col-md-6">
                       <div className="form-group">
                         <label for="First Name"> Phone <span className="text-danger"> * </span> </label>
-                        <input type="text" className="form-control" placeholder="Enter your phone number" id="PhoneNumber" name="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange} />
+                        {/* <input type="text" className="form-control" placeholder="Enter your phone number" id="PhoneNumber" name="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange} /> */}
+                        <NumberFormat format="(###) ###-####" mask="_" className="form-control" placeholder="Enter your phone number" name="PhoneNumber" id="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange}/>
                         <div className="errorMsg">{this.state.errors.PhoneNumber}</div>
                         
                       </div>
@@ -366,7 +370,8 @@ return (
                     <div className="col-md-6">  
                       <div className="form-group">
                         <label for="formGroupExampleInput2"> Fax </label>
-                        <input type="text" className="form-control"  placeholder="Enter your Fax number" name="FaxNumber" id="FaxNumber" value={this.state.fields.FaxNumber} onChange={this.handleFormChange} />
+                        {/* <input type="text" className="form-control"  placeholder="Enter your Fax number" name="FaxNumber" id="FaxNumber" value={this.state.fields.FaxNumber} onChange={this.handleFormChange} /> */}
+                        <NumberFormat format="(###) ###-####" mask="_"  className="form-control"  placeholder="Enter your Fax number" name="FaxNumber" id="FaxNumber" value={this.state.fields.FaxNumber} onChange={this.handleFormChange}/>
                         <div className="errorMsg">{this.state.errors.FaxNumber}</div>
                       </div>
                     </div>  
@@ -428,7 +433,8 @@ return (
                     <div className="col-md-6">  
                       <div className="form-group">
                         <label for="formGroupExampleInput2"> Postal / Zip <span className="text-danger"> * </span> </label>
-                        <input type="text" className="form-control" placeholder="Enter your Zip"   name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange} />
+                        {/* <input type="text" className="form-control" placeholder="Enter your Zip"   name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange} /> */}
+                        <NumberFormat format="#####" className="form-control" placeholder="Enter your Zip"   name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.Zip}</div>
                       </div>
                     </div>  

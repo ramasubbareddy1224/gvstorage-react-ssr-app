@@ -8,6 +8,7 @@ import { reserveNow, getAllMoveInCharges
 import {Link, Redirect} from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import NumberFormat from 'react-number-format';
 
 class ReserveFormFilling extends Component{
   constructor(props) {
@@ -135,7 +136,7 @@ class ReserveFormFilling extends Component{
     }
 
     if (typeof fields["PhoneNumber"] !== "undefined") {
-      if (!fields["PhoneNumber"].match(/^[0-9]{10}$/)) {
+      if (!fields["PhoneNumber"].match(/^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/)) {
         formIsValid = false;
         errors["PhoneNumber"] = "Please enter valid Phone Number.";
         invalidFieldNames.push("PhoneNumber");
@@ -219,7 +220,7 @@ class ReserveFormFilling extends Component{
       "lastName": this.state.fields.LastName,
       "locationCode": pathParams.locationCode,
       "moveInDate": this.formatDate(this.state.selectedDate),
-      "phoneNumber": this.state.fields.PhoneNumber,
+      "phoneNumber": this.state.fields.PhoneNumber.replace(/[^\w]/g, ''),
       "siteID": Object.keys(unitInfo).length > 0 && unitInfo.siteID,
       "tenantID": 0,
       "textMeUpdates": this.state.textMeUpdate,
@@ -284,6 +285,9 @@ render(){
               <div className="form-group">
                 <label for="First Name">First Name <span className="text-danger"> * </span></label>
                 <input type="text" className="form-control" placeholder="First Name" id="FirstName" name="FirstName" value={this.state.fields.FirstName} onChange={this.handleFormChange} />
+
+
+
                 <div className="errorMsg">{this.state.errors.FirstName}</div>
               </div>
             </div>
@@ -302,7 +306,10 @@ render(){
             <div className="col-md-6">
               <div className="form-group">
                 <label for="First Name"> Phone Number <span className="text-danger"> * </span> </label>
-                <input type="text" className="form-control" placeholder="Enter your phone number" name="PhoneNumber" id="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange} />
+
+<NumberFormat format="(###) ###-####" mask="_" className="form-control" placeholder="Enter your phone number" name="PhoneNumber" id="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange}/>
+
+                {/* <input type="text" className="form-control" placeholder="Enter your phone number" name="PhoneNumber" id="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange} /> */}
                 <div className="errorMsg">{this.state.errors.PhoneNumber}</div>
                 
               </div>
