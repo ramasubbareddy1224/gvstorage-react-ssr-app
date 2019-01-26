@@ -52,10 +52,18 @@ render(){
     const divMoveInTaxes = !!moveInCharges && moveInCharges.map((moveInCharge, index) => {
         return(
             <p className="small" key={index}>
-             { !!moveInCharge.taxRate1 && (`TAX ${moveInCharge.taxRate1}% : ${moveInCharge.taxAmount1}`) }
-             <br/>
-             { !!moveInCharge.taxRate2 && (`TAX ${moveInCharge.taxRate2}% : ${moveInCharge.taxAmount2}`) }
+            {!!moveInCharge.taxRate1 && <span>TAX {moveInCharge.taxRate1}%  <span style={{fontSize: '8px'}}>({moveInCharge.description})</span> : ${moveInCharge.taxAmount1} USD</span>
+            }       
+             </p>
+        )
+    })
 
+    
+    const divMoveInTaxes2 = !!moveInCharges && moveInCharges.map((moveInCharge, index) => {
+        return(
+            <p className="small" key={index}>
+            {!!moveInCharge.taxRate2 && <span>TAX {moveInCharge.taxRate2}%  <span style={{fontSize: '8px'}}>({moveInCharge.description})</span> : ${moveInCharge.taxAmount1} USD</span>
+            }       
              </p>
         )
     })
@@ -132,8 +140,9 @@ render(){
                 1st month protection: $7.42 USD </p> */}
 
                 {divMoveInTaxes}
+                {divMoveInTaxes2}
             </div>
-            
+            <br/>
             <h2 className="gv-text-color">
             {!!totalAmount &&
             <NumberFormat value={totalAmount.toFixed(2)} displayType={'text'} thousandSeparator={true} prefix={'$'}  />

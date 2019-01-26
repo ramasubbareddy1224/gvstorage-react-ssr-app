@@ -2246,3 +2246,5 @@ color: #fff;
 .pay-bill-list ul li span{
 	color: #005d2c;
 }
+
+.input-error{border: 2px solid red;}

@@ -159,16 +159,16 @@ class ReserveFormFilling extends Component{
       }
     }
 
-    if(Object.keys(errors).length > 0){
-      document.getElementById(Object.keys(errors)[0]).focus();
+    // if(Object.keys(errors).length > 0){
+    //   document.getElementById(Object.keys(errors)[0]).focus();
 
-      Object.keys(errors).reduce((object, key) => {
-        if (key !== Object.keys(errors)[0]) {
-          delete errors[key]
-        }
-      });
+    //   Object.keys(errors).reduce((object, key) => {
+    //     if (key !== Object.keys(errors)[0]) {
+    //       delete errors[key]
+    //     }
+    //   });
    
-    }
+    // }
 
 
  
@@ -275,7 +275,7 @@ render(){
       <div className="" >
         <div className="rent-your-unit-now pt-3 pb-3">
         <div className="rent-unit-block">
-        <h5 className="pt-3"> Rent your unit now! </h5>
+        <h5 className="pt-3"> Reserve your unit now! </h5>
         <hr />
         <p> Contact Information </p>
         <form method="post"  name="frmReserveNow"  onSubmit= {this.submitReserveNowForm}>
@@ -284,19 +284,16 @@ render(){
           <div className="col-md-6">
               <div className="form-group">
                 <label for="First Name">First Name <span className="text-danger"> * </span></label>
-                <input type="text" className="form-control" placeholder="First Name" id="FirstName" name="FirstName" value={this.state.fields.FirstName} onChange={this.handleFormChange} />
-
-
-
-                <div className="errorMsg">{this.state.errors.FirstName}</div>
+                <input type="text"  className={'form-control ' +(!!this.state.errors.FirstName && 'input-error')} title={this.state.errors.FirstName}  placeholder="First Name" id="FirstName" name="FirstName" value={this.state.fields.FirstName} onChange={this.handleFormChange} />
+                {/* <div className="errorMsg">{this.state.errors.FirstName}</div> */}
               </div>
             </div>
             
             <div className="col-md-6">  
               <div className="form-group">
                 <label for="formGroupExampleInput2"> Last Name <span className="text-danger"> * </span> </label>
-                <input type="text" className="form-control"  placeholder="Last Name" name="LastName" id="LastName" value={this.state.fields.LastName} onChange={this.handleFormChange} />
-                <div className="errorMsg">{this.state.errors.LastName}</div>
+                <input type="text" className={'form-control ' +(!!this.state.errors.LastName && 'input-error')} title={this.state.errors.LastName}  placeholder="Last Name" name="LastName" id="LastName" value={this.state.fields.LastName} onChange={this.handleFormChange} />
+                {/* <div className="errorMsg">{this.state.errors.LastName}</div> */}
               </div>
             </div>  
           </div>   
@@ -307,10 +304,10 @@ render(){
               <div className="form-group">
                 <label for="First Name"> Phone Number <span className="text-danger"> * </span> </label>
 
-<NumberFormat format="(###) ###-####" mask="_" className="form-control" placeholder="Enter your phone number" name="PhoneNumber" id="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange}/>
+<NumberFormat format="(###) ###-####" mask="_"  className={'form-control ' +(!!this.state.errors.PhoneNumber && 'input-error')} title={this.state.errors.PhoneNumber}  placeholder="Enter your phone number" name="PhoneNumber" id="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange}/>
 
                 {/* <input type="text" className="form-control" placeholder="Enter your phone number" name="PhoneNumber" id="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange} /> */}
-                <div className="errorMsg">{this.state.errors.PhoneNumber}</div>
+                {/* <div className="errorMsg">{this.state.errors.PhoneNumber}</div> */}
                 
               </div>
             </div>
@@ -318,8 +315,8 @@ render(){
             <div className="col-md-6">  
               <div className="form-group">
                 <label for="formGroupExampleInput2"> Email <span className="text-danger"> * </span> </label>
-                <input type="text" className="form-control"  placeholder="Enter your email address"  name="Email" id="Email" value={this.state.fields.Email} onChange={this.handleFormChange} />
-                <div className="errorMsg">{this.state.errors.Email}</div>
+                <input type="text"  className={'form-control ' +(!!this.state.errors.Email && 'input-error')} title={this.state.errors.Email}  placeholder="Enter your email address"  name="Email" id="Email" value={this.state.fields.Email} onChange={this.handleFormChange} />
+                {/* <div className="errorMsg">{this.state.errors.Email}</div> */}
               </div>
             </div> 
             <div className="form-check small">

@@ -47,6 +47,7 @@ class Search extends Component {
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.match.params.filter !== this.props.match.params.filter) {
+      pathParams.filter = nextProps.match.params.filter;
       document.getElementById('div-preloader').style.display = 'block';
       Promise.all([this.props.getAllSitesByFilters(nextProps.match.params.filter)]).then(function(values) {
         document.getElementById('div-preloader').style.display = 'none';

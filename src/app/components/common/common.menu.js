@@ -98,9 +98,9 @@ render(){
            <ul>
               <li><Link to="/about-us">About Us</Link></li>
               <li><Link to="/contact-us">Contact</Link></li>
-              <li><Link to="">Careers</Link></li>
-              <li><Link to="/blogs">Blogs</Link></li>
-              <li><Link to="/">Reviews Us</Link></li>
+              <li><a href="https://greatvaluestorage.prismhr-hire.com/" target="_blank">Careers</a></li>
+              {/* <li><Link to="/blogs">Blogs</Link></li>
+              <li><Link to="/">Reviews Us</Link></li> */}
             </ul>
             </li>
           <li><Link to="/contact-us">Contact Us</Link></li>

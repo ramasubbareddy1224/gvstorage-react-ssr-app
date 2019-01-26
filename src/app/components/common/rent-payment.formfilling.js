@@ -261,16 +261,16 @@ getMoveInData(){
     }
 
     
-    if(Object.keys(errors).length > 0){
-      document.getElementById(Object.keys(errors)[0]).focus();
+    // if(Object.keys(errors).length > 0){
+    //   document.getElementById(Object.keys(errors)[0]).focus();
 
-      Object.keys(errors).reduce((object, key) => {
-        if (key !== Object.keys(errors)[0]) {
-          delete errors[key]
-        }
-      });
+    //   Object.keys(errors).reduce((object, key) => {
+    //     if (key !== Object.keys(errors)[0]) {
+    //       delete errors[key]
+    //     }
+    //   });
    
-    }
+    // }
 
 
     this.setState({
@@ -430,19 +430,19 @@ return (
                 <div className="row pb-3">
                 	<div className="col-md-6">
                       <div className="form-group">
-                      <label for="ProtectionCoverage">Select Protection coverage <span className="text-danger"> * </span> </label>
+                      <label htmlFor="ProtectionCoverage">Select Protection coverage <span className="text-danger"> * </span> </label>
                        
-                        <select className="form-control" id="ProtectionCoverage"  name="ProtectionCoverage" value={this.state.fields.ProtectionCoverage} onChange={this.handleFormChange}>
+                        <select  className={'form-control ' +(!!this.state.errors.ProtectionCoverage && 'input-error')} title={this.state.errors.ProtectionCoverage}  id="ProtectionCoverage"  name="ProtectionCoverage" value={this.state.fields.ProtectionCoverage} onChange={this.handleFormChange}>
                               <option value="">Select Protection coverage</option>
                               {optionsProtectionCoverage}
                         </select>
-                        <div className="errorMsg">{this.state.errors.ProtectionCoverage}</div>
+                        {/* <div className="errorMsg">{this.state.errors.ProtectionCoverage}</div> */}
                       </div>
                     </div>
 
                     	<div className="col-md-6">
                       <div className="form-group">
-                      <label for="First Name"> Movie-In Date <span className="text-danger"> * </span> </label>
+                      <label htmlFor="First Name"> Movie-In Date <span className="text-danger"> * </span> </label>
                       {!!this.state.showDatePicker &&   <DatePicker className="form-control"
                           selected={this.state.selectedDate}
                           onChange={this.handleChange}
@@ -460,19 +460,19 @@ return (
                 <div className="row pb-3">
                 	<div className="col-md-6">
                       <div className="form-group">
-                        <label for="First Name">Name on card  <span className="text-danger"> * </span></label>
+                        <label htmlFor="First Name">Name on card  <span className="text-danger"> * </span></label>
                         <div className="clearfix"> </div>
-                        <input type="text" className="form-control" placeholder="Enter the Name" name="CardName" id="CardName" value={this.state.fields.CardName} onChange={this.handleFormChange} />
-                        <div className="errorMsg">{this.state.errors.CardName}</div>
+                        <input type="text"  className={'form-control ' +(!!this.state.errors.CardName && 'input-error')} title={this.state.errors.CardName}  placeholder="Enter the Name" name="CardName" id="CardName" value={this.state.fields.CardName} onChange={this.handleFormChange} />
+                        {/* <div className="errorMsg">{this.state.errors.CardName}</div> */}
                       </div>
                     </div>
 
                     	<div className="col-md-6">
                       <div className="form-group">
-                        <label for="First Name">Address  <span className="text-danger"> * </span></label>
+                        <label htmlFor="First Name">Address  <span className="text-danger"> * </span></label>
                         <div className="clearfix"> </div>
-                        <input type="text" className="form-control" placeholder="Enter the Address" name="BillingAddress" id="BillingAddress" value={this.state.fields.BillingAddress} onChange={this.handleFormChange} />
-                        <div className="errorMsg">{this.state.errors.BillingAddress}</div>
+                        <input type="text"  className={'form-control ' +(!!this.state.errors.BillingAddress && 'input-error')} title={this.state.errors.BillingAddress}  placeholder="Enter the Address" name="BillingAddress" id="BillingAddress" value={this.state.fields.BillingAddress} onChange={this.handleFormChange} />
+                        {/* <div className="errorMsg">{this.state.errors.BillingAddress}</div> */}
                       </div>
                     </div>
                   </div>
@@ -480,21 +480,21 @@ return (
                     <div className="row pb-3"> 
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label for="First Name">  Postal / Zip  <span className="text-danger"> * </span></label>
+                        <label htmlFor="First Name">  Postal / Zip  <span className="text-danger"> * </span></label>
                         <div className="clearfix"> </div>
                         {/* <input type="text" className="form-control" placeholder="Enter the Zip" name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange} /> */}
-                        <NumberFormat format="#####" className="form-control" placeholder="Enter the Zip" name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange}/>
-                        <div className="errorMsg">{this.state.errors.Zip}</div>
+                        <NumberFormat format="#####" className={'form-control ' +(!!this.state.errors.Zip && 'input-error')} title={this.state.errors.Zip} placeholder="Enter the Zip" name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange}/>
+                        {/* <div className="errorMsg">{this.state.errors.Zip}</div> */}
                       </div>
                     </div>
                     
                     <div className="col-md-6">  
                       <div className="form-group ">
-                        <label for="formGroupExampleInput2"> Card Number  <span className="text-danger"> * </span> </label>
+                        <label htmlFor="formGroupExampleInput2"> Card Number  <span className="text-danger"> * </span> </label>
                         <div className="clearfix"> </div>
-                        <input type="password" className="form-control width-60 d-inline"  placeholder="Enter your card number" id="CardNumber" name="CardNumber" value={this.state.fields.CardNumber} onChange={this.handleFormChange} /> &nbsp;
+                        <input type="password" className={'form-control width-60 d-inline ' +(!!this.state.errors.CardNumber && 'input-error')} title={this.state.errors.CardNumber}  placeholder="Enter your card number" id="CardNumber" name="CardNumber" value={this.state.fields.CardNumber} onChange={this.handleFormChange} /> &nbsp;
                         <span className="d-inline gv-text-color small text-underline cursor-pointer" onClick={() => this.CardNumberShowHideClick()}> Show/Hide </span>
-                        <div className="errorMsg">{this.state.errors.CardNumber}</div>
+                        {/* <div className="errorMsg">{this.state.errors.CardNumber}</div> */}
                       </div>
                       
                       
@@ -506,36 +506,36 @@ return (
                    <div className="row pb-3">
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label for="First Name">CVV Number  <span className="text-danger"> * </span> </label>
+                        <label htmlFor="First Name">CVV Number  <span className="text-danger"> * </span> </label>
                         <div className="clearfix"> </div>
                         {/* <input type="password" className="form-control w-45 d-inline" placeholder="Enter the CVV" id="CardCVV"  name="CardCVV" value={this.state.fields.CardCVV} onChange={this.handleFormChange} /> */}
-                        <NumberFormat format="###" className="form-control w-45 d-inline" placeholder="Enter the CVV" id="CardCVV"  name="CardCVV" value={this.state.fields.CardCVV} onChange={this.handleFormChange} />
+                        <NumberFormat format="###" className="form-control w-45 d-inline"  className={'form-control w-45 d-inline ' +(!!this.state.errors.CardCVV && 'input-error')} title={this.state.errors.CardCVV}  placeholder="Enter the CVV" id="CardCVV"  name="CardCVV" value={this.state.fields.CardCVV} onChange={this.handleFormChange} />
                         <span className="d-inline gv-text-color small text-underline cursor-pointer" onClick={() => this.CVVShowHideClick()}>  <a > Show/Hide </a> </span>  &nbsp;
                         <span className="d-inline gv-text-color small text-underline cursor-pointer">   <a> What is this </a></span>
-                        <div className="errorMsg">{this.state.errors.CardCVV}</div>
+                        {/* <div className="errorMsg">{this.state.errors.CardCVV}</div> */}
                       </div>
                     </div>
                     
                     <div className="col-md-6">  
                       <div className="form-group">
-                        <label for="formGroupExampleInput2"> Expiry date  <span className="text-danger"> * </span> </label>
+                        <label htmlFor="formGroupExampleInput2"> Expiry date  <span className="text-danger"> * </span> </label>
                         <div className="clearfix"> </div>
                         <div className="col-12 ">
                         <div className="row">
                         
-                        <select className="form-control col-5 " id="ExpiryMonth"  name="ExpiryMonth" value={this.state.fields.ExpiryMonth} onChange={this.handleFormChange}>
+                        <select className={'form-control col-5 ' +(!!this.state.errors.ExpiryMonth && 'input-error')} title={this.state.errors.ExpiryMonth}  id="ExpiryMonth"  name="ExpiryMonth" value={this.state.fields.ExpiryMonth} onChange={this.handleFormChange}>
                               <option value="">Month</option>
                               {optionMonths}
                         </select> 
-                        <div className="errorMsg">{this.state.errors.ExpiryMonth}</div>
+                        {/* <div className="errorMsg">{this.state.errors.ExpiryMonth}</div> */}
                         
                         <span className="exp-saparator col-1 "> </span>
                       
-                        <select className="form-control col-5 " id="ExpiryYear"  name="ExpiryYear" value={this.state.fields.ExpiryYear} onChange={this.handleFormChange}>
+                        <select  className={'form-control col-5 ' +(!!this.state.errors.ExpiryYear && 'input-error')} title={this.state.errors.ExpiryYear}  id="ExpiryYear"  name="ExpiryYear" value={this.state.fields.ExpiryYear} onChange={this.handleFormChange}>
                               <option value="">Year</option>
                               {optionYears}
                         </select>
-                        <div className="errorMsg">{this.state.errors.ExpiryYear}</div>
+                        {/* <div className="errorMsg">{this.state.errors.ExpiryYear}</div> */}
                         {/* <input type="text" className="form-control col-5"  placeholder="Year" /> */}
                         
                         </div>

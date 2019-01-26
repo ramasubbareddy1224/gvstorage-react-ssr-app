@@ -105,9 +105,9 @@ render(){
 
 
     return(
-      <section id={pageName == 'home' ? 'intro' :'inner-banner'}>
+      <section id={pageName == 'home' ? 'inner-banner' :'inner-banner'}>
     
-        <div className={pageName == 'home' ?  'intro-content wow zoomIn':'inner-banner-content wow zoomIn' }>
+        <div className={pageName == 'home' ?  'inner-banner-content wow zoomIn':'inner-banner-content wow zoomIn' }>
         { this.props.pageName == 'home' && 
         <div>
          <h2>Need Storage Space? We've got room!</h2>
@@ -156,11 +156,14 @@ render(){
         </div>
 
 {pageName == 'home' ? (
-  <div id="intro-carousel" className="owl-carousel" >
-           <div className="item" style ={ { backgroundImage: "url('img/intro-carousel/1.jpg')" } }></div>
-          <div className="item" style ={ { backgroundImage: "url('img/intro-carousel/2.jpg')" } }></div>
-          <div className="item" style ={ { backgroundImage: "url('img/intro-carousel/3.jpg')" } }></div>
-        </div>
+  // <div id="intro-carousel" className="owl-carousel" >
+  //          <div className="item" style ={ { backgroundImage: "url('img/intro-carousel/1.jpg')" } }></div>
+  //         <div className="item" style ={ { backgroundImage: "url('img/intro-carousel/2.jpg')" } }></div>
+  //         <div className="item" style ={ { backgroundImage: "url('img/intro-carousel/3.jpg')" } }></div>
+  //       </div>
+  <div id="inner-banner-image">
+  <div className="item"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/intro-carousel/1.jpg"} className="img-fluid w-100" /> </div>
+  </div>
 ) : (
   <div id="inner-banner-image">
             <div className="item"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/intro-carousel/innerpage-citylevel-page.jpg"} className="img-fluid w-100" /> </div>

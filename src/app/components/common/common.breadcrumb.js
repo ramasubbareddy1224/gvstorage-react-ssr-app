@@ -5,6 +5,7 @@ import { frontloadConnect } from 'react-frontload';
 import {ACTIONTYPES} from '../../../configurations/actiontypes';
 import {setFilterInfo} from '../../../modules/actioncreators/common.actioncreator';
 import {Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 
@@ -87,6 +88,7 @@ render(){
        { !!allSites.siteLocations &&
       <li className="breadcrumb-item menu-has-children"><a className="sf-with-ul-breadcrumb"> {allSites.siteLocations[0].city} </a>
         <ul className="ul-locations">
+            <li><Link to="/search/All">All</Link></li>
            {divBreadcrumbLocations}
         </ul>
       </li>

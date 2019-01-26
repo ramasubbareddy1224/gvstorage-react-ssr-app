@@ -252,16 +252,16 @@ class RentFormFilling extends Component{
     //   errors["ProtectionCoverage"] = "Please select Protection Coverage.";
     // }
 
-    if(Object.keys(errors).length > 0){
-      document.getElementById(Object.keys(errors)[0]).focus();
+    // if(Object.keys(errors).length > 0){
+    //   document.getElementById(Object.keys(errors)[0]).focus();
 
-      Object.keys(errors).reduce((object, key) => {
-        if (key !== Object.keys(errors)[0]) {
-          delete errors[key]
-        }
-      });
+    //   Object.keys(errors).reduce((object, key) => {
+    //     if (key !== Object.keys(errors)[0]) {
+    //       delete errors[key]
+    //     }
+    //   });
    
-    }
+    // }
 
     this.setState({
       errors: errors
@@ -321,17 +321,17 @@ return (
                 <div className="row pb-3">
                 	<div className="col-md-6">
                       <div className="form-group">
-                        <label for="First Name">First Name <span className="text-danger"> * </span></label>
-                        <input type="text" className="form-control" placeholder="First Name" id="FirstName" name="FirstName" value={this.state.fields.FirstName} onChange={this.handleFormChange} />
-                        <div className="errorMsg">{this.state.errors.FirstName}</div>
+                        <label htmlFor="First Name">First Name <span className="text-danger"> * </span></label>
+                        <input type="text"  className={'form-control ' +(!!this.state.errors.FirstName && 'input-error')} title={this.state.errors.FirstName}  placeholder="First Name" id="FirstName" name="FirstName" value={this.state.fields.FirstName} onChange={this.handleFormChange} />
+                        {/* <div className="errorMsg">{this.state.errors.FirstName}</div> */}
                       </div>
                     </div>
                     
                     <div className="col-md-6">  
                       <div className="form-group">
-                        <label for="formGroupExampleInput2"> Last Name <span className="text-danger"> * </span> </label>
-                        <input type="text" className="form-control"  placeholder="Last Name" name="LastName" id="LastName" value={this.state.fields.LastName} onChange={this.handleFormChange} />
-                        <div className="errorMsg">{this.state.errors.LastName}</div>
+                        <label htmlFor="formGroupExampleInput2"> Last Name <span className="text-danger"> * </span> </label>
+                        <input type="text"  className={'form-control ' +(!!this.state.errors.LastName && 'input-error')} title={this.state.errors.LastName}   placeholder="Last Name" name="LastName" id="LastName" value={this.state.fields.LastName} onChange={this.handleFormChange} />
+                        {/* <div className="errorMsg">{this.state.errors.LastName}</div> */}
                       </div>
                     </div>  
                   </div>   
@@ -340,17 +340,17 @@ return (
                    <div className="row pb-3">
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label for="First Name">Company </label>
-                        <input type="text" className="form-control" placeholder="Enter your company name" name="CompanyName" id="CompanyName" value={this.state.fields.CompanyName} onChange={this.handleFormChange} />
-                        <div className="errorMsg">{this.state.errors.CompanyName}</div>
+                        <label htmlFor="First Name">Company </label>
+                        <input type="text"  className={'form-control ' +(!!this.state.errors.CompanyName && 'input-error')} title={this.state.errors.CompanyName}  placeholder="Enter your company name" name="CompanyName" id="CompanyName" value={this.state.fields.CompanyName} onChange={this.handleFormChange} />
+                        {/* <div className="errorMsg">{this.state.errors.CompanyName}</div> */}
                       </div>
                     </div>
                     
                     <div className="col-md-6">  
                       <div className="form-group">
-                        <label for="formGroupExampleInput2"> Email <span className="text-danger"> * </span> </label>
-                        <input type="text" className="form-control"  placeholder="Enter your email address" name="Email" id="Email" value={this.state.fields.Email} onChange={this.handleFormChange} />
-                        <div className="errorMsg">{this.state.errors.Email}</div>
+                        <label htmlFor="formGroupExampleInput2"> Email <span className="text-danger"> * </span> </label>
+                        <input type="text"  className={'form-control ' +(!!this.state.errors.Email && 'input-error')} title={this.state.errors.Email}   placeholder="Enter your email address" name="Email" id="Email" value={this.state.fields.Email} onChange={this.handleFormChange} />
+                        {/* <div className="errorMsg">{this.state.errors.Email}</div> */}
                       </div>
                     </div>  
                   </div>
@@ -359,20 +359,20 @@ return (
                   <div className="row pb-3">  
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label for="First Name"> Phone <span className="text-danger"> * </span> </label>
+                        <label htmlFor="First Name"> Phone <span className="text-danger"> * </span> </label>
                         {/* <input type="text" className="form-control" placeholder="Enter your phone number" id="PhoneNumber" name="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange} /> */}
-                        <NumberFormat format="(###) ###-####" mask="_" className="form-control" placeholder="Enter your phone number" name="PhoneNumber" id="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange}/>
-                        <div className="errorMsg">{this.state.errors.PhoneNumber}</div>
+                        <NumberFormat format="(###) ###-####" mask="_"  className={'form-control ' +(!!this.state.errors.PhoneNumber && 'input-error')} title={this.state.errors.PhoneNumber}  placeholder="Enter your phone number" name="PhoneNumber" id="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange}/>
+                        {/* <div className="errorMsg">{this.state.errors.PhoneNumber}</div> */}
                         
                       </div>
                     </div>
                     
                     <div className="col-md-6">  
                       <div className="form-group">
-                        <label for="formGroupExampleInput2"> Fax </label>
+                        <label htmlFor="formGroupExampleInput2"> Fax </label>
                         {/* <input type="text" className="form-control"  placeholder="Enter your Fax number" name="FaxNumber" id="FaxNumber" value={this.state.fields.FaxNumber} onChange={this.handleFormChange} /> */}
-                        <NumberFormat format="(###) ###-####" mask="_"  className="form-control"  placeholder="Enter your Fax number" name="FaxNumber" id="FaxNumber" value={this.state.fields.FaxNumber} onChange={this.handleFormChange}/>
-                        <div className="errorMsg">{this.state.errors.FaxNumber}</div>
+                        <NumberFormat format="(###) ###-####" mask="_"   className={'form-control ' +(!!this.state.errors.FaxNumber && 'input-error')} title={this.state.errors.FaxNumber}   placeholder="Enter your Fax number" name="FaxNumber" id="FaxNumber" value={this.state.fields.FaxNumber} onChange={this.handleFormChange}/>
+                        {/* <div className="errorMsg">{this.state.errors.FaxNumber}</div> */}
                       </div>
                     </div>  
                     <div className="form-check small">
@@ -386,17 +386,17 @@ return (
                  <div className="row pb-3">
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label for="First Name">Address <span className="text-danger"> * </span> </label>
-                        <input type="text" className="form-control" placeholder="Enter your address"  name="Address" id="Address" value={this.state.fields.Address} onChange={this.handleFormChange} />
-                        <div className="errorMsg">{this.state.errors.Address}</div>
+                        <label htmlFor="First Name">Address <span className="text-danger"> * </span> </label>
+                        <input type="text"  className={'form-control ' +(!!this.state.errors.Address && 'input-error')} title={this.state.errors.Address}  placeholder="Enter your address"  name="Address" id="Address" value={this.state.fields.Address} onChange={this.handleFormChange} />
+                        {/* <div className="errorMsg">{this.state.errors.Address}</div> */}
                       </div>
                     </div>
                     
                     <div className="col-md-6">  
                       <div className="form-group">
-                        <label for="formGroupExampleInput2"> City <span className="text-danger"> * </span> </label>
-                        <input type="text" className="form-control" placeholder="Enter your city"  name="City" id="City" value={this.state.fields.City} onChange={this.handleFormChange} />
-                        <div className="errorMsg">{this.state.errors.City}</div>
+                        <label htmlFor="formGroupExampleInput2"> City <span className="text-danger"> * </span> </label>
+                        <input type="text"  className={'form-control ' +(!!this.state.errors.City && 'input-error')} title={this.state.errors.City}  placeholder="Enter your city"  name="City" id="City" value={this.state.fields.City} onChange={this.handleFormChange} />
+                        {/* <div className="errorMsg">{this.state.errors.City}</div> */}
                       </div>
                     </div>  
                   </div>
@@ -405,15 +405,15 @@ return (
                   <div className="row pb-3">
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label className="d-block" for="First Name">State / Province <span className="text-danger"> * </span></label>
-                        <input type="text" className="form-control" placeholder="Enter your state"  name="State" id="State" value={this.state.fields.State} onChange={this.handleFormChange} />
-                        <div className="errorMsg">{this.state.errors.State}</div>
+                        <label className="d-block" htmlFor="First Name">State / Province <span className="text-danger"> * </span></label>
+                        <input type="text"  className={'form-control ' +(!!this.state.errors.State && 'input-error')} title={this.state.errors.State}  placeholder="Enter your state"  name="State" id="State" value={this.state.fields.State} onChange={this.handleFormChange} />
+                        {/* <div className="errorMsg">{this.state.errors.State}</div> */}
                       </div>
                     </div>
                     
                     {/* <div className="col-md-6">  
                       <div className="form-group">
-                        <label for="formGroupExampleInput2"> County <span className="text-danger"> * </span> </label>
+                        <label htmlFor="formGroupExampleInput2"> County <span className="text-danger"> * </span> </label>
                         <input type="text" className="form-control" placeholder="Enter your county"  name="County" id="County" value={this.state.fields.County} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.County}</div>
                       </div>
@@ -425,17 +425,17 @@ return (
                     <div className="col-md-6">
                       <div className="form-group">
                       <label className="d-block">Country / Region <span className="text-danger"> * </span> <span className="small pull-right"> (required if not in US & Canada) </span> </label>
-                      <input type="text" className="form-control" placeholder="Enter your country" id="Country" name="Country" value={this.state.fields.Country} onChange={this.handleFormChange} />
-                      <div className="errorMsg">{this.state.errors.Country}</div>
+                      <input type="text"  className={'form-control ' +(!!this.state.errors.Country && 'input-error')} title={this.state.errors.Country}  placeholder="Enter your country" id="Country" name="Country" value={this.state.fields.Country} onChange={this.handleFormChange} />
+                      {/* <div className="errorMsg">{this.state.errors.Country}</div> */}
                       </div>
                     </div>
                     
                     <div className="col-md-6">  
                       <div className="form-group">
-                        <label for="formGroupExampleInput2"> Postal / Zip <span className="text-danger"> * </span> </label>
+                        <label htmlFor="formGroupExampleInput2"> Postal / Zip <span className="text-danger"> * </span> </label>
                         {/* <input type="text" className="form-control" placeholder="Enter your Zip"   name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange} /> */}
-                        <NumberFormat format="#####" className="form-control" placeholder="Enter your Zip"   name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange} />
-                        <div className="errorMsg">{this.state.errors.Zip}</div>
+                        <NumberFormat format="#####"  className={'form-control ' +(!!this.state.errors.Zip && 'input-error')} title={this.state.errors.Zip}  placeholder="Enter your Zip"   name="Zip" id="Zip" value={this.state.fields.Zip} onChange={this.handleFormChange} />
+                        {/* <div className="errorMsg">{this.state.errors.Zip}</div> */}
                       </div>
                     </div>  
                   </div>
@@ -444,7 +444,7 @@ return (
                   {/* <div className="row pb-3">  
                     <div className="col-md-6">
                       <div className="form-group">
-                        <label for="First Name"> Movie-In Date <span className="text-danger"> * </span> </label>
+                        <label htmlFor="First Name"> Movie-In Date <span className="text-danger"> * </span> </label>
                        { typeof document !== 'undefined' && <DatePicker className="form-control"
                           selected={this.state.selectedDate}
                           onChange={this.handleChange}
@@ -462,7 +462,7 @@ return (
                   {/* <div className="row pb-3">  
                     <div className="col-md-10">
                       <div className="form-group">
-                        <label for="First Name">Select Protection coverage <span className="text-danger"> * </span> </label>
+                        <label htmlFor="First Name">Select Protection coverage <span className="text-danger"> * </span> </label>
                         <p className="small"> We ask thea each of out customers select a property protection option. Our property protection plans listed below provided added peace of mind to protect your valuablea against demages from unfortunate and un pedictable incidents while in storage.</p>
                         <select className="form-control" id="Select Protection coverage"  name="ProtectionCoverage" value={this.state.fields.ProtectionCoverage} onChange={this.handleFormChange}>
                               <option value="">Select Protection coverage</option>

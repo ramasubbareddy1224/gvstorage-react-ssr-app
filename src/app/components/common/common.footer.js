@@ -168,14 +168,14 @@ render(){
     
                 
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand"> Careers </h6>
+                  <h6 className="w-title-a text-brand"><a href="https://greatvaluestorage.prismhr-hire.com/" target="_blank">Careers</a> </h6>
                 </div>
-                <div className="w-header-a">
+                {/* <div className="w-header-a">
                   <h6 className="w-title-a text-brand"> Blog </h6>
                 </div>
                 <div className="w-header-a">
                   <h6 className="w-title-a text-brand"> Review Us </h6>
-                </div>
+                </div> */}
     
               </div>
             </div>
