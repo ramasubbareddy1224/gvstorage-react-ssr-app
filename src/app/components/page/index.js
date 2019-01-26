@@ -17,7 +17,6 @@ const defaultSep = ' | ';
 
 class Page extends Component {
 
-
   // shouldComponentUpdate(nextProps) {
 
   //   if (nextProps.match.params.id !== this.props.match.params.id) {
@@ -75,6 +74,8 @@ class Page extends Component {
 
   render() {
     const { children, id, className, ...rest } = this.props;
+
+    !!window && window.scrollTo(0,0);
 
     return (
       <div id={id} className={className}>

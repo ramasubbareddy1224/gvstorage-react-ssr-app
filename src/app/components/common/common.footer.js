@@ -17,7 +17,7 @@ class CommonFooter extends Component{
   redirectToTarget=(filterName,event)=>{
     event.stopPropagation();
     this.setState({isLocationClicked: true, searchDynamicUrl: '/search/'+filterName+''});
-    !!window && window.scrollTo(0,0);
+    //!!window && window.scrollTo(0,0);
   }
 
 
@@ -40,7 +40,7 @@ render(){
           
     <div className="widget-a">
       <div className="w-header-a">
-        <h6 className="w-title-a text-brand">{item.stateName} </h6>
+        <h6 className="w-title-a text-brand">{item.stateName} ({item.cities.length})</h6>
       </div>
       <div className="w-body-a">
         <div className="w-body-a">

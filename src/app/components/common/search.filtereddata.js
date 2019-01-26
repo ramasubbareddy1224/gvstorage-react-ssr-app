@@ -104,7 +104,8 @@ render(){
                 {item.city}, {item.stateCode} {item.postalCode}</p>
             </div> */}
             <div className="col-7 col-sm-8 col-md-8 search-left-panel">
-              <h6 className="mb-0" onClick={() => {this.clkRedirectToSelfStorage(item.locationCode) }}> {item.name} </h6>
+              <h6 className="mb-0" onClick={() => {this.clkRedirectToSelfStorage(item.locationCode) }}> {!!item.content ? item.content.name : item.name} </h6>
+      
               <p className="mb-0 small"> {item.address1} <br />
               {item.city}, {item.stateCode} {item.postalCode} </p>
                 <p className="reviews "> 

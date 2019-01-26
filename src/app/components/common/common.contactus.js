@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class CommonContactUs extends Component{
 render(){
@@ -14,7 +15,7 @@ pricing or to reserve a storage unit,</h3>
     
     <div className="row">
     <div className="col-md-12  text-center">
-      <a className="btn btn-gvstore btn-success border-0 green-gradient" href="#"> Contact Us </a>
+      <Link className="btn btn-gvstore btn-success border-0 green-gradient" to="/contact-us"> Contact Us </Link>
     </div>
     </div>
   </div>
