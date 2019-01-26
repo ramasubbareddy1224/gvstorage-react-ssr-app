@@ -1,5 +1,45 @@
 
+@media ( max-width:2000px){
+    .about-room-facility {
+        padding-top: 80px;
+    }
+    #inner-banner .storage-room-content .wether-block .wether-info-content {
+        width: 400px;
+    }
+    .storage-room-content {
+        padding-top: 3rem;
+    }
+}
+@media ( max-width:1800px){
+.about-room-facility {
+    padding-top: 40px;
+}
+.storage-room-content {
+    padding-top: 2.2rem;
+}
+}
 
+@media ( max-width:1600px){
+    .about-room-facility {
+        padding-top: 10px;
+    }
+    #inner-banner .storage-room-content .wether-block .wether-info-content {
+        width: 360px;
+    }
+    .storage-room-content {
+        padding-top: 2rem;
+    }
+    .about-room-facility {
+        padding-top: 20px;
+    }
+}
+
+@media ( max-width:1500px){
+    #inner-banner .storage-room-content .wether-block .wether-info-content {
+        width: 300px;
+    }
+
+}
 
 @media ( max-width:1440px){
 .storage-room-content {
@@ -7,6 +47,13 @@
 }
 .facility-page-banner-content {
     left: 12% !important;
+}
+#inner-banner .storage-room-content .wether-block .wether-info-content {
+    width: 280px;
+}
+.how-storage-text {
+
+    width: 45%;
 }
 }
 
@@ -19,6 +66,9 @@
 }
 #inner-banner .storage-room-content .storage-timings {
     padding-top: 2.5rem;
+}
+.choose-right-space .choose-right-space-txt {
+    width: 50%;
 }
 }
 
@@ -35,6 +85,12 @@
 }
 .about-room-facility {
     padding-top: 0px;
+}
+.how-storage-text {
+    width: 55%;
+}
+.choose-right-space .choose-right-space-txt {
+    width: 60%;
 }
 }
 
@@ -54,6 +110,7 @@
 #inner-banner .storage-room-content .storage-timings {
     padding-top: 1rem;
 }
+#header .container-fluid-padding{ padding: 0px;}
 }
 
 @media ( max-width:1140px){
@@ -70,6 +127,9 @@
 
 .table-responsive { overflow:auto;}
 .table-responsive table { width:1160px; }
+.how-storage-text {
+    width: 65%;
+}
 } 
 
 
@@ -89,10 +149,15 @@
     font-size: 18px;
     font-weight: 700;
 }
+
 #intro .find-storage {
- width: 90%;
+    width: 85%;
+    margin: 0% auto !important;
 }
 
+.how-storage-text {
+    width: 75%;
+}
 #inner-banner .find-storage{
 width: 90%;
 }
@@ -101,15 +166,29 @@ width: 90%;
 #inner-banner .storage-room-content .wether-block .wether-info-content {
     font-size: 14px;
 }
+.choose-right-space .storage-data-info {
+    width: 100%;
+    margin: 0px auto;
+}
 }
 
 @media ( max-width:850px){
+.pb-5 {
+    padding-bottom: 1.5rem!important;
+}
 .facility-space {
     margin-top: 38rem;
 }
 #inner-banner .storage-room-content .wether-block p{ margin-bottom:1rem !important;}
 #inner-banner .storage-room-content .wether-block .wether-info-content {
    padding: 17px 40px;
+}
+#nav-menu-container .nav-menu a { padding: 10px 5px; }
+.how-storage-text {
+    width: 90%; margin-top: -20px;
+}
+.choose-right-space .choose-right-space-txt {
+    width: 70%;
 }
 }
 
@@ -119,6 +198,16 @@ width: 90%;
 }
 .facility-space {
     margin-top: 42rem;
+}
+.img-how-storage-works {
+    height: 550px;
+}
+.storage-size .nav-tabs .nav-link {
+    border-bottom: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    font-size: 12px;
+    padding: 5px 10px;
 }
 }
 
@@ -150,6 +239,14 @@ width: 90%;
 .facility-space {
     margin-top: 33rem;
 }
+.container-fluid-padding {
+	padding: 0px 3%;
+}
+.img-how-storage-works {
+    height: 100%;
+}
+.how-storage-text { position: relative; color: #333; padding-top: 20px; width: 80% ; margin: 0px auto;}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{     border-bottom: 1px solid #005f26 !important;}
 }
 
 
@@ -177,6 +274,12 @@ width: 90%;
 .about-room-facility {
     padding-top: 20px;
 }
+
+.storage-size .nav-tabs .nav-link { 
+    font-size: 10px;
+    padding: 5px 0px;
+}
+
 }
 
 
@@ -191,6 +294,12 @@ width: 90%;
 }
 .facility-page-banner-content {
     left: 5% !important;
+}
+#intro .intro-content h2, .section-header h2 {
+    font-size: 18px;
+}
+#intro .intro-content p, #inner-banner .inner-banner-content p {
+    font-size: 12px;
 }
 }
 

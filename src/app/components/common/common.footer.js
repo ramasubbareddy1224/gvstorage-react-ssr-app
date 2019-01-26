@@ -71,7 +71,7 @@ render(){
         <div className="container-fluid footer-bg-color pb-3">
         <div className="container-fluid-padding">
         <div className="pt-2 pb-3">
-              <h2 >Locations</h2>
+              <h5 className='text-white pt-5 pb-2' >Locations</h5>
             </div>
             <div className="row">
           <div className="col-md-12 coloum-sprit">
@@ -88,7 +88,7 @@ render(){
             <div className="col-sm-12 col-md-3">
               <div className="widget-a">
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand"><Link to="/storage-options">Storage Options</Link></h6>
+                  <h6 className="w-title-a text-brand text-uppercase"><Link to="/storage-options">Storage Options</Link></h6>
                 </div>
                 
                 <div className="w-header-a">
@@ -128,7 +128,7 @@ render(){
             <div className="col-sm-12 col-md-3 section-md-t3">
               <div className="widget-a">
                 <div className="w-header-a">
-                      <h6 className="w-title-a text-brand"> Storage Tools </h6>
+                      <h6 className="w-title-a text-brand text-uppercase"> Storage Tools </h6>
                     </div>
                 
                 <div className="w-header-a">
@@ -149,7 +149,7 @@ render(){
             <div className="col-sm-12 col-md-3 section-md-t3">
               <div className="widget-a">
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">Great Value Storage </h6>
+                  <h6 className="w-title-a text-brand text-uppercase">Great Value Storage </h6>
                 </div>
                 
                     
@@ -183,11 +183,11 @@ render(){
             <div className="col-sm-12 col-md-3 section-md-t3">
               <div className="widget-a">
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand"> Payment </h6>
+                  <h6 className="w-title-a text-brand text-uppercase"> Payment </h6>
                 </div>
                
                <div className="w-header-a">
-                  <div className="btn btn-gvstore btn-footer"> Pay Bill Now </div>
+                  <div className="btn btn-gvstore btn-footer w-100"> Pay Bill Now </div>
                 </div>
                 
               </div>
@@ -228,8 +228,8 @@ render(){
           <div className="row">
             <div className="col-md-12">
               <div className="copyright-footer">
-                <p className="copyright text-white small p-2">
-                   © 2018. All rights reserved.  <span className="color-a float-right"> Privacy Policy  &nbsp; &nbsp; Terms of service. 
+                <p className="copyright text-white small p-2 social-icons">
+                   © 2018. All rights reserved.  <span className="color-a float-right"> Privacy Policy  &nbsp; &nbsp; Terms of service.  &nbsp; 
                    <i className="fa fa-facebook-official" aria-hidden="true"></i>
                    <i className="fa fa-twitter-square" aria-hidden="true"></i>
                    <i className="fa fa-youtube-play" aria-hidden="true"></i>

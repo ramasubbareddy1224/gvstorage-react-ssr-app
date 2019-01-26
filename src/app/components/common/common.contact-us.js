@@ -1,10 +1,164 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
-
+import {Redirect} from 'react-router-dom';
+import { contactUs
+} from '../../../modules/actioncreators/common.actioncreator';
  class CommonContactUs extends Component{
-   
-render(){
+   constructor(){
+     super();
+     this.state ={
+      fields: {},
+      errors: {},
+      isToRedirect: false
+     };
+   }
 
+   handleFormChange=(e)=> {
+    let fields = this.state.fields;
+    fields[e.target.name] = e.target.value;
+    this.setState({
+      fields
+    });
+
+  }
+  
+  
+  submitContactUsForm=(e)=>{
+    e.preventDefault();
+    if (this.validateForm()) {
+
+     
+      //const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
+      document.getElementById('div-preloader').style.display = 'block';
+     var requestData = {
+      "firstName": this.state.fields.FirstName,
+      "lastName": this.state.fields.LastName,
+      "phoneNumber": this.state.fields.PhoneNumber,
+      "email": this.state.fields.Email,
+      "siteName": this.state.fields.SiteName,
+      "comments": this.state.fields.Comments
+    };
+
+      contactUs(requestData).then((success)=>{
+        //alert(success.status.message);
+        document.getElementById('div-preloader').style.display = 'none';
+        if(success.status.code  == 200){
+          this.setState({isToRedirect: true});
+        }
+        // else if(success.status.code < -83){
+        //  document.getElementById('div-preloader').style.display = 'none';
+        // }
+      },
+      (error)=>{
+        alert((JSON.parse(error.text)).status.message);
+        document.getElementById('div-preloader').style.display = 'none';
+      });
+     }
+  }
+
+  validateForm() {
+    let fields = this.state.fields;
+    let errors = {};
+    let formIsValid = true;
+
+    var invalidFieldNames = [];
+
+    document.getElementById("FirstName").focus();
+    if (!fields["FirstName"]) {
+      formIsValid = false;
+      errors["FirstName"] = "Please enter your First Name.";
+      
+    }
+
+    if (typeof fields["FirstName"] !== "undefined") {
+      if (!fields["FirstName"].match(/^[a-zA-Z ]*$/)) {
+        formIsValid = false;
+        errors["FirstName"] = "Please enter alphabet characters only.";
+        
+      }
+    }
+
+    if (!fields["LastName"]) {
+      formIsValid = false;
+      errors["LastName"] = "Please enter your Last Name.";
+      
+    }
+
+    if (typeof fields["LastName"] !== "undefined") {
+      if (!fields["LastName"].match(/^[a-zA-Z ]*$/)) {
+        formIsValid = false;
+        errors["LastName"] = "Please enter alphabet characters only.";
+        
+      }
+    }
+    
+    
+    if (!fields["PhoneNumber"]) {
+      formIsValid = false;
+      errors["PhoneNumber"] = "Please enter your Phone Number.";
+      
+    }
+
+    if (typeof fields["PhoneNumber"] !== "undefined") {
+      if (!fields["PhoneNumber"].match(/^[0-9]{10}$/)) {
+        formIsValid = false;
+        errors["PhoneNumber"] = "Please enter valid Phone Number.";
+        invalidFieldNames.push("PhoneNumber");
+      }
+    }
+
+    if (!fields["Email"]) {
+      formIsValid = false;
+      errors["Email"] = "Please enter your Email Id.";
+      
+    }
+
+    if (typeof fields["Email"] !== "undefined") {
+      //regular expression for email validation
+      var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+      if (!pattern.test(fields["Email"])) {
+        formIsValid = false;
+        errors["Email"] = "Please enter valid Email Id.";
+        
+      }
+    }
+
+    if (!fields["SiteName"]) {
+      formIsValid = false;
+      errors["SiteName"] = "Please select Site Name.";
+    }
+
+    if (!fields["Comments"]) {
+      formIsValid = false;
+      errors["Comments"] = "Please enter Comments.";
+    }
+
+    if(Object.keys(errors).length > 0){
+      document.getElementById(Object.keys(errors)[0]).focus();
+
+      Object.keys(errors).reduce((object, key) => {
+        if (key !== Object.keys(errors)[0]) {
+          delete errors[key]
+        }
+      });
+   
+    }
+
+
+ 
+    this.setState({
+      errors: errors
+    });
+    return formIsValid;
+
+  }
+
+render(){
+  const siteLocations = this.props.allFacilitySites.siteLocations || [];
+
+    if (this.state.isToRedirect) {
+      this.setState({isToRedirect: false});
+      return <Redirect to='/' />
+    }
 
     return(
       <div className="container-fluid">
@@ -53,25 +207,29 @@ render(){
            
            <div className="col-12 col-md-8">
              <div className="">
+             <form method="post"  name="frmContactUs"  onSubmit= {this.submitContactUsForm}>
                <div className="rent-your-unit-now pt-3 pb-3">
+              
                <div className="rent-unit-block">
                <h5 className="pt-3"> Please fill below form for futher assistance </h5>
                <hr />
                <p> Contact Information </p>
-               <form>
+               
                <div className="fill-rent-info">
                <div className="row pb-3">
                  <div className="col-md-6">
                      <div className="form-group">
-                       <label for="First Name">First Name <span className="text-danger"> * </span></label>
-                       <input type="text" className="form-control" placeholder="First Name" />
+                       <label htmlFor="First Name">First Name <span className="text-danger"> * </span></label>
+                       <input type="text" className="form-control" placeholder="First Name" id="FirstName"  name="FirstName" value={this.state.fields.FirstName} onChange={this.handleFormChange} />
+                       <div className="errorMsg">{this.state.errors.FirstName}</div>
                      </div>
                    </div>
                    
                    <div className="col-md-6">  
                      <div className="form-group">
-                       <label for="formGroupExampleInput2"> Last Name <span className="text-danger"> * </span> </label>
-                       <input type="text" className="form-control" placeholder="Last Name" />
+                       <label htmlFor="formGroupExampleInput2"> Last Name <span className="text-danger"> * </span> </label>
+                       <input type="text" className="form-control" placeholder="Last Name" id="LastName"  name="LastName" value={this.state.fields.LastName} onChange={this.handleFormChange} />
+                       <div className="errorMsg">{this.state.errors.LastName}</div>
                      </div>
                    </div>  
                  </div>   
@@ -80,16 +238,18 @@ render(){
                   <div className="row pb-3">
                    <div className="col-md-6">
                      <div className="form-group">
-                       <label for="First Name"> Phone Number <span className="text-danger"> * </span> </label>
-                       <input type="text" className="form-control" placeholder="Enter your phone number" />
+                       <label htmlFor="First Name"> Phone Number <span className="text-danger"> * </span> </label>
+                       <input type="text" className="form-control" id="PhoneNumber"  name="PhoneNumber" value={this.state.fields.PhoneNumber} onChange={this.handleFormChange}  placeholder="Enter your phone number" />
+                       <div className="errorMsg">{this.state.errors.PhoneNumber}</div>
                        
                      </div>
                    </div>
                    
                    <div className="col-md-6">  
                      <div className="form-group">
-                       <label for="formGroupExampleInput2"> Email <span className="text-danger"> * </span> </label>
-                       <input type="text" className="form-control" placeholder="Enter your email address" />
+                       <label htmlFor="formGroupExampleInput2"> Email <span className="text-danger"> * </span> </label>
+                       <input type="text" className="form-control" id="Email"  name="Email" value={this.state.fields.Email} onChange={this.handleFormChange}  placeholder="Enter your email address" />
+                       <div className="errorMsg">{this.state.errors.Email}</div>
                      </div>
                    </div> 
                     
@@ -99,89 +259,28 @@ render(){
                  <div className="row pb-3">
                    <div className="col-md-6">
                      <div className="form-group">
-                       <label for="First Name">Select Facility<span className="text-danger"> * </span> </label>
+                       <label htmlFor="SiteName">Select Facility<span className="text-danger"> * </span> </label>
                       
                       
-                      <select name="facility" id="facility_input" className="form-control">
-             <option value="">Select Facility</option>
-                           <option value="fac071@greatvaluestorage.com">Brandon - 1661 W. Government Cove</option>
-                           <option value="fac072@greatvaluestorage.com">Flowood - 111 N. Layfair Dr.</option>
-                           <option value="fac073@greatvaluestorage.com">Hattiesburg - 2033 Oak Grove Rd</option>
-                           <option value="fac074@greatvaluestorage.com">Production - 4641 Production Dr</option>
-                           <option value="fac077@greatvaluestorage.com">Texas City - 1910 25th Ave N</option>
-                           <option value="fac076@greatvaluestorage.com">Texas City - 2502 Bay Street</option>
-                           <option value="fac003@greatvaluestorage.com">Texas Storage Park - 10013 RR FM 620 N</option>
-                           <option value="fac005@greatvaluestorage.com">Canyon Lake - 13825 FM 306</option>
-                           <option value="fac006@greatvaluestorage.com">Cedar Park - 16905 Indian Chief Drive</option>
-                           <option value="fac007@greatvaluestorage.com">Leander - 2407 S. 183</option>
-                           <option value="fac009@greatvaluestorage.com">Austin - 7116 S IH 35 Frontage Rd</option>
-                           <option value="fac010@greatvaluestorage.com">Memphis - 1961 Covington Pike</option>
-                           <option value="fac012@greatvaluestorage.com">Parmer Storage Ranch - 18050 Ronald Reagan Blvd</option>
-                           <option value="fac014@greatvaluestorage.com">San Benito - 1151 E Expressway 83</option>
-                           <option value="fac020@greatvaluestorage.com">Kansas City - 9600 Marion Ridge</option>
-                           <option value="fac021@greatvaluestorage.com">Northwest Houston - 5550 Antoine Dr</option>
-                           <option value="fac022@greatvaluestorage.com">Southwest Houston - 6250 Westward Ln</option>
-                           <option value="fac023@greatvaluestorage.com">Southwest Houston - 8801 Boone Rd</option>
-                           <option value="fac024@greatvaluestorage.com">Southwest Houston - 8450 Cook Rd</option>
-                           <option value="fac025@greatvaluestorage.com">Southwest Houston - 9951 Harwin Rd</option>
-                           <option value="fac026@greatvaluestorage.com">Northwest Houston - 10640 Hempstead Rd</option>
-                           <option value="fac027@greatvaluestorage.com">Northwest Houston - 14318 Highway 249</option>
-                           <option value="fac028@greatvaluestorage.com">Texas City - 9010 E.F. Lowry Expressway</option>
-                           <option value="fac029@greatvaluestorage.com">Texas City - 410 North IH-45/Gulf Fwy</option>
-                           <option value="fac030@greatvaluestorage.com">Dallas - 9530 Skillman Street</option>
-                           <option value="fac031@greatvaluestorage.com">Dallas - 4311 Samuell Blvd</option>
-                           <option value="fac032@greatvaluestorage.com">Mesquite - 920 Highway 80 East</option>
-                           <option value="fac033@greatvaluestorage.com">Sunrise Manor - 1441 N Nellis Blvd</option>
-                           <option value="fac034@greatvaluestorage.com">Boardman - 7986 Southern Blvd</option>
-                           <option value="fac035@greatvaluestorage.com">Youngstown - 123 S Meridian Rd</option>
-                           <option value="fac036@greatvaluestorage.com">Trotwood - 3785 Shiloh Springs Rd</option>
-                           <option value="fac037@greatvaluestorage.com">Dayton - 426 N Smithville Rd</option>
-                           <option value="fac038@greatvaluestorage.com">Centerville - 60 Westpark Dr</option>
-                           <option value="fac040@greatvaluestorage.com">Miamisburg - 8501 Springboro Pike</option>
-                           <option value="fac041@greatvaluestorage.com">Mason - 4145 State Route 741 S</option>
-                           <option value="fac042@greatvaluestorage.com">Fort Worth - 613 North Fwy</option>
-                           <option value="fac043@greatvaluestorage.com">Fort Worth - 4901 South Fwy</option>
-                           <option value="fac044@greatvaluestorage.com">Indianapolis - 3380 N Post Rd</option>
-                           <option value="fac045@greatvaluestorage.com">Baytown - 3412 Garth Rd</option>
-                           <option value="fac046@greatvaluestorage.com">Beechnut - 11702 Beechnut St.</option>
-                           <option value="fac047@greatvaluestorage.com">La Porte - 10601 W. Fairmont Parkway</option>
-                           <option value="fac048@greatvaluestorage.com">Northwest Houston - 2150 Wirt Rd.</option>
-                           <option value="fac049@greatvaluestorage.com">Memphis - 3951 Lamar Ave (US Hwy 78)</option>
-                           <option value="fac052@greatvaluestorage.com">Northwest Houston - 8320 Alabonson Road</option>
-                           <option value="fac053@greatvaluestorage.com">Pasadena - 941 Fairmont Parkway</option>
-                           <option value="fac054@greatvaluestorage.com">Deer Park - 4806 Marie Lane</option>
-                           <option value="fac055@greatvaluestorage.com">Northwest Houston - 5811 North Houston Rosslyn Road</option>
-                           <option value="fac056@greatvaluestorage.com">Tomball - 632 Timkin Road</option>
-                           <option value="fac057@greatvaluestorage.com">Houston - 16530 West Hardy Street</option>
-                           <option value="fac058@greatvaluestorage.com">Reynoldsburg - 7821 Taylor Road SW</option>
-                           <option value="fac059@greatvaluestorage.com">Houston - 15300 Kuykendahl Road</option>
-                           <option value="fac060@greatvaluestorage.com">Mansfield - 1585 Lexington Avenue</option>
-                           <option value="fac061@greatvaluestorage.com">Lewis Center - 9984 Old State Rd</option>
-                           <option value="fac062@greatvaluestorage.com">Minerva Park - 5199 Westerville Rd</option>
-                           <option value="fac063@greatvaluestorage.com">Reynoldsburg - 7200 Tussing Rd</option>
-                           <option value="fac065@greatvaluestorage.com">Worthington - 580 East Dublin-Granville Rd</option>
-                           <option value="fac066@greatvaluestorage.com">Columbus - 1330 Georgesville Rd</option>
-                           <option value="fac067@greatvaluestorage.com">Urbana - 1710 N Cunningham</option>
-                           <option value="fac068@greatvaluestorage.com">Champaign - 2202 N Market St</option>
-                           <option value="fac069@greatvaluestorage.com">Hyde Park - 1582 Route 9g</option>
-                           <option value="fac070@greatvaluestorage.com">Newburgh - 765 South Street</option>
-                           <option value="fac039@greatvaluestorage.com">Centerville - 435 Congress Park Dr</option>
-                           <option value="fac064@greatvaluestorage.com">Columbus - 5301 E Tamarack Circle</option>
-                           <option value="fac080@greatvaluestorage.com">Commerce City - 7273 Kearney Street</option>
-                           <option value="fac079@greatvaluestorage.com">Aurora - 443 Laredo Street</option>
-                           <option value="fac081@greatvaluestorage.com">Santa Clarita - 24314 The Old Road</option>
-                           <option value="">Cerritos - 17900 Crusader Ave</option>
-                           <option value="">Downtown - 1000 North Main St</option>
+                      <select id="SiteName" name="SiteName" value={this.state.fields.SiteName} onChange={this.handleFormChange} className="form-control">
+                           <option value="">Select Facility</option>
+                           {
+                           siteLocations.length > 0 && siteLocations.map((location)=>{
+                          return <option value={location.content.name}>{location.content.name}</option>
+                        })
+                          }
+
                          </select>
                       
-                        
+                         <div className="errorMsg">{this.state.errors.SiteName}</div>
                      </div>
                    </div>
                    
                    <div className="col-md-6">  
                      <div className="form-group">
-                       <label for="formGroupExampleInput2"> Comments <span className="text-danger"> * </span> </label>
-                       <textarea className="form-control" rows="5" id="comment" name="text"></textarea>
+                       <label htmlFor="formGroupExampleInput2"> Comments <span className="text-danger"> * </span> </label>
+                       <textarea className="form-control" rows="5"  id="Comments"  name="Comments" value={this.state.fields.Comments} onChange={this.handleFormChange} ></textarea>
+                       <div className="errorMsg">{this.state.errors.Comments}</div>
                      </div>
                    </div> 
                     
@@ -193,7 +292,7 @@ render(){
                 </div>
                  
                    
-               </form> 
+              
                
              </div>
              
@@ -206,14 +305,15 @@ render(){
                          
                        </div>
                        <div className="col-md-6"> 
-              <a className="btn btn-gvstore btn-success border-0 green-gradient float-right" href="#"> Submit </a> 
+                          <input type="submit"  className="btn btn-gvstore btn-success border-0 green-gradient float-right" value="Submit" /> 
                        </div>
                    </div>
                </div>
               </div>
               
-              
+             
            </div>
+           </form>
            </div>
           </div>   
        
