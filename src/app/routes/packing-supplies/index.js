@@ -36,6 +36,7 @@ class PackingSupplies extends Component {
         $(this).siblings('a.active').removeClass("active");
         $(this).addClass("active");
         var index = $(this).index();
+        $('#endBreadcrumb').text($('a.active span').text());    
         $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
         $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
     }); 

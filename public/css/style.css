@@ -1478,6 +1478,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ba623', end
     border-radius: 0 30px 0 30px;
     left: 25px;
 }
+.storage-location-info-img-1:after {
+	content: "";
+    position: absolute;
+    top: 35px;
+    border: 2px solid #38a61d;
+    width: 90%;
+    height: 92%;
+    border-radius: 0 30px 0 30px;
+    left: 25px;
+}
+
 .storage-location-info-img {
     position: relative;
 	margin-bottom:20px;
@@ -1566,7 +1577,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ba623', end
 .individual-city .city-pageviews { max-height:550px; overflow-y:auto;}
 
 .city-pageviews .reviews i { font-size:1rem !important}
-
+#map { width: 100%;}
 /*.city-page-map:after {
     content: "";
     position: absolute;

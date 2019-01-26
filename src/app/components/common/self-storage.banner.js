@@ -23,14 +23,15 @@ render(){
             
             <li className="breadcrumb-item"><Link className="text-white" to={`/search/${siteLocation.stateName}`} > {siteLocation.stateName} </Link></li>
             <li className="breadcrumb-item"><Link className="text-white"  to={`/search/${siteLocation.city}`}> {siteLocation.city} </Link></li>
-            <li className="breadcrumb-item"><a className="text-white" > {siteLocation.name} </a></li>
+           {!!siteLocation.content && <li className="breadcrumb-item"><a className="text-white" > {siteLocation.content.name} </a></li>
+           }
             {/* <li className="breadcrumb-item text-white active" aria-current="page"> Dallas </li> */}
           </ol>
         </nav>
       </div>
     </div>
     <div className="about-room-facility">
-      <h4> {!!siteLocation && siteLocation.name}  <span className="gv-text-color text-underline pull-right font-weight-bold font-big pr-1 align-top"> <i class="fa fa-map-marker"> </i> </span></h4> 
+      <h4> {!!siteLocation && !!siteLocation.content && siteLocation.content.name}  <span className="gv-text-color text-underline pull-right font-weight-bold font-big pr-1 align-top"> <i class="fa fa-map-marker"> </i> </span></h4> 
       <div className="storage-room-block">
         <div className="storage-room-image"> 
         <div className="storage-img-l">  <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/facility-banner-img.png"} alt="" /> </div>

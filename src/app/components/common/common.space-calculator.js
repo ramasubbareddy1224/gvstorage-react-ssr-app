@@ -131,12 +131,13 @@ updateSelectedItems=()=>{
 	$('#totalQuantityId').text('Total quantity: '+totalQuantity);
 }
 
+
 increaseValue=(dataValue, id) => {  
     let $=require('jquery');
-    var value = parseInt($('.'+id).val(), 10);  
+    var value = parseInt($('.'+id).val());      
     value = isNaN(value) ? 0 : value;
-    value = value < 1 ?  1 : value;
-    value++;
+    value = value < 1 ?  0 : value;    
+    value++;    
     $('.'+id).val(value);    
     var add = (dataValue * value);	
     var sub = (dataValue * value+1);
@@ -155,6 +156,7 @@ increaseValue=(dataValue, id) => {
       this.findRightSize(total); 
       this.updateSelectedItems(); 
 }
+
 
 decreaseValue=(dataValue, id)=> {
     let $=require('jquery');

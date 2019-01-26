@@ -73,7 +73,7 @@ class RentFormFilling extends Component{
         "company": !!this.state.fields.CompanyName ? this.state.fields.CompanyName: '',
         "concessionID": Object.keys(unitInfo).length > 0 && unitInfo.concessionID,
         "country": this.state.fields.Country,
-        "county": this.state.fields.County,
+        "county": '',
         "emailAddress": this.state.fields.Email,
         "faxNumber": !!this.state.fields.FaxNumber ? this.state.fields.FaxNumber : '',
         "firstName": this.state.fields.FirstName,
@@ -207,7 +207,7 @@ class RentFormFilling extends Component{
         errors["State"] = "Please enter alphabet characters only.";
       }
     }
-
+/*
     if (!fields["County"]) {
       formIsValid = false;
       errors["County"] = "Please enter your County.";
@@ -219,7 +219,7 @@ class RentFormFilling extends Component{
         errors["County"] = "Please enter alphabet characters only.";
       }
     }
-
+*/
     if (!fields["Country"]) {
       formIsValid = false;
       errors["Country"] = "Please enter your Country.";
@@ -406,13 +406,13 @@ return (
                       </div>
                     </div>
                     
-                    <div className="col-md-6">  
+                    {/* <div className="col-md-6">  
                       <div className="form-group">
                         <label for="formGroupExampleInput2"> County <span className="text-danger"> * </span> </label>
                         <input type="text" className="form-control" placeholder="Enter your county"  name="County" id="County" value={this.state.fields.County} onChange={this.handleFormChange} />
                         <div className="errorMsg">{this.state.errors.County}</div>
                       </div>
-                    </div>  
+                    </div>   */}
                   </div>
                   
                   

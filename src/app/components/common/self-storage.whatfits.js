@@ -37,7 +37,7 @@ render(){
                                 <div className="tab-content">
                                     <div className="row container-fluid-padding">
                                     
-                                    <div className="col-md-4 p-5"><img src={Environment.STATIC_FILES_END_POINT_URL + "img/Services/tiny-5x10.png"} /></div>
+                                    <div className="col-md-4 p-5"><img class="img-fluid" src={Environment.STATIC_FILES_END_POINT_URL + "img/5x5.png"} /></div>
                                     <div className="col-md-1"> </div>
                                     <div className="col-md-6 p-5 align-top">
                                     <h5> Tiny - 5'x5' </h5>
@@ -53,7 +53,7 @@ render(){
                                 <div className="tab-content">
                                     <div className="row container-fluid-padding">
 
-                                    <div className="col-md-4 p-5"><img src={Environment.STATIC_FILES_END_POINT_URL + "img/Services/tiny-5x10.png"} /></div>
+                                    <div className="col-md-4 p-5"><img class="img-fluid" src={Environment.STATIC_FILES_END_POINT_URL + "img/5x10.png"} /></div>
                                     <div className="col-md-1"> </div>
                                     <div className="col-md-6 p-5">
                                     <h5> Small - 5'x10' </h5>
@@ -69,7 +69,7 @@ render(){
                               <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                               <div className="tab-content">
                                     <div className="row container-fluid-padding">
-                                    <div className="col-md-4 p-5"><img src={Environment.STATIC_FILES_END_POINT_URL + "img/Services/tiny-5x10.png"} /></div>
+                                    <div className="col-md-4 p-5"><img class="img-fluid" src={Environment.STATIC_FILES_END_POINT_URL + "img/10x10.png"} /></div>
                                     <div className="col-md-1"> </div>
                                     <div className="col-md-6 p-5">
                                     <h5> Medium  10'x 10' </h5>
@@ -85,7 +85,7 @@ render(){
                                 <div className="tab-pane fade" id="Large-10" role="tabpanel" aria-labelledby="contact-tab">
                               <div className="tab-content">
                                     <div className="row container-fluid-padding">
-                                    <div className="col-md-4 p-5"><img src={Environment.STATIC_FILES_END_POINT_URL + "img/Services/tiny-5x10.png"} /></div>
+                                    <div className="col-md-4 p-5"><img class="img-fluid" src={Environment.STATIC_FILES_END_POINT_URL + "img/10x15.png"} /></div>
                                     <div className="col-md-1"> </div>
                                     <div className="col-md-6 p-5">
                                     <h5> Large 10'x 15' </h5>
@@ -100,7 +100,7 @@ render(){
                                 <div className="tab-pane fade" id="Huge-10" role="tabpanel" aria-labelledby="contact-tab">
                               <div className="tab-content">
                                     <div className="row container-fluid-padding">
-                                    <div className="col-md-4 p-5"><img src={Environment.STATIC_FILES_END_POINT_URL + "img/Services/tiny-5x10.png"} /></div>
+                                    <div className="col-md-4 p-5"><img class="img-fluid" src={Environment.STATIC_FILES_END_POINT_URL + "img/10x20.png"} /></div>
                                     <div className="col-md-1"> </div>
                                     <div className="col-md-6 p-5">
                                     <h5> Huge - 10'x20' </h5>
@@ -116,7 +116,7 @@ render(){
                                 <div className="tab-pane fade" id="Gigantic" role="tabpanel" aria-labelledby="Gigantic-tab">
                               <div className="tab-content">
                                     <div className="row container-fluid-padding">
-                                    <div className="col-md-4 p-4"><img src={Environment.STATIC_FILES_END_POINT_URL + "img/Services/tiny-5x10.png"} /></div>
+                                    <div className="col-md-4 p-4"><img class="img-fluid" src={Environment.STATIC_FILES_END_POINT_URL + "img/10x30.png"} /></div>
                                     <div className="col-md-1"> </div>
 
                                     <div className="col-md-6 p-5">
