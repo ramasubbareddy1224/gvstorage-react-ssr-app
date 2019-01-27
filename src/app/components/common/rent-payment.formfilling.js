@@ -113,7 +113,9 @@ getMoveInData(){
     });
 
     if(e.target.name == "ProtectionCoverage"){
-      this.getMoveInData();
+      setTimeout(() => {
+        this.getMoveInData();
+      }, 10);
     }
 
   }
