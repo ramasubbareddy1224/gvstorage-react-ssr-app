@@ -40,7 +40,11 @@ class RentPaymentFormFilling extends Component{
       selectedDate: date
     });
 
-    this.getMoveInData();
+    setTimeout(() => {
+      this.getMoveInData();
+    }, 10);
+
+  
   }
   addDays(theDate, days) {
     return new Date(theDate.getTime() + days*24*60*60*1000);
