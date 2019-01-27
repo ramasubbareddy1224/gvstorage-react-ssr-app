@@ -24,15 +24,15 @@ const frontload = async props =>{
 
 
   
-  getCurrentLocation().then((success) =>{
-    if(!!success){
-   props.getNearByLocations(success.region_code, success.city, success.zip).then(function(values) {
-   // props.getNearByLocations('MA', 'Springfield', '99878').then(function(values) {
-    });
-  }
-  }, (error)=>{
+  // getCurrentLocation().then((success) =>{
+  //   if(!!success){
+  //  props.getNearByLocations(success.region_code, success.city, success.zip).then(function(values) {
+  //  // props.getNearByLocations('MA', 'Springfield', '99878').then(function(values) {
+  //   });
+  // }
+  // }, (error)=>{
 
-  });
+  // });
   
 
   var dynamicRequestList = [];
@@ -42,6 +42,10 @@ const frontload = async props =>{
     // return Promise.all(props.getPinCodes_Sites()).then(function(values) {
     // });
   }
+
+  if(!props.nearByLocations.siteLocations){
+    dynamicRequestList.push(props.getNearByLocations());
+    }
 
   return await Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';

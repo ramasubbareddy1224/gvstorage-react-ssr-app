@@ -73,7 +73,8 @@ export class AutoComplete extends React.Component {
     const inputProps = {
       placeholder: 'Enter Locality, City or Zip Code',
       value,
-      onChange: this.onChange
+      onChange: this.onChange,
+      id:'input-autocomplete'
     };
 
     // Finally, render it!

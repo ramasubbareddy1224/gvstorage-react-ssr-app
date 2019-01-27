@@ -40,18 +40,19 @@ class CommonPayBill extends Component{
         const divLocations = !!allPinCodes_Sites && allPinCodes_Sites.length > 0 &&
         allPinCodes_Sites[1].locations.map((state,index)=>{
             return(
-                <div id="accordion" key={index}>
+               
+<div id="accordion" className="login-ac" key={index}>
   <div className="card">
     <div className="card-header" id="headingOne">
-      <h5 className="mb-0">
-        <button className="btn btn-link" data-toggle="collapse" data-target={`#collapse${index}`} aria-expanded="true" aria-controls={`collapse${index}`}>               <i className="fa" aria-hidden="true"></i>
-                {state.stateName}
+      <h5 className="login-head mb-0">
+        <button className="btn btn-link w-100 text-left " data-toggle="collapse" data-target={`#collapse${index}`} aria-expanded="true" aria-controls={`collapse${index}`}>              
+                {state.stateName}  &nbsp; <i className="fa" aria-hidden="true"></i>
         </button>
       </h5>
     </div>
 
     <div id={`collapse${index}`} className={`collapse ${index == 0 && 'show'}`} aria-labelledby="headingOne" data-parent="#accordion">
-      <div className="">
+      <div className="login-ad-details">
       
         <div className="">
         <div className="pay-bill-list">
@@ -90,18 +91,17 @@ class CommonPayBill extends Component{
           </div>
   </div>
   </div>
+
             )
         })
         return(
-            <section id="about" className="rent-sec wow fadeInUp">
+            <section id="about" className="rent-sec wow fadeInUp ">
             <div className="container-fluid">
             <div className="container-fluid-padding">
             
-            <div className="row">
-            
-            <div className="rent-facility-info">
+            <div className="storage-size w-100">
             {this.state.isLocationClicked &&
-            <div className="row">
+            <div className="">
             <div className="col-12 col-md-12 ">
             <input type="button" className="btn btn-gvstore btn-success border-0 green-gradient float-right" onClick={()=>this.backToLocations()}  value="Back to Locations"/> 
                 </div>
@@ -121,7 +121,7 @@ class CommonPayBill extends Component{
                   </div>
                   </div>
             </div>
-            </div>
+            
             
               </div>
             </div>

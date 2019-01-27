@@ -70,6 +70,12 @@
 .choose-right-space .choose-right-space-txt {
     width: 50%;
 }
+.pay-bill-list ul li {
+    width: 40%;
+    float: left;
+	margin: 10px 30px;
+	display: inline-table;
+}
 }
 
 
@@ -258,7 +264,11 @@ margin-top: 2rem;
 }
 }
 
-
+@media ( max-width:650px){
+.pay-bill-list ul li {
+    width: 80%;
+}
+}
 
 @media ( max-width:540px){
 #inner-banner .inner-banner-content h2 { 

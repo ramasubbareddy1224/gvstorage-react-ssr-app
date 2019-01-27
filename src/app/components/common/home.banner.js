@@ -34,7 +34,8 @@ export default class HomeBanner extends Component{
 
 
   redirectToTarget=()=>{
-    this.setState({isFindStorageClicked: true, searchDynamicUrl: '/search/'+this.state.selectedAutoCompleteValue+''});
+    var autoCompleteValue = !!this.state.selectedAutoCompleteValue ? this.state.selectedAutoCompleteValue : 'All';
+    this.setState({isFindStorageClicked: true, searchDynamicUrl: '/search/'+autoCompleteValue+''});
    //var stateWithCityValue = !!this.state.selectedOption.state ? (','+ this.state.selectedOption.state) : '';
 
     //window.location.href='/search?filterType='+this.state.selectedOption.type+'&value='+ this.state.selectedOption.value + stateWithCityValue +'';
@@ -66,6 +67,17 @@ export default class HomeBanner extends Component{
     //   });
     // }, 5000);
     
+  }
+
+
+  componentDidMount(){
+    let $ = require('jquery');
+    $("#input-autocomplete").on('keyup', (e)=> {
+      if (e.keyCode == 13) {
+        var autoCompleteValue =!!$("#input-autocomplete").val() ? $("#input-autocomplete").val() : 'All';
+        this.setState({isFindStorageClicked: true, searchDynamicUrl: '/search/'+autoCompleteValue+''});
+      }
+  });
   }
 
 render(){
@@ -131,7 +143,7 @@ render(){
         }
         
           <div className="find-storage">
-               <form action="" method="post" role="form" className="contactForm">
+               {/* <form  className="contactForm"> */}
              <label htmlFor="label" className="small text-left float-left" style ={ {fontSize: "70%", paddingLeft: '15px'}}> Search Storage</label>
              <div className="col-md-12 banner-search">
               {/* <input type="text" className="form-control " placeholder="Zip, Address of City "  /> */}
@@ -141,7 +153,7 @@ render(){
     })}
               </select> */}
 
-               <AutoComplete autoCompleteValues={options} onAutocompleteValueChange={this.handleAutocompleteValueChange}></AutoComplete>
+               <AutoComplete id="praveen" autoCompleteValues={options} onAutocompleteValueChange={this.handleAutocompleteValueChange}></AutoComplete>
 
               {/* <Select 
         value={selectedOption}
@@ -151,7 +163,7 @@ render(){
         &nbsp; &nbsp; &nbsp;
               <span className="btn btn-gvstore btn-success border-0" id="basic-addon2" onClick={this.redirectToTarget}>Find Storage &nbsp; <i className="fa fa-arrow-right"> </i> </span>
              </div>
-             </form>
+             {/* </form> */}
           </div>
         </div>
 

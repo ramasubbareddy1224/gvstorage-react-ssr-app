@@ -11,6 +11,7 @@ import { getAllMoveInCharges
 } from '../../../modules/actioncreators/reserve.actioncreator';
 import RentConfirmation from './rent.confirmation';
 import NumberFormat from 'react-number-format';
+import creditCardType, { getTypeInfo, types as CardType } from 'credit-card-type';
 
 class RentPaymentFormFilling extends Component{
   constructor(props) {
@@ -44,11 +45,12 @@ class RentPaymentFormFilling extends Component{
       this.getMoveInData();
     }, 10);
 
-  
+    
   }
   addDays(theDate, days) {
     return new Date(theDate.getTime() + days*24*60*60*1000);
   }
+  
 
 
 getMoveInData(){
@@ -117,7 +119,7 @@ getMoveInData(){
         this.getMoveInData();
       }, 10);
     }
-
+    delete this.state.errors[e.target.name];
   }
 
 
@@ -142,17 +144,49 @@ getMoveInData(){
       const allProps = this.props;
       //const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
       document.getElementById('div-preloader').style.display = 'block';
+
+
+      var cType = 0;
+      if(!!this.state.fields.CardNumber)
+      {
+        if(creditCardType(this.state.fields.CardNumber).length > 0){
+          switch (creditCardType(this.state.fields.CardNumber)[0].type){
+            case 'mastercard':
+              cType = 5;
+              break;
+            case 'visa':
+              cType = 6;
+              break;
+            case 'american-express':
+              cType = 7;
+              break;
+            case 'discover':
+              cType = 8;
+              break;
+            case 'diners-club':
+              cType = 9;
+              break;
+            default:
+              cType = 0;
+              break;
+          }
+
+        }
+        //switch (creditCardType(this.state.fields.CardNumber)[0].type)
+      } 
+
+
      var requestData = {
       "accessCode": "",
       "billingAddress": this.state.fields.BillingAddress,
       "billingFrequency": 0,
       "billingName": this.state.fields.CardName,
       "billingZipCode": this.state.fields.Zip,
-      "ccvv": this.state.fields.CardCVV,
+      "ccvv": !!this.state.fields.CardCVV && this.state.fields.CardCVV.trim(),
       "cexpDate": this.state.fields.ExpiryMonth + '/' + this.state.fields.ExpiryYear,
-      "cnumber": this.state.fields.CardNumber,
+      "cnumber": !!this.state.fields.CardNumber && this.state.fields.CardNumber.replace(/\s/g, ""),
       "concessionID": Object.keys(unitInfo).length > 0 && unitInfo.concessionID,
-      "ctype": 0,
+      "ctype": cType,
       "endDate": moveInCharges[0].date,
       "insurCoverageID": parseInt(this.state.fields.ProtectionCoverage),
       "locationCode": pathParams.locationCode,
@@ -214,9 +248,9 @@ getMoveInData(){
     }
 
     if (typeof fields["BillingAddress"] !== "undefined") {
-      if (!fields["BillingAddress"].match(/^[a-zA-Z ]*$/)) {
+      if (!fields["BillingAddress"].match(/^[a-zA-Z0-9 ]*$/)) {
         formIsValid = false;
-        errors["BillingAddress"] = "Please enter alphabet characters only.";
+        errors["BillingAddress"] = "No special symbols allowed.";
       }
     }
 
@@ -238,7 +272,7 @@ getMoveInData(){
     }
 
     if (typeof fields["CardNumber"] !== "undefined") {
-      if (!fields["CardNumber"].match(/^[0-9]{16}$/)) {
+      if (!fields["CardNumber"].replace(/\s/g, "").match(/^[0-9]{14,16}$/)) {
         formIsValid = false;
         errors["CardNumber"] = "Please enter valid Card Number.";
       }
@@ -250,7 +284,7 @@ getMoveInData(){
     }
 
     if (typeof fields["CardCVV"] !== "undefined") {
-      if (!fields["CardCVV"].match(/^[0-9]{3}$/)) {
+      if (!fields["CardCVV"].trim().match(/^[0-9]{3,4}$/)) {
         formIsValid = false;
         errors["CardCVV"] = "Please enter valid CVV.";
       }
@@ -322,6 +356,9 @@ return (
   )
   })
 
+  if(!this.state.fields.ProtectionCoverage){
+  this.state.fields.ProtectionCoverage = !!insurancePlans && insurancePlans.length > 0 && insurancePlans[0].insurCoverageID;
+}
   
 
 
@@ -341,19 +378,21 @@ return (
       return(
             <p key={index}> 
              { !!moveInCharge.taxRate1 && 
-              (`TAX ${moveInCharge.taxRate1}% :`) }
+      <span>TAX {moveInCharge.taxRate1}% <span style={{fontSize:'12px'}}>({moveInCharge.description})</span>: </span>}
 
               { !!moveInCharge.taxRate1 && <span className="pull-right">${moveInCharge.taxAmount1} USD</span>  }
           
-                    
+                 <br/>   
           { !!moveInCharge.taxRate2 && 
-            (`TAX ${moveInCharge.taxRate2}% :`) }
+             <span>TAX {moveInCharge.taxRate2}% <span style={{fontSize:'12px'}}>({moveInCharge.description})</span>: </span> }
 
             { !!moveInCharge.taxRate2 && <span className="pull-right">${moveInCharge.taxAmount2} USD</span>  }
 
              </p>
       )
   })
+
+  
 
   var year = new Date().getFullYear();
        // var month = new Date().getMonth() + 1;
@@ -411,8 +450,8 @@ return (
                 { !!totalAmount &&
 
                 <h2 className="gv-text-color pull-right"> 
-                <span className="text-dark" styleName={{fontSize:'18px'}}> <strong>Total</strong> </span> ${totalAmount.toFixed(2)} 
-                <span className="small text-dark" styleName={{fontSize:'18px'}}> <strong>USD</strong> </span>
+                <span className="text-dark" style={{fontSize:'18px'}}> <strong>Total</strong> </span> ${totalAmount.toFixed(2)} 
+                <span className="small text-dark" style={{fontSize:'18px'}}> <strong>USD</strong> </span>
                 </h2> 
                 }
                 <div className="clearfix"> </div>
@@ -439,7 +478,7 @@ return (
                       <label htmlFor="ProtectionCoverage">Select Protection coverage <span className="text-danger"> * </span> </label>
                        
                         <select  className={'form-control ' +(!!this.state.errors.ProtectionCoverage && 'input-error')} title={this.state.errors.ProtectionCoverage}  id="ProtectionCoverage"  name="ProtectionCoverage" value={this.state.fields.ProtectionCoverage} onChange={this.handleFormChange}>
-                              <option value="">Select Protection coverage</option>
+                              {/* <option value="">Select Protection coverage</option> */}
                               {optionsProtectionCoverage}
                         </select>
                         {/* <div className="errorMsg">{this.state.errors.ProtectionCoverage}</div> */}
@@ -498,7 +537,8 @@ return (
                       <div className="form-group ">
                         <label htmlFor="formGroupExampleInput2"> Card Number  <span className="text-danger"> * </span> </label>
                         <div className="clearfix"> </div>
-                        <input type="password" className={'form-control width-60 d-inline ' +(!!this.state.errors.CardNumber && 'input-error')} title={this.state.errors.CardNumber}  placeholder="Enter your card number" id="CardNumber" name="CardNumber" value={this.state.fields.CardNumber} onChange={this.handleFormChange} /> &nbsp;
+                        <NumberFormat format="#### #### #### ####" className={'form-control width-60 d-inline ' +(!!this.state.errors.CardNumber && 'input-error')} title={this.state.errors.CardNumber}  placeholder="Enter your card number" id="CardNumber" name="CardNumber" value={this.state.fields.CardNumber} onChange={this.handleFormChange}/>
+                        {/* <input type="password" className={'form-control width-60 d-inline ' +(!!this.state.errors.CardNumber && 'input-error')} title={this.state.errors.CardNumber}  placeholder="Enter your card number" id="CardNumber" name="CardNumber" value={this.state.fields.CardNumber} onChange={this.handleFormChange} /> &nbsp; */}
                         <span className="d-inline gv-text-color small text-underline cursor-pointer" onClick={() => this.CardNumberShowHideClick()}> Show/Hide </span>
                         {/* <div className="errorMsg">{this.state.errors.CardNumber}</div> */}
                       </div>
@@ -515,7 +555,7 @@ return (
                         <label htmlFor="First Name">CVV Number  <span className="text-danger"> * </span> </label>
                         <div className="clearfix"> </div>
                         {/* <input type="password" className="form-control w-45 d-inline" placeholder="Enter the CVV" id="CardCVV"  name="CardCVV" value={this.state.fields.CardCVV} onChange={this.handleFormChange} /> */}
-                        <NumberFormat format="###" className="form-control w-45 d-inline"  className={'form-control w-45 d-inline ' +(!!this.state.errors.CardCVV && 'input-error')} title={this.state.errors.CardCVV}  placeholder="Enter the CVV" id="CardCVV"  name="CardCVV" value={this.state.fields.CardCVV} onChange={this.handleFormChange} />
+                        <NumberFormat format="####" className="form-control w-45 d-inline"  className={'form-control w-45 d-inline ' +(!!this.state.errors.CardCVV && 'input-error')} title={this.state.errors.CardCVV}  placeholder="Enter the CVV" id="CardCVV"  name="CardCVV" value={this.state.fields.CardCVV} onChange={this.handleFormChange} />
                         <span className="d-inline gv-text-color small text-underline cursor-pointer" onClick={() => this.CVVShowHideClick()}>  <a > Show/Hide </a> </span>  &nbsp;
                         <span className="d-inline gv-text-color small text-underline cursor-pointer">   <a> What is this </a></span>
                         {/* <div className="errorMsg">{this.state.errors.CardCVV}</div> */}
@@ -553,7 +593,7 @@ return (
                         
                   </div>
                   <div className="row pb-3">
-                      <div className="form-check small" styleName={{paddingLeft:'0px'}}>
+                      <div className="form-check small" style={{paddingLeft:'0px'}}>
                          <label className="customcheck"> Setup autopay using this credit card. 
                           <input type="checkbox"   />
                           <span className="checkmark"></span>

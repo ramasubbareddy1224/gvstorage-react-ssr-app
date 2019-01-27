@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
+import {Link} from 'react-router-dom';
 
 class HomeStorageSolutions extends Component{
 render(){
@@ -16,37 +17,45 @@ render(){
           
             <div className="col-md-2">
               <div className="wow storage-solution zoomIn">
+              <Link to="/personal-storage">
                 <div className="storage-img-block">
-                    <img src={Environment.STATIC_FILES_END_POINT_URL + "img/house-storage.png"} alt="home storage" />
+                    <img src={Environment.STATIC_FILES_END_POINT_URL + "img/house-storage.png"} alt="personal storage" />
                 </div>
                 <p className="title"> Personal Storage </p>
+                </Link>
               </div>
             </div>
   
             <div className="col-md-2">
               <div className="wow storage-solution zoomIn">
+              <Link to="/business-storage">
                 <div className="storage-img-block">
-                    <img src={Environment.STATIC_FILES_END_POINT_URL + "img/bussiness-storage.png"} alt="home storage" />
+                    <img src={Environment.STATIC_FILES_END_POINT_URL + "img/bussiness-storage.png"} alt="business storage" />
                 </div>
                 <p className="title"> Business Storage </p>
+                </Link>
               </div>
             </div>
   
             <div className="col-md-2">
               <div className="wow storage-solution zoomIn">
+              <Link to="/vehicle-storage">
                 <div className="storage-img-block">
-                    <img src={Environment.STATIC_FILES_END_POINT_URL + "img/vechile-storage.png"} alt="home storage" />
+                    <img src={Environment.STATIC_FILES_END_POINT_URL + "img/vechile-storage.png"} alt="vehicle storage" />
                 </div>
                 <p className="title"> Vehicle Storage </p>
+                </Link>
               </div>
             </div>
   
             <div className="col-md-2">
               <div className="wow storage-solution zoomIn">
+              <Link to="/gvs-services">
                 <div className="storage-img-block">
-                    <img src={Environment.STATIC_FILES_END_POINT_URL + "img/gsv-storage.png"} alt="home storage" />
+                    <img src={Environment.STATIC_FILES_END_POINT_URL + "img/gsv-storage.png"} alt="gvs storage" />
                 </div>
                 <p className="title"> GVS  Storage </p>
+                </Link>
               </div>
             </div>
             

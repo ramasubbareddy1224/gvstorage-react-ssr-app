@@ -85,8 +85,8 @@ export const getDiscounts = () => (dispatch) => {
   };
 
 
-  export const getNearByLocations = (state,city, zipCode) => (dispatch) => {
-    var apiUrl = `search/${state}/${city}/${zipCode}`;
+  export const getNearByLocations = () => (dispatch) => {
+    var apiUrl = `nearbysites`;
     return ApiRequest.url(apiUrl)
     .get()
     .json(json=>dispatch(getAllNearByLocations(json)));

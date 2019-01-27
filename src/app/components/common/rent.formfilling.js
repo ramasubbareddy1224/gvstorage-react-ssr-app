@@ -44,6 +44,8 @@ class RentFormFilling extends Component{
       fields
     });
 
+    delete this.state.errors[e.target.name];
+
   }
 
   addDays(theDate, days) {
@@ -186,6 +188,13 @@ class RentFormFilling extends Component{
       errors["Address"] = "Please enter your Address.";
     }
 
+    if (typeof fields["Address"] !== "undefined") {
+      if (!fields["Address"].match(/^[a-zA-Z0-9 ]*$/)) {
+        formIsValid = false;
+        errors["Address"] = "No special symbols allowed.";
+      }
+    }
+
     if (!fields["City"]) {
       formIsValid = false;
       errors["City"] = "Please enter your City.";
@@ -252,16 +261,16 @@ class RentFormFilling extends Component{
     //   errors["ProtectionCoverage"] = "Please select Protection Coverage.";
     // }
 
-    // if(Object.keys(errors).length > 0){
-    //   document.getElementById(Object.keys(errors)[0]).focus();
+    if(Object.keys(errors).length > 0){
+      document.getElementById(Object.keys(errors)[0]).focus();
 
-    //   Object.keys(errors).reduce((object, key) => {
-    //     if (key !== Object.keys(errors)[0]) {
-    //       delete errors[key]
-    //     }
-    //   });
+      // Object.keys(errors).reduce((object, key) => {
+      //   if (key !== Object.keys(errors)[0]) {
+      //     delete errors[key]
+      //   }
+      // });
    
-    // }
+    }
 
     this.setState({
       errors: errors

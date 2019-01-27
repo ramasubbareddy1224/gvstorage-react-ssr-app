@@ -2238,13 +2238,33 @@ color: #fff;
 	list-style: none;
 	padding: 0px;
 }
-.pay-bill-list ul li{
-	width: 20%;
-	float: left;
+.pay-bill-list ul li {
+    width: 27%;
+    float: left;
 	margin: 10px 30px;
+	display: inline-table;
 }
 .pay-bill-list ul li span{
 	color: #005d2c;
 }
-
+.login-ac {margin-bottom: 15px;  }
+.login-ac .card-header {
+    background-color: #38a71d;
+    border-bottom: 0px solid rgba(0,0,0,.125);
+	color: #fff;
+}
+.login-ac .login-ad-details {    
+    background: #37a61d2e;
+    width: 100%;
+    height: auto;
+    display: table;
+    padding-bottom: 10px;}
+.login-ac .login-head button, .login-ac .btn-link.collapsed {font-size: 18px; color: #fff;}
 .input-error{border: 2px solid red;}
+.input-error:focus{
+	color: #495057;
+    background-color: #fff;
+    border-color: #ed0000;
+    outline: 0;
+    box-shadow: 0 0 0 0.1rem #ed0000
+}

@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
 class CommonContactUs extends Component{
+  
+  BookNowClick(){
+    !!window && window.scrollTo(0,0);
+  }
+
 render(){
     return(
         <section id="call-to-action" className="wow fadeInUp">
@@ -15,7 +20,7 @@ pricing or to reserve a storage unit,</h3>
     
     <div className="row">
     <div className="col-md-12  text-center">
-      <Link className="btn btn-gvstore btn-success border-0 green-gradient" to="/contact-us"> Contact Us </Link>
+      <Link className="btn btn-gvstore btn-success border-0 green-gradient" to="/" onClick={()=>this.BookNowClick()}> Book Now </Link>
     </div>
     </div>
   </div>

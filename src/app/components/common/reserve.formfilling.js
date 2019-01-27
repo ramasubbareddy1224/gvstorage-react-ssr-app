@@ -78,6 +78,7 @@ class ReserveFormFilling extends Component{
       fields
     });
 
+    delete this.state.errors[e.target.name];
   }
 
   addDays(theDate, days) {
@@ -99,7 +100,7 @@ class ReserveFormFilling extends Component{
 
     var invalidFieldNames = [];
 
-    document.getElementById("FirstName").focus();
+    //document.getElementById("FirstName").focus();
     if (!fields["FirstName"]) {
       formIsValid = false;
       errors["FirstName"] = "Please enter your First Name.";
@@ -159,16 +160,16 @@ class ReserveFormFilling extends Component{
       }
     }
 
-    // if(Object.keys(errors).length > 0){
-    //   document.getElementById(Object.keys(errors)[0]).focus();
+    if(Object.keys(errors).length > 0){
+      document.getElementById(Object.keys(errors)[0]).focus();
 
-    //   Object.keys(errors).reduce((object, key) => {
-    //     if (key !== Object.keys(errors)[0]) {
-    //       delete errors[key]
-    //     }
-    //   });
+      // Object.keys(errors).reduce((object, key) => {
+      //   if (key !== Object.keys(errors)[0]) {
+      //     delete errors[key]
+      //   }
+      // });
    
-    // }
+    }
 
 
  
