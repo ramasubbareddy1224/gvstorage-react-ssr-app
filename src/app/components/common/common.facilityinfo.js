@@ -105,7 +105,7 @@ render(){
                 </p>
             </div>
             <div className="data-info">
-                <p> {Object.keys(unitInfo).length > 0 && unitInfo.unitWidth} X {Object.keys(unitInfo).length && unitInfo.unitLength} </p>
+                <p> {!!unitInfo && Object.keys(unitInfo).length > 0 && unitInfo.unitWidth} X {Object.keys(unitInfo).length && unitInfo.unitLength} </p>
             </div>
             </div>
             
@@ -115,7 +115,7 @@ render(){
             </div>
             <div className="data-info">
                 <div className="rate-varision">
-                        {Object.keys(unitInfo).length && !!unitInfo.onsiteRate &&
+                        {!!unitInfo && Object.keys(unitInfo).length && !!unitInfo.onsiteRate &&
                         <p className="d-inline-block rate-info w-45 text-muted"> ONSITE <br />
                           <strong ><del> { (`$${unitInfo.onsiteRate}`)}</del></strong> </p>
                           }
