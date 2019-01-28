@@ -12,7 +12,7 @@ render(){
         <i className="fa fa-phone"></i> Toll free number <strong className="tf-num">{Environment.TOLL_FREE_NUMBER}</strong>
       </div>
       <div className="social-links float-right">
-      <div> Existing customers  &nbsp; <span className="btn btn-sm btn-gvstore-sm "> <strong><Link to="/pay-bill">Login</Link></strong> </span>        </div>
+      <div> Existing customers  &nbsp; <Link to="/pay-bill"><span className="btn btn-sm btn-gvstore-sm "> <strong>Login</strong> </span></Link>  </div>
       </div>
       </div>
     </div>

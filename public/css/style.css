@@ -194,7 +194,7 @@ label {
 	transition: all 0.5s;
 	z-index: 997;
 	background: #fff;
-	box-shadow: 0px 6px 9px 0px rgba(0, 0, 0, 0.06);
+	box-shadow: 0px 6px 9px 0px rgba(0, 0, 0, 0.1)
 }
 #header #logo h1 {
 	margin: 0;
@@ -207,6 +207,7 @@ label {
 	color: #0c2e8a;
 	line-height: 1;
 	display: inline-block;
+	vertical-align: top;
 }
 #header #logo h1 a span {
 	color: #50d8af;
@@ -588,7 +589,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 #about .fav-locations {
 	position:relative;
 	display:block;
-	margin-bottom:15px;
+	margin-bottom:25px;
 	cursor: pointer;
 }
 #about .fav-locations .location-overlay {
@@ -721,6 +722,9 @@ body.mobile-nav-active #mobile-nav-toggle {
 	margin-bottom: 0;
 	line-height: 24px;
 }
+
+#services .storage-sol-padding {width:16%;}
+
 /* Clients Section
 --------------------------------*/
 
@@ -1143,46 +1147,10 @@ body.mobile-nav-active #mobile-nav-toggle {
  padding-bottom: 30px;
 }
 }
- @media (max-width: 767px) {
- .banner-search {
- display: block;
- }
-.banner-search input {
- margin-bottom:5px;
- }
-.banner-search .btn { width:100%;}
- #intro .intro-content h2 {
- font-size: 34px;
-}
- #services .box .box {
- margin-bottom: 20px;
-}
- #services .box .icon {
- float: none;
- text-align: center;
- padding-bottom: 15px;
-}
- #services {
- padding: 60px 0 40px 0;
-}
- .coloum-space {
-margin:0px !important;
-}
- #services .box h4,  #services .box p {
- margin-left: 0;
- text-align: center;
-}
- #testimonials .testimonial-item {
- margin: 30px 10px;
-}
 
-
-}
 
  @media (max-width: 576px) {
- #contact #google-map {
- margin-top: 20px;
-}
+ 
 }
 
 
@@ -1249,7 +1217,7 @@ margin:0px !important;
 	box-shadow: none;
 	font-size: 15px;
 	border: none;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #c3c3c3;
 }
 #inner-banner .inner-banner-content .btn-get-started, #inner-banner .inner-banner-content .btn-projects {
 	font-family: 'NunitoRegular', sans-serif;
@@ -1333,10 +1301,13 @@ margin:0px !important;
 	text-transform: capitalize;
 	font-family: 'NunitoRegular', sans-serif;
 }
+.storage-location-info { margin-bottom: 10px;}
+
 #storage .storage-location-info .area-info{
 	padding-left:10px;
 	margin-top: 17px;
 }
+#storage .storage-location-info .area-info p{margin-bottom: 10px;}
 #storage .area-info{ padding-left:15px;}
 #storage .storage-location-info  p {
 	color: #333;
@@ -1352,6 +1323,11 @@ margin:0px !important;
 #storage .storage-location-info img {
 	overflow: hidden;
 }
+.storage-location-block:nth-child(7) {
+	margin-left: 8%;
+
+}
+
 
 /*--------------------------------------------------------------
 # selfstorage section
@@ -1543,10 +1519,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ba623', end
     padding-top: 20px;
 }
 .storage-size-tab {
-    border: 1px solid #ccc;
+    padding: 10px;
+}
+.choose-right-space .storage-data-info{
+	border: 1px solid #ccc;
     padding: 10px;
 	box-shadow: 0 0 2px #ccc;
 }
+.choose-right-space .storage-data-info .storage-size-tab .tab-content { padding-bottom: 20px;}
 .home-storage-size ul li {width: 16%; text-align: center;}
 .bhoechie-tab .searh-calc-height .item-qty { height: 420px; overflow-y: auto; overflow-x: hidden;}
 .keep-items-storage th {
@@ -1588,6 +1568,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3ba623', end
     top: 0;
 	border-radius: 0px 50px 0px 50px;
 }*/
+.city-page-map img {   
+	padding: 0px !important;
+	margin: 0px!important;
+}
 
 
 .multi-item-carousel .carousel-inner > .item {
@@ -1727,7 +1711,7 @@ margin-top:2rem;
     left: 25px;
 }
 .storage-room-block { padding-top:10px;}
-.storage-room-content { display:inline-block; padding-top:2rem;}
+.storage-room-content { display:inline-block; padding-top:2rem; width: 70%;}
 .storage-room-content p a.btn { margin-left: 20px;}
 #inner-banner .about-room-facility h4 { color: #fff; font-size:21px;}
 #inner-banner .storage-room-content p { font-size:16px;}
@@ -1853,6 +1837,10 @@ p.wether-info-content.d-inline-block.small:before {
 }
 .product-slider .product-thumb-img span { padding: 5px;}
 .w-45 { width:45%;}
+
+
+.rent-your-unit-now .form-group{ margin-bottom: 0rem;}
+.rent-your-unit-now .form-check {margin-top: 5px;}
 .rent-sec .rent-facility-info { background:#f4f6f4;width:100%; border-radius:10px; border:2px solid #ddd; }
 .rent-sec .rent-facility-info .facility-info { background: #f4f6f4;  border-radius:10px 0; padding:20px;}
 .rent-sec .rent-facility-info .facility-info .facility-data { padding: 15px 0px 15px 0px; border-bottom: 1px solid #ddd; }
@@ -1863,7 +1851,7 @@ p.wether-info-content.d-inline-block.small:before {
 .rent-sec .rent-facility-info .rent-your-unit-now .rent-unit-block { padding:0px 25px; min-height: 700px !important; }
 
 .rent-sec .rent-facility-info .rent-your-unit-now .fill-rent-info{ padding-bottom: 30px;}
-
+.total-info p{margin-bottom: 0px; }
 
 .rent-sec .rent-facility-info .rent-your-unit-footer  { 
 	padding: 10px 0px;
@@ -2268,3 +2256,38 @@ color: #fff;
     outline: 0;
     box-shadow: 0 0 0 0.1rem #ed0000
 }
+.faq #accordion .card .card-body {padding:1.25rem 20px 1.25rem 50px }
+
+.nearBySites{ padding: 0px 9%;}
+
+.payBillNow{
+	color:black !important;
+}
+
+.nearBySites{
+	margin-left:9% !important;
+}
+.miles{
+	font-weight: bold !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

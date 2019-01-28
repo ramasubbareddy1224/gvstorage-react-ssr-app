@@ -281,7 +281,7 @@ render(){
         <p> Contact Information </p>
         <form method="post"  name="frmReserveNow"  onSubmit= {this.submitReserveNowForm}>
         <div className="fill-rent-info">
-        <div className="row pb-3">
+        <div className="row pb-2">
           <div className="col-md-6">
               <div className="form-group">
                 <label for="First Name">First Name <span className="text-danger"> * </span></label>
@@ -300,7 +300,7 @@ render(){
           </div>   
           
           
-           <div className="row pb-3">
+           <div className="row pb-2">
             <div className="col-md-6">
               <div className="form-group">
                 <label for="First Name"> Phone Number <span className="text-danger"> * </span> </label>
@@ -329,7 +329,7 @@ render(){
           </div>
           
            
-          <div className="row pb-3">  
+          <div className="row pb-2">  
             <div className="col-md-6">
               <div className="form-group">
                 <label for="First Name"> Movie-In Date <span className="text-danger"> * </span> </label>
@@ -357,7 +357,7 @@ render(){
         <div className="row">
            <div className="col-md-6"> 
                <span> Save time on your move-in day <br />
- <Link className="gv-text-color text-underline" to={`/rent/${this.props.pathParams.locationCode}/${this.props.pathParams.unitId}`}> Rent the unit now </Link> 
+ <Link className="gv-text-color text-underline" to={`/rent/self-storage/${this.props.pathParams.metaParam}/${this.props.pathParams.locationCode}/${this.props.pathParams.unitId}`}> Rent the unit now </Link> 
  
  </span>
   </div>

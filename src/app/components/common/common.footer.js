@@ -35,12 +35,17 @@ render(){
   if(allPinCodes_Sites.length > 0){
   var divLocations = allPinCodes_Sites[1].locations.map((item,index)  =>{
 
+    var siteCount = 0;
+    item.cities.map((city,cityIndex) => {
+      siteCount += city.count;
+    })
+
   return (
     <div className="section-md-t3" key={index}  onClick={(event) =>{this.redirectToTarget(item.stateName,event)}}>
           
     <div className="widget-a">
       <div className="w-header-a">
-        <h6 className="w-title-a text-brand">{item.stateName} ({item.cities.length})</h6>
+        <h6 className="w-title-a text-brand">{item.stateName} ({siteCount})</h6>
       </div>
       <div className="w-body-a">
         <div className="w-body-a">
@@ -187,7 +192,7 @@ render(){
                 </div>
                
                <div className="w-header-a">
-                  <div className="btn btn-gvstore btn-footer w-100"> Pay Bill Now </div>
+                  <div className="btn btn-gvstore btn-footer w-100"> <Link className="payBillNow" to="/pay-bill">Pay Bill Now</Link> </div>
                 </div>
                 
               </div>

@@ -23,27 +23,27 @@ render(){
             <div className="storage-tools-items">
             
             <div className="row">
-             <div className="col-md-6 wow fadeInUp pb-3"> 
+             <div className="col-6 col-md-6 wow fadeInUp pb-3"> 
              <Link to="/size-guide">
-                 <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Size-Guide.png"} alt=" " /> &nbsp;  Size Guide
+                 <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Size-Guide.png"} alt=" " /> &nbsp;  <span className="st-txt"> Size Guide </span>
                  </Link>
              </div>
-             <div className="col-md-6 wow fadeInUp pb-2 right-text"> 
+             <div className="col-6 col-md-6 wow fadeInUp pb-2 right-text"> 
              <Link to="/space-calculator">
-                 <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Space-Calculator.png"} alt=" " /> &nbsp;  Space Calculator
+                 <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Space-Calculator.png"} alt=" " /> &nbsp; <span  className="st-txt"> Space Calculator </span>
                  </Link>
               </div>
              </div>
              <div className="row"> </div>
              <div className="row">
-             <div className="col-md-6 wow fadeInUp pb-3"> 
+             <div className="col-6 col-md-6 wow fadeInUp pb-3"> 
              <Link to="/tips">
-                 <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Tips.png"} alt=" " /> &nbsp;  Tips
+                 <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Tips.png"} alt=" " /> &nbsp;  <span  className="st-txt"> Tips </span>
                  </Link>
               </div>
-             <div className="col-md-6 wow fadeInUp pb-3 right-text"> 
+             <div className="col-6 col-md-6 wow fadeInUp pb-3 right-text"> 
              <Link to="/packing-supplies">
-                 <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Packing-Supplies.png"} alt=" " /> &nbsp;  Packing Supplies
+                 <img src={Environment.STATIC_FILES_END_POINT_URL + "img/Packing-Supplies.png"} alt=" " /> &nbsp; <span  className="st-txt"> Packing Supplies </span>
                  </Link>
               </div>
              </div>

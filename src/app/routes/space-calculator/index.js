@@ -14,9 +14,8 @@ import CommonSpaceCalculator from '../../components/common/common.space-calculat
 const frontload = async props =>{
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
+  
   document.getElementById('div-preloader').style.display = 'block';
   return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
@@ -26,7 +25,9 @@ const frontload = async props =>{
 class SpaceCalculator extends Component {
   render() {
     return (
-      <Page id="space-calculator">
+      <Page id="space-calculator"
+      title="Space Calculator | Great Value Storage"
+      description="Use Great Value Storage's convenient Space Estimator to find the right storage solution to meet your needs.">
       <HomeBanner pageName="Space Calculator" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
       <CommonStaticBreadCrumb pageName="Space Calculator" routeName="Space Calculator"></CommonStaticBreadCrumb>
       <main id="main">

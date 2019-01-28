@@ -15,9 +15,8 @@ import { StaticContent } from '../../../static-content';
 const frontload = async props =>{
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
+  
   document.getElementById('div-preloader').style.display = 'block';
   return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
@@ -45,7 +44,9 @@ class WhyChooseUs extends Component {
 
   render() {
     return (
-      <Page id="why-choose-us">
+      <Page id="why-choose-us"
+      title="Why Choose Us? | Great Value Storage"
+      description="At Great Value Storage, you can expect great service from our friendly, professional and knowledgeable storage managers.">
     <HomeBanner pageName="Why Choose Us" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
     <CommonStaticBreadCrumb pageName="Why Choose Us" routeName="Storage Options"></CommonStaticBreadCrumb>
     <main id="main">

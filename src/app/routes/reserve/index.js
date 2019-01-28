@@ -37,10 +37,8 @@ const frontload = async props => {
 
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
-
+  dynamicRequestList.push(props.getPinCodes_Sites());
+  
   if(Object.keys(props.allUnits).length == 0){
     pathParams.isReloaded = false;
 
@@ -52,7 +50,7 @@ const frontload = async props => {
 
       if(!value || !value.payload.unit )
       {
-        props.history.push(`/self-storage/${pathParams.locationCode}`)
+        props.history.push(`/self-storage/${pathParams.metaParam}/${pathParams.locationCode}`)
         return false;
       }
       var requestObj = {
@@ -82,7 +80,7 @@ const frontload = async props => {
     const unitInfo = props.allUnits.units.filter(x=>x.firstAvailableUnitID == pathParams.unitId);
 
     if(unitInfo.length == 0){
-      props.history.push(`/self-storage/${pathParams.locationCode}`)
+      props.history.push(`/self-storage/${pathParams.metaParam}/${pathParams.locationCode}`)
       return false;
     }
 
@@ -135,10 +133,10 @@ class Reserve extends Component {
             <div className="container">
             <div className="row">
                 <div className="rent-facility-info">
-                <div className="row">
+                  <div className="row">
                     <CommonFacilityInfo allUnits={allUnits} selectedUnitInfo={selectedUnitInfo} pathParams={pathParams} moveInCharges={moveInCharges}></CommonFacilityInfo>
                     <ReserveFormFilling allUnits={allUnits} selectedUnitInfo={selectedUnitInfo} pathParams={pathParams} moveInCharges={moveInCharges}></ReserveFormFilling>
-                    </div>
+                  </div>
                 </div>
                 </div>
                 </div>

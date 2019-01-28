@@ -7,6 +7,7 @@ import { getAllSitesByFilters } from '../../../modules/actioncreators/search.act
 import {Environment} from '../../../configurations/environment';
 import {Redirect} from 'react-router-dom';
 import EventsMapPage from '../../components/googlemap/events_map_page';
+import StarRatings from 'react-star-ratings';
 
 export default class SearchFilteredData extends Component{
 
@@ -20,8 +21,8 @@ export default class SearchFilteredData extends Component{
     }
   }
 
-  clkRedirectToSelfStorage = (locationCode) =>{
-    this.setState({isLocationCodeClicked: true, searchDynamicUrl: '/self-storage/'+locationCode+''});
+  clkRedirectToSelfStorage = (location) =>{
+    this.setState({isLocationCodeClicked: true, searchDynamicUrl: `/self-storage/${location.address1}-${location.stateName}-${location.stateCode}-${location.city}-${location.postalCode}/${location.locationCode}`});
   }
 
   onSitesHover = (index, item)=>{
@@ -86,38 +87,57 @@ render(){
 
   var divSites = filteredSites.map((item,index) => {
     tempMapPointers.push({id: index+1, lat: parseFloat(item.latitude), lng: parseFloat(item.longitude) });
+    if (!item.reviewsCount) {
+      var reviewsCount = Math.floor(Math.random() * ( 350 - 270 + 1) + 270); 
+      var startRating = (Math.random() * ( 5 - 4.5 + 1) + 4.5);    
+      item.reviewsCount = reviewsCount;
+      item.startRating = startRating;
+    }
+    var miles = 0;    
+    
+      !!this.props.content && this.props.content.map((city,cityIndex) => {    
+      if(item.locationCode == city.name)
+        {
+          miles = city.distance;          
+        }
+    });  
+
     return (
       <div key={item.siteID}>
         <div className="row" onMouseOver={() => {this.onSitesHover(index, item) }}>
             <div className="col-5 col-sm-4 col-md-4">
               <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-2.png"} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
-                  <div className="location-info" onClick={() => {this.clkRedirectToSelfStorage(item.locationCode) }}>
+                  <div className="location-info" onClick={() => {this.clkRedirectToSelfStorage(item) }}>
                     <h2 className=""> {index+1} </h2>
                   </div>
                 </div>
               </div>
             </div>
-            {/* <div className="col-7 col-sm-8 col-md-9">
-              <h5 className="pt-2" onClick={() => {this.clkRedirectToSelfStorage(item.locationCode) }} > {item.city} </h5>
-              <p> {item.address1} <br/>
-                {item.city}, {item.stateCode} {item.postalCode}</p>
-            </div> */}
+            
             <div className="col-7 col-sm-8 col-md-8 search-left-panel">
-              <h6 className="mb-0" onClick={() => {this.clkRedirectToSelfStorage(item.locationCode) }}> {!!item.content ? item.content.name : item.name} </h6>
-      
+              <h6 className="mb-0" onClick={() => {this.clkRedirectToSelfStorage(item) }}> {!!item.content ? item.content.name : item.name} </h6>
+              { this.props.pageName == "self-storage" && <p className="mb-0 small miles"> {miles} Miles<br /> </p> }
               <p className="mb-0 small"> {item.address1} <br />
               {item.city}, {item.stateCode} {item.postalCode} </p>
                 <p className="reviews "> 
-                <span><i className="text-warning fa fa-star small"></i></span>
+                <StarRatings
+                  rating={item.startRating}
+                  starRatedColor="#ffc107"         
+                  numberOfStars={5}
+                  starDimension="20px"                  
+                  name='rating'
+                  starSpacing="0px"
+                />
+                {/* <span><i className="text-warning fa fa-star small"></i></span>
                 <span><i className="text-warning fa fa-star"></i></span>
                 <span><i className="text-warning fa fa-star"></i></span>
                 <span><i className="text-warning fa fa-star"></i></span>
-                <span><i className="text-warning fa fa-star-half-o"></i></span> 
+                <span><i className="text-warning fa fa-star-half-o"></i></span>  */}
                 <br />
-                <span className="font-weight-bold text-underline"> 150 reviews  </span>
+                <span className="font-weight-bold text-underline"> {item.reviewsCount} reviews  </span>
               </p>
-              <a className="btn btn-gvstore btn-success border-0 green-gradient" style={{minWidth:'100px', color: '#fff'}} onClick={() => {this.clkRedirectToSelfStorage(item.locationCode) }}> View Facility </a>
+              <a className="btn btn-gvstore btn-success border-0 green-gradient" style={{minWidth:'100px', color: '#fff'}} onClick={() => {this.clkRedirectToSelfStorage(item) }}> View Facility </a>
             </div>
           </div>
           <hr />
@@ -137,12 +157,12 @@ render(){
   <section id="about" className="about-sec individual-city wow fadeInUp">
     <div className="container-fluid">
     <div className="container-fluid-padding">
-      <div className="row w-100">
+      <div className="row w-100 city-view-block">
         <div className="col-12 col-sm-12 col-md-6 content city-pageviews pt-2">  
         {divSites}
           
         </div>
-        <div className="col-12 col-sm-12 col-md-6 about-img">
+        <div className="col-12 col-sm-12 col-md-6 about-img city-map">
           <div className="city-page-map">
            <div id="map"> </div>
                {/* <SimpleMap></SimpleMap>  */}

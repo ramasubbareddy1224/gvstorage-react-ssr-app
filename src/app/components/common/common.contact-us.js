@@ -218,7 +218,7 @@ render(){
                <p> Contact Information </p>
                
                <div className="fill-rent-info">
-               <div className="row pb-3">
+               <div className="row pb-2">
                  <div className="col-md-6">
                      <div className="form-group">
                        <label htmlFor="First Name">First Name <span className="text-danger"> * </span></label>
@@ -237,7 +237,7 @@ render(){
                  </div>   
                  
                  
-                  <div className="row pb-3">
+                  <div className="row pb-2">
                    <div className="col-md-6">
                      <div className="form-group">
                        <label htmlFor="First Name"> Phone Number <span className="text-danger"> * </span> </label>
@@ -259,7 +259,7 @@ render(){
                  </div>
                  
                  
-                 <div className="row pb-3">
+                 <div className="row pb-2">
                    <div className="col-md-6">
                      <div className="form-group">
                        <label htmlFor="SiteName">Select Facility<span className="text-danger"> * </span> </label>

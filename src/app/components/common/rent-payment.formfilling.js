@@ -380,9 +380,8 @@ return (
              { !!moveInCharge.taxRate1 && 
       <span>TAX {moveInCharge.taxRate1}% <span style={{fontSize:'12px'}}>({moveInCharge.description})</span>: </span>}
 
-              { !!moveInCharge.taxRate1 && <span className="pull-right">${moveInCharge.taxAmount1} USD</span>  }
-          
-                 <br/>   
+              { !!moveInCharge.taxRate1 && <div><span className="pull-right">${moveInCharge.taxAmount1} USD</span> <br/> </div> }
+           
           { !!moveInCharge.taxRate2 && 
              <span>TAX {moveInCharge.taxRate2}% <span style={{fontSize:'12px'}}>({moveInCharge.description})</span>: </span> }
 
@@ -428,17 +427,18 @@ return (
                 <div className="row">
                 <div className="col-md-12"> 
                 <p> Your Information </p>
+                <div classname="rent-now-total-info">
                 <p> 
-                <strong>{tenantInfo.firstName} {tenantInfo.lastName} <br />
+                <strong classname="total-info">{tenantInfo.firstName} {tenantInfo.lastName} <br />
                 {tenantInfo.emailAddress} <br />
                 {tenantInfo.phoneNumber}</strong>
                 </p>
-                
+                </div>
                 <hr />
                 
                 
-                <p> Amount To Pay </p>
-                <strong>
+                <p class="text-uppercase"> Amount To Pay </p>
+                <strong classname="total-info">
                 {divMoveIncharges}
                 {divMoveInTaxes}
                 {/* <p> 1st month rent: <span className="pull-right"> $39.97 USD </span>  </p>
@@ -472,7 +472,7 @@ return (
                  <div  className="billing-info pt-2 pb-5">
 
                 
-                <div className="row pb-3">
+                <div className="row pb-4">
                 	<div className="col-md-6">
                       <div className="form-group">
                       <label htmlFor="ProtectionCoverage">Select Protection coverage <span className="text-danger"> * </span> </label>
@@ -500,9 +500,9 @@ return (
                     </div>  
 
 
-                 <h6> <strong>Billing Information</strong> </h6>
+                 <h6 className ="mb-0"> <strong>Billing Information</strong> </h6>
                 {/* <form className=""> */}
-                <div className="row pb-3">
+                <div className="row pb-2">
                 	<div className="col-md-6">
                       <div className="form-group">
                         <label htmlFor="First Name">Name on card  <span className="text-danger"> * </span></label>
@@ -522,7 +522,7 @@ return (
                     </div>
                   </div>
 
-                    <div className="row pb-3"> 
+                    <div className="row pb-2"> 
                     <div className="col-md-6">
                       <div className="form-group">
                         <label htmlFor="First Name">  Postal / Zip  <span className="text-danger"> * </span></label>
@@ -549,7 +549,7 @@ return (
                     
                   
                   
-                   <div className="row pb-3">
+                   <div className="row pb-2">
                     <div className="col-md-6">
                       <div className="form-group">
                         <label htmlFor="First Name">CVV Number  <span className="text-danger"> * </span> </label>
@@ -592,8 +592,8 @@ return (
                     
                         
                   </div>
-                  <div className="row pb-3">
-                      <div className="form-check small" style={{paddingLeft:'0px'}}>
+                  <div className="row pb-2">
+                      <div className="form-check small" style={{paddingLeft:'15px'}}>
                          <label className="customcheck"> Setup autopay using this credit card. 
                           <input type="checkbox"   />
                           <span className="checkmark"></span>

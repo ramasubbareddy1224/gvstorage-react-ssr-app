@@ -17,9 +17,7 @@ import CommonContactUs from '../../components/common/common.contact-us';
 const frontload = async props =>{
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
   dynamicRequestList.push(props.getFacilitySites());
 
   document.getElementById('div-preloader').style.display = 'block';
@@ -32,7 +30,9 @@ class ContactUs extends Component {
   render() {
     const {allFacilitySites} = this.props;
     return (
-      <Page id="contact-us">
+      <Page id="contact-us"
+      title="Contact Form | Great Value Storage"
+      description="Contact us for any questions or inquiries and we will get back to you as soon as we can.">
       <HomeBanner pageName="Contact Us" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
       <CommonStaticBreadCrumb pageName="Contact Us" ></CommonStaticBreadCrumb>
       <main id="main">

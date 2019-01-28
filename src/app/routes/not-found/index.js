@@ -9,6 +9,7 @@ class NotFound extends Component {
     }
   }
   componentDidMount() {
+    this.props.history.push('/');
     this.setState({isPageLoaded: true});
   }
 

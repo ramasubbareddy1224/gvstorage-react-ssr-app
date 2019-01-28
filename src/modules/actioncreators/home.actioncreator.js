@@ -3,29 +3,20 @@ import wretch from "wretch"
 import {Environment} from '../../configurations/environment';
 import {ACTIONTYPES} from '../../configurations/actiontypes';
 import { ApiRequest } from '../../utility' ;
-import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import { checkCacheValid } from "redux-cache";
 
-
-const getAllDiscounts = discounts => ({ type: ACTIONTYPES.HOME.GET_ALL_DISCOUNTS, payload: discounts });
-const getAllPinCodes = pincodes => ({ type: ACTIONTYPES.HOME.GET_ALL_PINCODES, payload: pincodes });
-const getAllSites = sites => ({ type: ACTIONTYPES.HOME.GET_ALL_SITES, payload: sites });
 
 const getAllNearByLocations = locations => ({ type: ACTIONTYPES.HOME.GET_NEAR_BY_LOCATIONS, payload: locations });
-
-
 const actionCreator_PinCodes_Sites = pincodes_sites  => ({ type: ACTIONTYPES.HOME.GET_ALL_PINCODES_SITES, payload: pincodes_sites });
 
-export const getDiscounts = () => (dispatch) => {
-    // return fetch(`${Environment.MW_END_POINT_URL}/api/NOP/Discount/GetAllDiscounts`)
-    //   .then(response => response.json())
-    //   .then(data => dispatch(getAllDiscounts(data)))
-    return ApiRequest.url(`/NOP/Discount/GetAllDiscounts`)
-    .get()
-    .json(json=>dispatch(getAllDiscounts(json)));
-  };
+
+const FETCH_TIMEOUT = Environment.FETCH_TIMEOUT;
+let pinCodes_SitesTimeOut = false;
+let nearByTimeOut = false;
 
   export const getPinCodes = () => {
-    return new Promise(resolve=>{
+    return new Promise(resolve =>{
+
       try{
       return ApiRequest.url(`postalcodes`)
       .get()
@@ -51,25 +42,26 @@ export const getDiscounts = () => (dispatch) => {
     })
   };
 
-  // export const getPinCodes_Sites = () => (dispatch) => {
-  //   dispatch(showLoading());
-  //  return Promise.all(
-  //    [
-  //      ApiRequest.url(`postalcodes`).get().json(postalCodeJson => { return  postalCodeJson}), 
-  //      ApiRequest.url(`sites`).get().json(sitesJson => {return sitesJson})
-  //   ]).then(function(values) {
-  //     dispatch(hideLoading());
-  //     dispatch(actionCreator_PinCodes_Sites(values));
-     
-  //   });
+  export const getPinCodes_Sites = () => (dispatch, getState) => {
+    return new Promise((resolve, reject)=>{
+      pinCodes_SitesTimeOut = false;
+      const timeout1 = setTimeout(function() {
+        pinCodes_SitesTimeOut = true;
+        reject('Timeout');
+      }, FETCH_TIMEOUT);
 
-  export const getPinCodes_Sites = () => (dispatch) => {
-    return new Promise(resolve=>{
-     // dispatch(showLoading());
+      const isCacheValid = checkCacheValid(getState, "homePageData",{cacheKey:"cacheAllPinCodes_Sites"});
+      if (isCacheValid) {
+        return  resolve({});
+      }
       Promise.all([getPinCodes(),getSites()]).then(response=>{
-        //dispatch(hideLoading());
-        dispatch(actionCreator_PinCodes_Sites(response));
-        resolve({})
+         // Clear the timeout as cleanup
+         clearTimeout(timeout1);
+         if(!pinCodes_SitesTimeOut) {
+             dispatch(actionCreator_PinCodes_Sites(response));
+             resolve(response);
+         }
+        //resolve({})
       })
     })   
 
@@ -85,9 +77,30 @@ export const getDiscounts = () => (dispatch) => {
   };
 
 
-  export const getNearByLocations = () => (dispatch) => {
+  export const getNearByLocations = () => (dispatch,getState) => {
+    return new Promise((resolve,reject) =>{
+      nearByTimeOut = false;
+      const timeout2 = setTimeout(function() {
+        nearByTimeOut = true;
+        reject('Timeout');
+      }, FETCH_TIMEOUT);
+
+    const isCacheValid = checkCacheValid(getState, "homePageData",{cacheKey:'cacheNearByLocations'});
+    if (isCacheValid) {
+      return  resolve({});
+    }
+    
     var apiUrl = `nearbysites`;
     return ApiRequest.url(apiUrl)
     .get()
-    .json(json=>dispatch(getAllNearByLocations(json)));
+    .json(json=>{
+       // Clear the timeout as cleanup
+       clearTimeout(timeout2);
+       if(!nearByTimeOut) {
+           dispatch(getAllNearByLocations(json))
+           resolve(json);
+       }
+      }
+    );
+    });
   };

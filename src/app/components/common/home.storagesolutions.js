@@ -13,9 +13,9 @@ render(){
   
           <div className="row text-center pb-5">
           
-          <div className="col-md-2"> </div>
+          <div className="storage-sol-padding"> </div>
           
-            <div className="col-md-2">
+            <div className="col-6 col-md-3 col-lg-2">
               <div className="wow storage-solution zoomIn">
               <Link to="/personal-storage">
                 <div className="storage-img-block">
@@ -26,7 +26,7 @@ render(){
               </div>
             </div>
   
-            <div className="col-md-2">
+            <div className="col-6 col-md-3 col-lg-2">
               <div className="wow storage-solution zoomIn">
               <Link to="/business-storage">
                 <div className="storage-img-block">
@@ -37,7 +37,7 @@ render(){
               </div>
             </div>
   
-            <div className="col-md-2">
+            <div className="col-6 col-md-3 col-lg-2">
               <div className="wow storage-solution zoomIn">
               <Link to="/vehicle-storage">
                 <div className="storage-img-block">
@@ -48,7 +48,7 @@ render(){
               </div>
             </div>
   
-            <div className="col-md-2">
+            <div className="col-6 col-md-3 col-lg-2">
               <div className="wow storage-solution zoomIn">
               <Link to="/gvs-services">
                 <div className="storage-img-block">
@@ -59,9 +59,10 @@ render(){
               </div>
             </div>
             
-          <div className="col-md-2"> </div>
+            <div className="storage-sol-padding"> </div>
+
           </div>
-  
+
         </div>
       </section>
     )

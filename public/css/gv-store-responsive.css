@@ -9,6 +9,7 @@
     .storage-room-content {
         padding-top: 3rem;
     }
+    .storage-location-info-img-1:after{ width: 75%;}
 }
 @media ( max-width:1800px){
 .about-room-facility {
@@ -17,6 +18,7 @@
 .storage-room-content {
     padding-top: 2.2rem;
 }
+.storage-location-info-img-1:after{ width: 80%;}
 }
 
 @media ( max-width:1600px){
@@ -32,13 +34,14 @@
     .about-room-facility {
         padding-top: 20px;
     }
+    .storage-location-info-img-1:after{ width: 93%;}
 }
 
 @media ( max-width:1500px){
     #inner-banner .storage-room-content .wether-block .wether-info-content {
         width: 300px;
     }
-
+    .storage-location-info-img-1:after{ width: 99%;}
 }
 
 @media ( max-width:1440px){
@@ -54,6 +57,11 @@
 .how-storage-text {
 
     width: 45%;
+}
+.storage-location-info-img-1:after{ width: 99%;}
+
+.storage-tools-items {
+    padding-left: 15%;
 }
 }
 
@@ -75,6 +83,9 @@
     float: left;
 	margin: 10px 30px;
 	display: inline-table;
+}
+.storage-tools-items {
+    padding-left: 5%;
 }
 }
 
@@ -105,8 +116,13 @@
 .facility-page-banner-content {
     left: 3% !important;
 }
+.city-page-filters {
+    width: 100%;
+    margin-bottom: 10px;
+}
 
 }
+
 @media ( max-width:1160px){
 .storage-room-content { width:100%; float:none;}
 #inner-banner .facility-page-banner-content p{ color:#333;}
@@ -136,8 +152,37 @@
 .how-storage-text {
     width: 65%;
 }
+.banner-search .btn-gvstore{
+    min-width: auto;
+    padding: 10px;
+}
+
+.storage-tools-info .storage-tools-items .st-txt { display: block;}
+.storage-tools-items .right-text {  text-align: left; padding-left: 10%;  }
+#inner-banner, #inner-banner-image img {
+    height: 40vh;
+}
+
 } 
 
+@media ( max-width:991px){
+
+.storage-location-info-img-1:after{ width: 75%;}
+.storage-location-info { margin-bottom: 20px;}
+.storage-location-block:nth-child(7) {
+	margin-left: 0%;
+}
+#services .storage-sol-padding {width:0%;}
+
+.choose-right-space .storage-data-info {
+    width: 90%;
+    margin: 0px auto;
+}
+.storage-tools-block .storage-tools-info{
+    width: 90%;
+    margin: 0px auto;
+}
+}
 
 @media ( max-width:960px){
 #inner-banner .inner-banner-content h2,  { 
@@ -164,19 +209,24 @@
 .how-storage-text {
     width: 75%;
 }
-#inner-banner .find-storage{
+#homepage #inner-banner .find-storage{
 width: 90%;
-margin-top: 2rem;
+margin-top: 0.5rem;
+background: #fff;
 }
 
 .est-sizes { width:100%; float:none;}
 #inner-banner .storage-room-content .wether-block .wether-info-content {
     font-size: 14px;
 }
-.choose-right-space .storage-data-info {
-    width: 100%;
-    margin: 0px auto;
+
 }
+
+
+@media ( max-width:900px){
+    .storage-location-info-img-1:after {
+        width: 80%;
+    }
 }
 
 @media ( max-width:850px){
@@ -197,9 +247,63 @@ margin-top: 2rem;
 .choose-right-space .choose-right-space-txt {
     width: 70%;
 }
+.storage-location-info-img-1:after {
+    width: 85%;
+}
+}
+@media (max-width: 768px) {
+.storage-location-info-img-1:after {
+    width: 92%;
+}
 }
 
-@media ( max-width:760px){
+@media (max-width: 767px) {
+    .banner-search {
+    display: block;
+    }
+   .banner-search input {
+    margin-bottom:5px;
+    }
+   .banner-search .btn {    
+        padding: 10px 25px;
+        min-width: 170px;
+        text-align: left;
+        float: left;
+        margin-top: 15px;
+   }
+    #intro .intro-content h2 {
+    font-size: 34px;
+   }
+    #services .box .box {
+    margin-bottom: 20px;
+   }
+    #services .box .icon {
+    float: none;
+    text-align: center;
+    padding-bottom: 15px;
+   }
+    #services {
+    padding: 60px 0 40px 0;
+   }
+    .coloum-space {
+   margin:0px !important;
+   }
+    #services .box h4,  #services .box p {
+    margin-left: 0;
+    text-align: center;
+   }
+    #testimonials .testimonial-item {
+    margin: 30px 10px;
+   }
+   #about .fav-locations {
+	margin-bottom:5px;
+	cursor: pointer;
+}
+
+#inner-banner, #inner-banner-image img {
+    height: 48vh;
+}
+
 .facility-page-banner-content {
    left: 15% !important;
 }
@@ -219,21 +323,54 @@ margin-top: 2rem;
 #inner-banner .find-storage {
      padding: 40px 10px;
 }
+#homepage #inner-banner #inner-banner-image .item  img  { min-height: 48vh;}
+#services .storage-solution p {
+    color: #fff;
+}
+.coloum-sprit{
+    -webkit-column-count: 2;
+	-moz-column-count:2;
+	column-count: 2;
+	-webkit-column-gap: 40px; 
+	-moz-column-gap: 40px;
+	column-gap: 40px;
+}
+.city-view-block{display: flex; flex-flow: column;}
+
+.city-view-block .city-pageviews{order: 2; margin-top: 30px;}
+.city-view-block .city-map{order: 1}
+
+.individual-city .city-pageviews {
+    max-height: 100%;
+}
+
 }
 
 
 @media ( max-width:720px){
-#inner-banner .inner-banner-content h2 { 
+/* #inner-banner .inner-banner-content h2 { 
 	font-size:24px;
+} */
+
+.storage-location-info-img-1:after {
+    width: 95%;
+}
+#inner-banner .inner-banner-content .banner-text{
+    width:85%;
 }
 #intro .intro-content h2, .section-header h2 {
     font-size: 24px;
 }
-#intro .intro-content p, #inner-banner .inner-banner-content p {
-    font-size: 20px;
+#inner-banner .inner-banner-content h2 { 
+	font-size:28px;
 }
-#inner-banner {
+#intro .intro-content p, #inner-banner .inner-banner-content p {
+    font-size: 18px;
+    font-weight: normal;
+}
+#homepage #inner-banner {
     height: 48vh;
+    margin-bottom: 10vh;
 }
 .h2, h2 {
     font-size: 1.5rem;
@@ -257,28 +394,49 @@ margin-top: 2rem;
 }
 .how-storage-text { position: relative; color: #333; padding-top: 20px; width: 80% ; margin: 0px auto;}
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{     border-bottom: 1px solid #005f26 !important;}
-#inner-banner .inner-banner-content {
-    
-    bottom: auto;
-    top: 40px;
-}
+
+/* #homepage #inner-banner #inner-banner-image .item  img  { min-height: 48vh;} */
+
+
 }
 
 @media ( max-width:650px){
 .pay-bill-list ul li {
     width: 80%;
 }
+#inner-banner .inner-banner-content .banner-text {
+    width: 80%;
+}
+.city-page-filters .form-check { width: 45%; display: inline-block;}
 }
 
-@media ( max-width:540px){
+
+@media ( max-width:575px){
+#contact #google-map {
+margin-top: 20px;
+}
+#inner-banner .inner-banner-content input { border-color:#333;    border-radius: 0px 10px 0px 10px; }
+#inner-banner .find-storage{ 
+    background: transparent;
+    padding: 20px 10px;
+}
+
+.storage-location-info-img-1 img { width: 90%;}
+.storage-location-info-img-1:after {
+    width: 92%;
+    height: 95%;
+}
 #inner-banner .inner-banner-content h2 { 
 	font-size:20px;
 }
 #intro .intro-content h2, .section-header h2 {
-    font-size: 20px;
+    font-size: 26px;
 }
 #intro .intro-content p, #inner-banner .inner-banner-content p {
     font-size: 14px;
+}
+#inner-banner .inner-banner-content, #homepage #inner-banner #inner-banner-image .item img {
+    min-height: 60vh;
 }
 .facility-space {
     margin-top: 35rem;
@@ -299,6 +457,36 @@ margin-top: 2rem;
     padding: 5px 0px;
 }
 
+.choose-right-space .storage-data-info {
+   overflow: auto;
+}
+.choose-right-space .storage-data-info .storage-size-tab .tab-content img{
+    width: 60%;
+}
+.choose-right-space .storage-data-info {
+    width: 100%;
+    margin: 0px auto;
+}
+.storage-tools-block .storage-tools-info{
+    width: 100%;
+    margin: 0px auto;
+}
+.storage-tools-items .right-text {
+    text-align: left;
+    padding-left: 0%;
+}
+.section-footer .widget-a ul li {
+    display: inline-flex;
+}
+.coloum-sprit{-webkit-column-count: 2;
+	-moz-column-count:1;
+	column-count: 1;
+	-webkit-column-gap: 40px; 
+	-moz-column-gap: 40px;
+	column-gap: 40px;
+}
+#inner-banner .inner-banner-content { top: -30px;}
+
 }
 
 
@@ -318,8 +506,15 @@ margin-top: 2rem;
     font-size: 18px;
 }
 #intro .intro-content p, #inner-banner .inner-banner-content p {
-    font-size: 12px;
+    font-size: 14px;
 }
+/* .choose-right-space .storage-data-info .storage-size-tab{
+    width: 500px;
+} */
+.container-fluid-padding {
+	padding: 0px 0.5%;
+}
+
 }
 
 .small, small {

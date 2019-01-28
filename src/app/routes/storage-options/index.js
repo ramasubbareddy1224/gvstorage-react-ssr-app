@@ -30,12 +30,9 @@ const frontload = async props =>{
 
     
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
-  if(!props.nearByLocations.siteLocations){
+  dynamicRequestList.push(props.getPinCodes_Sites());
   dynamicRequestList.push(props.getNearByLocations());
-  }
+  
   document.getElementById('div-preloader').style.display = 'block';
   return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
@@ -47,7 +44,9 @@ class StorageOptions extends Component {
   render() {
     const {nearByLocations} = this.props;
     return (
-      <Page id="storage-options">
+      <Page id="storage-options"
+      title="Household, Business, &amp; Vehicle Storage Solutions | Great Value Storage"
+      description="Need extra space? Learn more about affordable self storage options for homeowners, businesses, and nonprofits.">
       <HomeBanner pageName="Storage Options" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
       <CommonStaticBreadCrumb pageName="Personal Storage & Self Storage Units" routeName="Storage Options"></CommonStaticBreadCrumb>
       

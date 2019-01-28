@@ -5,7 +5,7 @@ import {Environment} from '../../../configurations/environment';
 class CommonFAQS extends Component{
 render(){
     return(
-        <div class="storage-size">
+        <div class="storage-size faq">
         <h5>FAQs </h5>
 
       <p> <strong>Finding the Right Self Storage Unit</strong> </p>

@@ -17,9 +17,8 @@ import { StaticContent } from '../../../static-content';
 const frontload = async props =>{
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
+  
   document.getElementById('div-preloader').style.display = 'block';
   return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
@@ -48,7 +47,9 @@ class VehicleStorage extends Component {
 
   render() {
     return (
-      <Page id="vehicle-storage">
+      <Page id="vehicle-storage"
+      title="Secure Vehicle Storage | RV &amp; Boat Parking | Great Value Storage"
+      description="Store your car, boat, or RV safely and securely with Great Value Storage. Short and long-term vehicle storage available at low monthly rates. Call now.">
     <HomeBanner pageName="Vehicle Storage" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
     <CommonStaticBreadCrumb pageName="Vehicle Storage" routeName="Storage Options"></CommonStaticBreadCrumb>
     <main id="main">

@@ -3,6 +3,7 @@ import { connectRouter, routerMiddleware } from 'connected-react-router';
 import thunk from 'redux-thunk';
 import { createBrowserHistory, createMemoryHistory } from 'history';
 import rootReducer from './modules';
+import { cacheEnhancer } from 'redux-cache';
 
 // A nice helper to tell us if we're on the server
 export const isServer = !(
@@ -30,6 +31,7 @@ export default (url = '/') => {
     }
   }
 
+  enhancers.push(cacheEnhancer());
   const middleware = [thunk, routerMiddleware(history)];
   const composedEnhancers = compose(
     applyMiddleware(...middleware),

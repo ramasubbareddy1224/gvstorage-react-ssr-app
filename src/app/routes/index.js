@@ -181,9 +181,9 @@ export default () => (
     <AuthenticatedRoute exact path="/logout" component={Logout} />
 
     <Route exact path="/search/:filter" component={Search} />
-    <Route exact path="/self-storage/:locationCode" component={SelfStorage}/>
-    <Route exact path="/reserve/:locationCode/:unitId" component={Reserve}/>
-    <Route exact path="/rent/:locationCode/:unitId" component={Rent}/>
+    <Route exact path="/self-storage/:metaParam/:locationCode" component={SelfStorage}/>
+    <Route exact path="/reserve/self-storage/:metaParam/:locationCode/:unitId" component={Reserve}/>
+    <Route exact path="/rent/self-storage/:metaParam/:locationCode/:unitId" component={Rent}/>
     <Route exact path="/rent-payment/:locationCode/:unitId/:tenantId" component={RentPayment}/>
 
     <Route exact path="/storage-options" component={StorageOptions}/>

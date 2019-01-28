@@ -196,9 +196,9 @@ const {pathParams} = this.props;
                                   <strong className="gv-text-color"> ${item.webRate} </strong> </p>
                               </div></td>
                             <td className="text-center"><div className="btn btn-gvstore btn-success border-0 green-gradient">
-                            <Link to={`/rent/${pathParams.locationCode}/${item.firstAvailableUnitID}`}> Rent Now </Link>
+                            <Link to={`/rent/self-storage/${pathParams.metaParam}/${pathParams.locationCode}/${item.firstAvailableUnitID}`}> Rent Now </Link>
                             </div>
-                              <div className="gv-text-color"> <strong><Link to={`/reserve/${pathParams.locationCode}/${item.firstAvailableUnitID}`}> Reserve for free </Link> </strong> </div>
+                              <div className="gv-text-color"> <strong><Link to={`/reserve/self-storage/${pathParams.metaParam}/${pathParams.locationCode}/${item.firstAvailableUnitID}`}> Reserve for free </Link> </strong> </div>
                               </td>
                           </tr>
     );

@@ -24,7 +24,7 @@ render(){
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
                   <li className="nav-item"> <a className="nav-link active" id="home-tab" data-toggle="tab" href="#Info" role="tab" aria-controls="home" aria-selected="true">Info</a> </li>
                   <li className="nav-item"> <a className="nav-link" id="profile-tab" data-toggle="tab" href="#FAQ" role="tab" aria-controls="profile" aria-selected="false">FAQ's </a> </li>
-                  <li className="nav-item"> <a className="nav-link" id="contact-tab" data-toggle="tab" href="#Storage" role="tab" aria-controls="contact" aria-selected="false">Storage Statistics</a> </li>
+                  <li className="nav-item"> <a className="nav-link" id="contact-tab" role="tab" aria-controls="contact" aria-selected="false">Storage Statistics</a> </li>
                 </ul>
                 <div className="tab-content p-3 pb-5" id="myTabContent">
                   <div className="tab-pane fade show active" id="Info" role="tabpanel" aria-labelledby="home-tab">

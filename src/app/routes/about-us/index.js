@@ -15,9 +15,8 @@ import { StaticContent } from '../../../static-content';
 const frontload = async props =>{
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
+ 
   document.getElementById('div-preloader').style.display = 'block';
   return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
@@ -27,7 +26,9 @@ const frontload = async props =>{
 class AboutUs extends Component {
   render() {
     return (
-      <Page id="about-us">
+      <Page id="about-us"
+      title="About Us | Great Value Storage"
+      description="At Great Value Storage our friendly and professional storage counselors and team members can help you find the right storage solution for you. Call now for more information.">
     <HomeBanner pageName="About Us" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
     <CommonStaticBreadCrumb pageName="About Us" ></CommonStaticBreadCrumb>
     <main id="main">

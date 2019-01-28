@@ -33,7 +33,7 @@ render(){
     var divLocations = allPinCodes_Sites[1].locations.map((item,index)=> {
   
     return (
-        <div className="col-6 col-md-2" key={index}>
+        <div className="col-6 col-sm-4 col-md-4 col-lg-2 storage-location-block" key={index}>
         <div className="fav-locations text-center"  onClick={(event) =>{this.redirectToTarget(item.stateName,event)}}>
             <img src={Environment.STATIC_FILES_END_POINT_URL + "img/states/" + item.stateCode + ".png"} className="img-fluid"  alt="..." />
             <div className="location-overlay clearfix">

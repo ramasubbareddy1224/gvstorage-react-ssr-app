@@ -16,8 +16,8 @@ class CommonNearBy extends Component{
   //   return (Object.keys(nextProps.allPinCodes_Sites).length==0)   
   // }
  
-  clkRedirectToSelfStorage = (locationCode) =>{
-    this.setState({isLocationCodeClicked: true, searchDynamicUrl: '/self-storage/'+locationCode+''});
+  clkRedirectToSelfStorage = (location) =>{
+    this.setState({isLocationCodeClicked: true, searchDynamicUrl: `/self-storage/${location.address1}-${location.stateName}-${location.stateCode}-${location.city}-${location.postalCode}/${location.locationCode}`});
   }
 
 render(){
@@ -31,16 +31,16 @@ render(){
     const {nearByLocations} = this.props;
 
     const divNearByLocations = nearByLocations.map((location,index)=>{
-      return <div className="col-12 col-md-3" key={index}>
+      return <div className="col-12 col-sm-6 col-md-6 col-lg-3" key={index}>
                 <div className="storage-location-info ">
                <div className="storage-location-info-img storage-location-info-img-1 ">
                 <img src="img/Services/deer-park-storage-near.png" className="img-fluid"  alt="..." />
                </div>
                 <div className="area-info pl-3">
-                <h5 className="cursor-pointer mb-0" onClick={() => {this.clkRedirectToSelfStorage(location.locationCode) }}> {location.city}</h5>
+                <h5 className="cursor-pointer mb-0" onClick={() => {this.clkRedirectToSelfStorage(location) }}> {location.city}</h5>
                 <p className="mb-0"> {location.address1}, <br /> {location.stateCode} {location.postalCode}</p>
                 
-                <p className="reviews"> 
+                <p className="reviews mb-0"> 
                   <span><i className="text-warning fa fa-star"></i></span>
                   <span><i className="text-warning fa fa-star"></i></span>
                   <span><i className="text-warning fa fa-star"></i></span>
@@ -50,7 +50,7 @@ render(){
                   150 reviews             
                 </p>
                 <div className="readmore pt-2">
-                  <div className="btn btn-gvstore btn-success border-0 green-gradient" onClick={() => {this.clkRedirectToSelfStorage(location.locationCode) }}> View facility  </div>
+                  <div className="btn btn-gvstore btn-success border-0 green-gradient" onClick={() => {this.clkRedirectToSelfStorage(location) }}> View facility  </div>
                 </div>
                 </div>
               </div>

@@ -15,9 +15,8 @@ import { StaticContent } from '../../../static-content';
 const frontload = async props =>{
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
+  
   document.getElementById('div-preloader').style.display = 'block';
   return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
@@ -44,7 +43,9 @@ class PackingSupplies extends Component {
 
   render() {
     return (
-      <Page id="packing-supplies">
+      <Page id="packing-supplies"
+      title="Affordable Moving Boxes and Packing Supplies | Great Value Storage"
+      description="Find everything you need to safely wrap, box, and move you household items. Shop Great Value Storage for affordable moving boxes and packing supplies.">
     <HomeBanner pageName="Packing Supplies" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
     <CommonStaticBreadCrumb pageName="Packing Supplies" routeName="Storage Tools"></CommonStaticBreadCrumb>
     <main id="main">

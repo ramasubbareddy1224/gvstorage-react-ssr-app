@@ -99,7 +99,7 @@ render(){
             <div className="facility-data">
             <div className="data-heading">
                 <p> UNIT SIZE  
-                <Link to={`/self-storage/${pathParams.locationCode}`}>
+                <Link to={`/self-storage/${pathParams.metaParam}/${pathParams.locationCode}`}>
                     <span className=" pull-right gv-text-color"> Change unit </span>
                 </Link>
                 </p>

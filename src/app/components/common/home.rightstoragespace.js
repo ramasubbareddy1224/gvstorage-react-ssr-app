@@ -11,9 +11,9 @@ render(){
             <p className="choose-right-space-txt m-auto"> An equally important decision you'll nee to make is choosing the size of your unit Storage typically comes in the following standard sizes. </p>
           </div>
           
-          <div className="storage-size storage-data-info m-auto p-3">
+          <div className="storage-size storage-data-info bg-white  m-auto p-3">
                             
-                               <div className="storage-size-tab bg-white home-storage-size">
+                               <div className="storage-size-tab home-storage-size">
                                <ul className="nav nav-tabs" id="myTab" role="tablist">
                                 <li className="nav-item">
                                   <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Tiny<br /> 5'x5'</a>
@@ -40,7 +40,7 @@ render(){
                                   <div className="tab-content">
                                       <div className="row container-fluid-padding">
                                       
-                                      <div className="col-md-4 p-5"><img src="img/5x5.png" className="img-fluid" /></div>
+                                      <div className="col-md-4 pl-5 pt-3"><img src="img/5x5.png" className="img-fluid" /></div>
                                       <div className="col-md-1"> </div>
                                       <div className="col-md-6 p-5 align-top">
                                       <h5> Tiny - 5'x5' </h5>
@@ -56,7 +56,7 @@ render(){
                                   <div className="tab-content">
                                       <div className="row container-fluid-padding">
 
-                                      <div className="col-md-4 p-5"><img src="img/5x10.png" className="img-fluid" /></div>
+                                      <div className="col-md-4 pl-5 pt-3"><img src="img/5x10.png" className="img-fluid" /></div>
                                       <div className="col-md-1"> </div>
                                       <div className="col-md-6 p-5">
                                       <h5> Small - 5'x10' </h5>
@@ -72,7 +72,7 @@ render(){
                                 <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                                 <div className="tab-content">
                                       <div className="row container-fluid-padding">
-                                      <div className="col-md-4 p-5"><img src="img/10x10.png" className="img-fluid" /></div>
+                                      <div className="col-md-4 pl-5 pt-3"><img src="img/10x10.png" className="img-fluid" /></div>
                                       <div className="col-md-1"> </div>
                                       <div className="col-md-6 p-5">
                                       <h5> Medium  10'x 10' </h5>
@@ -88,7 +88,7 @@ render(){
                                   <div className="tab-pane fade" id="Large-10" role="tabpanel" aria-labelledby="contact-tab">
                                 <div className="tab-content">
                                       <div className="row container-fluid-padding">
-                                      <div className="col-md-4 p-5"><img src="img/10x15.png" className="img-fluid" /></div>
+                                      <div className="col-md-4 pl-5 pt-3"><img src="img/10x15.png" className="img-fluid" /></div>
                                       <div className="col-md-1"> </div>
                                       <div className="col-md-6 p-5">
                                       <h5> Large 10'x 15' </h5>
@@ -103,7 +103,7 @@ render(){
                                   <div className="tab-pane fade" id="Huge-10" role="tabpanel" aria-labelledby="contact-tab">
                                 <div className="tab-content">
                                       <div className="row container-fluid-padding">
-                                      <div className="col-md-4 p-5"><img src="img/10x20.png" className="img-fluid" /></div>
+                                      <div className="col-md-4 pl-5 pt-3"><img src="img/10x20.png" className="img-fluid" /></div>
                                       <div className="col-md-1"> </div>
                                       <div className="col-md-6 p-5">
                                       <h5> Huge - 10'x20' </h5>

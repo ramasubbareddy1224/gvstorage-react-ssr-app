@@ -36,9 +36,8 @@ const frontload = async props => {
 
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
+  
 
   if(Object.keys(props.allUnits).length == 0){
     pathParams.isReloaded = false;
@@ -51,7 +50,7 @@ const frontload = async props => {
 
         if(!value || !value.payload.unit )
         {
-          props.history.push(`/self-storage/${pathParams.locationCode}`)
+          props.history.push(`/self-storage/${pathParams.metaParam}/${pathParams.locationCode}`)
           return false;
         }
 
@@ -84,7 +83,7 @@ const frontload = async props => {
 
     
     if(unitInfo.length == 0){
-      props.history.push(`/self-storage/${pathParams.locationCode}`)
+      props.history.push(`/self-storage/${pathParams.metaParam}/${pathParams.locationCode}`)
       return false;
     }
 

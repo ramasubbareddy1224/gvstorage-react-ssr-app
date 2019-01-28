@@ -24,17 +24,16 @@ import { getPinCodes_Sites } from '../../../modules/actioncreators/home.actioncr
 import { getAllUnitsByLocationCode,resetSelfStorageUnits } from '../../../modules/actioncreators/self-storage.actioncreator';
 
 
-var pathParams = {};
+//var pathParams = {};
 
 const frontload = async props => {
   props.resetSelfStorageUnits();
-  pathParams = props.match.params;
+  //pathParams = props.match.params;
 
   try{
       var dynamicRequestList = [];
-      if(props.allPinCodes_Sites.length == 0){
-        dynamicRequestList.push(props.getPinCodes_Sites());
-      }
+      dynamicRequestList.push(props.getPinCodes_Sites());
+      
       dynamicRequestList.push(props.getAllUnitsByLocationCode(props.match.params.locationCode));
       document.getElementById('div-preloader').style.display = 'block';
       //await Promise.all(dynamicRequestList);
@@ -42,6 +41,8 @@ const frontload = async props => {
         if(values[values.length -1].status.code < 0){
           props.history.push(`/`)
         }
+        document.getElementById('div-preloader').style.display = 'none';
+      },(error)=>{
         document.getElementById('div-preloader').style.display = 'none';
       });
     // return props.getAllUnitsByLocationCode(props.match.params.locationCode);
@@ -79,6 +80,7 @@ class SelfStorage extends Component {
     const { allUnits } = this.props;
     const  selectedSiteLocation = this.props.allUnits.siteLocation || {};
     const {allSites} = this.props;
+    const  pathParams = this.props.match.params;   
 
     var allSitesNearBy = {};  
     var siteLocations = !!allUnits && !!allUnits.siteLocation && allUnits.siteLocation.content && 
@@ -87,8 +89,14 @@ class SelfStorage extends Component {
     
     allSitesNearBy.siteLocations = siteLocations;
 
+
+    const metaCityName =!!pathParams && !!pathParams.metaParam && !!pathParams.metaParam.split('-')[3] && pathParams.metaParam.split('-')[3]; 
+    const metaStateCode = !!pathParams && !!pathParams.metaParam && !!pathParams.metaParam.split('-')[2] && pathParams.metaParam.split('-')[2]; 
+
     return (
-      <Page id="self-storage">
+      <Page id="self-storage"
+       title={`${metaCityName}, ${metaStateCode} Self-Storage Units & Facilities | Great Value Storage`}
+        description={`Best value on secure self-storage units in ${metaCityName}, ${metaStateCode}. Call today for web only specials and discounts!`}>
       {Object.keys(this.props.allUnits).length > 0 && <SelfStorageBanner pathParams={pathParams} allUnits={this.props.allUnits}></SelfStorageBanner>}
      
        <main id="main" className="facility-section "> 
@@ -135,7 +143,10 @@ class SelfStorage extends Component {
             }
            {!!allUnits.siteLocation && allUnits.siteLocation.content && allUnits.siteLocation.content.gvsnearsites.length > 0 &&
           
-           <SearchFilteredData allSites={allSitesNearBy} allFilters={this.props.allFilters} allPinCodes_Sites ={this.props.allPinCodes_Sites}></SearchFilteredData>
+          <div>
+            <h2 className="nearBySites">More near facilities</h2>
+            <SearchFilteredData pageName="self-storage" allSites={allSitesNearBy} allFilters={this.props.allFilters} allPinCodes_Sites ={this.props.allPinCodes_Sites} content={allUnits.siteLocation.content.gvsnearsites}></SearchFilteredData>
+          </div>
            }
            <CommonContactUs></CommonContactUs>
        </main>

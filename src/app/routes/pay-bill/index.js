@@ -16,9 +16,8 @@ import CommonPayBill from '../../components/common/common.pay-bill';
 const frontload = async props =>{
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
     dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  
   document.getElementById('div-preloader').style.display = 'block';
   return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';

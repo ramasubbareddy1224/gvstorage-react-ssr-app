@@ -22,30 +22,9 @@ import HomeStorageTools from '../../components/common/home.storagetools';
 
 const frontload = async props =>{
 
-
-  
-  // getCurrentLocation().then((success) =>{
-  //   if(!!success){
-  //  props.getNearByLocations(success.region_code, success.city, success.zip).then(function(values) {
-  //  // props.getNearByLocations('MA', 'Springfield', '99878').then(function(values) {
-  //   });
-  // }
-  // }, (error)=>{
-
-  // });
-  
-
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
     dynamicRequestList.push(props.getPinCodes_Sites());
-    document.getElementById('div-preloader').style.display = 'block'
-    // return Promise.all(props.getPinCodes_Sites()).then(function(values) {
-    // });
-  }
-
-  if(!props.nearByLocations.siteLocations){
     dynamicRequestList.push(props.getNearByLocations());
-    }
 
   return await Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
@@ -60,7 +39,9 @@ class HomePage extends Component {
     const {nearByLocations} = this.props;
    
     return (
-      <Page id="homepage">
+      <Page id="homepage"
+       title="Self Storage Units | Storage Facilities at Great Value Storage"
+       description="Welcome to Great Value Storage. We offer storage solutions to meet all of your storage needs with ease and convenience. Call now or reserve online today.">
     <HomeBanner pageName="home" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
    { !!nearByLocations.siteLocations && nearByLocations.siteLocations.length >0 &&
      <CommonNearBy nearByLocations={nearByLocations.siteLocations}></CommonNearBy>

@@ -15,9 +15,8 @@ import { StaticContent } from '../../../static-content';
 const frontload = async props =>{
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
+  
   document.getElementById('div-preloader').style.display = 'block';
   return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
@@ -44,7 +43,9 @@ class GVSServices extends Component {
 
   render() {
     return (
-      <Page id="gvs-services">
+      <Page id="gvs-services"
+      title="Services | Great Value Storage"
+      description="At Great Value Storage it’s our number one priority to provide affordable and convenient storage solutions no matter what life throws your way.">
     <HomeBanner pageName="GVS Services" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
     <CommonStaticBreadCrumb pageName="GVS Services" routeName="Storage Options"></CommonStaticBreadCrumb>
     <main id="main">

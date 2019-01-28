@@ -89,7 +89,8 @@ class Page extends Component {
             itemtype: `http://schema.org/${rest.schema || 'WebPage'}`
           }}
           title={
-            rest.title ? rest.title + defaultSep + defaultTitle : defaultTitle
+            //rest.title ? rest.title + defaultSep + defaultTitle : defaultTitle
+            rest.title ? rest.title  : defaultTitle
           }
           link={[
             {

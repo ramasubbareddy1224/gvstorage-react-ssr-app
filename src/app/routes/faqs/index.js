@@ -15,9 +15,8 @@ import { StaticContent } from '../../../static-content';
 const frontload = async props =>{
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
+  
   document.getElementById('div-preloader').style.display = 'block';
   return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
@@ -44,7 +43,9 @@ class FAQs extends Component {
 
   render() {
     return (
-      <Page id="faqs">
+      <Page id="faqs"
+      title="FAQs About Self Storage | Great Value Storage"
+      description="Get answers to commonly asked questions about self storage options at Great Value Storage including unit sizes, features &amp; amenities, and available discounts.">
     <HomeBanner pageName="FAQs" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
     <CommonStaticBreadCrumb pageName="FAQs" routeName="Storage Tools" ></CommonStaticBreadCrumb>
     <main id="main">

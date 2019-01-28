@@ -18,9 +18,8 @@ import { getPinCodes_Sites
 const frontload = async props =>{
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
+  
 
   return Promise.all(dynamicRequestList).then(function(values) {
   });

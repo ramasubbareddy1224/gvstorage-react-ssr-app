@@ -1,49 +1,50 @@
 import "isomorphic-fetch";
 import {ACTIONTYPES} from '../../configurations/actiontypes';
 import { ApiRequest } from '../../utility' ;
+import { checkCacheValid } from "redux-cache";
+import {Environment} from '../../configurations/environment';
 
 
-const getAllUnits = units => ({ type: ACTIONTYPES.SELF_STORAGE.GET_ALL_UNITS_LOCATION_CODE, payload: units });
-const resetUnit=()=>({type:ACTIONTYPES.SELF_STORAGE.RESET_SELF_STORAGE_ALL_UNITS,payload:{}});
+const getAllUnits = (units, locationCode) => ({ type: ACTIONTYPES.SELF_STORAGE.GET_ALL_UNITS_LOCATION_CODE, payload: units, locationCode: locationCode });
+const resetUnit= (storeData) =>({type:ACTIONTYPES.SELF_STORAGE.RESET_SELF_STORAGE_ALL_UNITS, payload: storeData  });
+const updateUnitInfo = (storeData, locationCode) => ({ type: ACTIONTYPES.SELF_STORAGE.UPDATE_UNITINFO, payload: storeData,locationCode: locationCode });
 
-  export const getAllUnitsByLocationCode = (locationCode) => (dispatch) => {
-   return new Promise(resolve=>{
+const FETCH_TIMEOUT = Environment.FETCH_TIMEOUT;
+let didTimeOut = false;
+
+  export const getAllUnitsByLocationCode = (locationCode) => (dispatch, getState) => {
+   return new Promise((resolve, reject)=>{
+    didTimeOut = false;
+    const timeout = setTimeout(function() {
+      didTimeOut = true;
+      reject('Timeout');
+  }, FETCH_TIMEOUT);
+
+    const isCacheValid = checkCacheValid(getState, "selfStorageData",{cacheKey:locationCode+"_time"});
+    if (isCacheValid) {
+      var state = getState();
+      dispatch(updateUnitInfo(state.selfStorageData, locationCode)) 
+      return  resolve(state.selfStorageData[locationCode]);
+      }
+
       var apiUrl = 'units/' + locationCode;
      return ApiRequest.url(apiUrl)
       .get()
-      .json(json=> {        
-        dispatch(getAllUnits(json));
-        resolve(json);
+      .json(json=> {
+         // Clear the timeout as cleanup
+         clearTimeout(timeout);
+         if(!didTimeOut) {
+             dispatch(getAllUnits(json, locationCode));
+             resolve(json);
+         }
       });
     })
    
   };
 
-  // export const getAllUnitsByLocationCode = (locationCode) => (dispatch) => {
-  // return new Promise(resolve=>{
-  //  return fetch(`${Environment.MW_END_POINT_URL}gvs/api/units/${locationCode}`)
-  //   .then(function(response) {
-  //       if (response.status >= 400) {
-  //           throw new Error("Bad response from server");
-  //       }
-  //       return response.json();
-  //   })
-  //   .then(function(json) {
-  //       console.log(json);
-  //       dispatch(getAllUnits(json));
-  //       resolve(json);
-  //   });    
-  //    })
-    
-  //  };
-
-  // export const getAllUnitsByLocationCode = (locationCode) => async dispatch => {
-  //   const res = await axios.get(`${Environment.MW_END_POINT_URL}gvs/api/units/${locationCode}`);
-  //   console.log('result',res);
-  //   return dispatch(getAllUnits(res.data));
-  // }
-
-export const resetSelfStorageUnits=()=> dispatch=>{
-  return dispatch(resetUnit());
+export const resetSelfStorageUnits=()=> (dispatch, getState)=>{
+  var state = getState();
+    return  dispatch(resetUnit(state.selfStorageData)) 
+    //return dispatch(resetUnit());
 }
 

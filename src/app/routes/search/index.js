@@ -20,14 +20,13 @@ import { getPinCodes_Sites
 
 var pathParams = {};
 const frontload = async props => {
-  //props.resetAllSites();
+  props.resetAllSites();
   pathParams = props.match.params;
   //const queryParams = queryString.parse(window.location.search);
   //await props.getAllSitesByFilters(values.value);
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
+  
   dynamicRequestList.push(props.getAllSitesByFilters(props.match.params.filter));
   document.getElementById('div-preloader').style.display = 'block';
   //await Promise.all(dynamicRequestList);
@@ -60,12 +59,16 @@ class Search extends Component {
   render() {
 
     return (
-      <Page id="search">
+      <Page id="search"
+       title={`Self Storage Facilities with Great Value Storage in ${this.props.match.params.filter}`} 
+       description={`Rent clean and cheap self storage units today with Great Value Storage located in ${this.props.match.params.filter}. We offer climate and non-climate control self storage units.`}>
       <HomeBanner pageName="search" allPinCodes_Sites ={this.props.allPinCodes_Sites} siteCount={!!this.props.allSites.siteLocations ?  this.props.allSites.siteLocations.length : 0} siteName={pathParams.filter}></HomeBanner>
       <CommonBreadCrumb allSites={this.props.allSites} allPinCodes_Sites ={this.props.allPinCodes_Sites}></CommonBreadCrumb>
       <main id="main" className="citypage-section"> 
+        <div>
+          <h2 className="nearBySites">Personal storage & Self storage locations in {pathParams.filter} </h2>
           <SearchFilteredData allSites={this.props.allSites} allFilters={this.props.allFilters}></SearchFilteredData>
-        
+        </div>
           <section id="about" className ="city-nearby-lake ">
          
           {!!this.props.allSites.siteLocations && this.props.allSites.siteLocations[0].content.gvsnearneighborhoods.length > 0 &&

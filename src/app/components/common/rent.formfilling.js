@@ -327,7 +327,7 @@ return (
                 <form className="mb-5 " method="post"  name="frmRentNow"  onSubmit= {this.submitReserveNowForm}>
 
                 <div className="fill-rent-info">
-                <div className="row pb-3">
+                <div className="row pb-2">
                 	<div className="col-md-6">
                       <div className="form-group">
                         <label htmlFor="First Name">First Name <span className="text-danger"> * </span></label>
@@ -346,7 +346,7 @@ return (
                   </div>   
                   
                   
-                   <div className="row pb-3">
+                   <div className="row pb-2">
                     <div className="col-md-6">
                       <div className="form-group">
                         <label htmlFor="First Name">Company </label>
@@ -365,7 +365,7 @@ return (
                   </div>
                   
                    
-                  <div className="row pb-3">  
+                  <div className="row pb-2">  
                     <div className="col-md-6">
                       <div className="form-group">
                         <label htmlFor="First Name"> Phone <span className="text-danger"> * </span> </label>
@@ -392,7 +392,7 @@ return (
                     </div> 
                     </div>          
 				
-                 <div className="row pb-3">
+                 <div className="row pb-2">
                     <div className="col-md-6">
                       <div className="form-group">
                         <label htmlFor="First Name">Address <span className="text-danger"> * </span> </label>
@@ -411,7 +411,7 @@ return (
                   </div>
                   
                   
-                  <div className="row pb-3">
+                  <div className="row pb-2">
                     <div className="col-md-6">
                       <div className="form-group">
                         <label className="d-block" htmlFor="First Name">State / Province <span className="text-danger"> * </span></label>
@@ -430,7 +430,7 @@ return (
                   </div>
                   
                   
-                  <div className="row pb-3">
+                  <div className="row pb-2">
                     <div className="col-md-6">
                       <div className="form-group">
                       <label className="d-block">Country / Region <span className="text-danger"> * </span> <span className="small pull-right"> (required if not in US & Canada) </span> </label>
@@ -450,7 +450,7 @@ return (
                   </div>
                   
                   
-                  {/* <div className="row pb-3">  
+                  {/* <div className="row pb-2">  
                     <div className="col-md-6">
                       <div className="form-group">
                         <label htmlFor="First Name"> Movie-In Date <span className="text-danger"> * </span> </label>
@@ -468,7 +468,7 @@ return (
                     
                   
                    
-                  {/* <div className="row pb-3">  
+                  {/* <div className="row pb-2">  
                     <div className="col-md-10">
                       <div className="form-group">
                         <label htmlFor="First Name">Select Protection coverage <span className="text-danger"> * </span> </label>

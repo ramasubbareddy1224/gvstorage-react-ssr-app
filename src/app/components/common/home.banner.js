@@ -121,7 +121,7 @@ render(){
     
         <div className={pageName == 'home' ?  'inner-banner-content wow zoomIn':'inner-banner-content wow zoomIn' }>
         { this.props.pageName == 'home' && 
-        <div>
+        <div className="banner-text">
          <h2>Need Storage Space? We've got room!</h2>
           <p> Find and rent personal and business storage solutions </p>
           </div>

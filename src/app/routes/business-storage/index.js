@@ -15,9 +15,8 @@ import { StaticContent } from '../../../static-content';
 const frontload = async props =>{
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
+  
   document.getElementById('div-preloader').style.display = 'block';
   return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
@@ -45,7 +44,9 @@ class BusinessStorage extends Component {
 
   render() {
     return (
-      <Page id="business-storage">
+      <Page id="business-storage"
+      title="Small Business Storage Units | Great Value Storage"
+      description="Easily and affordably store sensitive documents, inventory, product samples, and tools with commercial and business storage units at Great Value Storage. Call now for low monthly rates.">
     <HomeBanner pageName="Business Storage" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
     <CommonStaticBreadCrumb pageName="Business Storage" routeName="Storage Options" ></CommonStaticBreadCrumb>
     <main id="main">

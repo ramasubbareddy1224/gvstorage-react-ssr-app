@@ -15,9 +15,8 @@ import { StaticContent } from '../../../static-content';
 const frontload = async props =>{
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
+  
   document.getElementById('div-preloader').style.display = 'block';
   return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
@@ -45,7 +44,9 @@ class PersonalStorage extends Component {
 
   render() {
     return (
-      <Page id="personal-storage">
+      <Page id="personal-storage"
+      title="Affordable &amp; Convenient Self Storage Units | Great Value Storage"
+      description="Reclaim your living space with affordable self storage at Great Value Storage. We offer flexible storage unit rentals, low monthly rates, and unparalleled customer service.">
     <HomeBanner pageName="Personal Storage" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
     <CommonStaticBreadCrumb pageName="Personal Storage" routeName="Storage Options" ></CommonStaticBreadCrumb>
     <main id="main">

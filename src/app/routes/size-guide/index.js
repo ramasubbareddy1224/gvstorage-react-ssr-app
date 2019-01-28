@@ -15,9 +15,8 @@ import { StaticContent } from '../../../static-content';
 const frontload = async props =>{
 
   var dynamicRequestList = [];
-  if(props.allPinCodes_Sites.length == 0){
-    dynamicRequestList.push(props.getPinCodes_Sites());
-  }
+  dynamicRequestList.push(props.getPinCodes_Sites());
+  
   document.getElementById('div-preloader').style.display = 'block';
   return Promise.all(dynamicRequestList).then(function(values) {
     document.getElementById('div-preloader').style.display = 'none';
@@ -45,7 +44,9 @@ class SizeGuide extends Component {
 
   render() {
     return (
-      <Page id="size-guide">
+      <Page id="size-guide"
+      title="Size Guide | Great Value Storage"
+      description="See our size guide to see how much storage you need.">
     <HomeBanner pageName="Size Guide" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
     <CommonStaticBreadCrumb pageName="Size Guide" routeName="Storage Tools" ></CommonStaticBreadCrumb>
     <main id="main">
