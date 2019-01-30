@@ -235,12 +235,26 @@ class ReserveFormFilling extends Component{
           document.getElementById('div-preloader').style.display = 'none';
           // alert('Reserved succesfully');
          // this.setState({isRedirectActivated: true});
-        
+         this.props.onConfirmationPageEnter();
          this.setState({reserveNowResponse: success, isInViewPage: true});
         }
+
+        if(success.status.code < 0){
+          setTimeout(() => {
+            document.getElementById("reserveFailureMsg").style.display = "block";
+            document.getElementById("failureMsg").innerText = success.status.message;
+          }, 10);
+        }
+
       },
       (error)=>{
-        alert((JSON.parse(error.text)).status.message);
+          setTimeout(() => {
+            document.getElementById("reserveFailureMsg").style.display = "block";
+            document.getElementById("failureMsg").innerText = !!error.text && !!(JSON.parse(error.text)).status && (JSON.parse(error.text)).status.message;
+          }, 10);
+        
+
+        //alert((JSON.parse(error.text)).status.message);
         document.getElementById('div-preloader').style.display = 'none';
       });
   }

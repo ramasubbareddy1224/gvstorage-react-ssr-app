@@ -58,7 +58,7 @@ getMoveInData(){
   const pathParams = this.props.pathParams;
 
   const {unit} = this.props.selectedUnitInfo;
-  const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
+  const {insurancePlans} =   Object.keys(this.props.allUnits).length  > 0 ? this.props.allUnits : this.props.selectedUnitInfo;
 
   var unitInfo = '';
   if(!pathParams.isReloaded){
@@ -200,19 +200,32 @@ getMoveInData(){
     }
 
       confirmPayment(requestData).then((success)=>{
-        alert(success.status.message);
+       // alert(success.status.message);
         document.getElementById('div-preloader').style.display = 'none';
         if(success.status.code  == 200){
          
-   
+          this.props.onConfirmationPageEnter();
           this.setState({isInViewPage: true, confirmPaymentReponse: success});
+          
         }
         else if(success.status.code == -83){
          document.getElementById('div-preloader').style.display = 'none';
         }
+
+        if(success.status.code < 0){
+          setTimeout(() => {
+            document.getElementById("reserveFailureMsg").style.display = "block";
+            document.getElementById("failureMsg").innerText = success.status.message;
+          }, 10);
+        }
       },
       (error)=>{
-        alert((JSON.parse(error.text)).status.message);
+        setTimeout(() => {
+          document.getElementById("reserveFailureMsg").style.display = "block";
+          document.getElementById("failureMsg").innerText = !!error.text && !!(JSON.parse(error.text)).status && (JSON.parse(error.text)).status.message;
+        }, 10);
+
+        //alert((JSON.parse(error.text)).status.message);
         document.getElementById('div-preloader').style.display = 'none';
       });
     }
@@ -346,7 +359,7 @@ render(){
     const {tenantInfo} = this.props;
     const {moveInCharges} = this.props.moveInCharges;
     const {totalAmount} = this.props.moveInCharges;
-    const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;
+    const {insurancePlans} =   Object.keys(this.props.allUnits).length  > 0 ? this.props.allUnits : this.props.selectedUnitInfo;
 
 
     

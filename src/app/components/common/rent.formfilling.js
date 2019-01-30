@@ -305,7 +305,7 @@ render(){
 
   if (this.state.isRedirectActivated) {
     this.setState({isRedirectActivated: false});
-    return <Redirect to={`/rent-payment/${this.props.pathParams.locationCode}/${this.props.pathParams.unitId}/${this.state.tenantID}`} />
+    return <Redirect to={`/rent-payment/${this.props.pathParams.metaParam}/${this.props.pathParams.locationCode}/${this.props.pathParams.unitId}/${this.state.tenantID}`} />
   }
 
   const {insurancePlans} =   Object.keys(this.props.selectedUnitInfo).length  > 0 ? this.props.selectedUnitInfo : this.props.allUnits;

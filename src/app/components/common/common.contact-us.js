@@ -3,6 +3,7 @@ import {Redirect} from 'react-router-dom';
 import { contactUs
 } from '../../../modules/actioncreators/common.actioncreator';
 import NumberFormat from 'react-number-format';
+import {Link} from 'react-router-dom';
 
  class CommonContactUs extends Component{
    constructor(){
@@ -10,7 +11,8 @@ import NumberFormat from 'react-number-format';
      this.state ={
       fields: {},
       errors: {},
-      isToRedirect: false
+      isToRedirect: false,
+      isToShowConfirmation: false
      };
    }
 
@@ -44,7 +46,7 @@ import NumberFormat from 'react-number-format';
         //alert(success.status.message);
         document.getElementById('div-preloader').style.display = 'none';
         if(success.status.code  == 200){
-          this.setState({isToRedirect: true});
+          this.setState({isToShowConfirmation: true});
         }
         // else if(success.status.code < -83){
         //  document.getElementById('div-preloader').style.display = 'none';
@@ -206,7 +208,8 @@ render(){
                
                </div>
            </div>
-           
+
+           {!this.state.isToShowConfirmation &&
            <div className="col-12 col-md-8">
              <div className="">
              <form method="post"  name="frmContactUs"  onSubmit= {this.submitContactUsForm}>
@@ -319,6 +322,33 @@ render(){
            </form>
            </div>
           </div>   
+          }
+
+          {this.state.isToShowConfirmation && <div className="col-12 col-md-8">
+             <div className="">
+          
+               <div className="rent-your-unit-now pt-3 pb-3">
+              
+               <div className="rent-unit-block">
+              
+               
+               <div className="fill-rent-info text-center">
+               
+               Thank you. Your feedback has been submitted.  <strong> <Link to="/"> Click here  to Rent / Reserve Unit </Link>         
+       </strong>
+                </div>
+                 
+                   
+              
+               
+             </div>
+            
+              
+             
+           </div>
+      
+           </div>
+          </div>}
        
        </div>
      </div>

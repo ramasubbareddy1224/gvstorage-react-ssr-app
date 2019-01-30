@@ -108,6 +108,17 @@ const frontload = async props => {
 
 class RentPayment extends Component {  
 
+  constructor(){
+    super();
+    this.state = {
+      isInConfirmationScreen: false
+    };
+  }
+  
+onConfirmationPageEnter=()=>{
+  this.setState({isInConfirmationScreen: true});
+}
+
   render() {
     const { allUnits } = this.props;
     const {moveInCharges} = this.props;
@@ -119,13 +130,31 @@ class RentPayment extends Component {
         {/* <CommonBreadCrumb></CommonBreadCrumb> */}
         <main id="main" className="citypage-section"> 
         <section id="about" className="rent-sec wow fadeInUp">
+        <section class="breadcrumb-section">
+                <div class="container">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="/">Home</a></li>
+                      <li class="breadcrumb-item"><a href="/storage-options">Storage options</a></li>
+                      <li class="breadcrumb-item" aria-current="page">Rent Now</li>
+                    </ol>
+                  </nav>
+                </div>
+              </section>
             <div className="container">
+            <div className="alert alert-success fade in alert-dismissible show" id="reserveSuccessMsg">
+                <strong id="successMsg"></strong> 
+            </div>
+
+            <div className="alert alert-danger fade in alert-dismissible show" id="reserveFailureMsg">
+                <strong id="failureMsg"></strong>
+            </div>
             <div className="row">
                 <div className="rent-facility-info">
                 <div className="row">
-                    <CommonFacilityInfo allUnits={allUnits} selectedUnitInfo={selectedUnitInfo} pathParams={pathParams} moveInCharges={moveInCharges}></CommonFacilityInfo>
+                <CommonFacilityInfo allUnits={allUnits} selectedUnitInfo={selectedUnitInfo} pathParams={pathParams} moveInCharges={moveInCharges} isInConfirmationScreen={this.state.isInConfirmationScreen}></CommonFacilityInfo>
                     {/* <RentFormFilling allUnits={allUnits} selectedUnitInfo={selectedUnitInfo} pathParams={pathParams} moveInCharges={moveInCharges}></RentFormFilling> */}
-                    <RentPaymentFormFilling allUnits={allUnits} selectedUnitInfo={selectedUnitInfo} tenantInfo={tenantInfo} moveInCharges={moveInCharges} pathParams={pathParams}></RentPaymentFormFilling>
+                    <RentPaymentFormFilling allUnits={allUnits} selectedUnitInfo={selectedUnitInfo} tenantInfo={tenantInfo} moveInCharges={moveInCharges} pathParams={pathParams}  onConfirmationPageEnter={this.onConfirmationPageEnter}></RentPaymentFormFilling>
                     </div>
                 </div>
                 </div>

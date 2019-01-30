@@ -117,7 +117,18 @@ const frontload = async props => {
 
 
 
+
 class Reserve extends Component {  
+  constructor(){
+    super();
+    this.state = {
+      isInConfirmationScreen: false
+    };
+  }
+  
+onConfirmationPageEnter=()=>{
+  this.setState({isInConfirmationScreen: true});
+}
 
   render() {
     const { allUnits } = this.props;
@@ -130,17 +141,36 @@ class Reserve extends Component {
         {/* <CommonBreadCrumb></CommonBreadCrumb> */}
         <main id="main" className="citypage-section"> 
         <section id="about" className="rent-sec wow fadeInUp">
+        <section class="breadcrumb-section">
+              <div class="container">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item"><a href="/storage-options">Storage options</a></li>
+                    <li class="breadcrumb-item" aria-current="page">Reserve</li>
+                  </ol>
+                </nav>
+              </div>
+            </section>
             <div className="container">
-            <div className="row">
+              <div className="alert alert-success fade in alert-dismissible show" id="reserveSuccessMsg">
+                <strong id="successMsg"></strong>
+              </div>
+
+              <div className="alert alert-danger fade in alert-dismissible show" id="reserveFailureMsg">
+                <strong id="failureMsg"></strong>
+              </div>
+
+              <div className="row">
                 <div className="rent-facility-info">
                   <div className="row">
-                    <CommonFacilityInfo allUnits={allUnits} selectedUnitInfo={selectedUnitInfo} pathParams={pathParams} moveInCharges={moveInCharges}></CommonFacilityInfo>
-                    <ReserveFormFilling allUnits={allUnits} selectedUnitInfo={selectedUnitInfo} pathParams={pathParams} moveInCharges={moveInCharges}></ReserveFormFilling>
+                  <CommonFacilityInfo allUnits={allUnits} selectedUnitInfo={selectedUnitInfo} pathParams={pathParams} moveInCharges={moveInCharges} isInConfirmationScreen={this.state.isInConfirmationScreen}></CommonFacilityInfo>
+                    <ReserveFormFilling allUnits={allUnits} selectedUnitInfo={selectedUnitInfo} pathParams={pathParams} moveInCharges={moveInCharges} onConfirmationPageEnter={this.onConfirmationPageEnter}></ReserveFormFilling>
                   </div>
                 </div>
-                </div>
-                </div>
-            </section>
+              </div>
+            </div>
+          </section>
         </main>
     </Page>
     );

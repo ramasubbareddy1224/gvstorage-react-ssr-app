@@ -2,7 +2,16 @@ import React, { Component } from 'react';
 import {Environment} from '../../../configurations/environment';
 
 class HomeTestimonials extends Component{
+
+  componentDidMount(){
+    var head= document.getElementsByTagName('head')[0];
+    var script= document.createElement('script');
+    script.src= "/js/main.js";
+    head.appendChild(script);
+  }
 render(){
+ 
+ 
     return(
       <section id="testimonials" className="wow fadeInUp">
       <div className="container-fluid">
@@ -11,7 +20,8 @@ render(){
           <h2 >What people say about Great Value Storage</h2>
         </div>
         <div className="owl-carousel testimonials-carousel">
-
+      
+     
             <div className="testimonial-item">
              <img src={Environment.STATIC_FILES_END_POINT_URL + "img/testimonial-1.jpg"} className="testimonial-img" alt="" />
               <p className="testimonial-content">
@@ -24,7 +34,7 @@ render(){
               <h4> Ohio</h4>
               </div>
             </div>
-
+     
             <div className="testimonial-item">
             <img src={Environment.STATIC_FILES_END_POINT_URL +"img/testimonial-2.jpg"} className="testimonial-img" alt="" />
             <p className="testimonial-content">
@@ -37,7 +47,7 @@ render(){
               <h4> Texas </h4>
               </div>
             </div>
-
+     
             <div className="testimonial-item">
             <img src={Environment.STATIC_FILES_END_POINT_URL +"img/testimonial-3.jpg"} className="testimonial-img" alt="" />
             <p className="testimonial-content">
@@ -50,7 +60,7 @@ render(){
               <h4> Nevada </h4>
               </div>
             </div>
-
+       
             <div className="testimonial-item">
             <img src={Environment.STATIC_FILES_END_POINT_URL +"img/testimonial-4.jpg"} className="testimonial-img" alt="" />
             <p className="testimonial-content">
@@ -63,7 +73,7 @@ render(){
               <h4>Freelancer</h4>
               </div>
             </div>
-
+        
             <div className="testimonial-item">
             <img src={Environment.STATIC_FILES_END_POINT_URL +"img/testimonial-5.jpg"} className="testimonial-img" alt="" />
             <p className="testimonial-content">
@@ -76,7 +86,9 @@ render(){
               <h4>Entrepreneur</h4>
               </div>
             </div>
-
+            
+      
+      
         </div>
       </div>
       </div>

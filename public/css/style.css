@@ -2271,6 +2271,13 @@ color: #fff;
 	font-weight: bold !important;
 }
 
+#reserveSuccessMsg{
+	display: none;
+}
+#reserveFailureMsg{
+	display: none;
+}
+
 
 
 

@@ -38,7 +38,7 @@ render(){
         </div>
         <div className="storage-room-content">
           <p className="small"> <i className="fa fa-map-marker"> </i> {!!siteLocation && siteLocation.address1}, {!!siteLocation && siteLocation.city}, {!!siteLocation && siteLocation.stateCode} {!!siteLocation && siteLocation.postalCode}. &nbsp;
-          <a class="btn btn-gvstore btn-success btn-sm border-0 bg-light text-success font-normal "> Get Direction </a> <br />
+          <a class="btn btn-gvstore btn-success btn-sm border-0 bg-light text-success font-normal " > Get Direction </a> <br />
             <i className="fa fa-phone"> </i> {!!siteLocation && siteLocation.phone} <br />
           </p>
           <div className="landmark ">

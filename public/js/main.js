@@ -22,7 +22,6 @@ jQuery(document).ready(function ($) {
   });
 
   
-  setTimeout(() => {
   // Intro background carousel
     $("#intro-carousel").owlCarousel({
       autoplay: true,
@@ -49,7 +48,7 @@ jQuery(document).ready(function ($) {
       }
     }
   });
-  }, 1500);
+
  
 
   // Initiate the wowjs animation library

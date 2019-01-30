@@ -112,7 +112,6 @@ const frontload = async props => {
 
 
 class Rent extends Component {  
-
   render() {
     const { allUnits } = this.props;
     const {moveInCharges} = this.props;
@@ -120,10 +119,21 @@ class Rent extends Component {
 
     console.log(pathParams)
     return (
-    <Page id="reserve">
+    <Page id="rent">
         {/* <CommonBreadCrumb></CommonBreadCrumb> */}
         <main id="main" className="citypage-section"> 
         <section id="about" className="rent-sec wow fadeInUp">
+        <section class="breadcrumb-section">
+                <div class="container">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="/">Home</a></li>
+                      <li class="breadcrumb-item"><a href="/storage-options">Storage options</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Rent Now</li>
+                    </ol>
+                  </nav>
+                </div>
+              </section>
             <div className="container">
             <div className="row">
                 <div className="rent-facility-info">

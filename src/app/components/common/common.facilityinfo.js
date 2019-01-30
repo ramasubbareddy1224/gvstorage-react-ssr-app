@@ -78,9 +78,13 @@ render(){
             <div className="facility-data">
             <div className="data-heading">
                 <p> LOCATION  
-                  {!!siteLocation &&  <span className=" pull-right gv-text-color"> 
+                  {!!siteLocation &&  !this.props.isInConfirmationScreen && <span className=" pull-right gv-text-color"> 
                   <Link to={`/search/${siteLocation.stateName}`}> Change Location
                   </Link>
+                  </span>
+                  }
+                  {!!siteLocation &&this.props.isInConfirmationScreen && <span className=" pull-right gv-text-color"> 
+                  Change Location
                   </span>
                   }
                   {/* {!!selectedSiteLocation &&  <span className=" pull-right gv-text-color">   
@@ -99,14 +103,20 @@ render(){
             <div className="facility-data">
             <div className="data-heading">
                 <p> UNIT SIZE  
+                {!this.props.isInConfirmationScreen ?
                 <Link to={`/self-storage/${pathParams.metaParam}/${pathParams.locationCode}`}>
-                    <span className=" pull-right gv-text-color"> Change unit </span>
+                    <span className=" pull-right gv-text-color"> Change Unit </span>
                 </Link>
+                :
+                <span className=" pull-right gv-text-color"> Change Unit </span>
+                }
                 </p>
             </div>
+            {!! unitInfo&& 
             <div className="data-info">
-                <p> {!!unitInfo && Object.keys(unitInfo).length > 0 && unitInfo.unitWidth} X {Object.keys(unitInfo).length && unitInfo.unitLength} </p>
+                <p> { Object.keys(unitInfo).length > 0 && unitInfo.unitWidth} X {Object.keys(unitInfo).length && unitInfo.unitLength} </p>
             </div>
+            }
             </div>
             
             <div className="facility-data">
@@ -119,9 +129,12 @@ render(){
                         <p className="d-inline-block rate-info w-45 text-muted"> ONSITE <br />
                           <strong ><del> { (`$${unitInfo.onsiteRate}`)}</del></strong> </p>
                           }
+                          {!!unitInfo && 
                         <p className="d-inline-block rate-info w-45"> WEB  <br />
                           <strong className="gv-text-color"> {Object.keys(unitInfo).length && (`$${unitInfo.webRate}`)} </strong> </p>
+                          }
                       </div>
+                      
                       { 
                           !!insurancePlans &&
                                       <p className="small"> Covers up to ${insurancePlans[1].coverage} USD (${insurancePlans[1].premium} USD / monthly) </p>

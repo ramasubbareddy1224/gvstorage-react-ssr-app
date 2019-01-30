@@ -195,10 +195,14 @@ const {pathParams} = this.props;
                                 <p className="d-inline-block rate-info"> <span className="fotnt-weight-normal"> WEB RATE </span><br />
                                   <strong className="gv-text-color"> ${item.webRate} </strong> </p>
                               </div></td>
-                            <td className="text-center"><div className="btn btn-gvstore btn-success border-0 green-gradient">
-                            <Link to={`/rent/self-storage/${pathParams.metaParam}/${pathParams.locationCode}/${item.firstAvailableUnitID}`}> Rent Now </Link>
-                            </div>
-                              <div className="gv-text-color"> <strong><Link to={`/reserve/self-storage/${pathParams.metaParam}/${pathParams.locationCode}/${item.firstAvailableUnitID}`}> Reserve for free </Link> </strong> </div>
+                            <td className="text-center">
+                            <Link to={`/rent/self-storage/${pathParams.metaParam}/${pathParams.locationCode}/${item.firstAvailableUnitID}`}>
+                            <div className="btn btn-gvstore btn-success border-0 green-gradient">
+                             Rent Now 
+                            </div></Link>
+                            <Link to={`/reserve/self-storage/${pathParams.metaParam}/${pathParams.locationCode}/${item.firstAvailableUnitID}`}>
+                              <div className="gv-text-color"> <strong> Reserve for free </strong> </div>
+                              </Link> 
                               </td>
                           </tr>
     );
@@ -344,7 +348,7 @@ const divAppliedFilters =  this.state.filteredUnitTypes.map((val,index)=> {
                         </thead>
                         <tbody>
                           {divUnits}
-                         
+                          {divUnits == '' ? <h6  className="text-center pt-3"><strong> No units available. Contact your Storage Facility Toll free number 877-537-8123 </strong></h6>: divUnits}
                         </tbody>
                       </table>
                     </div>

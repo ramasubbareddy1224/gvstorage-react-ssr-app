@@ -184,7 +184,7 @@ export default () => (
     <Route exact path="/self-storage/:metaParam/:locationCode" component={SelfStorage}/>
     <Route exact path="/reserve/self-storage/:metaParam/:locationCode/:unitId" component={Reserve}/>
     <Route exact path="/rent/self-storage/:metaParam/:locationCode/:unitId" component={Rent}/>
-    <Route exact path="/rent-payment/:locationCode/:unitId/:tenantId" component={RentPayment}/>
+    <Route exact path="/rent-payment/:metaParam/:locationCode/:unitId/:tenantId" component={RentPayment}/>
 
     <Route exact path="/storage-options" component={StorageOptions}/>
     <Route exact path="/why-choose-us" component={WhyChooseUs}/>
