@@ -37,10 +37,10 @@ render(){
         <div className="storage-img-l">  <img src={Environment.STATIC_FILES_END_POINT_URL + "img/facility/facility-banner-img.png"} alt="" /> </div>
         </div>
         <div className="storage-room-content">
-          <p className="small"> <i className="fa fa-map-marker"> </i> {!!siteLocation && siteLocation.address1}, {!!siteLocation && siteLocation.city}, {!!siteLocation && siteLocation.stateCode} {!!siteLocation && siteLocation.postalCode}. &nbsp;
-          <a class="btn btn-gvstore btn-success btn-sm border-0 bg-light text-success font-normal " > Get Direction </a> <br />
-            <i className="fa fa-phone"> </i> {!!siteLocation && siteLocation.phone} <br />
-          </p>
+        { !!siteLocation &&  <p className="small"> <i className="fa fa-map-marker"> </i> {siteLocation.address1}, {siteLocation.city}, {siteLocation.stateCode} {siteLocation.postalCode}. &nbsp;
+          <a className="btn btn-gvstore btn-success btn-sm border-0 bg-light text-success font-normal " target="_blank" href={`https://www.google.com/maps/dir/Your Location/${siteLocation.latitude},${siteLocation.longitude}`} > Get Direction </a> <br />
+            <i className="fa fa-phone"> </i> {siteLocation.phone} <br />
+          </p> }
           <div className="landmark ">
             {/* <p className="d-inline-block pr-5 small-text"> <strong>Near</strong> <br />
               St. Thomas catholic church </p> */}
