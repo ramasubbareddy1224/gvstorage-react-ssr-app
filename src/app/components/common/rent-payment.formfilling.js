@@ -428,7 +428,7 @@ return (
 
  {this.state.isInViewPage && <RentConfirmation rentConfirmationData={this.state.confirmPaymentReponse} tenantInfo={tenantInfo}></RentConfirmation> }
 
-      {!this.state.isInViewPage &&
+      {!this.state.isInViewPage && 
             	<div className="">
                 <div className="rent-your-unit-now pt-3 pb-3">
                 <form  method="post"  name="frmRentPayment"  onSubmit= {this.submitRentPaymentForm}>
@@ -441,11 +441,13 @@ return (
                 <div className="col-md-12"> 
                 <p> Your Information </p>
                 <div classname="rent-now-total-info">
+                { tenantInfo && 
                 <p> 
                 <strong classname="total-info">{tenantInfo.firstName} {tenantInfo.lastName} <br />
                 {tenantInfo.emailAddress} <br />
                 {tenantInfo.phoneNumber}</strong>
                 </p>
+                }
                 </div>
                 <hr />
                 
