@@ -28,5 +28,8 @@ export const ACTIONTYPES = {
     'SHARED': {
         GET_FILTER_INFO: 'GET_FILTER_INFO',
         GET_ALL_FACILITY_SITES: 'GET_ALL_FACILITY_SITES' 
+    },
+    'RENT':{
+        GET_TENENT_INFO:'GET_TENENT_INFO'
     }
 }

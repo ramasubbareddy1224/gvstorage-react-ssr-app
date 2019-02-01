@@ -9,10 +9,19 @@ render(){
           
           <div className="how-storage-works">
               <div className="how-storage-img ">
+              
+              <div className="desktop">
               <img src={Environment.STATIC_FILES_END_POINT_URL + "img/how-storage-works.png"} className="img-fluid w-100 img-how-storage-works" alt="" />
+              </div>
+
+              <div className="mobile">
+              <img src={Environment.STATIC_FILES_END_POINT_URL + "img/how-storage-works-mobile.png"} className="img-fluid w-100 img-how-storage-works" alt="" />
+              </div>
+              
+
               <div className="how-storage-bg-color">
               <div className="how-storage-text text-center ">
-              <h3 className="p-3 pb-5 font-lite"> How Storage Works </h3>
+              <h3 className="p-3 pb-3 font-lite"> How Storage Works </h3>
               <p>  Storage (in terms of self-storage) is an industry where businesses 
             allow customers to rent space at a certain location. Typically, this 
             means a 'unit' at a dedicated storage facility, though there are some 

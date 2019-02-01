@@ -30,25 +30,25 @@ const formatDate=(date) =>{
 }
 
 var pathParams = {};
-var tenantInfo = {};
+//var tenantInfo = {};
 
 const frontload = async props => {
   pathParams = props.match.params;
 
-
-  getTenantInfo(pathParams.tenantId, pathParams.locationCode).then((success)=>{
-    if(!!success){
+ await props.getTenantInfo(pathParams.tenantId, pathParams.locationCode);
+  // getTenantInfo(pathParams.tenantId, pathParams.locationCode).then((success)=>{
+  //   if(!!success){
      
-    if(success.status.code  == 200){
-      tenantInfo = success;
-    } 
-    }
-  },
-  (error)=>{
-    document.getElementById('div-preloader').style.display = 'none';
-    console.log('error' + error);
+  //   if(success.status.code  == 200){
+  //     tenantInfo = success;
+  //   } 
+  //   }
+  // },
+  // (error)=>{
+  //   document.getElementById('div-preloader').style.display = 'none';
+  //   console.log('error' + error);
    
-  });
+  // });
 
 
   var dynamicRequestList = [];
@@ -120,7 +120,7 @@ onConfirmationPageEnter=()=>{
 }
 
   render() {
-    const { allUnits } = this.props;
+    const { allUnits ,tenantInfo } = this.props;
     const {moveInCharges} = this.props;
     const {selectedUnitInfo} = this.props;
 
@@ -129,7 +129,6 @@ onConfirmationPageEnter=()=>{
     <Page id="reserve">
         {/* <CommonBreadCrumb></CommonBreadCrumb> */}
         <main id="main" className="citypage-section"> 
-        <section id="about" className="rent-sec wow fadeInUp">
         <section class="breadcrumb-section">
                 <div class="container">
                   <nav aria-label="breadcrumb">
@@ -141,6 +140,8 @@ onConfirmationPageEnter=()=>{
                   </nav>
                 </div>
               </section>
+        <section id="about" className="rent-sec wow fadeInUp">
+     
             <div className="container">
             <div className="alert alert-success fade in alert-dismissible show" id="reserveSuccessMsg">
                 <strong id="successMsg"></strong> 
@@ -170,11 +171,12 @@ const mapStateToProps = state => ({
   allPinCodes_Sites: state.homePageData.pinCodes_Sites,
    allUnits: state.selfStorageData.units,
    moveInCharges: state.reserveData.moveInCharges,
-   selectedUnitInfo: state.reserveData.selectedUnitInfo
+   selectedUnitInfo: state.reserveData.selectedUnitInfo,
+   tenantInfo:state.rentData.tenantInfo
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ getPinCodes_Sites, getAllSitesByFilters,getAllUnitsByLocationCode, getAllMoveInCharges, getSelectedUnitInfo }, dispatch);
+  bindActionCreators({ getPinCodes_Sites, getAllSitesByFilters,getAllUnitsByLocationCode, getAllMoveInCharges, getSelectedUnitInfo,getTenantInfo }, dispatch);
 
 export default connect(
   mapStateToProps,

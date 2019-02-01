@@ -38,7 +38,7 @@ render(){
                   <img src={Environment.STATIC_FILES_END_POINT_URL + "img/we-create.png"} alt="we connect" />
               </div>
               </div>
-              <h5> We Creat Value </h5>
+              <h5> We Create Value </h5>
               <p> From strong to moving and beyond you can be sure well provide you with grat prices, the amenities you expect and additional resources to make you stay stress free. </p>
             </div>
           </div>        

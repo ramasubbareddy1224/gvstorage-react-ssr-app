@@ -50,7 +50,7 @@ class WhyChooseUs extends Component {
     <HomeBanner pageName="Why Choose Us" allPinCodes_Sites ={this.props.allPinCodes_Sites}></HomeBanner>
     <CommonStaticBreadCrumb pageName="Why Choose Us" routeName="Storage Options"></CommonStaticBreadCrumb>
     <main id="main">
-    <section id="selfstorage" class="pt-3">
+    <section id="selfstorage" className="pt-3">
         <CommonStaticContent pageContent={StaticContent.WhyChooseUs}></CommonStaticContent>
     </section>
     </main>

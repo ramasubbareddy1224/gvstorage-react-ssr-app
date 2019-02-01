@@ -10,15 +10,15 @@ export const StaticContent = {
               </div>
          <div class="self-storage-content"> 
       
+          <div class="row why-chooseus">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 bhoechie-tab-container">
           <div class="row">
-          <div class="col-md-12 col-sm-12 col-12 bhoechie-tab-container">
-          <div class="row">
-              <div class="col-md-4 col-sm-4 col-12 bhoechie-tab-menu">
+              <div class="col-12 col-sm-12 col-md-12 col-lg-4 bhoechie-tab-menu">
+              <h4 style="font-size:18px;" class="mobile-unit pl-3">Select to Learn More </h4>
                 <div class="list-group">
-                  <a href="#" class="list-group-item">
-                    <span> Select to Learn More </span>
-                  </a>
-                  <a href="#" class="list-group-item ">
+                <h4 style="font-size:18px;" class="desktop-unit">Select to Learn More </h4>
+                  
+                  <a href="#" class="list-group-item active">
                    <span> Value Creation </span>
                   </a>
                   <a href="#" class="list-group-item">
@@ -38,21 +38,19 @@ export const StaticContent = {
                   </a>
                 </div>
               </div>
-              <div class="col-md-8 col-sm-8 col-12 bhoechie-tab">
-                  
+              <div class="col-12 col-sm-12 col-md-12 col-lg-8  bhoechie-tab">
   
-              <div class="bhoechie-tab-content">                      
-              <h2> SEEK TO UNDERSTAND </h2>
-            <p> Not every customer is created equal. We want your storage experience to be memorable, pleasant and shareable. Each of our managers is trained to seek to understand the problems and needs of our customers to provide personalized experiences.</p>
-            <div class="clearfix"> </div>
-    </div>
-  
-                  <div class="bhoechie-tab-content">
+                  <div class="bhoechie-tab-content active">
   
                         <h2>VALUE CREATION</h2>
                         <p> Price is what you pay, value is what you get. We are committed to creating value by providing excellent service at affordable prices with the amenities you expect. The true triple threat. </p>
                         <div class="clearfix"> </div>
                         
+                  </div>
+                  <div class="bhoechie-tab-content">
+                      <h2> ALWAYS BE RESPONSIVE </h2>
+                        <p> We promise to always be responsive to all customer inquiries and questions in a timely manner. Lack of communication leads to lack of trust, which eventually leaves room for doubt. We want our customers to trust in what we stand for. </p>
+                        <div class="clearfix"> </div>
                   </div>
                   <div class="bhoechie-tab-content">
                       <h2> ALWAYS BE RESPONSIVE </h2>
@@ -80,10 +78,10 @@ export const StaticContent = {
                   </div>
                   
                   <div class="bhoechie-tab-content">                      
-              <h2> SEEK TO UNDERSTAND </h2>
-            <p> Not every customer is created equal. We want your storage experience to be memorable, pleasant and shareable. Each of our managers is trained to seek to understand the problems and needs of our customers to provide personalized experiences.</p>
-            <div class="clearfix"> </div>
-    </div>
+                    <h2> SEEK TO UNDERSTAND </h2>
+                  <p> Not every customer is created equal. We want your storage experience to be memorable, pleasant and shareable. Each of our managers is trained to seek to understand the problems and needs of our customers to provide personalized experiences.</p>
+                  <div class="clearfix"> </div>
+                </div>
                              
                         </div>
                   </div>
@@ -99,9 +97,9 @@ export const StaticContent = {
    <div class="container-fluid-padding">
      <div class="self-storage-content"> 
   <div class="row">
-      <div class="col-md-12 col-sm-12 col-12 bhoechie-tab-container">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 bhoechie-tab-container">
       <div class="row">
-          <div class="col-md-4 col-sm-4 col-12 bhoechie-tab-menu">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4  bhoechie-tab-menu">
             <div class="list-group">
               <a href="#" class="list-group-item" id="personal-storage-head">
                 <span> Personal Storage </span>
@@ -123,7 +121,7 @@ export const StaticContent = {
               </a>-->
             </div>
           </div>
-          <div class="col-md-8 col-sm-8 col-12 bhoechie-tab">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-8  bhoechie-tab">
               <!-- flight section -->
               <div class="bhoechie-tab-content" id="personal-storage-content">
 

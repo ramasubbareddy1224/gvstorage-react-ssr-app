@@ -151,7 +151,7 @@ render(){
         
           <div className="find-storage">
                {/* <form  className="contactForm"> */}
-             <label htmlFor="label" className="small text-left float-left" style ={ {fontSize: "70%", paddingLeft: '15px'}}> Search Storage</label>
+               <label htmlFor="label" className="small text-left float-left desktop" style ={ {fontSize: "70%", paddingLeft: '15px'}}> Search Storage</label>
              <div className="col-md-12 banner-search">
               {/* <input type="text" className="form-control " placeholder="Zip, Address of City "  /> */}
               {/* <select value={selectedOption} onChange={this.handleLocationChange} >

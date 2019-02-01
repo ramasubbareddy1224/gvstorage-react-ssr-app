@@ -67,7 +67,8 @@ render(){
   <div className="container-fluid-padding">
       <div id="logo" className="pull-left">
         <h1><Link to="/" className="navbar-brand text-brand"> <img src={"/img/great-value-store-logo.png"} alt="logo" /> </Link></h1>
-      </div>
+      </div> 
+      <button type="button" id="mobile-nav-toggle"><i className="fa fa-bars"></i></button>
 
       <nav id="nav-menu-container">
         <ul className="nav-menu">

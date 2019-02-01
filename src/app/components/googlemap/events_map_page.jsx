@@ -110,7 +110,7 @@ import {K_SIZE} from './my_great_place_with_controllable_hover_styles.js';
 
     return (
       <div>
-        <div style={{ height: '75vh', width: '100%' }}>
+        <div style={{ height:'80vh', width: '100%' }} id='mapHeight'>
        <GoogleMap
         bootstrapURLKeys={{ key: Environment.GOOGLE_MAP_KEY }}
         center={this.props.center}

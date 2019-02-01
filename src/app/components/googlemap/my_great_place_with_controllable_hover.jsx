@@ -19,7 +19,14 @@ export default class MyGreatPlaceWithControllableHover extends Component {
   constructor(props) {
     super(props);
   }
-
+  onSitesHover = (index, color) => {
+    let $ = require('jquery');
+    $('#' + index).css('backgroundColor', color);
+    //document.getElementById(index).style.background.color = color;
+     $('#'+index).focus().scrollTop();
+    
+    
+    }
   
 
   render() {
@@ -34,7 +41,7 @@ export default class MyGreatPlaceWithControllableHover extends Component {
       //       {this.props.hoverDetails.lat} {this.props.hoverDetails.lng}
       //     </div>
       //  </div>
-      <div className={"hint hint--html hint--info hint--top " + (this.props.hover ? 'map-pointer-hover' : 'map-pointer-default')}  style={style}>
+      <div onMouseOver={() => { this.onSitesHover(this.props.text, '#52BE80') }} onMouseLeave={() => { this.onSitesHover(this.props.text, '') }} className={"hint hint--html hint--info hint--top " + (this.props.hover ? 'map-pointer-hover' : 'map-pointer-default')}  style={style}>
       <div className="props-count">{this.props.text}</div>
       <div style={{width: 80}}  className={this.props.hover ? 'map-hover' : 'map-default'}>
            {/* {this.props.hoverDetails.lat} {this.props.hoverDetails.lng} */}

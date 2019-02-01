@@ -122,7 +122,6 @@ class Rent extends Component {
     <Page id="rent">
         {/* <CommonBreadCrumb></CommonBreadCrumb> */}
         <main id="main" className="citypage-section"> 
-        <section id="about" className="rent-sec wow fadeInUp">
         <section class="breadcrumb-section">
                 <div class="container">
                   <nav aria-label="breadcrumb">
@@ -134,6 +133,8 @@ class Rent extends Component {
                   </nav>
                 </div>
               </section>
+        <section id="about" className="rent-sec wow fadeInUp">
+        
             <div className="container">
             <div className="row">
                 <div className="rent-facility-info">

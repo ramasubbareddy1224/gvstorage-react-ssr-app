@@ -126,11 +126,11 @@ render(){
             <div className="data-info">
                 <div className="rate-varision">
                         {!!unitInfo && Object.keys(unitInfo).length && !!unitInfo.onsiteRate &&
-                        <p className="d-inline-block rate-info w-45 text-muted"> ONSITE <br />
+                        <p className="d-inline-block rate-info w-45 text-muted"> WALKIN RATE <br />
                           <strong ><del> { (`$${unitInfo.onsiteRate}`)}</del></strong> </p>
                           }
                           {!!unitInfo && 
-                        <p className="d-inline-block rate-info w-45"> WEB  <br />
+                        <p className="d-inline-block rate-info w-45"> ONLINE  RATE <br />
                           <strong className="gv-text-color"> {Object.keys(unitInfo).length && (`$${unitInfo.webRate}`)} </strong> </p>
                           }
                       </div>

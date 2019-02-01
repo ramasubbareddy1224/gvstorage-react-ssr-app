@@ -97,21 +97,21 @@ render(){
                 </div>
                 
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">Car storage</h6>
+                  <h6 className="w-title-a text-brand"><Link to="/vehicle-storage">Car Storage</Link></h6>
                 </div>
                 
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">Boat storage</h6>
+                  <h6 className="w-title-a text-brand"><Link to="/vehicle-storage">Boat Storage</Link></h6>
                 </div>
                 
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand">RV storage</h6>
+                  <h6 className="w-title-a text-brand"><Link to="/vehicle-storage">RV Storage</Link></h6>
                 </div>
                 
                 <div className="w-header-a">
-                  <h6 className="w-title-a text-brand"><Link to="/business-storage">Business storage</Link> </h6>
+                  <h6 className="w-title-a text-brand"><Link to="/business-storage">Business Storage</Link> </h6>
                 </div>
-                
+                {/*
                 <div className="w-body-a">
                   <div className="w-body-a">
                     <ul className="list-unstyled">
@@ -124,7 +124,7 @@ render(){
                         <li>     Office Storage</li>
                     </ul>
                   </div>
-                </div>
+                </div>*/}
                 
                 
               </div>
@@ -192,7 +192,7 @@ render(){
                 </div>
                
                <div className="w-header-a">
-                  <div className="btn btn-gvstore btn-footer w-100"> <Link className="payBillNow" to="/pay-bill">Pay Bill Now</Link> </div>
+               <div className="btn btn-gvstore btn-footer w-100"> <Link className="payBillNow w-100 d-block" to="/pay-bill">Pay Bill Now</Link> </div>
                 </div>
                 
               </div>

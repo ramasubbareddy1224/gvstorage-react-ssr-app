@@ -54,7 +54,7 @@ render(){
                 <div className="storage-img-block">
                     <img src={Environment.STATIC_FILES_END_POINT_URL + "img/gsv-storage.png"} alt="gvs storage" />
                 </div>
-                <p className="title"> GVS  Storage </p>
+                <p className="title"> GVS Services </p>
                 </Link>
               </div>
             </div>

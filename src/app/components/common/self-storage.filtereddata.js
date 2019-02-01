@@ -189,10 +189,10 @@ const {pathParams} = this.props;
                             <td style={{width:"33%"}}><div className="rate-varision">
                                 { !!item.onsiteRate &&
                                 <p className="d-inline-block rate-info" style={{color: '#c6c6c6'}}> 
-                                <span className="fotnt-weight-normal"> ONSITE RATE </span><br />
+                                <span className="fotnt-weight-normal"> WALKIN RATE </span><br />
                                   <strong ><del> ${item.onsiteRate} </del></strong> </p>
                                   }
-                                <p className="d-inline-block rate-info"> <span className="fotnt-weight-normal"> WEB RATE </span><br />
+                                <p className="d-inline-block rate-info"> <span className="fotnt-weight-normal"> ONLINE RATE </span><br />
                                   <strong className="gv-text-color"> ${item.webRate} </strong> </p>
                               </div></td>
                             <td className="text-center">
@@ -205,6 +205,61 @@ const {pathParams} = this.props;
                               </Link> 
                               </td>
                           </tr>
+    );
+  });
+  var mobileDivUnits = filteredUnits.map((item, index) => {
+    return (
+      <div className="unit-facility-data">
+        <div className="row m-unit">
+          <div className="col-5"> Unit Size </div>
+          <div className="col-7"> <div className="unit-size"> <strong>{item.unitWidth}X{item.unitLength}</strong> </div>
+            {
+              item.openUnits == 1 &&
+              <p className="small text-danger pt-2 pl-3 m-0"><b>{item.openUnits} Unit left</b></p>
+            } </div>
+        </div>
+
+        <div className="row m-features">
+          <div className="col-5"> Features </div>
+          <div className="col-7"> <h5> {item.unitTypeName} </h5>
+          {!!item.floor &&  <p className="mb-0">
+              {item.floor} </p>} 
+          {!!item.indoor && <p className="mb-0"> <span> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/gv-billit-points.png"} alt="" />  </span>
+            {item.indoor} </p>}  
+          {!!item.entryLocation &&  <p className="mb-0"> <span> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/gv-billit-points.png"} alt=""/> </span> {item.entryLocation}
+            </p>}
+            </div>
+        </div>
+
+        <div className="row m-offers">
+          <div className="col-5"> Offers </div>
+          <div className="col-7"> 
+          <div className="gv-text-color"> <strong> {item.specialOffer} </strong> 
+          </div> </div>
+        </div>
+
+        <div className="row m-rate">
+          <div className="col-5"> Rates </div>
+          <div className="col-7"> <div className="rate-varision">
+            {!!item.onsiteRate &&
+              <p className="d-inline-block rate-info" style={{ color: '#c6c6c6' }}>
+                <span className="fotnt-weight-normal"> WALKIN RATE </span><br />
+                <strong ><del> ${item.onsiteRate} </del></strong> </p>
+            }
+            <p className="d-inline-block rate-info"> <span className="fotnt-weight-normal"> ONLINE RATE </span><br />
+              <strong className="gv-text-color"> ${item.webRate} </strong> </p>
+          </div> </div>
+        </div>
+
+        <div className="row m-getunit">
+          <div className="col-5"> Get your units </div>
+          <div className="col-7"> <div className="btn btn-gvstore btn-success border-0 green-gradient">
+            <Link to={`/rent/self-storage/${pathParams.metaParam}/${pathParams.locationCode}/${item.firstAvailableUnitID}`}> Rent Now </Link>
+          </div>
+            <div className="gv-text-color"> <strong><Link to={`/reserve/self-storage/${pathParams.metaParam}/${pathParams.locationCode}/${item.firstAvailableUnitID}`}> Reserve for free </Link> </strong> </div> </div>
+        </div>
+        <hr/>
+      </div>
     );
   });
 
@@ -332,9 +387,9 @@ const divAppliedFilters =  this.state.filteredUnitTypes.map((val,index)=> {
              </div>
               
               <div className="tab-content filter-tab-content" id="myTabContent">
-                <div className="tab-pane fade show active"  role="tabpanel" aria-labelledby="home-tab">
+                <div className="tab-pane fade show active "  role="tabpanel" aria-labelledby="home-tab">
                   <div className="facility-grid">
-                    <div className="table-responsive">
+                    <div className="table-responsive desktop">
                       <table className="table table-striped">
                         <thead>
                           <tr>
@@ -342,8 +397,8 @@ const divAppliedFilters =  this.state.filteredUnitTypes.map((val,index)=> {
                             <th scope="col"> Features </th>
                             <th scope="col"> Offers </th>
                             <th scope="col" className="text-center"> Rates </th>
-                            <th scope="col" className="text-right"> Get your units </th>
-                            <th> </th>
+                            <th scope="col" className="text-center"> Get your units </th>
+                           {/*  <th> </th> */}
                           </tr>
                         </thead>
                         <tbody>
@@ -353,6 +408,11 @@ const divAppliedFilters =  this.state.filteredUnitTypes.map((val,index)=> {
                       </table>
                     </div>
                   </div>
+
+                  <div className="mobile mobile-view">
+                        {mobileDivUnits}
+                      </div>
+
                 </div>
                 <div className="tab-pane fade" id="features" role="tabpanel" aria-labelledby="profile-tab"> Features </div>
                 <div className="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="contact-tab"> Reviews </div>

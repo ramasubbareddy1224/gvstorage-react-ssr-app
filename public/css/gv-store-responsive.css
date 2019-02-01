@@ -1,13 +1,14 @@
 
 @media ( max-width:2000px){
     .about-room-facility {
-        padding-top: 80px;
+        padding-top: 40px;
     }
     #inner-banner .storage-room-content .wether-block .wether-info-content {
         width: 400px;
     }
     .storage-room-content {
         padding-top: 3rem;
+        width: 100%;
     }
     .storage-location-info-img-1:after{ width: 75%;}
 }
@@ -16,9 +17,16 @@
     padding-top: 40px;
 }
 .storage-room-content {
-    padding-top: 2.2rem;
+    padding-top: 2.5rem;
 }
 .storage-location-info-img-1:after{ width: 80%;}
+}
+
+@media ( max-width:1720px){
+    #inner-banner .storage-room-content .wether-block .wether-info-content {
+        width: 350px;
+    }
+    .storage-img-l:after{ height: 75%;}
 }
 
 @media ( max-width:1600px){
@@ -29,12 +37,16 @@
         width: 360px;
     }
     .storage-room-content {
-        padding-top: 2rem;
+        padding-top: 2rem; width: 100%;
     }
     .about-room-facility {
         padding-top: 20px;
     }
     .storage-location-info-img-1:after{ width: 93%;}
+
+    #inner-banner .storage-room-content .wether-block .wether-info-content {
+        width: 300px;
+    }
 }
 
 @media ( max-width:1500px){
@@ -42,6 +54,7 @@
         width: 300px;
     }
     .storage-location-info-img-1:after{ width: 99%;}
+    .storage-img-l:after{ height: 70%;}
 }
 
 @media ( max-width:1440px){
@@ -62,6 +75,14 @@
 
 .storage-tools-items {
     padding-left: 15%;
+}
+.about-room-facility {
+    padding-top: 10px;
+}
+}
+@media ( max-width:1400px){
+#inner-banner .storage-room-content .wether-block .wether-info-content {
+    width: 260px;
 }
 }
 
@@ -87,6 +108,17 @@
 .storage-tools-items {
     padding-left: 5%;
 }
+#inner-banner .storage-room-content .wether-block .wether-info-content {
+    width: 250px;
+}
+.about-room-facility {
+    padding-top: 0px;
+}
+
+}
+
+@media ( max-width:1300px){
+.storage-img-l:after{ height: 65%;}
 }
 
 
@@ -98,7 +130,7 @@
     left: 7% !important;
 }
 #inner-banner .storage-room-content .storage-timings {
-    padding-top: 2rem;
+    padding-top: 1rem;
 }
 .about-room-facility {
     padding-top: 0px;
@@ -120,19 +152,38 @@
     width: 100%;
     margin-bottom: 10px;
 }
+.inner-banner-cls .item img{ height: 50vh; }
 
+.inner-banner-cls .unit-banner-img .item img {
+    height: 52vh;
+}
+#inner-banner .storage-room-content .storage-timings {
+    padding-top: 2rem;
+}
+.storage-img-l:after {
+    height: 60%;
+}
 }
 
 @media ( max-width:1160px){
-.storage-room-content { width:100%; float:none;}
-#inner-banner .facility-page-banner-content p{ color:#333;}
+
+#inner-banner .facility-page-banner-content p{ color:#fff;}
 .facility-space {
-    margin-top: 30rem;
+    margin-top: 16rem;
 }
 #inner-banner .storage-room-content .storage-timings {
-    padding-top: 1rem;
+    padding-top: 2rem;
 }
 #header .container-fluid-padding{ padding: 0px;}
+.inner-banner-cls .item img{ height: 54vh; }
+.about-room-facility {
+    padding-top: 20px;
+}
+#inner-banner .storage-room-content .wether-block .wether-info-content {
+    width: 220px;
+    font-size: 12px;
+}
+
 }
 
 @media ( max-width:1140px){
@@ -141,7 +192,7 @@
 }
 
 .facility-space {
-    margin-top: 32rem;
+    margin-top: 22rem;
 }
 #inner-banner .storage-room-content .wether-block {
     padding-top: 2rem;
@@ -159,11 +210,41 @@
 
 .storage-tools-info .storage-tools-items .st-txt { display: block;}
 .storage-tools-items .right-text {  text-align: left; padding-left: 10%;  }
-#inner-banner, #inner-banner-image img {
-    height: 40vh;
+
+#topbar .container-fluid-padding {
+    padding: 0px;
+}
+.inner-banner-cls .item img{ height: 54vh; }
+#inner-banner .storage-room-content .storage-timings .office-hours {
+    width: 100%;
+    margin-bottom: 10px;
+}
+#inner-banner .storage-room-content .storage-timings .access-hours {
+    width: 100%;
+}
+#inner-banner .storage-room-content .wether-block .wether-info-content {
+    width: 300px;
+    font-size: 14px;
 }
 
+#inner-banner .storage-room-content .wether-block .office-hours {
+    margin-bottom: 10px;
+    margin-right: 0rem;
+}
+.storage-img-l:after {
+    height: 44%;
+}
+.inner-banner-cls .unit-banner-img .item img {
+    height: 48vh;
+}
 } 
+
+@media ( max-width:1024px){
+#inner-banner .storage-room-content .wether-block .wether-info-content {
+    width: 500px;
+    font-size: 14px;
+}
+}
 
 @media ( max-width:991px){
 
@@ -172,6 +253,7 @@
 .storage-location-block:nth-child(7) {
 	margin-left: 0%;
 }
+#inner-banner .find-storage{width: 80%;}
 #services .storage-sol-padding {width:0%;}
 
 .choose-right-space .storage-data-info {
@@ -182,6 +264,47 @@
     width: 90%;
     margin: 0px auto;
 }
+#inner-banner #inner-banner-image .item img {
+    height: 42vh;
+}
+
+#inner-banner {
+    height: 42vh;
+}
+.about-location .about-storage-location .about-storage-tab .nav-tabs .nav-item {
+    width: 25%;
+    text-align: center;
+}
+.facility-space {
+    margin-top: 14rem;
+}
+.storage-img-l:after {
+    height: 35%;
+    width: 80%;
+}
+.facility-page-bg-block{background: #424e5e; padding-left: 20px;}
+#inner-banner .storage-room-content .storage-timings {
+    padding-top: 0rem;
+    color: #fff;
+}
+#inner-banner .unit-content-sec {
+    position: relative !important;
+    height: auto;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    left: 0px !important;
+    right: 0px !important
+}
+.unit-banner-img {display: none;}
+#inner-banner.inner-banner-cls {
+    height: auto ;
+}
+.facility-space {
+    margin-top: 2rem;
+}
+.self-storage-content{ border: 0px solid #ddd;}
+
 }
 
 @media ( max-width:960px){
@@ -189,7 +312,7 @@
 	font-size:28px;
 }
 #intro .intro-content p, #inner-banner .inner-banner-content p {
-    font-size: 18px;
+    font-size: 16px;
 }
 .h2, h2 {
     font-size: 1.6rem;
@@ -218,7 +341,11 @@ background: #fff;
 .est-sizes { width:100%; float:none;}
 #inner-banner .storage-room-content .wether-block .wether-info-content {
     font-size: 14px;
+    width: 400px;
 }
+
+
+
 
 }
 
@@ -227,18 +354,28 @@ background: #fff;
     .storage-location-info-img-1:after {
         width: 80%;
     }
+    .storage-room-image {
+        padding-right: 40px;
+    }
+    #inner-banner.inner-banner-cls #inner-banner-image.unit-banner-img .item img {
+        height: 34vh;
+    }
+
+    .storage-img-l:after {
+        height: 25%;
+        width: 55%;
+    }
 }
 
 @media ( max-width:850px){
 .pb-5 {
     padding-bottom: 1.5rem!important;
 }
-.facility-space {
-    margin-top: 38rem;
-}
+
 #inner-banner .storage-room-content .wether-block p{ margin-bottom:1rem !important;}
 #inner-banner .storage-room-content .wether-block .wether-info-content {
-   padding: 17px 40px;
+   padding: 13px 30px;
+   width: 270px;
 }
 #nav-menu-container .nav-menu a { padding: 10px 5px; }
 .how-storage-text {
@@ -250,14 +387,139 @@ background: #fff;
 .storage-location-info-img-1:after {
     width: 85%;
 }
+.storage-room-content {
+    width: 100%;
 }
+}
+
+
+
+
+@media (min-width: 769px) {
+    .sticky-wrapper {height: 84px !important;}
+    .mobile-unit{display: none;}
+    .desktop-unit{ display: block;}
+}
+
+@media (min-width:767px){
+    
+}
+
 @media (max-width: 768px) {
 .storage-location-info-img-1:after {
     width: 92%;
 }
+
+#mobile-nav-toggle{
+    position: absolute;
+}
+.facility-filter-tabs .facility-tabs .storage-filters-block .selected-filters .form-check{
+    margin-right: 3px;
+    width: 45%;
+
+}
+.facility-filter-tabs .facility-tabs .storage-filters-block .selected-filters{ 
+    display: table;
+    width: 100%;
+}
+.facility-filter-tabs .facility-tabs .storage-filters-block .selected-filters .view-space-tool {
+    float: left;
+}
+.about-room-facility {
+    padding-top: 0px;
+}
+.storage-img-l img {     
+    width: 110px;
+    height: 120px;
+}
+.storage-img-l:after {     
+    width: 110px;
+    height: 120px;
+}
+.item-qty .table-responsive table {
+    width: 100%;;
+}
+.desktop-unit{ display: none;}
+.list-group{     
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: row;
+}
+/* .self-storage-content .bhoechie-tab-menu div.list-group>a.active:after {
+    content: '';
+    position: absolute;
+    left: 42%;
+    top: 115%;
+    bottom: -10px;
+    margin-bottom: -13px;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-top: 9px solid #005f26;
+    border-left: 9px solid transparent;
+} */
+
+.self-storage-content .bhoechie-tab-menu div.list-group>a.active:after{
+    border: none;
+}
+.self-storage-content .bhoechie-tab-menu div.list-group{
+    border-radius: 0px;
+    margin: 0px 15px 0px 15px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+.self-storage-content .bhoechie-tab-content {
+    border: 1px solid #ddd;
+    padding: 30px 20px;
 }
 
+.why-chooseus .bhoechie-tab-menu div.list-group>a span{ text-align: center; }
+.why-chooseus .bhoechie-tab-menu div.list-group>a span img{ display: block;  padding-left: 40%;}
+.why-chooseus .bhoechie-tab-menu div.list-group>a {
+    padding: 0.5rem;
+    text-align: center;
+    width: 25%;
+    border-bottom: 0px solid #d8d9d8;
+}
+.rent-sec .rent-facility-info{width: 96%;     margin: 0px auto;}
+
+.self-storage-content .bhoechie-tab-menu div.list-group>a span{ text-align: center; }
+.self-storage-content .bhoechie-tab-menu div.list-group>a span img{ display: block;   padding-left: 40%;}
+.self-storage-content .bhoechie-tab-menu div.list-group>a {
+    padding: 1.2rem 1rem;
+    text-align: center;
+    line-height: 16px;
+    border-bottom: 0px solid #d8d9d8;
+    font-size: 14px;
+    width: 23%;
+}
+
+.item-qty .table td, .item-qty .table th {
+   font-size: 15px;
+}
+.bhoechie-tab .searh-calc-height .item-qty {
+    height: 100%;
+}
+.self-storage-content .bhoechie-tab-container{ left:0px; }
+.self-storage-content{border: 0px;
+    margin:0px;;
+}
+.est-sizes{ margin-bottom: 20px;}
+
+}
+
+
+@media (min-width:721px){
+    .desktop { display: block;}
+    .mobile {display: none;}
+
+}
+
+
+
 @media (max-width: 767px) {
+
     .banner-search {
     display: block;
     }
@@ -274,6 +536,7 @@ background: #fff;
     #intro .intro-content h2 {
     font-size: 34px;
    }
+
     #services .box .box {
     margin-bottom: 20px;
    }
@@ -299,17 +562,19 @@ background: #fff;
 	margin-bottom:5px;
 	cursor: pointer;
 }
-
-#inner-banner, #inner-banner-image img {
-    height: 48vh;
+#inner-banner.inner-banner-cls #inner-banner-image.unit-banner-img .item img {
+    height: 52vh;
+}
+.about-location .about-storage-location .about-storage-tab .nav-tabs .nav-item {
+    width: 30%;
+    text-align: center;
 }
 
-.facility-page-banner-content {
-   left: 15% !important;
+.facility-filter-tabs .facility-tabs .storage-filters {
+    position: relative;
+    right: 15px;
 }
-.facility-space {
-    margin-top: 42rem;
-}
+
 .img-how-storage-works {
     height: 550px;
 }
@@ -322,7 +587,11 @@ background: #fff;
 }
 #inner-banner .find-storage {
      padding: 40px 10px;
+     width: 90%;
+     background: transparent;
 }
+#inner-banner .inner-banner-content input{     border-radius: 0px 10px 0px 10px; }
+
 #homepage #inner-banner #inner-banner-image .item  img  { min-height: 48vh;}
 #services .storage-solution p {
     color: #fff;
@@ -343,14 +612,33 @@ background: #fff;
 .individual-city .city-pageviews {
     max-height: 100%;
 }
+#inner-banner .storage-room-content .wether-block .wether-info{ display: inline-flex}
+#inner-banner .storage-room-content .wether-block .office-hours{
+width: 100%;
+}
+#inner-banner .storage-room-content .wether-block .access-hours{
+    width: 100%;
+}
+#inner-banner .storage-room-content .wether-block .wether-info { display: inline-flex}
+
+#inner-banner .storage-room-content .wether-block .wether-info-content {width: 80%;}
+.storage-img-l:after{
+    width:120px;
+    height:120px;
+}
+.storage-img-l{     margin-bottom: 30px;}
+.storage-room-content {
+    width: 100%;
+    margin-top: 10px;
+}
 
 }
 
 
 @media ( max-width:720px){
-/* #inner-banner .inner-banner-content h2 { 
-	font-size:24px;
-} */
+
+.desktop { display: none;}
+.mobile {display: block;}
 
 .storage-location-info-img-1:after {
     width: 95%;
@@ -376,26 +664,30 @@ background: #fff;
     font-size: 1.5rem;
 }
 .inner-banner-cls { background:none !important;}
-.about-room-facility {
-    padding-top: 60px;
-}
+
 #inner-banner .about-room-facility h5 {
     color: #333;
     font-size: 21px;
 }
-.facility-space {
-    margin-top: 33rem;
-}
+
 .container-fluid-padding {
 	padding: 0px 3%;
 }
 .img-how-storage-works {
     height: 100%;
 }
-.how-storage-text { position: relative; color: #333; padding-top: 20px; width: 80% ; margin: 0px auto;}
+.how-storage-text {  width: 80% ; margin: 0px auto;}
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{     border-bottom: 1px solid #005f26 !important;}
 
-/* #homepage #inner-banner #inner-banner-image .item  img  { min-height: 48vh;} */
+
+.inner-banner-cls .item img {
+    height: 38vh;
+}
+.storage-img-l { display: inline-block; margin-right: 40px; margin-bottom: 40px;}
+
+
+
+
 
 
 }
@@ -408,6 +700,9 @@ background: #fff;
     width: 80%;
 }
 .city-page-filters .form-check { width: 45%; display: inline-block;}
+.how-storage-text {  width: 90% ; margin: 0px auto;}
+
+
 }
 
 
@@ -415,12 +710,18 @@ background: #fff;
 #contact #google-map {
 margin-top: 20px;
 }
-#inner-banner .inner-banner-content input { border-color:#333;    border-radius: 0px 10px 0px 10px; }
+#inner-banner .inner-banner-content input { border-color:#333;    border-radius: 0px ; }
 #inner-banner .find-storage{ 
     background: transparent;
     padding: 20px 10px;
 }
-
+#topbar .contact-info .tf-num{
+    display: block;
+    padding-left: 24px;
+}
+.img-how-storage-works {
+    max-height: 800px;
+}
 .storage-location-info-img-1 img { width: 90%;}
 .storage-location-info-img-1:after {
     width: 92%;
@@ -438,8 +739,13 @@ margin-top: 20px;
 #inner-banner .inner-banner-content, #homepage #inner-banner #inner-banner-image .item img {
     min-height: 60vh;
 }
-.facility-space {
-    margin-top: 35rem;
+.self-storage-content .bhoechie-tab-menu div.list-group>a span img {
+    display: block;
+    padding-left: 30%;
+}
+.space-calc .list-group a {
+    padding: 0.5rem 0.5em !important;
+    
 }
 
 .h2, h2 {
@@ -447,13 +753,14 @@ margin-top: 20px;
 }
 #inner-banner .storage-room-content .wether-block .wether-info-content {
    padding: 17px 20px;
+   width: 260px;
 }
 .about-room-facility {
     padding-top: 20px;
 }
 
 .storage-size .nav-tabs .nav-link { 
-    font-size: 10px;
+    font-size: 11px;
     padding: 5px 0px;
 }
 
@@ -466,6 +773,7 @@ margin-top: 20px;
 .choose-right-space .storage-data-info {
     width: 100%;
     margin: 0px auto;
+    padding: 0px !important;
 }
 .storage-tools-block .storage-tools-info{
     width: 100%;
@@ -486,22 +794,42 @@ margin-top: 20px;
 	column-gap: 40px;
 }
 #inner-banner .inner-banner-content { top: -30px;}
+.unit-banner-img{
+height: 72vh;
+background: #424e5e;
+}
+.facility-filter-tabs .facility-tabs .filter-tab-content .mobile .rate-varision p{font-size: 10px;}
+.self-storage-content .bhoechie-tab-menu div.list-group{overflow: auto;}
+.storage-size-tab {
+    padding: 0px;
+}
+.container-fluid-padding {
+    padding: 0px 1%;
+}
 
 }
 
+@media ( max-width:450px){
+    .img-how-storage-works {
+        max-height: 900px;
+    }
+    .unit-banner-img{
+        height: 67vh;
+    }
+    .self-storage-content .bhoechie-tab-menu div.list-group>a {
+        line-height: 15px;
+        font-size: 12px;
+    }
 
+}
 
 @media ( max-width:400px){
 #inner-banner .storage-room-content .wether-block .wether-info-content {
     padding: 20px 10px;
     font-size: 12px;
 }
-.facility-space {
-    margin-top: 38rem;
-}
-.facility-page-banner-content {
-    left: 5% !important;
-}
+
+
 #intro .intro-content h2, .section-header h2 {
     font-size: 18px;
 }
@@ -515,6 +843,18 @@ margin-top: 20px;
 	padding: 0px 0.5%;
 }
 
+#inner-banner .storage-room-content .wether-block .wether-info-content{width: 68%;}
+.unit-banner-img{
+    height: 65vh;
+}
+.facility-filter-tabs .facility-tabs .filter-tab-content .mobile .rate-varision p {
+    padding: 5% 5%;
+    font-size: 14px;
+}
+.img-how-storage-works {
+    max-height: 950px;
+}
+
 }
 
 .small, small {
@@ -522,5 +862,37 @@ margin-top: 20px;
     font-weight: 400;
 }
 
+@media (max-width: 360px) {
+.img-how-storage-works {
+    max-height: 950px;
+    height: 1000px;
+}
+}
 
+/********30-01-2019**************/
+/* @media screen and (min-device-width: 425px) and (max-device-width: 320px) {
+   
+    
+    .unit-banner-img {
+        position: relative;
+    }
+    .unit-banner-img:before {
+        content: "";
+        position: absolute;
+        background: #424e5e !important;
+        width: 100%;
+        height: 154%;
+        top: 0;
+        z-index: 9;
+    }
+    .storage-img-l img {
+        width: 250px;
+        height: 200px;
+        float: left;
+    }
+    .storage-img-l:after {
+        height: 203px !important;
+        width: 162px !important;
+    }
 
+} */

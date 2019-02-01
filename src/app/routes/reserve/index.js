@@ -140,7 +140,6 @@ onConfirmationPageEnter=()=>{
     <Page id="reserve">
         {/* <CommonBreadCrumb></CommonBreadCrumb> */}
         <main id="main" className="citypage-section"> 
-        <section id="about" className="rent-sec wow fadeInUp">
         <section class="breadcrumb-section">
               <div class="container">
                 <nav aria-label="breadcrumb">
@@ -152,6 +151,8 @@ onConfirmationPageEnter=()=>{
                 </nav>
               </div>
             </section>
+        <section id="about" className="rent-sec wow fadeInUp">
+        
             <div className="container">
               <div className="alert alert-success fade in alert-dismissible show" id="reserveSuccessMsg">
                 <strong id="successMsg"></strong>

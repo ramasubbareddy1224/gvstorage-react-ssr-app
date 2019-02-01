@@ -106,7 +106,7 @@ render(){
       <div key={item.siteID}>
         <div className="row" onMouseOver={() => {this.onSitesHover(index, item) }}>
             <div className="col-5 col-sm-4 col-md-4">
-              <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-2.png"} className="img-fluid"  alt="..." />
+              <div className="fav-locations text-center city-level-img"> <img src={Environment.STATIC_FILES_END_POINT_URL + "img/citylevel/dallas-2.png"} id={index+1} className="img-fluid"  alt="..." />
                 <div className="location-overlay clearfix">
                   <div className="location-info" onClick={() => {this.clkRedirectToSelfStorage(item) }}>
                     <h2 className=""> {index+1} </h2>
@@ -116,7 +116,7 @@ render(){
             </div>
             
             <div className="col-7 col-sm-8 col-md-8 search-left-panel">
-              <h6 className="mb-0" onClick={() => {this.clkRedirectToSelfStorage(item) }}> {!!item.content ? item.content.name : item.name} </h6>
+              <h6 className="mb-0" onClick={() => {this.clkRedirectToSelfStorage(item) }}> Great Value Storage {item.city} {item.stateCode} </h6> {/*{!!item.content ? item.content.name : item.name} */}
               { this.props.pageName == "self-storage" && <p className="mb-0 small miles"> {miles} Miles<br /> </p> }
               <p className="mb-0 small"> {item.address1} <br />
               {item.city}, {item.stateCode} {item.postalCode} </p>
@@ -151,10 +151,21 @@ render(){
   
   }
 }
-
+var h = '80vh';
+/* if(!!tempMapPointers && tempMapPointers.length ==1){
+  h = '30vh';
+}
+else if(!!tempMapPointers && tempMapPointers.length == 2){
+  h = '50vh';
+}
+setTimeout(function() {
+  if(!!document.getElementById("mapHeight")){
+  document.getElementById("mapHeight").style.height = h;
+  }
+}, 200); */
 
     return(
-  <section id="about" className="about-sec individual-city wow fadeInUp">
+  <section id="about" className="about-sec individual-city wow fadeInUp pt-1">
     <div className="container-fluid">
     <div className="container-fluid-padding">
       <div className="row w-100 city-view-block">
