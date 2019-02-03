@@ -119,6 +119,9 @@ onConfirmationPageEnter=()=>{
   this.setState({isInConfirmationScreen: true});
 }
 
+componentDidCatch(error, info) {
+  console.log('error in RentPayment');
+}
   render() {
     const { allUnits ,tenantInfo } = this.props;
     const {moveInCharges} = this.props;

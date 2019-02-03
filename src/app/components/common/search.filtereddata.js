@@ -17,8 +17,14 @@ export default class SearchFilteredData extends Component{
       isLocationCodeClicked: false,
       mapPointers: [],
       tempCenterPoint: 0,
-      selectedLocation: {}
+      selectedLocation: {},
+      hasUIError: false
     }
+  }
+
+  componentDidCatch(error, info) {
+    console.log('error in SearchFilteredData');
+    this.setState({ hasUIError: true });
   }
 
   clkRedirectToSelfStorage = (location) =>{
@@ -31,6 +37,11 @@ export default class SearchFilteredData extends Component{
   
 
 render(){
+
+  if(this.state.hasUIError)
+    {
+      return <Redirect to='/' />
+    }
 
   if (this.state.isLocationCodeClicked) {
     this.setState({isLocationCodeClicked: false, selectedLocation: {}});

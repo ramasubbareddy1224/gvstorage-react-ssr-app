@@ -37,7 +37,8 @@ let didTimeOut = false;
              dispatch(getAllUnits(json, locationCode));
              resolve(json);
          }
-      });
+      })
+      .catch(error=>{console.log('error in getAllUnitsByLocationCode api')});
     })
    
   };

@@ -24,6 +24,11 @@ const frontload = async props =>{
 }
 
 class PackingSupplies extends Component {
+
+  componentDidCatch(error, info) {
+    console.log('error in PackingSupplies');
+
+  }
   componentDidMount(){
     let $=require('jquery');
     $('#packing-supplies-head').addClass('active');

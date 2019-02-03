@@ -11,7 +11,8 @@
     var apiUrl = 'tenant';
     return ApiRequest.url(apiUrl).
     post(formData)
-    .json(json=> json);
+    .json(json=> json)
+    .catch(error=>{console.log('error in addTenant api')});
   }
 
   // export const getTenantInfo = (tenantId,locationCode) =>{
@@ -25,7 +26,8 @@
       var apiUrl ='movein';
       return ApiRequest.url(apiUrl).
     post(formData)
-    .json(json=> json);
+    .json(json=> json)
+    .catch(error=>{console.log('error in confirmPayment api')});
   }
 
   export const getTenantInfo = (tenantId,locationCode) =>  (dispatch) => {
@@ -37,7 +39,8 @@
         dispatch(actionCreator_GetTenantInfo(json));
         resolve(json);
       }
-        );
+      )
+      .catch(error=>{console.log('error in getTenantInfo api')});
       }
       catch{
         resolve({})

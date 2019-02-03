@@ -13,6 +13,10 @@ const frontload = async props =>
   await props.getCurrentProfile(+props.match.params.id);
 
 class Profile extends Component {
+  
+  componentDidCatch(error, info) {
+    console.log('error in Profile');
+  }
   componentWillUnmount() {
     this.props.removeCurrentProfile();
   }

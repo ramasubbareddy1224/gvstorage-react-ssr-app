@@ -24,6 +24,10 @@ const frontload = async props =>{
 }
 
 class PersonalStorage extends Component {
+
+  componentDidCatch(error, info) {
+    console.log('error in PersonalStorage');
+  }
   
   componentDidMount(){
     let $=require('jquery');

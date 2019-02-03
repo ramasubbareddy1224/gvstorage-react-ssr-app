@@ -37,7 +37,8 @@ let didTimeOut = false;
              resolve(json);
          }
        
-      });
+      })
+      .catch(error=>{console.log('error in getAllSitesByFilters api')});
     });
   };
 

@@ -25,7 +25,10 @@ const frontload = async props =>{
 }
 
 class PayBill extends Component {
-  
+
+  componentDidCatch(error, info) {
+    console.log('error in PayBill');
+  }
   componentDidMount(){
    
   }

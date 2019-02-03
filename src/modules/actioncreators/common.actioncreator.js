@@ -26,7 +26,8 @@ export const setFilterInfo = (data) => (dispatch) => {
         dispatch(actionCreator_GetAllFacilitySites(json));
         resolve(json);
       }
-        );
+        )
+        .catch(error=>{console.log('error in getFacilitySites api')});
       }
       catch{
         resolve({})
@@ -40,7 +41,8 @@ export const setFilterInfo = (data) => (dispatch) => {
     var apiUrl = 'contactus';
     return ApiRequest.url(apiUrl).
     post(formData)
-    .json(json=> json);
+    .json(json=> json)
+    .catch(error=>{console.log('error in contactUs api')});
   }
 
 

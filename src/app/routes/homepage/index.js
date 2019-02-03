@@ -35,6 +35,11 @@ const frontload = async props =>{
 }
 
 class HomePage extends Component {
+
+  componentDidCatch(error, info) {
+    console.log('error in HomePage');
+
+  }
   render() {
     const {nearByLocations} = this.props;
    

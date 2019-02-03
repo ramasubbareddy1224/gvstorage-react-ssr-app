@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Page from '../../components/page';
+import {Redirect} from 'react-router-dom';
 
 import queryString from 'query-string';
 import { bindActionCreators } from 'redux';
@@ -40,7 +41,12 @@ class Search extends Component {
 
   constructor(){
     super();
-   
+    this.state = { hasUIError: false };
+  }  
+
+  componentDidCatch(error, info) {
+    console.log('error in Search');
+    this.setState({ hasUIError: true });
   }
   
 
@@ -57,6 +63,11 @@ class Search extends Component {
   }
 
   render() {
+
+    if(this.state.hasUIError)
+    {
+      return <Redirect to='/' />
+    }
 
     return (
       <Page id="search"

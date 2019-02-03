@@ -75,6 +75,11 @@ const frontload = async props => {
 
 
 class SelfStorage extends Component {  
+
+  componentDidCatch(error, info) {
+    console.log('error in SelfStorage');
+  }
+
   render() {
 
     const { allUnits } = this.props;

@@ -112,6 +112,11 @@ const frontload = async props => {
 
 
 class Rent extends Component {  
+
+  componentDidCatch(error, info) {
+    console.log('error in Rent');
+  }
+
   render() {
     const { allUnits } = this.props;
     const {moveInCharges} = this.props;

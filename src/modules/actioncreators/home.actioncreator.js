@@ -20,7 +20,9 @@ let nearByTimeOut = false;
       try{
       return ApiRequest.url(`postalcodes`)
       .get()
-      .json(json=>resolve(json));
+      .json(json=>resolve(json))
+      .catch(error=>{console.log('error in postalcodes api')})
+      ;
     }
     catch{
       resolve({})
@@ -34,7 +36,9 @@ let nearByTimeOut = false;
       try{
       return ApiRequest.url(`sites`)
       .get()
-      .json(json=>resolve(json));
+      .json(json=>resolve(json))
+      .catch(error=>{console.log('error in sites api')})
+      ;
       }
       catch{
         resolve({})
@@ -44,6 +48,8 @@ let nearByTimeOut = false;
 
   export const getPinCodes_Sites = () => (dispatch, getState) => {
     return new Promise((resolve, reject)=>{
+       try
+       {
       pinCodes_SitesTimeOut = false;
       const timeout1 = setTimeout(function() {
         pinCodes_SitesTimeOut = true;
@@ -63,7 +69,12 @@ let nearByTimeOut = false;
          }
         //resolve({})
       })
-    })   
+    }
+    catch{
+      resolve({});
+    }
+    }
+    )   
 
   };
 
@@ -73,7 +84,9 @@ let nearByTimeOut = false;
     return wretch()
     .url(apiUrl).
     get()
-    .json(json=> json);
+    .json(json=> json)
+    .catch(error=>{console.log('error in getCurrentLocation api')})
+    ;
   };
 
 
@@ -101,6 +114,8 @@ let nearByTimeOut = false;
            resolve(json);
        }
       }
-    );
+    )
+    .catch(error=>{console.log('error in nearbysites api')})
+    ;
     });
   };

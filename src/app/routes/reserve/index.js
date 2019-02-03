@@ -125,6 +125,10 @@ class Reserve extends Component {
       isInConfirmationScreen: false
     };
   }
+
+  componentDidCatch(error, info) {
+    console.log('error in Reserve');
+  }
   
 onConfirmationPageEnter=()=>{
   this.setState({isInConfirmationScreen: true});
