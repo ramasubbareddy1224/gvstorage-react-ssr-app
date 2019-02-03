@@ -39,3 +39,16 @@ require('@babel/register')({
 //  server entry point
 require('./server');
 
+// process.on('unhandledRejection', error => {
+//   console.log('unhandledRejection', error.message);
+// });
+process
+  .on('unhandledRejection', (reason, p) => {
+    console.log('Unhandled Rejection at Promise');
+    //console.log(reason, 'Unhandled Rejection at Promise', p);
+  })
+  .on('uncaughtException', err => {
+    console.log('Uncaught Exception thrown')
+    //console.log(err, 'Uncaught Exception thrown');
+     //process.exit(1);
+  });

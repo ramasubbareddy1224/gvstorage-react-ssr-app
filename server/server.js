@@ -41,6 +41,10 @@ app.use(cookieParser());
 app.use(express.Router().get('/', loader));
 app.use(express.static(path.resolve(__dirname, '../build')));
 app.use(loader);
+app.use((err, req, res, next) => {
+  res.status(500)
+  res.send('render your page manually here')
+})
 
 // We tell React Loadable to load all required assets and start listening 
 Loadable.preloadAll().then(() => {
@@ -65,6 +69,7 @@ app.on('error', error => {
       process.exit(1);
       break;
     default:
+    console.log('error in server.js file');
       throw error;
   }
 });

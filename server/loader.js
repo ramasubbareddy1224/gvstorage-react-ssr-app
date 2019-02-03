@@ -20,7 +20,9 @@ import manifest from '../build/asset-manifest.json';
 import { setCurrentUser, logoutUser } from '../src/modules/auth';
 
 // LOADER
-export default (req, res) => {
+export default (req, res,next) => {
+
+  try {
   /*
     A simple helper function to prepare the HTML markup. This loads:
       - Page title
@@ -121,7 +123,17 @@ export default (req, res) => {
           // We have all the final HTML, let's send it to the user already!
           res.send(html);
         }
-      });
+      }).
+      catch(error=>{
+        console.log('log unhandle exception:',error);
+      })
+      ;
     }
   );
+}
+catch(error) {
+  console.log('enter into loader catch')
+  next(err);
+}
+
 };

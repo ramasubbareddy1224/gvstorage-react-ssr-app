@@ -62,15 +62,7 @@ render(){
             <a class="btn btn-gvstore btn-success btn-sm border-0 bg-light align-top text-success font-normal " href={"https://www.google.com/maps/dir/Your Location/"+siteLocation.latitude+","+siteLocation.longitude} target="_blank"> Get Direction </a>  <br />
           </div>
         </div>
-<<<<<<< HEAD
           
-=======
-        <div className="storage-room-content">
-        { !!siteLocation &&  <p className="small"> <i className="fa fa-map-marker"> </i> {siteLocation.address1}, {siteLocation.city}, {siteLocation.stateCode} {siteLocation.postalCode}. &nbsp;
-          <a className="btn btn-gvstore btn-success btn-sm border-0 bg-light text-success font-normal " target="_blank" href={`https://www.google.com/maps/dir/Your Location/${siteLocation.latitude},${siteLocation.longitude}`} > Get Direction </a> <br />
-            <i className="fa fa-phone"> </i> {siteLocation.phone} <br />
-          </p> }
->>>>>>> 58fc96888eed630d7834019e70a688f9d7fa78dc
           <div className="landmark ">
             {/* <p className="d-inline-block pr-5 small-text"> <strong>Near</strong> <br />
               St. Thomas catholic church </p> */}
